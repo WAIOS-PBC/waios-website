@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WAIOS | Burnout is a systems problem</title>
-<meta name="description" content="WAIOS finds what is driving burnout across your teams and fixes it at the source, with leaders and employees supported at the same time.">
-<meta property="og:title" content="WAIOS | Burnout is a systems problem">
-<meta property="og:description" content="WAIOS finds what is driving burnout across your teams and fixes it at the source, with leaders and employees supported at the same time.">
+<title>WAIOS | The Work Wellbeing Score</title>
+<meta name="description" content="Engagement, burnout and wellbeing, measured together in one Work Wellbeing Score, so you know whether your people are truly thriving.">
+<meta property="og:title" content="WAIOS | The Work Wellbeing Score">
+<meta property="og:description" content="Engagement, burnout and wellbeing, measured together in one Work Wellbeing Score, so you know whether your people are truly thriving.">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,217 +14,83 @@
 <style>
 body{margin:0;background:#FAF8F4}
 a{color:#15283F}a:hover{color:#EF6F6C}
+@keyframes waiosPulse{0%{transform:scale(1);opacity:.55}70%{transform:scale(2.4);opacity:0}100%{opacity:0}}
 </style>
 <style>[hidden]{display:none !important}</style>
 </head>
 <body>
-<div style="font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif; color: #1F1D1A; background: #FAF8F4; min-height: 100vh">
+<div id="dc-root"><div style="font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif; color: #1F1D1A; background: #FAF8F4; min-height: 100vh">
 
-<header style="background: #FFFFFF; border-bottom: 1px solid #DDE3E8">
+<header style="background: #15283F; border-bottom: 1px solid rgba(243,237,226,0.12)">
 <div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-<a href="index.html" aria-label="waios home" style="text-decoration: none; font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</a>
+<a href="index.html" aria-label="waios home" style="text-decoration: none; font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 0.035em; color: #F3EDE2; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</a>
 <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 500">
-<a href="wellbeing-measure.html" style="text-decoration: none; color: #2E3A45">Wellbeing Measure</a>
-<a href="how-we-work.html" style="text-decoration: none; color: #2E3A45">How We Work</a>
-<a href="approach.html" style="text-decoration: none; color: #2E3A45">Our Approach</a>
-<a href="about.html" style="text-decoration: none; color: #2E3A45">About</a>
-<a href="#contact" style="text-decoration: none; color: #2E3A45">Contact</a>
+<a href="wellbeing-measure.html" style="text-decoration: none; color: #F3EDE2">Wellbeing Measure</a>
+<a href="how-we-work.html" style="text-decoration: none; color: #F3EDE2">How We Work</a>
+<a href="approach.html" style="text-decoration: none; color: #F3EDE2">Our Approach</a>
+<a href="about.html" style="text-decoration: none; color: #F3EDE2">About</a>
 <a href="mailto:hello@waios.com?subject=Briefing%20request" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; padding: 12px 20px; border-radius: 6px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Book a briefing</a>
 </nav>
 </div>
 </header>
 
-<section style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px) 72px; display: flex; flex-direction: column; gap: 40px">
-<div style="display: flex; flex-direction: column; gap: 20px">
-<h1 style="margin: 0; font-size: 56px; line-height: 1.08; max-width: 1000px; font-weight: 800; color: #15283F; letter-spacing: -0.01em">Burnout is a systems problem. Your survey won't solve it. We will.</h1>
+<section aria-label="The Wellbeing Score" style="background: #15283F; overflow: hidden">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px clamp(16px, 4vw, 32px) 88px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 26px">
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #F7C948">The WAIOS™ Work Wellbeing Score</span></div>
+<h1 style="margin: 0; font-size: clamp(40px, 3vw + 24px, 60px); line-height: 1.05; font-weight: 800; letter-spacing: -0.015em; color: #F3EDE2; text-wrap: balance">Imagine if every organization knew its people’s Work Wellbeing Score.</h1>
+<p style="margin: 0; font-size: 20px; line-height: 1.55; color: #F3EDE2; max-width: 520px">And knew whether it was truly <span style="font-weight: 700; color: #F7C948">unlocking the potential of its people</span>, team by team, before it shows up in turnover.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 6px"><a href="mailto:hello@waios.com?subject=Briefing%20request" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px">Book a briefing</a><a href="wellbeing-measure.html" style="text-decoration: none; border: 1.5px solid #F3EDE2; color: #F3EDE2; font-weight: 600; font-size: 16px; padding: 14px 24px; border-radius: 6px">See the Wellbeing Measure</a></div>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 64px; align-items: stretch">
-<div style="display: flex; flex-direction: column; gap: 24px">
-<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45; max-width: 560px">Years of proprietary burnout research. One of the world’s leading burnout experts now working inside your organization. WAIOS™ finds what’s really driving chronic stress and <span style="font-weight: 700; background: linear-gradient(to top, rgb(247, 201, 72) 42%, transparent 42%)">fixes it at the source</span>. The alternative? Leaving your people exposed to a risk Mercer says affects 82% of the global workforce.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 8px"><a href="mailto:hello@waios.com?subject=Briefing%20request" style="text-decoration: none; background: rgb(239, 111, 108); color: rgb(21, 40, 63); font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px">Book a briefing</a><a href="wellbeing-measure.html" style="text-decoration: none; border: 1.5px solid rgb(46, 58, 69); color: rgb(46, 58, 69); font-weight: 600; font-size: 16px; padding: 14px 24px; border-radius: 6px">See how the operating system works</a></div>
-<div style="font-size: 12px; color: #5C7285">Source: Mercer, Global Talent Trends 2026.</div>
-<p style="margin: 8px 0 0; padding-top: 24px; border-top: 1px solid #DDE3E8; font-size: 17px; line-height: 1.65; color: #2E3A45; max-width: 560px">WAIOS™ measures the 7 Dimensions of Burnout and maps them against your wider wellbeing and organizational culture. That shows exactly where chronic stress is taking hold. From there, we deliver specific interventions that prevent burnout before it becomes a personal, professional, and organizational risk.</p>
-<div style="display: flex; flex-direction: column; gap: 10px; max-width: 560px">
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-left: 4px solid #EF6F6C; border-radius: 8px; padding: 12px 18px; min-height: 76px; box-sizing: border-box; display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: center"><div style="font-size: 26px; font-weight: 800; color: #15283F; line-height: 1.1; white-space: nowrap">$5M a year</div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 15px; line-height: 1.45; color: #2E3A45">What burnout costs <span style="text-decoration: underline; text-decoration-color: #EF6F6C; text-decoration-thickness: 2px; text-underline-offset: 3px; font-weight: 700; color: #15283F">just a 1,000-person company</span>. Every year.</div><div style="font-size: 11px; color: #5C7285">Source: American Journal of Preventive Medicine, 2025</div></div></div>
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-left: 4px solid #F7C948; border-radius: 8px; padding: 12px 18px; min-height: 76px; box-sizing: border-box; display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: center"><div style="font-size: 26px; font-weight: 800; color: #15283F; line-height: 1.1; white-space: nowrap">72%</div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 15px; line-height: 1.45; color: #2E3A45">of burned-out workers say it makes them less efficient.</div><div style="font-size: 11px; color: #5C7285">Source: Eagle Hill Consulting, 2025</div></div></div>
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-left: 4px solid #15283F; border-radius: 8px; padding: 12px 18px; min-height: 76px; box-sizing: border-box; display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: center"><div style="font-size: 26px; font-weight: 800; color: #15283F; line-height: 1.1; white-space: nowrap">Nearly 3x</div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 15px; line-height: 1.45; color: #2E3A45">more likely to plan their exit within a year.</div><div style="font-size: 11px; color: #5C7285">Source: Eagle Hill Consulting, 2025</div></div></div>
+<figure style="margin: 0; position: relative; width: 100%; max-width: 600px; justify-self: center; display: flex; flex-direction: column; gap: 12px">
+<div style="position: relative; width: 100%; aspect-ratio: 1 / 1">
+<canvas role="img" aria-label="A rotating globe. Office buildings rise up at workplaces around the world, each labeled with a company name and a Work Wellbeing Score that rises over time." style="position: absolute; inset: 0; width: 100%; height: 100%; display: block" width="576" height="576"></canvas>
 </div>
-</div>
-
-<figure style="margin: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
-<div style="font-size: 15px; font-weight: 700; color: #15283F">Burnout diagnosis · Jeff’s team</div>
-<div style="font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Illustrative</div>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 12px">
-<div style="background: #F1F4F6; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 6px"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #5C7285">What a survey shows</div><div style="font-size: 28px; font-weight: 700; color: #2E3A45; line-height: 1">88</div><div style="font-size: 13px; color: #5C7285">Engagement score. Looks fine.</div></div>
-<div style="background: #FDECEB; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 6px"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #15283F">What’s really happening</div><div style="font-size: 28px; font-weight: 700; color: #15283F; line-height: 1">High</div><div style="font-size: 13px; color: #2E3A45">Burnout risk, and rising.</div></div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 10px">
-<div style="font-size: 13px; font-weight: 700; color: #15283F">WAIOS™ 7 Dimensions of Burnout, % of team at risk</div>
-<div style="display: grid; grid-template-columns: 170px 1fr 40px; align-items: center; gap: 12px; font-size: 14px; color: #2E3A45"><span style="font-weight: 600">Lack of recovery</span><div style="height: 10px; background: #F1F4F6; border-radius: 5px; overflow: hidden"><div style="width: 84%; height: 100%; background: #EF6F6C; border-radius: 5px"></div></div><span style="font-weight: 700; color: #15283F; text-align: right">84%</span></div>
-<div style="display: grid; grid-template-columns: 170px 1fr 40px; align-items: center; gap: 12px; font-size: 14px; color: #2E3A45"><span style="font-weight: 600">Unmanageable workload</span><div style="height: 10px; background: #F1F4F6; border-radius: 5px; overflow: hidden"><div style="width: 78%; height: 100%; background: #EF6F6C; border-radius: 5px"></div></div><span style="font-weight: 700; color: #15283F; text-align: right">78%</span></div>
-<div style="display: grid; grid-template-columns: 170px 1fr 40px; align-items: center; gap: 12px; font-size: 14px; color: #2E3A45"><span style="font-weight: 600">Lack of control</span><div style="height: 10px; background: #F1F4F6; border-radius: 5px; overflow: hidden"><div style="width: 64%; height: 100%; background: #EF6F6C; border-radius: 5px"></div></div><span style="font-weight: 700; color: #15283F; text-align: right">64%</span></div>
-<div style="display: grid; grid-template-columns: 170px 1fr 40px; align-items: center; gap: 12px; font-size: 14px; color: #2E3A45"><span style="font-weight: 600">Insufficient reward</span><div style="height: 10px; background: #F1F4F6; border-radius: 5px; overflow: hidden"><div style="width: 52%; height: 100%; background: #F7C948; border-radius: 5px"></div></div><span style="font-weight: 700; color: #15283F; text-align: right">52%</span></div>
-<div style="display: grid; grid-template-columns: 170px 1fr 40px; align-items: center; gap: 12px; font-size: 14px; color: #2E3A45"><span style="font-weight: 600">Lack of community</span><div style="height: 10px; background: #F1F4F6; border-radius: 5px; overflow: hidden"><div style="width: 41%; height: 100%; background: #F7C948; border-radius: 5px"></div></div><span style="font-weight: 700; color: #15283F; text-align: right">41%</span></div>
-<div style="display: grid; grid-template-columns: 170px 1fr 40px; align-items: center; gap: 12px; font-size: 14px; color: #2E3A45"><span style="font-weight: 600">Unfairness</span><div style="height: 10px; background: #F1F4F6; border-radius: 5px; overflow: hidden"><div style="width: 37%; height: 100%; background: #F7C948; border-radius: 5px"></div></div><span style="font-weight: 700; color: #15283F; text-align: right">37%</span></div>
-<div style="display: grid; grid-template-columns: 170px 1fr 40px; align-items: center; gap: 12px; font-size: 14px; color: #2E3A45"><span style="font-weight: 600">Values mismatch</span><div style="height: 10px; background: #F1F4F6; border-radius: 5px; overflow: hidden"><div style="width: 29%; height: 100%; background: #F7C948; border-radius: 5px"></div></div><span style="font-weight: 700; color: #15283F; text-align: right">29%</span></div>
-</div>
-<div style="background: #15283F; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 14px"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #F7C948">The upstream fix</div><div style="font-size: 15px; line-height: 1.5; color: #FFFFFF">Start with workload. Everyone on Jeff’s team completes a quick workload audit, then a WAIOS™ expert walks Jeff through the results and how to lead the conversation with his team.</div>
-<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px">
-<a href="mailto:hello@waios.com?subject=Workload%20audit%20template%20request" style="text-decoration: none; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 52px; box-sizing: border-box; padding: 8px 10px; border-radius: 6px; font-size: 13px; line-height: 1.3; font-weight: 700; border: 1.5px solid #F7C948; background: #F7C948; color: #15283F">Request the workload audit template</a>
-<a href="mailto:hello@waios.com?subject=Discussion%20points%20request" style="text-decoration: none; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 52px; box-sizing: border-box; padding: 8px 10px; border-radius: 6px; font-size: 13px; line-height: 1.3; font-weight: 700; border: 1.5px solid #FFFFFF; background: #FFFFFF; color: #15283F">Request the discussion points</a>
-<a href="mailto:hello@waios.com?subject=Expert%20walkthrough%20request" style="text-decoration: none; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 52px; box-sizing: border-box; padding: 8px 10px; border-radius: 6px; font-size: 13px; line-height: 1.3; font-weight: 700; border: 1.5px solid #FFFFFF; color: #FFFFFF">Book expert walkthrough</a>
-</div>
-<div style="font-size: 13px; color: #C9D3DC">Re-check recovery and workload in six weeks.</div></div>
-<figcaption style="font-size: 13px; line-height: 1.5; color: #5C7285; display: flex; gap: 8px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg><span>Team scores only appear once they meet the minimum reporting threshold. No individual answers are ever shown to an employer.</span></figcaption>
+<figcaption style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: 13px; color: #C9D3DC"><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #F7C948"></span>Thriving</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #8FB0CF"></span>Healthy</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #F39C5A"></span>Watch</span><span style="color: #9FB0BF">Illustrative companies</span></figcaption>
 </figure>
 </div>
 </section>
 
-<section id="briefing" style="background: #2E3A45">
-<div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px">
-<div style="display: flex; flex-direction: column; gap: 18px; max-width: 760px">
-<div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><rect x="3" y="4" width="18" height="12" rx="1"></rect><path d="M12 16v5M8 21h8M7 12l3-3 3 2 4-4"></path></svg><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #F7C948">Executive briefing · Often the first step</span></div>
-<h2 style="margin: 0; font-size: 48px; line-height: 1.1; font-weight: 800; color: #F3EDE2">The business and moral case for wellbeing.</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 32px">
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 2px solid #F7C948"><div style="font-size: 18px; font-weight: 700; color: #FFFFFF">Current measures fall short</div><div style="font-size: 15px; line-height: 1.55; color: #C9D3DC">Engagement surveys miss what is wearing people down and what it is costing you.</div></div>
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 2px solid #F7C948"><div style="font-size: 18px; font-weight: 700; color: #FFFFFF">Wellbeing is not a wellness program</div><div style="font-size: 15px; line-height: 1.55; color: #C9D3DC">It is a measure of how well your organization works, not a perk or an app.</div></div>
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 2px solid #F7C948"><div style="font-size: 18px; font-weight: 700; color: #FFFFFF">It is tied to every KPI that matters</div><div style="font-size: 15px; line-height: 1.55; color: #C9D3DC">Absence, turnover, healthcare cost, safety, productivity and firm value.</div></div>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 16px">
-<div style="background: #FFFFFF; border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 34px; font-weight: 800; color: #15283F; line-height: 1.1">2 in 3</div><div style="font-size: 15px; line-height: 1.5; color: #2E3A45">employees worldwide are struggling or suffering. Only 1 in 3 is thriving.</div><div style="font-size: 12px; color: #5C7285; margin-top: auto">Gallup, State of the Global Workplace 2026</div></div>
-<div style="background: #FFFFFF; border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 34px; font-weight: 800; color: #15283F; line-height: 1.1">Top 100</div><div style="font-size: 15px; line-height: 1.5; color: #2E3A45">U.S. public companies ranked highest for employee wellbeing outperformed the S&amp;P 500, Nasdaq and Russell 3000 from 2021 to 2024.</div><div style="font-size: 12px; color: #5C7285; margin-top: auto">Oxford Wellbeing Research Centre and Indeed, 2024</div></div>
-<div style="background: #FFFFFF; border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 34px; font-weight: 800; color: #15283F; line-height: 1.1">48%</div><div style="font-size: 15px; line-height: 1.5; color: #2E3A45">lower new healthcare costs for employees with high wellbeing across all five elements, compared with those with poor wellbeing.</div><div style="font-size: 12px; color: #5C7285; margin-top: auto">Gallup, The Economics of Wellbeing, 2023</div></div>
-<div style="background: #FFFFFF; border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 34px; font-weight: 800; color: #15283F; line-height: 1.1">1.4%</div><div style="font-size: 15px; line-height: 1.5; color: #2E3A45">average revenue growth at 61 UK companies that cut hours without cutting pay. Resignations fell 57%.</div><div style="font-size: 12px; color: #5C7285; margin-top: auto">University of Cambridge and Boston College, 2023</div></div>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 14px"><a href="mailto:hello@waios.com?subject=Briefing%20request" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px; display: inline-block">Book an executive briefing</a><a href="how-we-work.html#briefing" style="text-decoration: none; border: 1.5px solid #F3EDE2; color: #F3EDE2; font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 6px; display: inline-block">What the briefing covers</a></div>
-</div>
-</section>
-
-<section style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 56px">
-<div style="display: flex; flex-direction: column; gap: 18px; align-items: center; text-align: center; max-width: 820px; margin: 0 auto">
-<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">01 · How we see burnout</div>
-<h2 style="margin: 0; font-size: 48px; line-height: 1.1; font-weight: 800; color: #15283F">The whole person, in context.</h2>
-<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45">Burnout rarely has one cause. We look at what’s happening to the person, in their life, at work, and in the world around them, so every fix targets <span style="font-weight: 700; background: linear-gradient(to top, #F7C948 42%, transparent 42%)">what’s actually driving chronic stress.</span></p>
-</div>
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; align-items: center">
-<div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-top: 4px solid #F7C948; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><div style="display: flex; align-items: center; gap: 10px"><span style="width: 24px; height: 24px; border-radius: 50%; background: #15283F; color: #FFFFFF; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">1</span><span style="font-size: 18px; font-weight: 800; color: #15283F">The person</span></div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">Energy, focus, resilience under load, and whether they still feel connected to what they do.</div></div>
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-top: 4px solid #C9D3DC; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><div style="display: flex; align-items: center; gap: 10px"><span style="width: 24px; height: 24px; border-radius: 50%; background: #15283F; color: #FFFFFF; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">2</span><span style="font-size: 18px; font-weight: 800; color: #15283F">Their life</span></div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">Caregiving, health, finances, the commute. What they carry in with them every morning.</div></div>
-</div>
-<figure style="margin: 0; min-width: 0; flex: 1.5 1 320px"><svg viewBox="0 0 560 560" role="img" aria-label="Four rings: the person at the center, then their life, then their work, then the world around them" style="width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto">
-<circle cx="280" cy="280" r="272" fill="#F3EDE2" stroke="#DDE3E8" stroke-width="1.5"></circle><circle cx="280" cy="280" r="206" fill="#FFFFFF" stroke="#DDE3E8" stroke-width="1.5"></circle><circle cx="280" cy="280" r="140" fill="#F1F4F6" stroke="#DDE3E8" stroke-width="1.5"></circle><circle cx="280" cy="280" r="74" fill="#F7C948"></circle>
-<circle cx="280" cy="260" r="11" fill="#15283F"></circle><text x="280" y="264" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">1</text>
-<text x="280" y="294" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#15283F">The person</text>
-<circle cx="228" cy="175" r="11" fill="#15283F"></circle><text x="228" y="179" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">2</text><text x="248" y="180" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#15283F">Their life</text>
-<circle cx="228" cy="109" r="11" fill="#15283F"></circle><text x="228" y="113" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">3</text><text x="248" y="114" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#15283F">Their work</text>
-<circle cx="177" cy="43" r="11" fill="#15283F"></circle><text x="177" y="47" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">4</text><text x="197" y="48" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#15283F">The world around them</text>
-</svg></figure>
-<div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-top: 4px solid #15283F; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><div style="display: flex; align-items: center; gap: 10px"><span style="width: 24px; height: 24px; border-radius: 50%; background: #15283F; color: #FFFFFF; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">3</span><span style="font-size: 18px; font-weight: 800; color: #15283F">Their work</span></div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">Workload, recovery, control, fairness, recognition and psychological safety. The everyday conditions that drive burnout.</div></div>
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-top: 4px solid #EF6F6C; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><div style="display: flex; align-items: center; gap: 10px"><span style="width: 24px; height: 24px; border-radius: 50%; background: #15283F; color: #FFFFFF; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">4</span><span style="font-size: 18px; font-weight: 800; color: #15283F">The world around them</span></div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">Their industry, culture and community, and what’s happening in society and the economy.</div></div>
-</div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 28px">
-<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 28px; font-weight: 800; color: #15283F">How we work with you</h3><p style="margin: 0; font-size: 20px; line-height: 1.5; color: #2E3A45">A high-touch operating system for <span style="font-weight: 700; background: linear-gradient(to top, #F7C948 42%, transparent 42%)">the price of a low-touch survey program.</span></p></div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 32px">
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 2px solid #15283F"><div style="font-size: 13px; font-weight: 700; color: #5C7285">01</div><div style="font-size: 19px; font-weight: 700; color: #15283F">Frequent check-ins</div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">Short, regular check-ins through the year, not one annual survey, so you see change as it happens.</div></div>
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 2px solid #15283F"><div style="font-size: 13px; font-weight: 700; color: #5C7285">02</div><div style="font-size: 19px; font-weight: 700; color: #15283F">Expert-led follow-ups</div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">In-person and virtual sessions with burnout experts to make sense of what you’re seeing and plan the response.</div></div>
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 2px solid #15283F"><div style="font-size: 13px; font-weight: 700; color: #5C7285">03</div><div style="font-size: 19px; font-weight: 700; color: #15283F">Accountability programming</div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">Structured programs that keep leaders and teams following through on the changes they commit to.</div></div>
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 2px solid #15283F"><div style="font-size: 13px; font-weight: 700; color: #5C7285">04</div><div style="font-size: 19px; font-weight: 700; color: #15283F">Expert access, at scale</div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">Ongoing access to our experts, built to reach every team, not just the leadership floor.</div></div>
-</div>
-<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #5C7285">And we’re building the technology to bring all of this into the flow of everyday work.</p>
-<div><a href="how-we-work.html" style="font-weight: 600; font-size: 16px; color: #15283F; text-decoration: underline; text-decoration-color: #EF6F6C; text-decoration-thickness: 1.5px; text-underline-offset: 4px">See all the ways we work with clients</a></div>
-</div>
-</section>
-
-<section style="max-width: 1200px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 32px) 104px; display: flex; flex-direction: column; gap: 48px">
-<div style="background: #F7C948; border-radius: 10px; padding: clamp(24px, 5vw, 56px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 48px; align-items: center">
+<section aria-label="Your greatest asset" style="max-width: 1200px; margin: 0 auto; padding: 112px clamp(16px, 4vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: 40px 72px; align-items: center">
+<h2 style="margin: 0; font-size: clamp(36px, 3vw + 18px, 56px); line-height: 1.06; font-weight: 800; letter-spacing: -0.015em; color: #15283F; text-wrap: balance">People are your greatest asset <span style="background: linear-gradient(to top, #F7C948 40%, transparent 40%)">and your greatest cost.</span></h2>
 <div style="display: flex; flex-direction: column; gap: 18px">
-<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #2E3A45">02 · Why us</div>
-<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #2E3A45">Two founders who made wellbeing a board-level conversation.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">Danielle Posa brings nearly two decades of measuring wellbeing and making it a business strategy, starting at Gallup. Jennifer Moss brings a decade of research on what has been missing from the picture: the conditions that cause burnout. Together, we cover the whole of workplace wellbeing, and we are both happily obsessed with the research.</p>
-<div><a href="about.html" style="text-decoration: none; border: 1.5px solid #2E3A45; color: #2E3A45; font-weight: 600; font-size: 16px; padding: 13px 22px; border-radius: 6px; display: inline-block">Meet the founders</a></div>
-</div>
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px">
-<div style="display: flex; flex-direction: column; gap: 10px"><img src="images/5023952272a22832ea48bd45a626e6e9.jpg" alt="Danielle Posa" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; display: block"><div style="font-size: 17px; font-weight: 700; color: #2E3A45">Danielle Posa</div><div style="font-size: 14px; color: #2E3A45">Co-Founder and CEO</div></div>
-<div style="display: flex; flex-direction: column; gap: 10px"><img src="images/bcdf70f53b836e64808954873d6b1a0b.jpg" alt="Jennifer Moss" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 0%; border-radius: 8px; display: block"><div style="font-size: 17px; font-weight: 700; color: #2E3A45">Jennifer Moss</div><div style="font-size: 14px; color: #2E3A45">Co-Founder and Chief Research and Strategy Officer</div></div>
-</div>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 36px; align-items: center; text-align: center; padding-top: 24px">
-<div style="font-size: 12px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: #5C7285">Our founders have advised</div>
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 36px 52px; max-width: 1080px">
-<img src="images/9e1410e5729278f4448437b55764ae30.png" alt="Deloitte" style="height: 31px; width: 146px; display: block">
-<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #5C7285">LinkedIn</span>
-<img src="images/c259e23f69ead60e1b87d1ea1156b4a4.png" alt="Kraft Heinz" style="height: 29px; width: 158px; display: block">
-<img src="images/36a6fac1f4541259836f720192c4db9b.png" alt="Google" style="height: 40px; width: 114px; display: block">
-<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #5C7285">Amazon</span>
-<img src="images/e0bdf1d33dba1f725adbd4f2b371546d.png" alt="Habitat for Humanity" style="height: 40px; width: 115px; display: block">
-<img src="images/ea2da7980c49db6b4208cabec5db61fc.png" alt="TD Bank" style="height: 40px; width: 115px; display: block">
-<img src="images/bc6324614c20ed7dea7c5aaaa464ca54.png" alt="RSM" style="height: 45px; width: 102px; display: block">
-<img src="images/f2cb742be01187c0d2d4644d52d09bd2.png" alt="Oracle" style="height: 24px; width: 168px; display: block">
-<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #5C7285">Pearson</span>
-<img src="images/a49f408af3db960e4c4c4894cfcdaec0.png" alt="GSK" style="height: 62px; width: 71px; display: block">
-<img src="images/8b418b38e53ce28b4b0e2d8b9f65c26e.png" alt="Fidelity Investments" style="height: 33px; width: 140px; display: block">
-<img src="images/287292de65ba98ab3c2c15ee676fae07.png" alt="SMU" style="height: 40px; width: 115px; display: block">
-<img src="images/a0e41c6db196c5697cab57c8c5c8f7fb.png" alt="Nationwide" style="height: 62px; width: 60px; display: block">
-<img src="images/cc765c82bc0af1017b51b2371fc50fc8.png" alt="Merck" style="height: 39px; width: 117px; display: block">
-<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #5C7285">Charles Schwab</span>
-<img src="images/008cfb5acf36dbf735201d6de6ed47d5.png" alt="Capital One" style="height: 42px; width: 110px; display: block">
-<img src="images/5046b1d60b86a9bd6487890ae6967471.png" alt="UNICEF" style="height: 35px; width: 133px; display: block">
-<img src="images/328c8b9a0171c43378573b3705b76fb7.png" alt="MetLife" style="height: 33px; width: 138px; display: block">
-<img src="images/e5a050b896268ff719dafee34f629762.png" alt="Citi" style="height: 54px; width: 85px; display: block">
-<img src="images/5063d7ee8fe08a5ca177d11a297c43dc.png" alt="Edelman" style="height: 42px; width: 110px; display: block">
-<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #5C7285">Post University</span>
-<img src="images/8564576d6fcd2e1cce2506c445d54693.png" alt="J.P. Morgan" style="height: 33px; width: 141px; display: block">
-<img src="images/fca78c469e6c4c7ae6094ca4a4c174e1.png" alt="Sun Life" style="height: 34px; width: 137px; display: block">
-<img src="images/6edfb3652f4272ef78fdea72af180cf5.png" alt="RBC Royal Bank" style="height: 42px; width: 109px; display: block">
-<img src="images/c328ff57e477768aea76bd4d08e73203.png" alt="Magenta" style="height: 35px; width: 131px; display: block">
-<img src="images/0f6b8c4b225715c1389131fc456519a2.png" alt="Molson Coors" style="height: 37px; width: 124px; display: block">
-<img src="images/79b8f4816a4cd01f378924e88d810319.png" alt="Royal LePage" style="height: 39px; width: 117px; display: block">
-<img src="images/fe59ef21f428484379c216f94b0cda74.png" alt="AEG Vision" style="height: 40px; width: 114px; display: block">
-<img src="images/e5a1bf26ec63d74bd650db19e3b0df44.png" alt="Kaiser Permanente" style="height: 41px; width: 112px; display: block">
-<img src="images/5541a22d10620480db70ad4cb4c2c169.png" alt="Shopify" style="height: 38px; width: 121px; display: block">
-<img src="images/b3332a31f52865c1b3ee1c5ec60ba046.png" alt="Intuit" style="height: 38px; width: 121px; display: block">
-<img src="images/7b2098b7381cac3df21aec5bbf3ef828.png" alt="Raytheon" style="height: 32px; width: 143px; display: block">
-<img src="images/d85f210f5960d63c6619fb630abe8057.png" alt="Intel" style="height: 55px; width: 83px; display: block">
-<img src="images/075bfafa65d683828e2cb7f4f5760339.png" alt="UnitedHealth Group" style="height: 48px; width: 95px; display: block">
-<img src="images/276e2ce0ade65929d340d867da63526e.png" alt="University of Kentucky" style="height: 36px; width: 126px; display: block">
-<img src="images/97f57d913895a4b07eb5033bd4874e54.png" alt="The Economist" style="height: 49px; width: 93px; display: block">
-<img src="images/f9fa8448158d5b77704f50373fb13b9a.png" alt="CISA" style="height: 62px; width: 62px; display: block">
-</div>
+<p style="margin: 0; font-size: 22px; line-height: 1.5; font-weight: 600; color: #15283F">They are also the only asset on the balance sheet with no live number.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #2E3A45">You track revenue in real time. WAIOS™ gives you the same clarity on the people who produce it, so you can see where potential is being unlocked and where it is being lost.</p>
 </div>
 </section>
 
-<section style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px) 104px">
-<div style="background: #F1F4F6; border-left: 4px solid #F7C948; border-radius: 4px; padding: 44px 48px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">Where we are headed</span></div>
-<h2 style="margin: 0; font-size: 30px; line-height: 1.2; font-weight: 700; color: #15283F">The Wellbeing AI Operating System™</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45; max-width: 820px">The Wellbeing Measure is the first step toward WAIOS™: continuous measurement of wellbeing, insight into what is driving it, and action routed to the people who can change it. Our mission is to make the quality of people's lives the measure of success, starting at work.</p>
-<div style="padding-top: 6px"><a href="investors.html" style="font-weight: 600; font-size: 16px; color: #15283F; text-decoration: underline; text-decoration-color: #EF6F6C; text-decoration-thickness: 1.5px; text-underline-offset: 4px">See what we are building</a></div>
+<section aria-label="Measured together" style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">One score, the whole picture</div>
+<h2 style="margin: 0; font-size: clamp(34px, 2.4vw + 18px, 48px); line-height: 1.08; font-weight: 800; color: #15283F">Engagement, wellbeing and burnout. Measured together.</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45">Measure one and you are guessing at the rest. Measure all three and you know whether your people are truly thriving.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 16px; align-items: stretch">
+<div style="background: #F1F4F6; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px"><div style="width: 52px; height: 52px; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg></div><div style="font-size: 22px; font-weight: 800; color: #15283F">Engagement</div><div style="font-size: 16px; line-height: 1.5; color: #2E3A45">Are people connected to the work and in the right role?</div></div>
+<div style="background: #F1F4F6; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px"><div style="width: 52px; height: 52px; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M4 18a8 8 0 1 1 16 0"></path><path d="M12 18l4-6"></path></svg></div><div style="font-size: 22px; font-weight: 800; color: #15283F">Burnout</div><div style="font-size: 16px; line-height: 1.5; color: #2E3A45">Is the work sustainable, or is it wearing them down?</div></div>
+<div style="background: #F1F4F6; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px"><div style="width: 52px; height: 52px; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></div><div style="font-size: 22px; font-weight: 800; color: #15283F">Wellbeing</div><div style="font-size: 16px; line-height: 1.5; color: #2E3A45">Is work making their lives better, and how are their lives going?</div></div>
+<div style="background: #15283F; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px; justify-content: space-between"><div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #F7C948">Together</div><div style="font-size: 22px; font-weight: 800; color: #F3EDE2">One Work Wellbeing Score</div></div><div style="display: flex; align-items: baseline; gap: 10px"><span style="font-size: 56px; line-height: 1; font-weight: 800; color: #F3EDE2">82</span><span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #F7C948; color: #15283F">Thriving</span></div><div style="font-size: 15px; line-height: 1.5; color: #F3EDE2">For every person, team and organization.</div></div>
+</div>
+<div><a href="wellbeing-measure.html" style="font-weight: 600; font-size: 16px; color: #15283F; text-decoration: underline; text-decoration-color: #EF6F6C; text-decoration-thickness: 1.5px; text-underline-offset: 4px">See how the Wellbeing Measure works</a></div>
 </div>
 </section>
 
-<section id="contact" style="background: #15283F">
-<div style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 56px; align-items: start">
-<div style="display: flex; flex-direction: column; gap: 18px">
-<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #EF6F6C">Get in touch</div>
-<h2 style="margin: 0; font-size: 40px; line-height: 1.15; font-weight: 800; color: #F3EDE2">Find out what is driving burnout on your teams.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #F3EDE2">Book a 30 minute briefing with our founders, or join our list for new research on wellbeing, engagement and burnout.</p>
-<div><a href="mailto:hello@waios.com?subject=Briefing%20request" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px; display: inline-block">Book a briefing</a></div>
+<section aria-label="Both win" style="max-width: 1200px; margin: 0 auto; padding: 104px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 40px">
+<h2 style="margin: 0; font-size: clamp(34px, 2.4vw + 18px, 48px); line-height: 1.08; font-weight: 800; color: #15283F; text-align: center; text-wrap: balance">Thriving people. <span style="background: linear-gradient(to top, #F7C948 40%, transparent 40%)">Stronger companies.</span></h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 16px">
+<div style="background: #F7C948; border-radius: 16px; padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 14px"><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #15283F">For every employee</span></div><div style="font-size: 26px; line-height: 1.25; font-weight: 800; color: #15283F">Their own Work Wellbeing Score, a clear picture of what drives it, and the support to improve it.</div></div>
+<div style="background: #15283F; border-radius: 16px; padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 14px"><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #F7C948">For leaders</span></div><div style="font-size: 26px; line-height: 1.25; font-weight: 800; color: #F3EDE2">A live read on how every team is doing, tied to turnover, absence and the goals you already report.</div></div>
 </div>
-<form id="list-form" aria-label="Join the research list" style="background: #FAF8F4; border-radius: 10px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
-<div style="font-size: 18px; font-weight: 700; color: #15283F">Join the research list</div>
-<label for="fname" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">First name<input id="fname" name="fname" type="text" autocomplete="given-name" required style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
-<label for="email" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Work email<input id="email" name="email" type="email" autocomplete="email" required style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
-<label for="consent" style="display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.5; color: #2E3A45"><input id="consent" name="consent" type="checkbox" required style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0">Yes, I agree to receive emails from WAIOS, P.B.C. about research, events and services. I can unsubscribe at any time.</label>
-<button type="submit" style="font: inherit; font-weight: 700; font-size: 16px; background: #EF6F6C; color: #15283F; border: 0; border-radius: 6px; padding: 14px 20px; min-height: 48px; cursor: pointer">Subscribe</button>
-<p id="list-done" hidden style="margin: 0; font-size: 14px; line-height: 1.5; color: #2E3A45">Your email app should now be open with your request. Send it and we will add you to the list.</p>
-</form>
+<p style="margin: 0 auto; max-width: 760px; text-align: center; font-size: 17px; line-height: 1.6; color: #2E3A45">The 100 U.S. public companies ranked highest for employee wellbeing outperformed the S&amp;P 500, Nasdaq and Russell 3000 from 2021 to 2024. <span style="font-size: 13px; color: #5C7285">Oxford Wellbeing Research Centre and Indeed, 2024</span></p>
+</section>
+
+<section aria-label="Get started" style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 700px">
+<h2 style="margin: 0; font-size: 40px; line-height: 1.12; font-weight: 800; color: #15283F">What is your organization’s Work Wellbeing Score?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #2E3A45">WAIOS™ was founded by Danielle Posa and Jennifer Moss, two of the most experienced voices in workplace wellbeing. <a href="about.html" style="font-weight: 600; color: #15283F; text-decoration: underline; text-decoration-color: #EF6F6C; text-decoration-thickness: 1.5px; text-underline-offset: 4px">Meet the founders</a></p>
 </div>
+<a href="mailto:hello@waios.com?subject=Briefing%20request" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px">Book a briefing</a>
 </section>
 
 <footer style="background: #FFFFFF; border-top: 1px solid #DDE3E8">
@@ -244,14 +110,218 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </div>
 </footer>
 
+</div></div>
+<template id="dc-tpl"><div style="font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif; color: #1F1D1A; background: #FAF8F4; min-height: 100vh">
+
+<header style="background: #15283F; border-bottom: 1px solid rgba(243,237,226,0.12)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="index.html" aria-label="waios home" style="text-decoration: none; font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 0.035em; color: #F3EDE2; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 500">
+<a href="wellbeing-measure.html" style="text-decoration: none; color: #F3EDE2">Wellbeing Measure</a>
+<a href="how-we-work.html" style="text-decoration: none; color: #F3EDE2">How We Work</a>
+<a href="approach.html" style="text-decoration: none; color: #F3EDE2">Our Approach</a>
+<a href="about.html" style="text-decoration: none; color: #F3EDE2">About</a>
+<a href="mailto:hello@waios.com?subject=Briefing%20request" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; padding: 12px 20px; border-radius: 6px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Book a briefing</a>
+</nav>
 </div>
-<script>
-document.getElementById('list-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  var f = e.target;
-  var body = 'Please add me to the WAIOS research list.\n\nFirst name: ' + f.fname.value + '\nWork email: ' + f.email.value + '\nConsent to receive emails: Yes';
-  window.location.href = 'mailto:hello@waios.com?subject=' + encodeURIComponent('Research list sign-up') + '&body=' + encodeURIComponent(body);
-  document.getElementById('list-done').hidden = false;
-});
-</script></body>
+</header>
+
+<section aria-label="The Wellbeing Score" style="background: #15283F; overflow: hidden">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px clamp(16px, 4vw, 32px) 88px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 26px">
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #F7C948">The WAIOS&#8482; Work Wellbeing Score</span></div>
+<h1 style="margin: 0; font-size: clamp(40px, 3vw + 24px, 60px); line-height: 1.05; font-weight: 800; letter-spacing: -0.015em; color: #F3EDE2; text-wrap: balance">Imagine if every organization knew its people&#8217;s Work Wellbeing Score.</h1>
+<p style="margin: 0; font-size: 20px; line-height: 1.55; color: #F3EDE2; max-width: 520px">And knew whether it was truly <span style="font-weight: 700; color: #F7C948">unlocking the potential of its people</span>, team by team, before it shows up in turnover.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 6px"><a href="mailto:hello@waios.com?subject=Briefing%20request" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px">Book a briefing</a><a href="wellbeing-measure.html" style="text-decoration: none; border: 1.5px solid #F3EDE2; color: #F3EDE2; font-weight: 600; font-size: 16px; padding: 14px 24px; border-radius: 6px">See the Wellbeing Measure</a></div>
+</div>
+<figure style="margin: 0; position: relative; width: 100%; max-width: 600px; justify-self: center; display: flex; flex-direction: column; gap: 12px">
+<div style="position: relative; width: 100%; aspect-ratio: 1 / 1">
+<canvas ref="{{globeRef}}" role="img" aria-label="A rotating globe. Office buildings rise up at workplaces around the world, each labeled with a company name and a Work Wellbeing Score that rises over time." style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"></canvas>
+</div>
+<figcaption style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: 13px; color: #C9D3DC"><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #F7C948"></span>Thriving</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #8FB0CF"></span>Healthy</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #F39C5A"></span>Watch</span><span style="color: #9FB0BF">Illustrative companies</span></figcaption>
+</figure>
+</div>
+</section>
+
+<section aria-label="Your greatest asset" style="max-width: 1200px; margin: 0 auto; padding: 112px clamp(16px, 4vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: 40px 72px; align-items: center">
+<h2 style="margin: 0; font-size: clamp(36px, 3vw + 18px, 56px); line-height: 1.06; font-weight: 800; letter-spacing: -0.015em; color: #15283F; text-wrap: balance">People are your greatest asset <span style="background: linear-gradient(to top, #F7C948 40%, transparent 40%)">and your greatest cost.</span></h2>
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 22px; line-height: 1.5; font-weight: 600; color: #15283F">They are also the only asset on the balance sheet with no live number.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #2E3A45">You track revenue in real time. WAIOS&#8482; gives you the same clarity on the people who produce it, so you can see where potential is being unlocked and where it is being lost.</p>
+</div>
+</section>
+
+<section aria-label="Measured together" style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">One score, the whole picture</div>
+<h2 style="margin: 0; font-size: clamp(34px, 2.4vw + 18px, 48px); line-height: 1.08; font-weight: 800; color: #15283F">Engagement, wellbeing and burnout. Measured together.</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45">Measure one and you are guessing at the rest. Measure all three and you know whether your people are truly thriving.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 16px; align-items: stretch">
+<div style="background: #F1F4F6; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px"><div style="width: 52px; height: 52px; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg></div><div style="font-size: 22px; font-weight: 800; color: #15283F">Engagement</div><div style="font-size: 16px; line-height: 1.5; color: #2E3A45">Are people connected to the work and in the right role?</div></div>
+<div style="background: #F1F4F6; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px"><div style="width: 52px; height: 52px; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M4 18a8 8 0 1 1 16 0"></path><path d="M12 18l4-6"></path></svg></div><div style="font-size: 22px; font-weight: 800; color: #15283F">Burnout</div><div style="font-size: 16px; line-height: 1.5; color: #2E3A45">Is the work sustainable, or is it wearing them down?</div></div>
+<div style="background: #F1F4F6; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px"><div style="width: 52px; height: 52px; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></div><div style="font-size: 22px; font-weight: 800; color: #15283F">Wellbeing</div><div style="font-size: 16px; line-height: 1.5; color: #2E3A45">Is work making their lives better, and how are their lives going?</div></div>
+<div style="background: #15283F; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px; justify-content: space-between"><div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #F7C948">Together</div><div style="font-size: 22px; font-weight: 800; color: #F3EDE2">One Work Wellbeing Score</div></div><div style="display: flex; align-items: baseline; gap: 10px"><span style="font-size: 56px; line-height: 1; font-weight: 800; color: #F3EDE2">82</span><span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #F7C948; color: #15283F">Thriving</span></div><div style="font-size: 15px; line-height: 1.5; color: #F3EDE2">For every person, team and organization.</div></div>
+</div>
+<div><a href="wellbeing-measure.html" style="font-weight: 600; font-size: 16px; color: #15283F; text-decoration: underline; text-decoration-color: #EF6F6C; text-decoration-thickness: 1.5px; text-underline-offset: 4px">See how the Wellbeing Measure works</a></div>
+</div>
+</section>
+
+<section aria-label="Both win" style="max-width: 1200px; margin: 0 auto; padding: 104px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 40px">
+<h2 style="margin: 0; font-size: clamp(34px, 2.4vw + 18px, 48px); line-height: 1.08; font-weight: 800; color: #15283F; text-align: center; text-wrap: balance">Thriving people. <span style="background: linear-gradient(to top, #F7C948 40%, transparent 40%)">Stronger companies.</span></h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 16px">
+<div style="background: #F7C948; border-radius: 16px; padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 14px"><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #15283F">For every employee</span></div><div style="font-size: 26px; line-height: 1.25; font-weight: 800; color: #15283F">Their own Work Wellbeing Score, a clear picture of what drives it, and the support to improve it.</div></div>
+<div style="background: #15283F; border-radius: 16px; padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 14px"><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #F7C948">For leaders</span></div><div style="font-size: 26px; line-height: 1.25; font-weight: 800; color: #F3EDE2">A live read on how every team is doing, tied to turnover, absence and the goals you already report.</div></div>
+</div>
+<p style="margin: 0 auto; max-width: 760px; text-align: center; font-size: 17px; line-height: 1.6; color: #2E3A45">The 100 U.S. public companies ranked highest for employee wellbeing outperformed the S&amp;P 500, Nasdaq and Russell 3000 from 2021 to 2024. <span style="font-size: 13px; color: #5C7285">Oxford Wellbeing Research Centre and Indeed, 2024</span></p>
+</section>
+
+<section aria-label="Get started" style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 700px">
+<h2 style="margin: 0; font-size: 40px; line-height: 1.12; font-weight: 800; color: #15283F">What is your organization&#8217;s Work Wellbeing Score?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #2E3A45">WAIOS&#8482; was founded by Danielle Posa and Jennifer Moss, two of the most experienced voices in workplace wellbeing. <a href="about.html" style="font-weight: 600; color: #15283F; text-decoration: underline; text-decoration-color: #EF6F6C; text-decoration-thickness: 1.5px; text-underline-offset: 4px">Meet the founders</a></p>
+</div>
+<a href="mailto:hello@waios.com?subject=Briefing%20request" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px">Book a briefing</a>
+</section>
+
+<footer style="background: #FFFFFF; border-top: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; font-size: 14px; color: #5C7285">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
+<div>WAIOS, P.B.C. · A women-founded public benefit corporation</div>
+</div>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 24px">
+<a href="wellbeing-measure.html" style="color: #2E3A45; text-decoration: none">Wellbeing Measure</a>
+<a href="how-we-work.html" style="color: #2E3A45; text-decoration: none">How We Work</a>
+<a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
+<a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
+<a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
+<a href="mailto:hello@waios.com" style="color: #2E3A45; text-decoration: none">hello@waios.com</a>
+</nav>
+</div>
+</footer>
+
+</div></template>
+<script type="text/plain" id="dc-logic">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    var self = this;
+    this.canvas = null;
+    this.globeRef = function (el) { self.canvas = el; };
+  }
+  componentDidMount() {
+    var self = this;
+    var D = '63215z256s255w2a632a5z2e662e5y2i642i6b2ije2i632n692n6f2ni32njl2n602r662r6c2r6h2rjr2r5z2w642w6a2w6g2w6l2w6r2whx2wi22wjs2w5z3065306a306g306l306r30ht30hy30i430i930643469346e346k346p346u346z34b434b934be34ge34gk34gp34gu34hl34hq34hv34i134i634ib34643969396f396k396p396u396z397439b539bb39bg39bl39gh39gm39gr39gx39h239h739hc39hh39hn39hs39hx39i239i739ic39ii39633d683d6d3d6i3d6n3d6s3d6x3d723d773daz3db43db93dbe3dbj3dbo3dgg3dgl3dgq3dgv3dh03dh53dha3dhf3dhk3dhp3dhu3dhz3di43di93die3d633i683i6d3i6i3i6n3i6s3i6x3i723i773iaw3ib13ib63ibb3ibg3ibl3ibq3igd3igi3ign3igs3igx3ih23ih73ihc3ihh3ihm3ihr3ihw3ii03ii53iia3iif3i653m6a3m6f3m6k3m6p3m6u3m6z3m733m783maw3mb03mb53mba3mbf3mbk3mbp3mbu3mci3mgf3mgk3mgp3mgu3mgz3mh33mh83mhd3mhi3mhn3mhs3mhx3mi13mi63mib3mig3m663q6a3q6f3q6k3q6p3q6u3q6y3q733q783q7d3q7h3q7m3qax3qb23qb73qbc3qbg3qbl3qbq3qbv3qcj3qcn3qgd3qgi3qgm3qgr3qgw3qh13qh53qha3qhf3qhk3qhp3qht3qhy3qi33qi83qic3q683v6c3v6h3v6m3v6q3v6v3v703v743v793v7e3v7j3v7n3vas3vax3vb23vb63vbb3vbg3vbk3vbp3vbu3vch3vcm3vgo3vgt3vgx3vh23vh73vhc3vhg3vhl3vhq3vhu3vhz3vi43vi83vj53v653z693z6e3z6j3z6n3z6s3z6x3z713z763z7a3z7f3z7k3z7o3zas3zax3zb13zb63zba3zbf3zbk3zbo3zbt3zby3zcg3zcl3zcq3zgu3zgz3zh33zh83zhd3zhh3zhm3zhr3zhv3zi03z5x44624466446b446g446k446p446t446y44734477447c447g447l447p447u44as44aw44b144b544ba44be44bj44bo44bs44bx44c144c644ck44co44gw44h044h544h944he44hj44hw44i144jb445v485z48644868486d486h486m486q486v486z48744878487d487h487m487q48ar48aw48b048b548b948be48bi48bn48br48bw48c048c548cs48h248hb48hf48hk48hx485t4c5y4c624c674c6b4c6g4c6k4c6p4c6t4c6y4c724c774c7b4c7g4c7k4c7p4c7t4cat4cay4cb24cb74cbb4cbg4cbk4cbp4cbt4cby4cc24cc74chy4c5n4h5s4h5w4h614h654h6a4h6e4h6j4h6n4h6s4h6w4h714h754h7a4h7e4h7j4h7n4h7s4h7w4h804har4hav4hb04hb44hb94hbd4hbi4hbm4hbr4hbv4hc04hc44hi74h5m4l5r4l5v4l604l644l684l6d4l6h4l6m4l6q4l6v4l6z4l744l784l7c4l7h4l7l4l7q4l7u4l7z4lat4lax4lb24lb64lbb4lbf4lbk4lbo4lbs4lbx4lc14lc64lg04lg44lg84lhq4lhu4lhz4li34l5l4q5p4q5u4q5y4q634q674q6b4q6g4q6k4q6p4q6t4q6y4q724q764q7b4q7f4q7k4q7o4q7s4q7x4qar4qav4qaz4qb44qb84qbd4qbh4qbl4qbq4qbu4qbz4qc34qhq4qhv4qhz4qi44qil4q5l4u5p4u5u4u5y4u634u674u6b4u6g4u6k4u6p4u6t4u6y4u724u764u7b4u7f4u7k4u7o4u7s4uam4uar4uav4uaz4ub44ub84ubd4ubh4ubl4ubq4ubu4ubz4uc34uc84ufn4ufs4ufw4ug94uge4ugn4ugr4uh44uhd4uhh4uhm4uhq4uhv4u5k4y5o4y5t4y5x4y614y664y6a4y6e4y6j4y6n4y6s4y6w4y704y754y794y7e4yak4yao4yat4yax4yb14yb64yba4ybe4ybj4ybn4ybs4ybw4yc04yc54yc94yfo4yg64yga4yge4ygj4ygn4yhe4y5o535t535x53615366536a536e536j536n536s536w5370537553ak53ao53at53ax53b153b653ba53be53bj53bn53bs53bw53c053c553c953ce53fk53fo53g653ga53ge53gj53h5535p575u575y57635767576b576g576k576p576t576y577257am57ar57av57az57b457b857bd57bh57bl57bq57bu57bz57c357c857cc57cg57cl57fe57fn57ge57gi575p5c5u5c5y5c635c675c6b5c6g5c6k5c6p5c6t5c6y5c9i5c9n5c9r5c9w5ca05cad5cai5cam5car5cav5caz5cb45cb85cbd5cbh5cbl5cbq5cbu5cbz5cc35cc85ccc5ccg5ccl5ccp5cfn5cgi5c5i5g5r5g5v5g605g645g685g6d5g6h5g6m5g9c5g9g5g9k5g9p5g9t5g9y5ga25ga75gab5gag5gak5gao5gat5gax5gb25gb65gbb5gbf5gbk5gbo5gbs5gbx5gc15gc65gca5gcf5gcj5gco5gcs5gei5ggv5ggz5g5a5k5w5k655k6a5k6j5k995k9e5k9i5k9n5k9r5k9w5ka05ka45ka95kad5kai5kam5kar5kav5kb05kb45kb95kbd5kbi5kbm5kbr5kbv5kc05kc45kc85kcd5kch5kcm5kcq5ked5kfu5kgu5k575p5b5p975p9b5p9g5p9k5p9p5p9t5p9y5pa25pa75pab5pag5pak5pap5pat5pay5pb25pb75pbb5pbg5pbk5pbp5pbt5pby5pc25pc75pcb5pe75peb5peg5pfp5pft5pfy5pg25pgy5p4v5t505t555t595t925t965t9b5t9f5t9k5t9p5t9t5t9y5ta25ta75tab5tag5tal5tap5tau5tay5tb35tb75tbc5tbg5tbl5tbq5tbu5tbz5tc35tc85tch5tcl5tcq5te95ted5tfi5tfn5tfr5tfw5tg05t4j5y4n5y4s5y4x5y515y945y985y9d5y9i5y9m5y9r5y9v5ya05ya55ya95yae5yai5yan5yas5yaw5yb15yb55yba5ybe5ybj5ybo5ybs5ybx5yc15yc65ycf5yck5yco5yct5ycx5ye35ye75yec5yeh5yfd5yfh5yfm5yfq5yfv5ygr5y4c624g624l624z6253626062656298629d629h629m629r629v62a062a562a962ae62aj62an62as62ax62b162b662ba62bf62bk62bo62bt62by62c262cc62cg62cl62cq62cu62cz62d362e562e962ee62ej62en62fa62ff62fk62fo62ft62g26249664e664i66516656665p66936698669c669h669m669r669v66a066a566a966ae66aj66ao66as66ax66b266b666bb66bg66bk66bp66bu66bz66c866cd66ch66cm66cr66cw66d066d566da66dx66e266e766eb66eg66el66ep66f866fd66fi66fm66fr66fw66g566476b4c6b4h6b956b9a6b9e6b9j6b9o6b9t6b9y6ba26ba76bac6bah6bam6baq6bav6bb06bb56bba6bbe6bbj6bbo6bbt6bby6bc76bcc6bch6bcm6bcq6bcv6bd06bd56bda6bdy6be26be76bec6beh6bem6beq6bev6bf06bf56bfa6bfe6bfj6bfo6bft6bfy6bg26bg76bgc6bgh6bgq6b406f446f496f4e6f4j6f996f9e6f9j6f9o6f9t6f9y6fa26fa76fac6fah6fam6far6faw6fb06fb56fba6fbf6fbk6fbp6fbu6fc36fc86fcd6fci6fcn6fcs6fdb6fdg6fdl6fdq6fdv6fe06fe46fe96fee6fej6feo6fet6fey6ff26ff76ffc6ffh6ffm6ffr6ffw6fg06fg56fga6fgf6fgk6f3o6k3y6k426k476k4c6k4h6k5g6k9b6k9g6k9l6k9q6k9v6ka06ka56kaa6kaf6kak6kap6kau6kaz6kb46kb96kbe6kbj6kbo6kbt6kc26kc76kcc6kch6kcm6kcw6kd16kd66kdb6kdg6kdl6kdq6kdv6ke06ke56kea6kef6kek6kep6keu6kez6kf46kf96kfe6kfj6kfo6kft6kfy6kg26kg76kgc6kgh6kgm6k3l6o3v6o416o466o4b6o4g6o4l6o4q6o4v6o506o5a6o5f6o9i6o9n6o9s6o9x6oa36oa86oad6oai6oan6oas6oax6ob26ob76obc6obh6obm6obr6obw6oc26oc76occ6och6ocm6ocw6od16od66odb6odg6odl6odq6odv6oe16oe66oeb6oeg6oel6oeq6oev6of06of56ofa6off6ofk6ofp6ofu6ofz6og56oga6ogf6ogk6ogp6o3k6s3p6s3u6s3z6s456s4a6s4f6s4k6s4q6s4v6s506s556s5a6s5g6s9i6s9n6s9s6s9x6sa36sa86sad6sai6san6sat6sb86sby6sc46sc96sce6scj6scp6scu6scz6sd46sd96sdf6sdk6sdp6sdu6sdz6se56sea6sef6sek6seq6sev6sf06sf56sfa6sfg6sfl6sfq6sfv6sg16sg66sgb6sgg6sgl6sgr6s3h6x3n6x3s6x3x6x436x486x4d6x4j6x4o6x4t6x4z6x546x596x5f6x5k6x9p6x9v6xa06xa56xab6xag6xc36xc86xcd6xcj6xco6xct6xcz6xd46xd96xdf6xdk6xdp6xdv6xe06xe56xeb6xeg6xel6xer6xew6xf16xf76xfc6xfh6xfn6xfs6xfx6xg36xg86xgd6xgj6xgo6xhf6xhk6x3a713g713l713r713w71427147714d714i714o714t714z7154715a715f715l715q719p71a571ab71ag71bo71bu71bz71c571ca71cg71cl71cr71cw71d271d771dd71di71do71dt71dz71e471ea71ef71el71eq71ew71f171f771fc71fi71fn71ft71fy71g471g971gf71gk71gq71h171h671hn71hs7137763d763j763o763u763z7645764b764g764m764s764x76537658765e765k765p769m769s769x76b676bh76bn76bt76by76c476ca76cf76cl76d276d776dd76dj76do76du76dz76e576eb76eg76em76es76ex76f376f876fe76fk76fp76fv76g176g676gc76gh76gy76h476367a3c7a3i7a3o7a3u7a3z7a457a4b7a4h7a4n7a4t7a4z7a547a5a7a5g7a5m7a5s7a5y7a9o7a9u7aa07aat7ab57abb7abh7abn7abs7aby7ac47aca7acg7acm7ad37ad97adf7adl7adr7adw7ae27ae87aee7aek7aeq7aew7af17af77afd7afj7afp7afv7ag17ag67agc7agi7ago7agu7ah07ah67aht7a347e3a7e3g7e3m7e3s7e3y7e447e4a7e4g7e4m7e4s7e4y7e557e5b7e5h7e5n7e5t7e5z7e9o7e9u7ea07ea67eac7eao7eb07eb67ebc7ebi7ecd7ecj7ecv7ed17ed77edd7edj7edp7edv7ee17ee77eed7eej7eep7eev7ef27ef87efe7efk7efq7efw7eg27eg87ege7egk7egq7egw7eh27eh87ehe7ehw7e387j3e7j3k7j3r7j3x7j437j497j4g7j4m7j4s7j4y7j557j5b7j5h7j5n7j5u7j607j667j6d7j6j7ja07ja67jad7jaj7jav7jb27jb87jbe7jbk7jbx7jc37jc97jcg7jcm7jcy7jd57jdb7jdh7jdn7jdu7je07je67jed7jej7jep7jev7jf27jf87jfe7jfk7jfr7jfx7jg37jg97jgg7jgm7jgs7jgy7jh57jhb7jhh7j3d7n3k7n3q7n3x7n437n4a7n4g7n4n7n4t7n507n577n5d7n5k7n5q7n5x7n637n6a7n6t7n9x7na37naa7nag7nan7nat7nb07nb77nbd7nbk7nbq7nbx7nc37nca7ncg7ncn7nct7nd07nd77ndd7ndk7ndq7ndx7ne37nea7neg7nen7net7nf07nf77nfd7nfk7nfq7nfx7ng37nga7ngg7ngn7ngt7nh07nh77nhd7nhk7nhq7nhx7n347s3b7s3i7s3o7s3v7s427s497s4g7s4m7s4t7s507s577s5e7s5k7s5r7s5y7s657s6w7sa37saa7sah7sao7sav7sb17sb87sbf7sbm7sbt7sbz7sc67scd7sck7scq7scx7sd47sdb7sdi7sdo7sdv7se27se97seg7sem7set7sf07sf77sfe7sfk7sfr7sfy7sg57sgc7sgi7sgp7sgw7sh37sha7shg7shn7s327w3a7w3h7w3o7w3v7w427w497w4g7w4o7w4v7w527w597w5g7w5n7w5u7w617w697w6g7w6n7w6u7w9t7wa07wae7wal7wat7wb07wb77wbe7wbl7wbs7wbz7wc67wce7wcl7wcs7wcz7wd67wdd7wdk7wdr7wdz7we67wed7wek7wer7wey7wf57wfc7wfk7wfr7wfy7wg57wgc7wgj7wgq7wgy7wh57whc7whj7whq7whx7wiq7w2t80318038803g803n803v8042804a804h804p804w8054805b805q805y8065806d806k806s809w80aj80aq80ay80b580bd80bk80bs80bz80c780ce80cm80ct80d180d880dg80dn80dv80e280ea80eh80ep80ew80f480fb80fj80fq80fy80g580gd80gk80gs80gz80h780he80hm80iv8018852r852z8537853f853n853u8542854a854i854q854y855u85628569856h859s85aw85bb85bj85br85bz85c785cf85cn85cv85d385db85dj85dr85dy85e685ee85em85eu85f285fa85fi85fq85fy85g685gd85gl85gt85h185h985hh85is85j0851b892h892p892y8936893f893n893w8944894d894l894u895s8960896h89ah89ap89bf89bn89bw89c489cd89cl89cu89d289db89dj89ds89e089e889eh89ep89ey89f689ff89fn89fw89g489gd89gl89gu89h289hb89hj89hs89iy890w8e158e1e8e1n8e1w8e258e2e8e2n8e2w8e358e3e8e3n8e3w8e458e4e8e4n8e5w8e658eae8ean8eaw8ebe8ebn8ebw8ec58ece8ecn8ecw8ed58ede8edn8edw8ee58eee8een8eew8ef58efe8efn8efw8eg58ege8egn8egw8eh58ehe8ehn8ehw8ei58eie8ein8ej58eje8e0y8i188i1i8i1r8i218i2b8i2k8i2u8i348i3e8i3n8i3x8i478i4h8i4q8i638i6d8i7g8iaf8iao8iay8ib88ibi8ibr8ic18icb8ick8icu8id48ide8idn8idx8ie78ieh8ieq8if08ifa8ifj8ift8ig38igd8igm8igw8ih68ihg8ihp8ihz8ii98iii8iis8ij28ijc8ijl8ijv8i0q8m118m1b8m1l8m1w8m268m2h8m2r8m328m3c8m3m8m3x8m478m4i8m4s8m538m5y8m688m748m7e8m7p8m8u8m958mav8mb68mbg8mbr8mcb8mcm8mcw8md78mdh8mds8me28med8men8mex8mf88mfi8mft8mg38mge8mgo8mgy8mh98mhj8mhu8mi48mif8mip8miz8mja8mjk8mjv8m068r148r1f8r1r8r228r2e8r2p8r318r3c8r3n8r3z8r4a8r4m8r4x8r598r678r758r7h8r7s8r838ray8rba8rbl8rbx8rc88rcv8rd68rdi8rdt8reg8rer8rf38rfe8rfq8rg18rgd8rgo8rgz8rhb8rhm8rhy8ri98ril8riw8rj78rjj8rju8r188v1l8v1x8v2z8v3p8v418v4r8v5s8v658v778v7k8v7w8v898v8l8vb28vbf8vbr8vdv8ve88vek8vex8vf98vfm8vfz8vgb8vgo8vh18vhd8vhq8vi38vif8vis8vj48vjh8vju8v3q9044904i905b905p9079907n9081908g90dx90eb90ep90f490fi90fw90ga90go90h290hu90i8903c946w947c947s9488948o94d494ew94fc94fs943c984d984v986f986x987g987y988h98dl98fn98g6984k9d559d5r9d6d9d6z9d7l9d879d8s9d';
+    var dots = [];
+    for (var i = 0; i < D.length; i += 4) {
+      var lon = (parseInt(D.substr(i, 2), 36) - 360) / 2, lat = (parseInt(D.substr(i + 2, 2), 36) - 180) / 2;
+      dots.push([lon * Math.PI / 180, lat * Math.PI / 180]);
+    }
+    var pins = [
+      ['Vela Health', 'Toronto', -79.4, 43.7, 61, 78], ['Brio Software', 'Austin', -97.7, 30.3, 58, 74],
+      ['Harbor Hotels', 'Lisbon', -9.1, 38.7, 64, 82], ['Oakline Bank', 'London', -0.1, 51.5, 55, 72],
+      ['Forge Works', 'S\u00e3o Paulo', -46.6, -23.5, 52, 70], ['Lumo Logistics', 'Nairobi', 36.8, -1.3, 60, 77],
+      ['Nova Retail', 'Mumbai', 72.9, 19.1, 57, 73], ['Pico Telecom', 'Singapore', 103.8, 1.35, 63, 81],
+      ['Wren Health', 'Sydney', 151.2, -33.9, 66, 83], ['Skyward Air', 'Tokyo', 139.7, 35.7, 59, 76],
+      ['Tidal Insurance', 'Copenhagen', 12.6, 55.7, 70, 86], ['Fresco Foods', 'Manila', 121.0, 14.6, 50, 69],
+      ['Arbor Financial', 'Mexico City', -99.1, 19.4, 62, 79], ['Stone Build', 'Johannesburg', 28.0, -26.2, 48, 67],
+      ['Helix Pharma', 'Seoul', 127.0, 37.6, 61, 80], ['Maple Grocers', 'Chicago', -87.6, 41.9, 56, 75],
+      ['Ember Energy', 'Calgary', -114.1, 51.0, 63, 78], ['Prism Media', 'Berlin', 13.4, 52.5, 58, 74],
+      ['Summit Partners', 'New York', -74.0, 40.7, 54, 73], ['Torque Auto', 'Detroit', -83.0, 42.3, 51, 70]
+    ].map(function (p, k) { return { type: p[0], city: p[1], lon: p[2] * Math.PI / 180, lat: p[3] * Math.PI / 180, a: p[4], b: p[5], seen: -1, phase: k * 0.37 }; });
+    function band(v) { return v >= 80 ? ['Thriving', '#F7C948'] : v >= 68 ? ['Healthy', '#8FB0CF'] : ['Watch', '#F39C5A']; }
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var lon0 = 0.9, tilt = 0.32, last = 0, t0 = 0;
+    function rr(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+    function frame(ts) {
+      self.raf = requestAnimationFrame(frame);
+      var c = self.canvas; if (!c) return;
+      if (!t0) t0 = ts;
+      var dt = last ? Math.min(64, ts - last) : 16; last = ts;
+      var spin = self.props.spin == null ? 1 : self.props.spin;
+      if (!reduce) lon0 -= dt * 0.00009 * spin;
+      var dpr = Math.min(2, window.devicePixelRatio || 1);
+      var W = c.clientWidth, H = c.clientHeight; if (!W || !H) return;
+      if (c.width !== Math.round(W * dpr)) { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); }
+      var ctx = c.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+      var R = Math.min(W, H) * 0.37, cx = W / 2, cy = H / 2 + R * 0.06;
+      var glow = ctx.createRadialGradient(cx, cy, R * 0.95, cx, cy, R * 1.3);
+      glow.addColorStop(0, 'rgba(143,176,207,0.22)'); glow.addColorStop(1, 'rgba(143,176,207,0)');
+      ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(cx, cy, R * 1.3, 0, Math.PI * 2); ctx.fill();
+      var body = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.1, cx, cy, R);
+      body.addColorStop(0, '#2B4A6B'); body.addColorStop(1, '#1B3350');
+      ctx.fillStyle = body; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+      var sT = Math.sin(tilt), cT = Math.cos(tilt);
+      function proj(lon, lat) {
+        var cl = Math.cos(lat), dl = lon - lon0;
+        var z = sT * Math.sin(lat) + cT * cl * Math.cos(dl);
+        return [cx + R * cl * Math.sin(dl), cy - R * (cT * Math.sin(lat) - sT * cl * Math.cos(dl)), z];
+      }
+      var ds = Math.max(1.1, R / 150);
+      for (var i = 0; i < dots.length; i++) {
+        var p = proj(dots[i][0], dots[i][1]); if (p[2] <= 0) continue;
+        ctx.fillStyle = 'rgba(214,224,233,' + (0.25 + 0.65 * p[2]).toFixed(2) + ')';
+        ctx.fillRect(p[0] - ds / 2, p[1] - ds / 2, ds, ds);
+      }
+      var now = ts / 1000, cards = [];
+      pins.forEach(function (pin) {
+        var p = proj(pin.lon, pin.lat);
+        if (p[2] < 0.12) { pin.seen = -1; return; }
+        if (pin.seen < 0) pin.seen = now;
+        var age = now - pin.seen, pop = Math.min(1, age / 0.5);
+        var k = Math.min(1, Math.max(0, (age - 0.4) / 3.2)); k = 1 - Math.pow(1 - k, 3);
+        var v = Math.round(pin.a + (pin.b - pin.a) * k), bd = band(v);
+        var pulse = ((now + pin.phase) % 2.2) / 2.2;
+        ctx.globalAlpha = (1 - pulse) * 0.6 * p[2];
+        ctx.strokeStyle = bd[1]; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.ellipse(p[0], p[1], 6 + pulse * 18, (6 + pulse * 18) * 0.35, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.globalAlpha = Math.min(1, p[2] * 1.6);
+        var bh = (17 + (pin.b % 3) * 6) * pop * (0.6 + 0.4 * p[2]), bw = 12 + (pin.a % 2) * 3;
+        ctx.fillStyle = 'rgba(9,20,34,0.45)'; ctx.beginPath(); ctx.ellipse(p[0], p[1], bw * 0.9, 2.5, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#F3EDE2'; ctx.fillRect(p[0] - bw / 2, p[1] - bh, bw, bh);
+        ctx.fillStyle = bd[1]; ctx.fillRect(p[0] - bw / 2, p[1] - bh, bw, Math.min(3, bh));
+        ctx.fillStyle = '#2B4A6B';
+        for (var wy = p[1] - bh + 5; wy < p[1] - 2; wy += 4) { for (var wx = p[0] - bw / 2 + 2; wx < p[0] + bw / 2 - 2; wx += 3) ctx.fillRect(wx, wy, 1.5, 1.8); }
+        ctx.globalAlpha = 1;
+        p = [p[0], p[1] - bh, p[2]];
+        if (p[2] > 0.45) cards.push({ p: p, pin: pin, v: v, bd: bd, pop: pop });
+      });
+      cards.sort(function (a, b) { return b.p[2] - a.p[2]; });
+      var placed = [];
+      cards.slice(0, 5).forEach(function (cd) {
+        var w = 160, h = 58, x = cd.p[0] + 12, y = cd.p[1] - h - 14;
+        if (x + w > W - 4) x = cd.p[0] - w - 12;
+        for (var q = 0; q < placed.length; q++) { var o = placed[q]; if (x < o[0] + o[2] && x + w > o[0] && y < o[1] + o[3] && y + h > o[1]) return; }
+        placed.push([x, y, w, h]);
+        var a = Math.min(1, (cd.p[2] - 0.45) * 4) * cd.pop;
+        ctx.globalAlpha = a;
+        ctx.strokeStyle = 'rgba(243,237,226,0.5)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(cd.p[0], cd.p[1]); ctx.lineTo(x < cd.p[0] ? x + w : x, y + h); ctx.stroke();
+        ctx.fillStyle = '#FFFFFF'; rr(ctx, x, y, w, h, 10); ctx.fill();
+        ctx.fillStyle = '#15283F'; ctx.font = '700 12px Inter, Helvetica, sans-serif';
+        ctx.fillText(cd.pin.type, x + 12, y + 20);
+        ctx.fillStyle = '#15283F'; ctx.font = '800 20px Inter, Helvetica, sans-serif';
+        ctx.fillText(String(cd.v), x + 12, y + 46);
+        var tw = ctx.measureText(String(cd.v)).width;
+        ctx.font = '700 10px Inter, Helvetica, sans-serif';
+        var lw = ctx.measureText(cd.bd[0]).width + 14;
+        ctx.fillStyle = cd.bd[1]; rr(ctx, x + 20 + tw, y + 31, lw, 18, 9); ctx.fill();
+        ctx.fillStyle = '#15283F'; ctx.fillText(cd.bd[0], x + 27 + tw, y + 43.5);
+        ctx.fillStyle = '#2F6B4F'; ctx.font = '700 11px Inter, Helvetica, sans-serif';
+        var up = '↑ ' + (cd.v - cd.pin.a); ctx.fillText(up, x + w - 12 - ctx.measureText(up).width, y + 46);
+        ctx.globalAlpha = 1;
+      });
+    }
+    this.raf = requestAnimationFrame(frame);
+  }
+  componentWillUnmount() { if (this.raf) cancelAnimationFrame(this.raf); }
+  renderVals() {
+    return { globeRef: this.globeRef };
+  }
+}
+</script>
+<script src="dc-lite.js"></script>
+</body>
 </html>

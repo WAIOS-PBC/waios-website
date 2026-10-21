@@ -7,7 +7,7 @@
   };
   window.DCLogic = DCLogic;
 
-  var tpl, comp, root, pending = false;
+  var tpl, comp, root, pending = false, refs = [], mounted = false;
 
   function lookup(path, scope) {
     if (path == null) return undefined;
@@ -47,6 +47,7 @@
         continue;
       }
       if (name.indexOf('hint-') === 0) continue;
+      if (name === 'ref') { var rf = lookup(expr(a.value), scope); if (typeof rf === 'function') refs.push([rf, el]); continue; }
       el.setAttribute(name, interp(a.value, scope));
     }
     renderNodes(n.childNodes, scope, el);
@@ -66,8 +67,11 @@
     pending = false;
     var fp = pathOf(document.activeElement);
     var frag = document.createDocumentFragment();
+    refs = [];
     renderNodes(tpl.content.childNodes, [comp.renderVals()], frag);
     root.replaceChildren(frag);
+    refs.forEach(function (r) { r[0](r[1]); });
+    if (!mounted) { mounted = true; if (comp.componentDidMount) comp.componentDidMount(); }
     if (fp) restore(fp);
   }
   function schedule() { if (!pending) { pending = true; requestAnimationFrame(render); } }
