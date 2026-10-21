@@ -1,8 +1,9 @@
 # waios.com
 
-The public website for WAIOS, P.B.C. Plain HTML pages served by GitHub Pages.
+The public website for WAIOS, P.B.C., deployed on Cloudflare (Workers static assets).
 
-- index.html: Home
-- wellbeing-measure.html, how-we-work.html, approach.html, about.html, investors.html
-- images/: photos and logos
-- dc-lite.js: powers the interactive heat maps on the Wellbeing Measure page
+- public/: everything that is served (pages, images, favicon)
+- public/dc-lite.js: powers the interactive heat maps on the Wellbeing Measure page
+- wrangler.jsonc: tells Cloudflare to serve the public folder
+
+Any push to main redeploys the site.
