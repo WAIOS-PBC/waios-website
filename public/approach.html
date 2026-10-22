@@ -21,6 +21,20 @@
 <style>
 body{margin:0;background:#FAF8F4}
 a{color:#15283F}a:hover{color:#EF6F6C}
+.sf-flow{width:6px;height:52px;background-image:radial-gradient(circle,var(--c) 1.8px,transparent 2.4px);background-size:6px 11px;animation:sfDown .9s linear infinite}
+.sf-up{animation-name:sfUp}
+@keyframes sfDown{from{background-position:0 0}to{background-position:0 11px}}
+@keyframes sfUp{from{background-position:0 11px}to{background-position:0 0}}
+.sf-core{animation:sfPulse 2.7s ease-out infinite}
+@keyframes sfPulse{0%{box-shadow:0 0 0 0 rgba(247,201,72,.6),0 0 0 0 rgba(247,201,72,.35)}60%{box-shadow:0 0 0 22px rgba(247,201,72,0),0 0 0 10px rgba(247,201,72,.18)}100%{box-shadow:0 0 0 0 rgba(247,201,72,0),0 0 0 10px rgba(247,201,72,.18)}}
+.wy-half,.wy-glow{transform-box:fill-box;transform-origin:center}
+.wy-coral{animation:wyL 7s cubic-bezier(.45,0,.2,1) infinite}
+.wy-yellow{animation:wyR 7s cubic-bezier(.45,0,.2,1) infinite}
+.wy-glow{animation:wyGlow 7s ease-out infinite}
+@keyframes wyL{0%,12%{transform:translateX(-64px)}34%,86%{transform:translateX(0)}100%{transform:translateX(-64px)}}
+@keyframes wyR{0%,12%{transform:translateX(64px)}34%,86%{transform:translateX(0)}100%{transform:translateX(64px)}}
+@keyframes wyGlow{0%,32%{transform:scale(.75);opacity:0}40%{transform:scale(1.18);opacity:.5}58%,86%{transform:scale(1);opacity:.22}100%{transform:scale(.75);opacity:0}}
+@media (prefers-reduced-motion: reduce){.sf-flow,.sf-core,.wy-coral,.wy-yellow,.wy-glow{animation:none !important}.wy-glow{opacity:.22}}
 </style>
 <style>[hidden]{display:none !important}</style>
 </head>
@@ -49,33 +63,26 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </section>
 
 <section aria-label="How support flows" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px) 96px">
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 14px; padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; align-items: center; gap: 0">
-
-<div style="width: 100%; max-width: 760px; background: #15283F; border-radius: 12px; padding: 24px 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px">
-<div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(243,237,226,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 260px"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #F7C948">Top down · Leadership</div><div style="font-size: 20px; font-weight: 800; color: #F3EDE2">Data, drivers and a prevention strategy</div><div style="font-size: 14px; line-height: 1.5; color: #F3EDE2">Fix the conditions that cause burnout across teams and departments.</div></div>
+<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 14px; padding: clamp(24px, 4vw, 44px) clamp(16px, 4vw, 44px); display: flex; flex-direction: column; align-items: center">
+<div style="width: 100%; max-width: 720px; background: #15283F; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 48px), 50% 100%, 0 calc(100% - 48px)); padding: 30px 28px 80px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<div style="width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(243,237,226,0.12)"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg></div>
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #F7C948">Top down · Leadership</div>
+<div style="font-size: 21px; font-weight: 800; line-height: 1.25; color: #F3EDE2">Data, drivers and a prevention strategy</div>
+<div style="font-size: 15px; line-height: 1.5; color: #F3EDE2; max-width: 460px">Fix the conditions that cause burnout across teams and departments.</div>
 </div>
-
-<div aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; padding: 8px 0"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" style="width: 30px; height: 30px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M12 4v16M6 14l6 6 6-6"></path></svg></div>
-
-<div style="width: 100%; max-width: 900px; background: #F7C948; border-radius: 12px; padding: 26px 28px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #2E3A45">One shared picture</div>
-<div style="font-size: 24px; font-weight: 800; color: #15283F">Wellbeing, engagement and burnout, measured together</div>
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px">
-<span style="background: #FFFFFF; border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: #15283F">The person</span>
-<span style="background: #FFFFFF; border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: #15283F">Their life</span>
-<span style="background: #FFFFFF; border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: #15283F">Their work</span>
-<span style="background: #FFFFFF; border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: #15283F">The world around them</span>
+<div class="sf-flow" aria-hidden="true" style="--c: #15283F"></div>
+<div class="sf-core" style="width: 264px; height: 264px; max-width: 100%; border-radius: 50%; background: #F7C948; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 30px; box-sizing: border-box">
+<div style="font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #2E3A45">One shared picture</div>
+<div style="font-size: 21px; font-weight: 800; line-height: 1.2; color: #15283F">How your people are really doing</div>
+<div style="font-size: 13px; line-height: 1.45; color: #2E3A45">The person, their life, their work and the world around them</div>
 </div>
+<div class="sf-flow sf-up" aria-hidden="true" style="--c: #5C7285"></div>
+<div style="width: 100%; max-width: 720px; background: #EEF1F4; clip-path: polygon(50% 0, 100% 48px, 100% 100%, 0 100%, 0 48px); padding: 80px 28px 30px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<div style="width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #FFFFFF"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path><circle cx="17" cy="9" r="2.5"></circle><path d="M16 14.2c3 .1 5.5 1.9 5.5 5.1"></path></svg></div>
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Ground up · Every employee</div>
+<div style="font-size: 21px; font-weight: 800; line-height: 1.25; color: #15283F">A personal guide and practical tools</div>
+<div style="font-size: 15px; line-height: 1.5; color: #2E3A45; max-width: 460px">Manage and prevent burnout day to day, while the bigger fixes take hold.</div>
 </div>
-
-<div aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; padding: 8px 0"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" style="width: 30px; height: 30px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M12 20V4M6 10l6-6 6 6"></path></svg></div>
-
-<div style="width: 100%; max-width: 760px; background: #F1F4F6; border-radius: 12px; padding: 24px 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px">
-<div style="width: 52px; height: 52px; border-radius: 12px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path><circle cx="17" cy="9" r="2.5"></circle><path d="M16 14.2c3 .1 5.5 1.9 5.5 5.1"></path></svg></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 260px"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Ground up · Every employee</div><div style="font-size: 20px; font-weight: 800; color: #15283F">A personal guide and practical tools</div><div style="font-size: 14px; line-height: 1.5; color: #2E3A45">Manage and prevent burnout day to day, while the bigger fixes take hold.</div></div>
-</div>
-
 </div>
 </section>
 
@@ -212,6 +219,32 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <div style="display: flex; flex-direction: column; gap: 6px; border-top: 3px solid #2E3A45; padding-top: 16px"><div style="font-size: 18px; font-weight: 700; color: #15283F">Top down alone is too slow</div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">Strategy and structural change take months. Employees struggling today cannot wait for them.</div></div>
 <div style="display: flex; flex-direction: column; gap: 6px; border-top: 3px solid #2E3A45; padding-top: 16px"><div style="font-size: 18px; font-weight: 700; color: #15283F">Bottom up alone puts it on the individual</div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">Self-care cannot fix a broken workload. Without leadership action, the causes stay in place.</div></div>
 <div style="display: flex; flex-direction: column; gap: 6px; border-top: 3px solid #EF6F6C; padding-top: 16px"><div style="font-size: 18px; font-weight: 700; color: #15283F">Together, it holds</div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">Leaders change the conditions, employees build the habits, and the next measure shows both.</div></div>
+</div>
+</section>
+
+<section aria-label="The WAIOS way" style="background: #FFFFFF; border-top: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; max-width: 840px; margin: 0 auto">
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">The WAIOS way</span></div>
+<h2 style="margin: 0; font-size: clamp(32px, 2.4vw + 18px, 46px); line-height: 1.1; font-weight: 800; color: #15283F; text-wrap: balance">Both sides of wellbeing, brought together.</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45">Most organizations work on one end of the wellbeing spectrum. They invest in wellness and the things they hope will help people thrive, while the hygiene factors and root causes of burnout stay in place. The WAIOS way brings both sides together, so you see the whole story: <span style="font-weight: 700; background: linear-gradient(to top, #F7C948 42%, transparent 42%)">what is pulling your people back, and what will drive them forward.</span></p>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 24px">
+<div style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 10px; border-top: 4px solid #EF6F6C"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #5C7285">Preventing burnout</div><div style="font-size: 22px; font-weight: 800; color: #15283F">What pulls people back</div><div style="font-size: 16px; line-height: 1.55; color: #2E3A45">The root causes most programs never reach: workload, control, reward and recognition, community, fairness and values. Left in place, they keep wellbeing from taking hold.</div></div>
+<figure style="margin: 0 auto; flex: 0 0 auto; align-self: center; display: flex; flex-direction: column; align-items: center; gap: 6px"><svg viewBox="0 0 220 220" role="img" aria-label="Two halves of the WAIOS dot, one coral and one yellow, come together to form one full dot" style="width: 220px; height: 220px; display: block; overflow: visible">
+<defs><clipPath id="wyTop"><rect x="0" y="0" width="220" height="131"></rect></clipPath><clipPath id="wyBot"><rect x="0" y="131" width="220" height="89"></rect></clipPath></defs>
+<circle class="wy-glow" cx="110" cy="110" r="94" fill="#F7C948" opacity="0.22"></circle>
+<g class="wy-half wy-coral"><circle cx="110" cy="110" r="70" fill="#EF6F6C" clip-path="url(#wyBot)"></circle></g>
+<g class="wy-half wy-yellow"><circle cx="110" cy="110" r="70" fill="#F7C948" clip-path="url(#wyTop)"></circle></g>
+</svg><figcaption style="font-size: 14px; font-weight: 700; color: #15283F">Together: the WAIOS way</figcaption></figure>
+<div style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 10px; border-top: 4px solid #F7C948"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #5C7285">Helping people thrive</div><div style="font-size: 22px; font-weight: 800; color: #15283F">What drives people forward</div><div style="font-size: 16px; line-height: 1.55; color: #2E3A45">Engagement, energy, connection and a life that is going well. This is where most wellness programs put their effort.</div></div>
+</div>
+<div style="width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px" aria-label="The wellbeing spectrum">
+<div style="display: flex; justify-content: flex-end"><div style="width: 40%; display: flex; flex-direction: column; gap: 6px; align-items: center"><span style="font-size: 13px; font-weight: 600; color: #5C7285; text-align: center">Where most programs focus</span><span aria-hidden="true" style="width: 100%; height: 10px; border: 2px solid #C9D3DC; border-bottom: 0; box-sizing: border-box"></span></div></div>
+<div aria-hidden="true" style="height: 16px; border-radius: 999px; background: linear-gradient(to right, #EF6F6C, #F3EDE2 50%, #F7C948)"></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; font-size: 13px; font-weight: 600; color: #2E3A45"><span>Root causes of burnout</span><span style="text-align: right">Helping people thrive</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><span aria-hidden="true" style="width: 100%; height: 12px; border: 2px solid #15283F; border-top: 0; box-sizing: border-box"></span><span style="display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 800; color: #15283F"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>The WAIOS way covers the whole spectrum</span></div>
+</div>
 </div>
 </section>
 
