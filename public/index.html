@@ -96,7 +96,7 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <div style="position: relative; width: 100%; aspect-ratio: 1 / 1">
 <canvas role="img" aria-label="A rotating globe of the world. Office buildings rise up at workplaces around the world, each labeled with a company name and a wellbeing score that rises over time." style="position: absolute; inset: 0; width: 100%; height: 100%; display: block" width="576" height="576"></canvas>
 </div>
-<figcaption style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: 13px; color: #2E3A45"><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #F7C948"></span>Thriving</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #8FB0CF"></span>Sustaining</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #F39C5A"></span>At risk</span><span style="color: #5C7285">Illustrative companies</span></figcaption>
+<figcaption style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: 13px; color: #2E3A45"><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #EF6F6C"></span>Thriving</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #F7C948"></span>Sustaining</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #15283F"></span>At risk</span><span style="color: #5C7285">Illustrative companies</span></figcaption>
 </figure>
 </div>
 </section>
@@ -437,7 +437,7 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <div style="position: relative; width: 100%; aspect-ratio: 1 / 1">
 <canvas ref="{{globeRef}}" role="img" aria-label="A rotating globe of the world. Office buildings rise up at workplaces around the world, each labeled with a company name and a wellbeing score that rises over time." style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"></canvas>
 </div>
-<figcaption style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: 13px; color: #2E3A45"><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #F7C948"></span>Thriving</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #8FB0CF"></span>Sustaining</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #F39C5A"></span>At risk</span><span style="color: #5C7285">Illustrative companies</span></figcaption>
+<figcaption style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: 13px; color: #2E3A45"><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #EF6F6C"></span>Thriving</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #F7C948"></span>Sustaining</span><span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #15283F"></span>At risk</span><span style="color: #5C7285">Illustrative companies</span></figcaption>
 </figure>
 </div>
 </section>
@@ -898,7 +898,7 @@ class Component extends DCLogic {
       ['Ember Energy', 'Calgary', -114.1, 51.0, 63, 78], ['Prism Media', 'Berlin', 13.4, 52.5, 58, 74],
       ['Summit Partners', 'New York', -74.0, 40.7, 54, 73], ['Torque Auto', 'Detroit', -83.0, 42.3, 51, 70]
     ].map(function (p, k) { return { type: p[0], city: p[1], lon: p[2] * Math.PI / 180, lat: p[3] * Math.PI / 180, a: p[4], b: p[5], seen: -1, phase: k * 0.37 }; });
-    function band(v) { return v >= 80 ? ['Thriving', '#F7C948'] : v >= 68 ? ['Sustaining', '#8FB0CF'] : ['At risk', '#F39C5A']; }
+    function band(v) { return v >= 80 ? ['Thriving', '#EF6F6C', '#15283F'] : v >= 68 ? ['Sustaining', '#F7C948', '#15283F'] : ['At risk', '#15283F', '#FFFFFF']; }
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var lon0 = 0.9, tilt = 0.32, last = 0, t0 = 0;
     function rr(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
@@ -1000,7 +1000,7 @@ class Component extends DCLogic {
         ctx.font = '700 10px Inter, Helvetica, sans-serif';
         var lw = ctx.measureText(cd.bd[0]).width + 14;
         ctx.fillStyle = cd.bd[1]; rr(ctx, x + 20 + tw, y + 31, lw, 18, 9); ctx.fill();
-        ctx.fillStyle = '#15283F'; ctx.fillText(cd.bd[0], x + 27 + tw, y + 43.5);
+        ctx.fillStyle = cd.bd[2]; ctx.fillText(cd.bd[0], x + 27 + tw, y + 43.5);
         ctx.fillStyle = '#2F6B4F'; ctx.font = '700 11px Inter, Helvetica, sans-serif';
         var up = '↑ ' + (cd.v - cd.pin.a); ctx.fillText(up, x + w - 12 - ctx.measureText(up).width, y + 46);
         ctx.globalAlpha = 1;
