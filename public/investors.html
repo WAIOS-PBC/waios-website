@@ -16,6 +16,7 @@
 <meta name="twitter:image" content="https://waios.com/share-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script src="nav.js" defer></script>
+<script src="forms.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Montserrat:wght@700&amp;display=swap" rel="stylesheet">
 <style>
@@ -70,22 +71,22 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </div>
 
 <div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; padding: 36px">
-<form id="investor-form" style="display: flex; flex-direction: column; gap: 16px">
+<form id="investor-form" data-lead="investor" data-done="investor-thanks" style="position: relative; display: flex; flex-direction: column; gap: 16px">
 <div style="font-size: 22px; font-weight: 800; color: #15283F">Request investor access</div>
-<label for="iname" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Full name<input id="iname" name="iname" type="text" autocomplete="name" required style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
-<label for="iemail" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Email<input id="iemail" name="iemail" type="email" autocomplete="email" required style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
-<label for="ifirm" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Firm or organization (optional)<input id="ifirm" name="ifirm" type="text" autocomplete="organization" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
-<label for="ilinkedin" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">LinkedIn profile (optional)<input id="ilinkedin" name="ilinkedin" type="text" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
-<label for="inote" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">What draws you to WAIOS™? (optional)<textarea id="inote" name="inote" rows="3" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; resize: vertical"></textarea></label>
-<label for="iaccredited" style="display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.5; color: #2E3A45"><input id="iaccredited" name="iaccredited" type="checkbox" style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0">I am an accredited investor.</label>
+<label for="iname" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Full name<input id="iname" name="name" type="text" autocomplete="name" required style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
+<label for="iemail" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Email<input id="iemail" name="email" type="email" autocomplete="email" required style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
+<label for="ifirm" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Firm or organization (optional)<input id="ifirm" name="ifirm" data-label="Firm or organization" type="text" autocomplete="organization" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
+<label for="ilinkedin" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">LinkedIn profile (optional)<input id="ilinkedin" name="ilinkedin" data-label="LinkedIn" type="text" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
+<label for="inote" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">What draws you to WAIOS™? (optional)<textarea id="inote" name="inote" data-label="What draws them to WAIOS" rows="3" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; resize: vertical"></textarea></label>
+<label for="iaccredited" style="display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.5; color: #2E3A45"><input id="iaccredited" name="iaccredited" data-label="Accredited investor" type="checkbox" style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0">I am an accredited investor.</label>
 <button type="submit" style="font: inherit; font-weight: 700; font-size: 16px; background: #EF6F6C; color: #15283F; border: 0; border-radius: 6px; padding: 14px 20px; min-height: 48px; cursor: pointer">Request access</button>
-<div style="font-size: 13px; line-height: 1.5; color: #5C7285">This opens an email to hello@waios.com with your details filled in.</div>
+<div aria-hidden="true" style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<p data-lead-error hidden role="alert" style="margin: 0; font-size: 14px; line-height: 1.5; color: #B3423F">Something went wrong and this did not send. Please try again in a moment.</p>
 </form>
 <div id="investor-thanks" hidden style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start">
 <div style="width: 52px; height: 52px; border-radius: 12px; background: #F1F4F6; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
-<div style="font-size: 22px; font-weight: 800; color: #15283F">Thank you. One last step.</div>
-<div style="font-size: 16px; line-height: 1.6; color: #2E3A45">Your email app should now be open with your request. Send it, and Danielle or Jennifer will be in touch personally. Once approved, you will receive a secure link to our investor materials.</div>
-<button type="button" id="investor-back" style="font: inherit; font-weight: 600; font-size: 14px; background: transparent; color: #2E3A45; border: 1.5px solid #2E3A45; border-radius: 6px; padding: 10px 16px; min-height: 44px; cursor: pointer">Back to the form</button>
+<div style="font-size: 22px; font-weight: 800; color: #15283F">Thank you. We have your request.</div>
+<div style="font-size: 16px; line-height: 1.6; color: #2E3A45">Danielle or Jennifer will be in touch personally. Once approved, you will receive a secure link to our investor materials.</div>
 </div>
 </div>
 </section>
@@ -106,25 +107,11 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
 <a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
 <a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
-<a href="mailto:hello@waios.com" style="color: #2E3A45; text-decoration: none">hello@waios.com</a>
+<a href="contact.html" style="color: #2E3A45; text-decoration: none">Contact</a>
 </nav>
 </div>
 </footer>
 
 </div>
-<script>
-(function () {
-  var f = document.getElementById('investor-form'), t = document.getElementById('investor-thanks');
-  f.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var body = 'I would like to request investor access to WAIOS.\n\n' +
-      'Name: ' + f.iname.value + '\nEmail: ' + f.iemail.value + '\nFirm or organization: ' + f.ifirm.value +
-      '\nLinkedIn: ' + f.ilinkedin.value + '\nAccredited investor: ' + (f.iaccredited.checked ? 'Yes' : 'No') +
-      '\n\nWhat draws me to WAIOS:\n' + f.inote.value;
-    window.location.href = 'mailto:hello@waios.com?subject=' + encodeURIComponent('Investor access request') + '&body=' + encodeURIComponent(body);
-    f.hidden = true; t.hidden = false;
-  });
-  document.getElementById('investor-back').addEventListener('click', function () { t.hidden = true; f.hidden = false; });
-})();
-</script></body>
+</body>
 </html>

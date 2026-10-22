@@ -1,8 +1,16 @@
 {
   "name": "waios-website",
+  "main": "src/worker.js",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./public",
-    "not_found_handling": "404-page"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  // Form submissions are emailed to this verified Email Routing address.
+  "send_email": [
+    { "name": "LEADS", "destination_address": "dposa@globalwellbeinggroup.com" }
+  ],
+  "observability": { "enabled": true }
 }

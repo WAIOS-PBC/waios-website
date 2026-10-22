@@ -16,6 +16,7 @@
 <meta name="twitter:image" content="https://waios.com/share-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script src="nav.js" defer></script>
+<script src="forms.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Montserrat:wght@700&amp;display=swap" rel="stylesheet">
 <style>
@@ -348,7 +349,7 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #F3EDE2">See your own heat map.</h2>
 <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #F3EDE2">Talk to us and we will show you what the measure would reveal for your organization.</p>
 </div>
-<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px">Request a heat map demo</a>
+<a href="contact.html?topic=measure&amp;note=demo" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px">Request a heat map demo</a>
 </div>
 </section>
 
@@ -364,7 +365,7 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
 <a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
 <a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
-<a href="mailto:hello@waios.com" style="color: #2E3A45; text-decoration: none">hello@waios.com</a>
+<a href="contact.html" style="color: #2E3A45; text-decoration: none">Contact</a>
 </nav>
 </div>
 </footer>
@@ -673,13 +674,13 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <label for="wb-org" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Organization (optional)<input id="wb-org" type="text" value="{{ wb.org }}" onChange="{{ wb.onOrg }}" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 46px; box-sizing: border-box"></label>
 <label for="wb-consent" style="display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.5; color: #2E3A45"><input id="wb-consent" type="checkbox" required="" style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0">WAIOS, P.B.C. can email me about my results. I can unsubscribe at any time.</label>
 <button type="submit" style="font: inherit; font-weight: 700; font-size: 16px; background: #EF6F6C; color: #15283F; border: 0; border-radius: 6px; padding: 14px 20px; min-height: 48px; cursor: pointer">Send my results</button>
-<div style="font-size: 13px; line-height: 1.5; color: #5C7285">This opens an email to hello@waios.com with your details filled in.</div>
+<sc-if value="{{ wb.sendError }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-size: 13px; line-height: 1.5; color: #B3423F">Something went wrong and this did not send. Please try again in a moment.</div></sc-if>
 </form>
 </sc-if>
 <sc-if value="{{ wb.sent }}" hint-placeholder-val="{{ false }}">
 <div role="status" style="display: flex; gap: 14px; align-items: flex-start">
 <span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%); flex-shrink: 0; margin-top: 3px"></span>
-<div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 17px; font-weight: 700; color: #15283F">Almost there.</div><div style="font-size: 14px; line-height: 1.5; color: #2E3A45">Your email app should now be open with your results. Send it, and we will reply from hello@waios.com.</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 17px; font-weight: 700; color: #15283F">Thank you. We&#8217;ll be in touch.</div><div style="font-size: 14px; line-height: 1.5; color: #2E3A45">Someone from our research team will read your answers and get back to you.</div></div>
 </div>
 </sc-if>
 </div>
@@ -699,7 +700,7 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #F3EDE2">See your own heat map.</h2>
 <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #F3EDE2">Talk to us and we will show you what the measure would reveal for your organization.</p>
 </div>
-<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px">Request a heat map demo</a>
+<a href="contact.html?topic=measure&amp;note=demo" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px">Request a heat map demo</a>
 </div>
 </section>
 
@@ -715,14 +716,20 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
 <a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
 <a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
-<a href="mailto:hello@waios.com" style="color: #2E3A45; text-decoration: none">hello@waios.com</a>
+<a href="contact.html" style="color: #2E3A45; text-decoration: none">Contact</a>
 </nav>
 </div>
 </footer>
 
 </div></template>
 <script type="text/plain" id="dc-logic">
-function waiosMail(subject, body) { var url = 'mailto:hello@waios.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body); try { window.location.href = url; } catch (e) {} }
+function waiosMail(subject, body, done) {
+  var kinds = { 'Burnout cost estimate request': 'cost-estimate', 'Team burnout risk check readout': 'risk-readout', 'Quick wellbeing score results': 'wellbeing-score' };
+  var em = (body.match(/(?:Work email|Email): ([^\s]+@[^\s]+)/) || [])[1] || '';
+  var nm = (body.match(/First name: ([^\n]*)/) || [])[1] || '';
+  if (window.waiosLead) { window.waiosLead(kinds[subject] || 'contact', em, nm, { Details: body }, done); return; }
+  setTimeout(function () { if (done) done(true); }, 500);
+}
 class WellbeingScoreTool {
   constructor(host) {
     this.host = host;
@@ -765,7 +772,7 @@ class WellbeingScoreTool {
             label: label,
             pressed: on ? 'true' : 'false',
             style: 'font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid ' + (on ? '#15283F' : '#C9D2DA') + '; background: ' + (on ? '#15283F' : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#2E3A45'),
-            pick: function () { var n = answers.slice(); n[k] = v; go({ answers: n }); }
+            pick: function () { var n = self.state.answers.slice(); n[k] = v; go({ answers: n }); }
           };
         })
       };
@@ -821,8 +828,9 @@ class WellbeingScoreTool {
       onName: function (e) { go({ name: e.target.value }); },
       onEmail: function (e) { go({ email: e.target.value }); },
       onOrg: function (e) { go({ org: e.target.value }); },
-      onSend: function (e) { e.preventDefault(); var lines = A.map(function (a, k) { return a.text + ' ' + (answers[k] === null ? 'No answer' : OPTS[answers[k]]); }).join('\n'); waiosMail('Quick wellbeing score results', 'Please take a look at my quick wellbeing score.\n\nFirst name: ' + s.name + '\nEmail: ' + s.email + '\nOrganization: ' + s.org + '\nConsent to be emailed about my results: Yes\n\nScore: ' + score + ' out of 100\n\n' + lines); go({ sent: true }); },
+      onSend: function (e) { e.preventDefault(); var lines = A.map(function (a, k) { return a.text + ' ' + (answers[k] === null ? 'No answer' : OPTS[answers[k]]); }).join('\n'); waiosMail('Quick wellbeing score results', 'Please take a look at my quick wellbeing score.\n\nFirst name: ' + s.name + '\nEmail: ' + s.email + '\nOrganization: ' + s.org + '\nConsent to be emailed about my results: Yes\n\nScore: ' + score + ' out of 100\n\n' + lines, function (ok) { go(ok ? { sent: true, sendError: false } : { sendError: true }); }); },
       sent: s.sent,
+      sendError: !!s.sendError,
       notSent: !s.sent
     };
   }

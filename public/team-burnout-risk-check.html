@@ -16,6 +16,7 @@
 <meta name="twitter:image" content="https://waios.com/share-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script src="nav.js" defer></script>
+<script src="forms.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Montserrat:wght@700&amp;display=swap" rel="stylesheet">
 <style>
@@ -93,7 +94,7 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
 <a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
 <a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
-<a href="mailto:hello@waios.com" style="color: #2E3A45; text-decoration: none">hello@waios.com</a>
+<a href="contact.html" style="color: #2E3A45; text-decoration: none">Contact</a>
 </nav>
 </div>
 </footer>
@@ -207,7 +208,7 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <h4 style="margin: 0; font-size: 22px; line-height: 1.25; font-weight: 800; color: #15283F">Want the full picture?</h4>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #2E3A45">This check is based on what you can see. WAIOS™ hears from your team directly, measures the factors proven to drive burnout, engagement, wellbeing and performance, and shows you which fixes will make the biggest difference.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 4px">
-<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 14px 24px; border-radius: 6px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Book a briefing</a>
+<a href="contact.html?topic=briefing" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 14px 24px; border-radius: 6px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Book a briefing</a>
 <button type="button" onClick="{{ risk.restart }}" style="font: inherit; font-size: 16px; font-weight: 600; color: #2E3A45; background: #FFFFFF; border: 1.5px solid #2E3A45; border-radius: 6px; padding: 12px 22px; min-height: 48px; cursor: pointer">Start over</button>
 </div>
 </div>
@@ -219,13 +220,13 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <label for="risk-name" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">First name<input id="risk-name" type="text" value="{{ risk.name }}" onChange="{{ risk.onName }}" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 46px; box-sizing: border-box"></label>
 <label for="risk-email" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Work email<input id="risk-email" type="email" required="" value="{{ risk.email }}" onChange="{{ risk.onEmail }}" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 46px; box-sizing: border-box"></label>
 <button type="submit" style="font: inherit; font-weight: 700; font-size: 16px; background: #15283F; color: #FFFFFF; border: 0; border-radius: 6px; padding: 14px 20px; min-height: 48px; cursor: pointer">Send me my readout</button>
-<div style="font-size: 13px; line-height: 1.5; color: #5C7285">This opens an email to hello@waios.com with your details filled in.</div>
+<sc-if value="{{ risk.sendError }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-size: 13px; line-height: 1.5; color: #B3423F">Something went wrong and this did not send. Please try again in a moment.</div></sc-if>
 </form>
 </sc-if>
 <sc-if value="{{ risk.sent }}" hint-placeholder-val="{{ false }}">
 <div role="status" style="display: flex; gap: 14px; align-items: flex-start">
 <span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%); flex-shrink: 0; margin-top: 3px"></span>
-<div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 17px; font-weight: 700; color: #15283F">Almost there.</div><div style="font-size: 14px; line-height: 1.5; color: #2E3A45">Your email app should now be open with your answers. Send it, and your readout will come from hello@waios.com.</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 17px; font-weight: 700; color: #15283F">Thanks. We&#8217;ve got it.</div><div style="font-size: 14px; line-height: 1.5; color: #2E3A45">One of our experts will look at your answers and send your readout to your inbox.</div></div>
 </div>
 </sc-if>
 </div>
@@ -250,14 +251,20 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
 <a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
 <a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
-<a href="mailto:hello@waios.com" style="color: #2E3A45; text-decoration: none">hello@waios.com</a>
+<a href="contact.html" style="color: #2E3A45; text-decoration: none">Contact</a>
 </nav>
 </div>
 </footer>
 
 </div></template>
 <script type="text/plain" id="dc-logic">
-function waiosMail(subject, body) { var url = 'mailto:hello@waios.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body); try { window.location.href = url; } catch (e) {} }
+function waiosMail(subject, body, done) {
+  var kinds = { 'Burnout cost estimate request': 'cost-estimate', 'Team burnout risk check readout': 'risk-readout', 'Quick wellbeing score results': 'wellbeing-score' };
+  var em = (body.match(/(?:Work email|Email): ([^\s]+@[^\s]+)/) || [])[1] || '';
+  var nm = (body.match(/First name: ([^\n]*)/) || [])[1] || '';
+  if (window.waiosLead) { window.waiosLead(kinds[subject] || 'contact', em, nm, { Details: body }, done); return; }
+  setTimeout(function () { if (done) done(true); }, 500);
+}
 class RiskCheckTool {
   constructor(host) {
     this.host = host;
@@ -301,7 +308,7 @@ class RiskCheckTool {
         pressed: on ? 'true' : 'false',
         style: 'font: inherit; font-size: 17px; font-weight: 700; min-height: 64px; padding: 16px; border-radius: 10px; cursor: pointer; text-align: center; border: 1.5px solid ' + (on ? '#15283F' : '#C9D2DA') + '; background: ' + (on ? '#15283F' : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#15283F'),
         pick: function () {
-          var next = answers.slice();
+          var next = self.state.answers.slice();
           next[i] = v;
           if (i < Q.length - 1) go({ answers: next, i: i + 1 });
           else go({ answers: next, step: 'result' });
@@ -367,8 +374,9 @@ class RiskCheckTool {
       email: s.email,
       onName: function (e) { go({ name: e.target.value }); },
       onEmail: function (e) { go({ email: e.target.value }); },
-      onSend: function (e) { e.preventDefault(); var lines = Q.map(function (q, k) { return q.label + ': ' + (answers[k] === null ? 'No answer' : OPTS[answers[k]]); }).join('\n'); waiosMail('Team burnout risk check readout', 'Please send me a readout of my team burnout risk check.\n\nFirst name: ' + s.name + '\nWork email: ' + s.email + '\n\nRisk: ' + risk + ' out of 100 (' + band + ')\n\nHow many people on my team...\n' + lines); go({ sent: true }); },
+      onSend: function (e) { e.preventDefault(); var lines = Q.map(function (q, k) { return q.label + ': ' + (answers[k] === null ? 'No answer' : OPTS[answers[k]]); }).join('\n'); waiosMail('Team burnout risk check readout', 'Please send me a readout of my team burnout risk check.\n\nFirst name: ' + s.name + '\nWork email: ' + s.email + '\n\nRisk: ' + risk + ' out of 100 (' + band + ')\n\nHow many people on my team...\n' + lines, function (ok) { go(ok ? { sent: true, sendError: false } : { sendError: true }); }); },
       sent: s.sent,
+      sendError: !!s.sendError,
       notSent: !s.sent
     };
   }
