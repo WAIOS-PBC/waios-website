@@ -1,4 +1,4 @@
-/* Phone menu: collapses the header links behind a Menu button under 760px. */
+/* Phone menu: collapses the header links behind a Menu button under 1000px. */
 (function () {
   var styled = false;
   function init() {
@@ -9,7 +9,7 @@
   var css = document.createElement('style');
   css.textContent =
     '.waios-menu-btn{display:none;align-items:center;gap:8px;font:inherit;font-size:15px;font-weight:600;background:transparent;border:1.5px solid currentColor;border-radius:6px;justify-content:center;width:46px;height:46px;padding:0;cursor:pointer}' +
-    '@media (max-width: 760px){' +
+    '@media (max-width: 1000px){' +
     'header nav[aria-label="Main"]{display:none !important;width:100%;flex-direction:column !important;align-items:stretch !important;gap:0 !important;padding:4px 0 8px}' +
     'header nav[aria-label="Main"].open{display:flex !important}' +
     'header nav[aria-label="Main"] a{min-height:48px;box-sizing:border-box;display:flex !important;align-items:center;font-size:17px !important;border-top:1px solid rgba(127,140,155,0.28)}' +
