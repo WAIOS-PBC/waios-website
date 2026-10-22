@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quick wellbeing score | WAIOS</title>
+<meta name="description" content="Seven statements, about two minutes. See how you are really doing, area by area.">
+<meta property="og:title" content="Quick wellbeing score | WAIOS">
+<meta property="og:description" content="Seven statements, about two minutes. See how you are really doing, area by area.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WAIOS">
+<meta property="og:image" content="https://waios.com/share-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://waios.com/share-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="nav.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Montserrat:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FAF8F4}
+a{color:#15283F}a:hover{color:#EF6F6C}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C948;outline-offset:2px}
+</style>
+<style>[hidden]{display:none !important}</style>
+</head>
+<body>
+<div id="dc-root"><div style="font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif; color: #1F1D1A; background: #FAF8F4; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="index.html" aria-label="waios home" style="text-decoration: none; font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 500">
+<a href="wellbeing-measure.html" style="text-decoration: none; color: #2E3A45">Wellbeing Measure</a>
+<a href="how-we-work.html" style="text-decoration: none; color: #2E3A45">How We Work</a>
+<a href="approach.html" style="text-decoration: none; color: #2E3A45">Our Approach</a>
+<a href="about.html" style="text-decoration: none; color: #2E3A45">About</a>
+<a href="contact.html" style="text-decoration: none; color: #2E3A45">Contact</a>
+<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; padding: 12px 20px; border-radius: 6px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Get in touch</a>
+</nav>
+</div>
+</header>
+
+<section id="wellbeing-score" aria-label="Quick wellbeing score" style="padding: 72px clamp(16px, 4vw, 32px) 96px">
+<div style="max-width: 960px; margin: 0 auto">
+<section aria-labelledby="wb-title" style="max-width: 960px; margin: 0 auto; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 14px; overflow: hidden">
+
+<div style="padding: 24px clamp(24px, 5vw, 48px); border-bottom: 1px solid #DDE3E8; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%); flex-shrink: 0"></span><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #5C7285">Your wellbeing score</span></div>
+<div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
+</div>
+
+
+<div style="padding: clamp(28px, 6vw, 56px) clamp(24px, 5vw, 48px); display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px">
+<h2 id="wb-title" style="margin: 0; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; font-weight: 800; color: #15283F">How are you really doing?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #2E3A45">Seven statements, about two minutes. Think about the last few weeks and pick how much you agree with each one.</p>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 0">
+
+<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
+<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>Most days, I have the energy I need to get through the day.</span></legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
+<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>I’m able to switch off from work and properly recharge.</span></legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
+<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>My workload is manageable most of the time.</span></legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
+<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>I have a real say in how I do my work.</span></legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
+<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>I feel connected to the people I work with.</span></legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
+<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>The work I do feels worthwhile to me.</span></legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
+<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>Life outside work feels manageable right now.</span></legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+
+<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+
+</div>
+</fieldset>
+
+</div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px solid #DDE3E8; padding-top: 24px">
+<div aria-live="polite" style="font-size: 15px; font-weight: 600; color: #5C7285">0 of 7 answered</div>
+<button type="button" disabled="" style="font: inherit; font-weight: 700; font-size: 17px; border: 0; border-radius: 6px; padding: 15px 28px; min-height: 52px; background: #DDE3E8; color: #5C7285; cursor: not-allowed">See my score</button>
+</div>
+</div>
+
+
+
+
+<div style="border-top: 1px solid #DDE3E8; padding: 16px clamp(24px, 5vw, 48px); font-size: 12px; line-height: 1.5; color: #5C7285">A quick self-check, not a diagnosis. If you’re finding things hard, please talk to someone you trust or a health professional.</div>
+</section>
+</div>
+</section>
+
+<footer style="background: #FFFFFF; border-top: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; font-size: 14px; color: #5C7285">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
+<div>WAIOS, P.B.C. · A women-founded public benefit corporation</div>
+</div>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 24px">
+<a href="wellbeing-measure.html" style="color: #2E3A45; text-decoration: none">Wellbeing Measure</a>
+<a href="how-we-work.html" style="color: #2E3A45; text-decoration: none">How We Work</a>
+<a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
+<a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
+<a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
+<a href="mailto:hello@waios.com" style="color: #2E3A45; text-decoration: none">hello@waios.com</a>
+</nav>
+</div>
+</footer>
+
+</div></div>
+<template id="dc-tpl"><div style="font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif; color: #1F1D1A; background: #FAF8F4; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="index.html" aria-label="waios home" style="text-decoration: none; font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 500">
+<a href="wellbeing-measure.html" style="text-decoration: none; color: #2E3A45">Wellbeing Measure</a>
+<a href="how-we-work.html" style="text-decoration: none; color: #2E3A45">How We Work</a>
+<a href="approach.html" style="text-decoration: none; color: #2E3A45">Our Approach</a>
+<a href="about.html" style="text-decoration: none; color: #2E3A45">About</a>
+<a href="contact.html" style="text-decoration: none; color: #2E3A45">Contact</a>
+<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; padding: 12px 20px; border-radius: 6px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Get in touch</a>
+</nav>
+</div>
+</header>
+
+<section id="wellbeing-score" aria-label="Quick wellbeing score" style="padding: 72px clamp(16px, 4vw, 32px) 96px">
+<div style="max-width: 960px; margin: 0 auto">
+<section aria-labelledby="wb-title" style="max-width: 960px; margin: 0 auto; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 14px; overflow: hidden">
+
+<div style="padding: 24px clamp(24px, 5vw, 48px); border-bottom: 1px solid #DDE3E8; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%); flex-shrink: 0"></span><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #5C7285">Your wellbeing score</span></div>
+<div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
+</div>
+
+<sc-if value="{{ wb.isAsk }}" hint-placeholder-val="{{ true }}">
+<div style="padding: clamp(28px, 6vw, 56px) clamp(24px, 5vw, 48px); display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px">
+<h2 id="wb-title" style="margin: 0; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; font-weight: 800; color: #15283F">How are you really doing?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #2E3A45">Seven statements, about two minutes. Think about the last few weeks and pick how much you agree with each one.</p>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 0">
+<sc-for list="{{ wb.items }}" as="it" hint-placeholder-count="7">
+<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
+<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="{{ it.dot }}"></span><span>{{ it.text }}</span></legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
+<sc-for list="{{ it.opts }}" as="o" hint-placeholder-count="5">
+<button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="{{ o.style }}">{{ o.label }}</button>
+</sc-for>
+</div>
+</fieldset>
+</sc-for>
+</div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px solid #DDE3E8; padding-top: 24px">
+<div aria-live="polite" style="font-size: 15px; font-weight: 600; color: #5C7285">{{ wb.answered }} of {{ wb.total }} answered</div>
+<button type="button" onClick="{{ wb.finish }}" disabled="{{ wb.notReady }}" style="{{ wb.finishStyle }}">See my score</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ wb.isResult }}" hint-placeholder-val="{{ false }}">
+<div style="padding: clamp(28px, 6vw, 56px) clamp(24px, 5vw, 48px); display: flex; flex-direction: column; gap: 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 14px">
+<div role="img" aria-label="{{ wb.scoreLabel }}" style="{{ wb.bigDot }}"></div>
+<div style="display: flex; align-items: baseline; gap: 6px"><span style="font-size: 52px; font-weight: 800; color: #15283F; line-height: 1">{{ wb.score }}</span><span style="font-size: 16px; font-weight: 600; color: #5C7285">/ 100</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Your wellbeing score</div>
+<h3 style="margin: 0; font-size: clamp(26px, 4vw, 36px); line-height: 1.15; font-weight: 800; color: #15283F">{{ wb.headline }}</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">{{ wb.summary }}</p>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="font-size: 15px; font-weight: 700; color: #15283F">Your score, area by area</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(110px, 100%), 1fr)); gap: 16px">
+<sc-for list="{{ wb.areas }}" as="a" hint-placeholder-count="7">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
+<span role="img" aria-label="{{ a.aria }}" style="{{ a.dot }}"></span>
+<span style="font-size: 14px; font-weight: 600; color: #2E3A45">{{ a.name }}</span>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; gap: 18px; font-size: 13px; color: #2E3A45; flex-wrap: wrap"><span style="display: inline-flex; gap: 6px; align-items: center"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #F7C948"></span>Going well</span><span style="display: inline-flex; gap: 6px; align-items: center"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #EF6F6C"></span>Needs care</span></div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px">
+<div style="background: #FAF8F4; border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 6px"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">Your strongest area</div><div style="font-size: 20px; font-weight: 800; color: #15283F">{{ wb.best }}</div></div>
+<div style="background: #15283F; border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 6px"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #F7C948">Where to put some care</div><div style="font-size: 20px; font-weight: 800; color: #FFFFFF">{{ wb.worst }}</div></div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 32px; align-items: start; border-top: 1px solid #DDE3E8">
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 24px">
+<h4 style="margin: 0; font-size: 22px; line-height: 1.25; font-weight: 800; color: #15283F">Want us to look at your results?</h4>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #2E3A45">Send us your answers and someone from our research team will read them and get back to you with what stands out and a few things worth trying.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C7285">Your answers go to WAIOS™ only. We never share them with your employer.</p>
+<div style="padding-top: 4px"><button type="button" onClick="{{ wb.restart }}" style="font: inherit; font-size: 15px; font-weight: 600; color: #15283F; background: none; border: 0; padding: 12px 0; min-height: 44px; cursor: pointer; text-decoration: underline; text-decoration-color: #EF6F6C; text-underline-offset: 4px">Take it again</button></div>
+</div>
+<div style="background: #FAF8F4; border-radius: 10px; padding: 24px; margin-top: 24px">
+<sc-if value="{{ wb.notSent }}" hint-placeholder-val="{{ true }}">
+<form aria-label="Send my results to WAIOS" onSubmit="{{ wb.onSend }}" style="display: flex; flex-direction: column; gap: 14px">
+<label for="wb-name" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">First name<input id="wb-name" type="text" value="{{ wb.name }}" onChange="{{ wb.onName }}" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 46px; box-sizing: border-box"></label>
+<label for="wb-email" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Email<input id="wb-email" type="email" required="" value="{{ wb.email }}" onChange="{{ wb.onEmail }}" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 46px; box-sizing: border-box"></label>
+<label for="wb-org" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Organization (optional)<input id="wb-org" type="text" value="{{ wb.org }}" onChange="{{ wb.onOrg }}" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 46px; box-sizing: border-box"></label>
+<label for="wb-consent" style="display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.5; color: #2E3A45"><input id="wb-consent" type="checkbox" required="" style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0">WAIOS, P.B.C. can email me about my results. I can unsubscribe at any time.</label>
+<button type="submit" style="font: inherit; font-weight: 700; font-size: 16px; background: #EF6F6C; color: #15283F; border: 0; border-radius: 6px; padding: 14px 20px; min-height: 48px; cursor: pointer">Send my results</button>
+<div style="font-size: 13px; line-height: 1.5; color: #5C7285">This opens an email to hello@waios.com with your details filled in.</div>
+</form>
+</sc-if>
+<sc-if value="{{ wb.sent }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; gap: 14px; align-items: flex-start">
+<span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%); flex-shrink: 0; margin-top: 3px"></span>
+<div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 17px; font-weight: 700; color: #15283F">Almost there.</div><div style="font-size: 14px; line-height: 1.5; color: #2E3A45">Your email app should now be open with your results. Send it, and we will reply from hello@waios.com.</div></div>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+
+<div style="border-top: 1px solid #DDE3E8; padding: 16px clamp(24px, 5vw, 48px); font-size: 12px; line-height: 1.5; color: #5C7285">A quick self-check, not a diagnosis. If you’re finding things hard, please talk to someone you trust or a health professional.</div>
+</section>
+</div>
+</section>
+
+<footer style="background: #FFFFFF; border-top: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; font-size: 14px; color: #5C7285">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
+<div>WAIOS, P.B.C. · A women-founded public benefit corporation</div>
+</div>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 24px">
+<a href="wellbeing-measure.html" style="color: #2E3A45; text-decoration: none">Wellbeing Measure</a>
+<a href="how-we-work.html" style="color: #2E3A45; text-decoration: none">How We Work</a>
+<a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
+<a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
+<a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
+<a href="mailto:hello@waios.com" style="color: #2E3A45; text-decoration: none">hello@waios.com</a>
+</nav>
+</div>
+</footer>
+
+</div></template>
+<script type="text/plain" id="dc-logic">
+function waiosMail(subject, body) { var url = 'mailto:hello@waios.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body); try { window.location.href = url; } catch (e) {} }
+class WellbeingScoreTool {
+  constructor(host) {
+    this.host = host;
+    this.state = { step: 'ask', answers: [null, null, null, null, null, null, null], name: '', email: '', org: '', sent: false };
+  }
+  setState(p) {
+    Object.assign(this.state, typeof p === 'function' ? p(this.state) : p);
+    var hs = this.host.state || {};
+    this.host.setState({ toolTick: (hs.toolTick || 0) + 1 });
+  }
+  renderVals() {
+    var self = this;
+    var s = this.state;
+    var A = [
+      { name: 'Energy', text: 'Most days, I have the energy I need to get through the day.' },
+      { name: 'Recovery', text: 'I’m able to switch off from work and properly recharge.' },
+      { name: 'Workload', text: 'My workload is manageable most of the time.' },
+      { name: 'Control', text: 'I have a real say in how I do my work.' },
+      { name: 'Connection', text: 'I feel connected to the people I work with.' },
+      { name: 'Meaning', text: 'The work I do feels worthwhile to me.' },
+      { name: 'Life outside work', text: 'Life outside work feels manageable right now.' }
+    ];
+    var OPTS = ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'];
+    var answers = s.answers;
+    function go(p) { self.setState(p); }
+    function split(v) { return v === null ? null : Math.round(v / 4 * 100); }
+    function dotStyle(v, size) {
+      if (v === null) return 'width: ' + size + 'px; height: ' + size + 'px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF';
+      var p = split(v);
+      return 'width: ' + size + 'px; height: ' + size + 'px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(to bottom, #F7C948 ' + p + '%, #EF6F6C ' + p + '%)';
+    }
+
+    var items = A.map(function (a, k) {
+      return {
+        text: a.text,
+        dot: dotStyle(answers[k], 18) + '; margin-top: 3px',
+        opts: OPTS.map(function (label, v) {
+          var on = answers[k] === v;
+          return {
+            label: label,
+            pressed: on ? 'true' : 'false',
+            style: 'font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid ' + (on ? '#15283F' : '#C9D2DA') + '; background: ' + (on ? '#15283F' : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#2E3A45'),
+            pick: function () { var n = answers.slice(); n[k] = v; go({ answers: n }); }
+          };
+        })
+      };
+    });
+
+    var answered = answers.filter(function (x) { return x !== null; }).length;
+    var ready = answered === A.length;
+    var sum = answers.reduce(function (t, x) { return t + (x || 0); }, 0);
+    var score = Math.round(sum / (A.length * 4) * 100);
+    var headline, summary;
+    if (score >= 75) {
+      headline = 'You’re doing well.';
+      summary = 'Most of the things that keep people well are working for you right now. Notice what’s helping, so you can protect it when things get busy.';
+    } else if (score >= 50) {
+      headline = 'You’re holding steady.';
+      summary = 'Some things are working and some are wearing on you. Small changes in the areas below can make a real difference before they turn into something bigger.';
+    } else {
+      headline = 'You’re running low.';
+      summary = 'A lot is pulling on you right now. That’s worth taking seriously. You don’t have to fix everything at once, so start with the area that needs the most care.';
+    }
+    var ranked = A.map(function (a, k) { return { name: a.name, v: answers[k] || 0, k: k }; });
+    var best = ranked.slice().sort(function (x, y) { return y.v - x.v || x.k - y.k; })[0];
+    var worst = ranked.slice().sort(function (x, y) { return x.v - y.v || x.k - y.k; })[0];
+
+    var areas = A.map(function (a, k) {
+      return { name: a.name, dot: dotStyle(answers[k], 56), aria: a.name + ': ' + (answers[k] === null ? 'no answer' : OPTS[answers[k]]) };
+    });
+
+    return {
+      isAsk: s.step === 'ask',
+      isResult: s.step === 'result',
+      items: items,
+      answered: answered,
+      total: A.length,
+      notReady: !ready,
+      finish: function () { if (ready) go({ step: 'result' }); },
+      finishStyle: 'font: inherit; font-weight: 700; font-size: 17px; border: 0; border-radius: 6px; padding: 15px 28px; min-height: 52px; ' + (ready ? 'background: #EF6F6C; color: #15283F; cursor: pointer' : 'background: #DDE3E8; color: #5C7285; cursor: not-allowed'),
+      score: score,
+      scoreLabel: 'Wellbeing score ' + score + ' out of 100',
+      bigDot: 'width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 ' + score + '%, #EF6F6C ' + score + '%)',
+      headline: headline,
+      summary: summary,
+      areas: areas,
+      best: best.name,
+      worst: worst.name,
+      restart: function () { go({ step: 'ask', answers: [null, null, null, null, null, null, null], sent: false }); },
+      name: s.name,
+      email: s.email,
+      org: s.org,
+      onName: function (e) { go({ name: e.target.value }); },
+      onEmail: function (e) { go({ email: e.target.value }); },
+      onOrg: function (e) { go({ org: e.target.value }); },
+      onSend: function (e) { e.preventDefault(); var lines = A.map(function (a, k) { return a.text + ' ' + (answers[k] === null ? 'No answer' : OPTS[answers[k]]); }).join('\n'); waiosMail('Quick wellbeing score results', 'Please take a look at my quick wellbeing score.\n\nFirst name: ' + s.name + '\nEmail: ' + s.email + '\nOrganization: ' + s.org + '\nConsent to be emailed about my results: Yes\n\nScore: ' + score + ' out of 100\n\n' + lines); go({ sent: true }); },
+      sent: s.sent,
+      notSent: !s.sent
+    };
+  }
+}
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.wb = new WellbeingScoreTool(this);
+  }
+  renderVals() {
+    return { wb: this.wb.renderVals() };
+  }
+}
+</script>
+<script src="dc-lite.js"></script>
+</body>
+</html>

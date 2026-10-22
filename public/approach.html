@@ -34,18 +34,43 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 @keyframes wyL{0%,12%{transform:translateX(-64px)}34%,86%{transform:translateX(0)}100%{transform:translateX(-64px)}}
 @keyframes wyR{0%,12%{transform:translateX(64px)}34%,86%{transform:translateX(0)}100%{transform:translateX(64px)}}
 @keyframes wyGlow{0%,32%{transform:scale(.75);opacity:0}40%{transform:scale(1.18);opacity:.5}58%,86%{transform:scale(1);opacity:.22}100%{transform:scale(.75);opacity:0}}
+.tt-track{position:relative;height:30px;margin:0 0 6px}
+.tt-line{position:absolute;left:10%;right:10%;top:14px;height:3px;border-radius:2px;background:#DDE3E8}
+.tt-fill{position:absolute;left:10%;top:14px;height:3px;border-radius:2px;width:0;background:linear-gradient(to right,#F7C948,#EF6F6C);transition:width .7s cubic-bezier(.45,0,.2,1)}
+.tt-dot{position:absolute;top:2px;left:10%;width:27px;height:27px;margin-left:-13.5px;border-radius:50%;background:linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%);box-shadow:0 0 0 6px rgba(247,201,72,.22);transition:left .7s cubic-bezier(.45,0,.2,1);z-index:2;pointer-events:none}
+.tt-dot::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(247,201,72,.6);animation:ttPing 2.4s ease-out infinite}
+@keyframes ttPing{0%{transform:scale(.8);opacity:.9}80%,100%{transform:scale(1.7);opacity:0}}
+.tt-stops{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.tt-stop{font:inherit;background:none;border:0;padding:4px 2px 8px;min-height:64px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;color:#5C7285;border-radius:8px}
+.tt-stop:hover .tt-name{color:#15283F}
+.tt-stop:focus-visible{outline:3px solid #F7C948;outline-offset:2px}
+.tt-pin{width:12px;height:12px;border-radius:50%;background:#FFFFFF;border:2px solid #C9D3DC;box-sizing:border-box;transition:background .3s,border-color .3s;margin-top:-35px;position:relative;z-index:1}
+.tt-num{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:21px}
+.tt-name{font-size:15px;font-weight:600;line-height:1.25;color:#2E3A45;transition:color .3s}
+.tt-stack{display:grid}
+.tt-c{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease,visibility 0s linear .45s;display:flex;flex-direction:column;gap:14px}
+.tt[data-phase] .tt-c[data-ph]{transition:opacity .45s ease,transform .45s ease,visibility 0s}
+.tt-nav{font:inherit;width:44px;height:44px;border-radius:50%;border:1.5px solid #C9D3DC;background:#FFFFFF;color:#15283F;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.tt-nav:hover{border-color:#15283F}
+.tt-nav:focus-visible{outline:3px solid #F7C948;outline-offset:2px}
+@media (max-width: 560px){.tt-num{display:none}.tt-name{font-size:12.5px;margin-top:21px}}
+@media (prefers-reduced-motion: reduce){.tt-dot,.tt-fill,.tt-c{transition:none !important}.tt-dot::after{animation:none}}
+.tt[data-phase="1"] .tt-dot{left:10%}.tt[data-phase="1"] .tt-fill{width:0%}.tt[data-phase="1"] .tt-c[data-ph="1"]{opacity:1;visibility:visible;transform:none}.tt[data-phase="1"] .tt-stop[data-go="1"] .tt-pin{background:#15283F;border-color:#15283F}.tt[data-phase="1"] .tt-stop[data-go="1"] .tt-name{color:#15283F;font-weight:800}
+.tt[data-phase="2"] .tt-dot{left:30%}.tt[data-phase="2"] .tt-fill{width:20%}.tt[data-phase="2"] .tt-c[data-ph="2"]{opacity:1;visibility:visible;transform:none}.tt[data-phase="2"] .tt-stop[data-go="2"] .tt-pin{background:#15283F;border-color:#15283F}.tt[data-phase="2"] .tt-stop[data-go="2"] .tt-name{color:#15283F;font-weight:800}
+.tt[data-phase="3"] .tt-dot{left:50%}.tt[data-phase="3"] .tt-fill{width:40%}.tt[data-phase="3"] .tt-c[data-ph="3"]{opacity:1;visibility:visible;transform:none}.tt[data-phase="3"] .tt-stop[data-go="3"] .tt-pin{background:#15283F;border-color:#15283F}.tt[data-phase="3"] .tt-stop[data-go="3"] .tt-name{color:#15283F;font-weight:800}
+.tt[data-phase="4"] .tt-dot{left:70%}.tt[data-phase="4"] .tt-fill{width:60%}.tt[data-phase="4"] .tt-c[data-ph="4"]{opacity:1;visibility:visible;transform:none}.tt[data-phase="4"] .tt-stop[data-go="4"] .tt-pin{background:#15283F;border-color:#15283F}.tt[data-phase="4"] .tt-stop[data-go="4"] .tt-name{color:#15283F;font-weight:800}
+.tt[data-phase="5"] .tt-dot{left:90%}.tt[data-phase="5"] .tt-fill{width:80%}.tt[data-phase="5"] .tt-c[data-ph="5"]{opacity:1;visibility:visible;transform:none}.tt[data-phase="5"] .tt-stop[data-go="5"] .tt-pin{background:#15283F;border-color:#15283F}.tt[data-phase="5"] .tt-stop[data-go="5"] .tt-name{color:#15283F;font-weight:800}
 @media (prefers-reduced-motion: reduce){.sf-flow,.sf-core,.wy-coral,.wy-yellow,.wy-glow{animation:none !important}.wy-glow{opacity:.22}}
 </style>
 <style>[hidden]{display:none !important}</style>
 </head>
 <body>
-<div style="font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif; color: #1F1D1A; background: #FAF8F4; min-height: 100vh">
+<div id="dc-root"><div style="font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif; color: #1F1D1A; background: #FAF8F4; min-height: 100vh">
 
 <header style="background: #FFFFFF; border-bottom: 1px solid #DDE3E8">
 <div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
 <a href="index.html" aria-label="waios home" style="text-decoration: none; font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</a>
 <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 500">
-<a href="why-waios.html" style="text-decoration: none; color: #2E3A45">Why WAIOS</a>
 <a href="wellbeing-measure.html" style="text-decoration: none; color: #2E3A45">Wellbeing Measure</a>
 <a href="how-we-work.html" style="text-decoration: none; color: #2E3A45">How We Work</a>
 <a href="approach.html" aria-current="page" style="text-decoration: underline; text-decoration-color: #EF6F6C; text-decoration-thickness: 1.5px; text-underline-offset: 6px; color: #15283F; font-weight: 600">Our Approach</a>
@@ -86,125 +111,23 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </div>
 </section>
 
-<section style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
-<div style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 40px">
-<div style="background: #15283F; border-radius: 12px; padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 24px">
-<div style="display: flex; flex-direction: column; gap: 10px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #F7C948">Top down</div><h2 style="margin: 0; font-size: 32px; line-height: 1.15; font-weight: 800; color: #F3EDE2">For leaders</h2><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #F3EDE2">See where burnout is building, understand why, and act on the causes rather than the symptoms.</p></div>
-<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px">
-<li style="display: flex; gap: 16px; align-items: flex-start"><div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(243,237,226,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg></div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 17px; font-weight: 700; color: #F3EDE2">Heat maps by team and department</div><div style="font-size: 15px; line-height: 1.55; color: #F3EDE2">Wellbeing, engagement and burnout risk in one view, tracked over time.</div></div></li>
-<li style="display: flex; gap: 16px; align-items: flex-start"><div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(243,237,226,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg></div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 17px; font-weight: 700; color: #F3EDE2">The drivers behind every score</div><div style="font-size: 15px; line-height: 1.55; color: #F3EDE2">Workload, recovery, connection and the other conditions that move the numbers.</div></div></li>
-<li style="display: flex; gap: 16px; align-items: flex-start"><div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(243,237,226,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 5h16v11h-9l-5 4v-4H4z"></path><path d="M8 9h8M8 12h5"></path></svg></div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 17px; font-weight: 700; color: #F3EDE2">Expert-led debriefs and strategy</div><div style="font-size: 15px; line-height: 1.55; color: #F3EDE2">Our founders and experts help leaders build a prevention plan and hold it in place.</div></div></li>
-<li style="display: flex; gap: 16px; align-items: flex-start"><div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(243,237,226,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg></div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 17px; font-weight: 700; color: #F3EDE2">Progress tied to performance</div><div style="font-size: 15px; line-height: 1.55; color: #F3EDE2">Show the effect on turnover, absence and goals, so the investment can be defended.</div></div></li>
-</ul>
+<section aria-label="Two tracks, one program" style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
+<div class="tt" data-phase="1" data-dc-keep="" style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">Running in parallel</span></div>
+<h2 style="margin: 0; font-size: clamp(32px, 2.4vw + 18px, 46px); line-height: 1.1; font-weight: 800; color: #15283F">Two tracks, one program.</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45">While leaders work on the system, employees work on what is in their control. At every phase, both get something real, and both show up in the next measure.</p>
 </div>
-<div style="background: #F1F4F6; border-radius: 12px; padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 24px">
-<div style="display: flex; flex-direction: column; gap: 10px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">Ground up</div><h2 style="margin: 0; font-size: 32px; line-height: 1.15; font-weight: 800; color: #15283F">For every employee</h2><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #2E3A45">Everyone who takes the measure gets something back, and the tools to use it at work.</p></div>
-<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px">
-<li style="display: flex; gap: 16px; align-items: flex-start"><div style="width: 44px; height: 44px; border-radius: 12px; background: #F1F4F6; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 17px; font-weight: 700; color: #15283F">Private personal results</div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">Their own picture of wellbeing and burnout risk, seen only by them.</div></div></li>
-<li style="display: flex; gap: 16px; align-items: flex-start"><div style="width: 44px; height: 44px; border-radius: 12px; background: #F1F4F6; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4zM20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"></path></svg></div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 17px; font-weight: 700; color: #15283F">A strategic guide</div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">A clear plan for their own wellbeing, grounded in the research on what prevents burnout.</div></div></li>
-<li style="display: flex; gap: 16px; align-items: flex-start"><div style="width: 44px; height: 44px; border-radius: 12px; background: #F1F4F6; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-2.4z"></path></svg></div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 17px; font-weight: 700; color: #15283F">Practical applications at work</div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">Small, specific changes they can make in their workday, their team and their conversations.</div></div></li>
-<li style="display: flex; gap: 16px; align-items: flex-start"><div style="width: 44px; height: 44px; border-radius: 12px; background: #F1F4F6; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 17px; font-weight: 700; color: #15283F">Access to experts</div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">Check-ins, accountability and expert support when they need it, in person or virtually.</div></div></li>
-</ul>
+<div style="display: flex; gap: 10px"><button type="button" class="tt-nav" data-step="-1" aria-label="Previous phase"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M15 6l-6 6 6 6"></path></svg></button><button type="button" class="tt-nav" data-step="1" aria-label="Next phase"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M9 6l6 6-6 6"></path></svg></button></div>
 </div>
+<div role="group" aria-label="Program phases">
+<div class="tt-track" aria-hidden="true"><div class="tt-line"></div><div class="tt-fill"></div><div class="tt-dot"></div></div>
+<div class="tt-stops"><button type="button" class="tt-stop" data-dc-keep="" data-go="1" aria-current="step"><span class="tt-pin" aria-hidden="true"></span><span class="tt-num">Phase 1</span><span class="tt-name">Launch</span></button><button type="button" class="tt-stop" data-dc-keep="" data-go="2" aria-current="false"><span class="tt-pin" aria-hidden="true"></span><span class="tt-num">Phase 2</span><span class="tt-name">Measure</span></button><button type="button" class="tt-stop" data-dc-keep="" data-go="3" aria-current="false"><span class="tt-pin" aria-hidden="true"></span><span class="tt-num">Phase 3</span><span class="tt-name">Map</span></button><button type="button" class="tt-stop" data-dc-keep="" data-go="4" aria-current="false"><span class="tt-pin" aria-hidden="true"></span><span class="tt-num">Phase 4</span><span class="tt-name">Debrief and act</span></button><button type="button" class="tt-stop" data-dc-keep="" data-go="5" aria-current="false"><span class="tt-pin" aria-hidden="true"></span><span class="tt-num">Phase 5</span><span class="tt-name">Re-measure</span></button></div>
 </div>
-</section>
-
-<section style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 40px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">Running in parallel</div><h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">Two tracks, one program.</h2><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">While leaders work on the system, employees work on what is in their control. At every phase, both get something real, and both show up in the next measure.</p></div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px">
-<div style="background: #15283F; border-radius: 12px; padding: 22px 24px; display: flex; align-items: center; gap: 16px"><div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(243,237,226,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg></div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #F7C948">Track 1 · Leaders</div><div style="font-size: 19px; font-weight: 800; color: #F3EDE2">Fix the system</div><div style="font-size: 14px; line-height: 1.5; color: #F3EDE2">Data, drivers and a prevention strategy.</div></div></div>
-<div style="background: #F7C948; border-radius: 12px; padding: 22px 24px; display: flex; align-items: center; gap: 16px"><div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(255,255,255,0.55); display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></div><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #15283F">Track 2 · Employees</div><div style="font-size: 19px; font-weight: 800; color: #15283F">Protect themselves now</div><div style="font-size: 14px; line-height: 1.5; color: #15283F">Personal insight and tools they can use right away.</div></div></div>
-</div>
-<div style="overflow: hidden">
-<ol aria-label="Program phases" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 24px 18px">
-<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: grid; grid-template-rows: 1fr auto 1fr; min-width: 0">
-<div style="background: #15283F; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #F7C948">Leaders</span></div><div style="font-size: 15px; line-height: 1.5; color: #F3EDE2">Set goals for the program and agree how results will be used.</div></div>
-<div style="position: relative; display: flex; flex-direction: column; align-items: center">
-<div aria-hidden="true" style="position: absolute; left: -9px; right: -9px; top: 50%; height: 2px; margin-top: -1px; background: #DDE3E8"></div>
-<div aria-hidden="true" style="width: 2px; height: 14px; background: #15283F"></div>
-<div style="position: relative; background: #FFFFFF; border: 1.5px solid #15283F; border-radius: 999px; padding: 6px 14px 6px 6px; display: flex; align-items: center; gap: 10px"><span style="width: 36px; height: 36px; border-radius: 50%; background: #F1F4F6; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 21V4"></path><path d="M5 4h12l-2.5 4 2.5 4H5"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">Phase 1</span><span style="font-size: 16px; font-weight: 800; color: #15283F">Launch</span></span></div>
-<div aria-hidden="true" style="width: 2px; height: 14px; background: #D9A91E"></div>
-</div>
-<div style="background: #F7C948; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Employees</span></div><div style="font-size: 15px; line-height: 1.5; color: #15283F">Hear why the measure matters and how their answers are protected.</div></div>
-</li>
-<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: grid; grid-template-rows: 1fr auto 1fr; min-width: 0">
-<div style="background: #15283F; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #F7C948">Leaders</span></div><div style="font-size: 15px; line-height: 1.5; color: #F3EDE2">Track participation as it comes in, without seeing any individual answers.</div></div>
-<div style="position: relative; display: flex; flex-direction: column; align-items: center">
-<div aria-hidden="true" style="position: absolute; left: -9px; right: -9px; top: 50%; height: 2px; margin-top: -1px; background: #DDE3E8"></div>
-<div aria-hidden="true" style="width: 2px; height: 14px; background: #15283F"></div>
-<div style="position: relative; background: #FFFFFF; border: 1.5px solid #15283F; border-radius: 999px; padding: 6px 14px 6px 6px; display: flex; align-items: center; gap: 10px"><span style="width: 36px; height: 36px; border-radius: 50%; background: #F1F4F6; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 3h6v3H9z"></path><path d="M9 13l2 2 4-4"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">Phase 2</span><span style="font-size: 16px; font-weight: 800; color: #15283F">Measure</span></span></div>
-<div aria-hidden="true" style="width: 2px; height: 14px; background: #D9A91E"></div>
-</div>
-<div style="background: #F7C948; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Employees</span></div><div style="font-size: 15px; line-height: 1.5; color: #15283F">Complete the measure privately in less than 10 minutes.</div></div>
-</li>
-<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: grid; grid-template-rows: 1fr auto 1fr; min-width: 0">
-<div style="background: #15283F; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #F7C948">Leaders</span></div><div style="font-size: 15px; line-height: 1.5; color: #F3EDE2">Receive heat maps by team and department, with the drivers behind each score.</div></div>
-<div style="position: relative; display: flex; flex-direction: column; align-items: center">
-<div aria-hidden="true" style="position: absolute; left: -9px; right: -9px; top: 50%; height: 2px; margin-top: -1px; background: #DDE3E8"></div>
-<div aria-hidden="true" style="width: 2px; height: 14px; background: #15283F"></div>
-<div style="position: relative; background: #FFFFFF; border: 1.5px solid #15283F; border-radius: 999px; padding: 6px 14px 6px 6px; display: flex; align-items: center; gap: 10px"><span style="width: 36px; height: 36px; border-radius: 50%; background: #F1F4F6; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"></path><path d="M9 4v14M15 6v14"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">Phase 3</span><span style="font-size: 16px; font-weight: 800; color: #15283F">Map</span></span></div>
-<div aria-hidden="true" style="width: 2px; height: 14px; background: #D9A91E"></div>
-</div>
-<div style="background: #F7C948; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Employees</span></div><div style="font-size: 15px; line-height: 1.5; color: #15283F">Receive personal results and a strategic guide.</div></div>
-</li>
-<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: grid; grid-template-rows: 1fr auto 1fr; min-width: 0">
-<div style="background: #15283F; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #F7C948">Leaders</span></div><div style="font-size: 15px; line-height: 1.5; color: #F3EDE2">Work through the results with our experts and put a prevention strategy in place.</div></div>
-<div style="position: relative; display: flex; flex-direction: column; align-items: center">
-<div aria-hidden="true" style="position: absolute; left: -9px; right: -9px; top: 50%; height: 2px; margin-top: -1px; background: #DDE3E8"></div>
-<div aria-hidden="true" style="width: 2px; height: 14px; background: #15283F"></div>
-<div style="position: relative; background: #FFFFFF; border: 1.5px solid #15283F; border-radius: 999px; padding: 6px 14px 6px 6px; display: flex; align-items: center; gap: 10px"><span style="width: 36px; height: 36px; border-radius: 50%; background: #F1F4F6; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg></span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">Phase 4</span><span style="font-size: 16px; font-weight: 800; color: #15283F">Debrief and act</span></span></div>
-<div aria-hidden="true" style="width: 2px; height: 14px; background: #D9A91E"></div>
-</div>
-<div style="background: #F7C948; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Employees</span></div><div style="font-size: 15px; line-height: 1.5; color: #15283F">Apply the guide in daily work, with check-ins and support.</div></div>
-</li>
-<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: grid; grid-template-rows: 1fr auto 1fr; min-width: 0">
-<div style="background: #15283F; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #F7C948">Leaders</span></div><div style="font-size: 15px; line-height: 1.5; color: #F3EDE2">See what changed, tied to performance.</div></div>
-<div style="position: relative; display: flex; flex-direction: column; align-items: center">
-<div aria-hidden="true" style="position: absolute; left: -9px; right: -9px; top: 50%; height: 2px; margin-top: -1px; background: #DDE3E8"></div>
-<div aria-hidden="true" style="width: 2px; height: 14px; background: #15283F"></div>
-<div style="position: relative; background: #FFFFFF; border: 1.5px solid #15283F; border-radius: 999px; padding: 6px 14px 6px 6px; display: flex; align-items: center; gap: 10px"><span style="width: 36px; height: 36px; border-radius: 50%; background: #F1F4F6; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M20 11a8 8 0 0 0-14.9-3"></path><path d="M4 4v4h4"></path><path d="M4 13a8 8 0 0 0 14.9 3"></path><path d="M20 20v-4h-4"></path></svg></span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">Phase 5</span><span style="font-size: 16px; font-weight: 800; color: #15283F">Re-measure</span></span></div>
-<div aria-hidden="true" style="width: 2px; height: 14px; background: #D9A91E"></div>
-</div>
-<div style="background: #F7C948; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Employees</span></div><div style="font-size: 15px; line-height: 1.5; color: #15283F">See their own progress and set the next focus.</div></div>
-</li>
-</ol>
-</div>
-</section>
-
-<section style="background: #F1F4F6; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
-<div style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 40px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">One insight, two directions</div><h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">When recovery is the problem, both sides get a plan.</h2><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">Here is what that looks like when the measure shows recovery is driving burnout on a team.</p></div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px; align-items: stretch">
-
-<article aria-label="Example leader view" style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column">
-<div style="background: #15283F; padding: 16px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #F7C948">Leader view</span><span style="font-size: 13px; color: #F3EDE2">Customer Operations</span></div>
-<div style="padding: 24px 22px; display: flex; flex-direction: column; gap: 18px">
-<div style="font-size: 13px; font-weight: 600; color: #5C7285">Top drivers of burnout risk</div>
-<div style="display: flex; flex-direction: column; gap: 12px">
-<div style="display: flex; flex-direction: column; gap: 6px"><div style="display: flex; justify-content: space-between; font-size: 14px; color: #15283F"><span style="font-weight: 700">Recovery</span><span>27</span></div><div style="height: 10px; background: #F1F4F6; border-radius: 5px"><div style="width: 27%; height: 10px; background: #EF6F6C; border-radius: 5px"></div></div></div>
-<div style="display: flex; flex-direction: column; gap: 6px"><div style="display: flex; justify-content: space-between; font-size: 14px; color: #15283F"><span style="font-weight: 700">Workload</span><span>29</span></div><div style="height: 10px; background: #F1F4F6; border-radius: 5px"><div style="width: 29%; height: 10px; background: #EF6F6C; border-radius: 5px"></div></div></div>
-<div style="display: flex; flex-direction: column; gap: 6px"><div style="display: flex; justify-content: space-between; font-size: 14px; color: #15283F"><span style="font-weight: 700">Recognition</span><span>40</span></div><div style="height: 10px; background: #F1F4F6; border-radius: 5px"><div style="width: 40%; height: 10px; background: #F39C5A; border-radius: 5px"></div></div></div>
-</div>
-<div style="border-top: 1px solid #DDE3E8; padding-top: 16px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #5C7285">Strategy</div><div style="font-size: 15px; line-height: 1.55; color: #2E3A45">Protect recovery time across shifts, rebalance peak-hour staffing, and review progress with a WAIOS™ expert every two weeks.</div></div>
-</div>
-</article>
-
-<article aria-label="Example employee guide" style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column">
-<div style="background: #F7C948; padding: 16px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Your wellbeing guide</span><span style="font-size: 13px; color: #15283F">Private to you</span></div>
-<div style="padding: 24px 22px; display: flex; flex-direction: column; gap: 18px">
-<div style="display: flex; flex-wrap: wrap; gap: 10px">
-<div style="flex: 1 1 140px; background: #F1F4F6; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #5C7285">Your strength</span><span style="font-size: 16px; font-weight: 800; color: #15283F">Connection</span></div>
-<div style="flex: 1 1 140px; background: #FBE1E0; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #2E3A45">Your focus this month</span><span style="font-size: 16px; font-weight: 800; color: #15283F">Recovery</span></div>
-</div>
-<div style="font-size: 13px; font-weight: 600; color: #5C7285">Try this at work</div>
-<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.5; color: #2E3A45"><span style="width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid #2E3A45; font-size: 13px; font-weight: 700; color: #15283F; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">1</span>Take a real break between back-to-back calls, away from the screen.</li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.5; color: #2E3A45"><span style="width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid #2E3A45; font-size: 13px; font-weight: 700; color: #15283F; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">2</span>Use a short end-of-day shutdown routine to close out work.</li>
-<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.5; color: #2E3A45"><span style="width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid #2E3A45; font-size: 13px; font-weight: 700; color: #15283F; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">3</span>Raise workload with your manager using the conversation guide.</li>
-</ol>
-</div>
-</article>
-
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<div style="flex: 1 1 calc((760px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-top: 4px solid #15283F; border-radius: 12px; padding: clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 14px"><div style="display: flex; align-items: center; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 10px; background: #F1F4F6; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg></span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #5C7285">Top down</span><span style="font-size: 19px; font-weight: 800; color: #15283F">For leaders</span></span></div><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C7285">See where burnout is building, understand why, and act on the causes rather than the symptoms.</p><div style="height: 1px; background: #DDE3E8; margin: 4px 0"></div><div class="tt-stack" aria-live="polite"><div class="tt-c" data-ph="1"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 1 · Launch</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Set goals for the program and agree how results will be used.</div></div><div class="tt-c" data-ph="2"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 2 · Measure</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Track participation as it comes in, without seeing any individual answers.</div></div><div class="tt-c" data-ph="3"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 3 · Map</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Receive heat maps by team and department, with the drivers behind each score.</div><div style="border: 1px solid #DDE3E8; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF"><div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C7285"><span>Leader view</span><span style="letter-spacing: 0; text-transform: none; font-weight: 600">Customer Operations</span></div><div style="display: flex; flex-direction: column; gap: 5px"><div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #2E3A45"><span>Recovery</span><span>27</span></div><div style="height: 8px; background: #F1F4F6; border-radius: 4px; overflow: hidden"><div style="width: 27%; height: 100%; background: #EF6F6C; border-radius: 4px"></div></div></div><div style="display: flex; flex-direction: column; gap: 5px"><div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #2E3A45"><span>Workload</span><span>29</span></div><div style="height: 8px; background: #F1F4F6; border-radius: 4px; overflow: hidden"><div style="width: 29%; height: 100%; background: #EF6F6C; border-radius: 4px"></div></div></div><div style="display: flex; flex-direction: column; gap: 5px"><div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #2E3A45"><span>Recognition</span><span>40</span></div><div style="height: 8px; background: #F1F4F6; border-radius: 4px; overflow: hidden"><div style="width: 40%; height: 100%; background: #F39C5A; border-radius: 4px"></div></div></div></div><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px"><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Heat maps by team and department.</strong> Wellbeing, engagement and burnout risk in one view, tracked over time.</span></li><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">The drivers behind every score.</strong> Workload, recovery, connection and the other conditions that move the numbers.</span></li></ul></div><div class="tt-c" data-ph="4"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 4 · Debrief and act</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Work through the results with our experts and put a prevention strategy in place.</div><div style="border-left: 3px solid #F7C948; background: #FAF8F4; border-radius: 0 8px 8px 0; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C7285">Strategy for Customer Operations</span><span style="font-size: 15px; line-height: 1.5; color: #2E3A45">Protect recovery time across shifts, rebalance peak-hour staffing, and review progress with a WAIOS™ expert every two weeks.</span></div><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px"><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Expert-led debriefs and strategy.</strong> Our founders and experts help leaders build a prevention plan and hold it in place.</span></li></ul></div><div class="tt-c" data-ph="5"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 5 · Re-measure</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">See what changed, tied to performance.</div><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px"><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Progress tied to performance.</strong> Show the effect on turnover, absence and goals, so the investment can be defended.</span></li></ul></div></div></div>
+<div style="flex: 1 1 calc((760px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-top: 4px solid #F7C948; border-radius: 12px; padding: clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 14px"><div style="display: flex; align-items: center; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 10px; background: #FEF6DC; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path><circle cx="17" cy="9" r="2.5"></circle><path d="M16 14.2c3 .1 5.5 1.9 5.5 5.1"></path></svg></span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #5C7285">Ground up</span><span style="font-size: 19px; font-weight: 800; color: #15283F">For every employee</span></span></div><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C7285">Everyone who takes the measure gets something back, and the tools to use it at work.</p><div style="height: 1px; background: #DDE3E8; margin: 4px 0"></div><div class="tt-stack" aria-live="polite"><div class="tt-c" data-ph="1"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 1 · Launch</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Hear why the measure matters and how their answers are protected.</div></div><div class="tt-c" data-ph="2"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 2 · Measure</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Complete the measure privately in less than 10 minutes.</div><div style="display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.5; color: #2E3A45"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg><span>Private by design. Leaders only ever see results for groups that meet the minimum reporting threshold.</span></div></div><div class="tt-c" data-ph="3"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 3 · Map</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Receive personal results and a strategic guide.</div><div style="border: 1px solid #DDE3E8; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF"><div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C7285"><span>Your wellbeing guide</span><span style="letter-spacing: 0; text-transform: none; font-weight: 600">Private to you</span></div><div style="display: flex; flex-wrap: wrap; gap: 8px"><div style="flex: 1 1 120px; background: #FAF8F4; border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #5C7285">Your strength</span><span style="font-size: 16px; font-weight: 800; color: #15283F">Connection</span></div><div style="flex: 1 1 120px; background: #FDECEB; border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #5C7285">Your focus this month</span><span style="font-size: 16px; font-weight: 800; color: #15283F">Recovery</span></div></div></div><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px"><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Private personal results.</strong> Their own picture of wellbeing and burnout risk, seen only by them.</span></li><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">A strategic guide.</strong> A clear plan for their own wellbeing, grounded in the research on what prevents burnout.</span></li></ul></div><div class="tt-c" data-ph="4"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 4 · Debrief and act</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Apply the guide in daily work, with check-ins and support.</div><div style="border-left: 3px solid #F7C948; background: #FAF8F4; border-radius: 0 8px 8px 0; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C7285">Try this at work</span><span style="display: flex; gap: 10px; font-size: 15px; line-height: 1.45; color: #2E3A45"><span style="width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid #15283F; font-size: 12px; font-weight: 700; color: #15283F; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">1</span>Take a real break between back-to-back calls, away from the screen.</span><span style="display: flex; gap: 10px; font-size: 15px; line-height: 1.45; color: #2E3A45"><span style="width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid #15283F; font-size: 12px; font-weight: 700; color: #15283F; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">2</span>Use a short end-of-day shutdown routine to close out work.</span><span style="display: flex; gap: 10px; font-size: 15px; line-height: 1.45; color: #2E3A45"><span style="width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid #15283F; font-size: 12px; font-weight: 700; color: #15283F; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">3</span>Raise workload with your manager using the conversation guide.</span></div><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px"><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Practical applications at work.</strong> Small, specific changes they can make in their workday, their team and their conversations.</span></li><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Access to experts.</strong> Check-ins, accountability and expert support when they need it, in person or virtually.</span></li></ul></div><div class="tt-c" data-ph="5"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 5 · Re-measure</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">See their own progress and set the next focus.</div></div></div></div>
 </div>
 <p style="margin: 0; font-size: 13px; color: #5C7285">Illustrative example. Employee guides are private, and leaders only ever see results for groups that meet the minimum reporting threshold.</p>
 </div>
@@ -248,6 +171,302 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </div>
 </section>
 
+<section id="risk-check" aria-label="Team burnout risk check" style="background: #FAF8F4; padding: 96px clamp(16px, 4vw, 32px)">
+<div style="max-width: 960px; margin: 0 auto">
+<section aria-labelledby="risk-title" style="max-width: 960px; margin: 0 auto; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 14px; overflow: hidden">
+
+<div style="padding: 24px clamp(24px, 5vw, 48px); border-bottom: 1px solid #DDE3E8; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%); flex-shrink: 0"></span><span id="risk-title" style="font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #5C7285">Team burnout risk check</span></div>
+<div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
+</div>
+
+
+<div style="padding: clamp(28px, 6vw, 64px) clamp(24px, 5vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; font-weight: 800; color: #15283F">Is your team at risk of burnout?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #2E3A45">Seven quick questions about the conditions your team works in. It takes about two minutes, and you’ll see your result right away.</p>
+<div style="padding-top: 6px"><button type="button" style="font: inherit; font-weight: 700; font-size: 17px; background: #EF6F6C; color: #15283F; border: 0; border-radius: 6px; padding: 15px 28px; min-height: 52px; cursor: pointer">Start the check</button></div>
+<div style="font-size: 13px; color: #5C7285">For managers and team leads. No sign-up needed to see your result.</div>
+</div>
+<div aria-hidden="true" style="display: flex; flex-direction: column; gap: 14px; align-items: center">
+<div style="display: flex; gap: 14px; align-items: flex-end">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #F7C948"></span>
+<span style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 80%, #EF6F6C 80%)"></span>
+<span style="width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>
+<span style="width: 92px; height: 92px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 40%, #EF6F6C 40%)"></span>
+<span style="width: 128px; height: 128px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 15%, #EF6F6C 15%)"></span>
+</div>
+<div style="font-size: 13px; color: #5C7285">Burnout builds slowly. Catch it early.</div>
+</div>
+</div>
+
+
+
+
+
+
+<div style="border-top: 1px solid #DDE3E8; padding: 16px clamp(24px, 5vw, 48px); font-size: 12px; line-height: 1.5; color: #5C7285">A quick check based on what you see as a manager. It isn’t a diagnosis, and it doesn’t replace hearing from your team directly.</div>
+</section>
+</div>
+</section>
+
+<section style="background: #15283F">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #EF6F6C">Work with us</div>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #F3EDE2">Ready to start? We’d love to hear what’s going on in your organization.</h2>
+</div>
+<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px">Tell us what’s going on</a>
+</div>
+</section>
+
+<footer style="background: #FFFFFF; border-top: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; font-size: 14px; color: #5C7285">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
+<div>WAIOS, P.B.C. · A women-founded public benefit corporation</div>
+</div>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 24px">
+<a href="wellbeing-measure.html" style="color: #2E3A45; text-decoration: none">Wellbeing Measure</a>
+<a href="how-we-work.html" style="color: #2E3A45; text-decoration: none">How We Work</a>
+<a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
+<a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
+<a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
+<a href="mailto:hello@waios.com" style="color: #2E3A45; text-decoration: none">hello@waios.com</a>
+</nav>
+</div>
+</footer>
+
+</div></div>
+<template id="dc-tpl"><div style="font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif; color: #1F1D1A; background: #FAF8F4; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="index.html" aria-label="waios home" style="text-decoration: none; font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 500">
+<a href="wellbeing-measure.html" style="text-decoration: none; color: #2E3A45">Wellbeing Measure</a>
+<a href="how-we-work.html" style="text-decoration: none; color: #2E3A45">How We Work</a>
+<a href="approach.html" aria-current="page" style="text-decoration: underline; text-decoration-color: #EF6F6C; text-decoration-thickness: 1.5px; text-underline-offset: 6px; color: #15283F; font-weight: 600">Our Approach</a>
+<a href="about.html" style="text-decoration: none; color: #2E3A45">About</a>
+<a href="contact.html" style="text-decoration: none; color: #2E3A45">Contact</a>
+<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; padding: 12px 20px; border-radius: 6px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Get in touch</a>
+</nav>
+</div>
+</header>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px) 64px; display: flex; flex-direction: column; gap: 22px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">Our approach</div>
+<h1 style="margin: 0; font-size: 54px; line-height: 1.08; font-weight: 800; color: #15283F; max-width: 960px">Support from the top down and the ground up, at the same time.</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45; max-width: 800px">Leaders get the data and the strategy to fix what causes burnout. Every employee gets a practical guide to protect their own wellbeing at work. Nobody has to wait for the system to change before they get help.</p>
+</section>
+
+<section aria-label="How support flows" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px) 96px">
+<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 14px; padding: clamp(24px, 4vw, 44px) clamp(16px, 4vw, 44px); display: flex; flex-direction: column; align-items: center">
+<div style="width: 100%; max-width: 720px; background: #15283F; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 48px), 50% 100%, 0 calc(100% - 48px)); padding: 30px 28px 80px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<div style="width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(243,237,226,0.12)"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg></div>
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #F7C948">Top down · Leadership</div>
+<div style="font-size: 21px; font-weight: 800; line-height: 1.25; color: #F3EDE2">Data, drivers and a prevention strategy</div>
+<div style="font-size: 15px; line-height: 1.5; color: #F3EDE2; max-width: 460px">Fix the conditions that cause burnout across teams and departments.</div>
+</div>
+<div class="sf-flow" aria-hidden="true" style="--c: #15283F"></div>
+<div class="sf-core" style="width: 264px; height: 264px; max-width: 100%; border-radius: 50%; background: #F7C948; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 30px; box-sizing: border-box">
+<div style="font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #2E3A45">One shared picture</div>
+<div style="font-size: 21px; font-weight: 800; line-height: 1.2; color: #15283F">How your people are really doing</div>
+<div style="font-size: 13px; line-height: 1.45; color: #2E3A45">The person, their life, their work and the world around them</div>
+</div>
+<div class="sf-flow sf-up" aria-hidden="true" style="--c: #5C7285"></div>
+<div style="width: 100%; max-width: 720px; background: #EEF1F4; clip-path: polygon(50% 0, 100% 48px, 100% 100%, 0 100%, 0 48px); padding: 80px 28px 30px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<div style="width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #FFFFFF"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path><circle cx="17" cy="9" r="2.5"></circle><path d="M16 14.2c3 .1 5.5 1.9 5.5 5.1"></path></svg></div>
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Ground up · Every employee</div>
+<div style="font-size: 21px; font-weight: 800; line-height: 1.25; color: #15283F">A personal guide and practical tools</div>
+<div style="font-size: 15px; line-height: 1.5; color: #2E3A45; max-width: 460px">Manage and prevent burnout day to day, while the bigger fixes take hold.</div>
+</div>
+</div>
+</section>
+
+<section aria-label="Two tracks, one program" style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
+<div class="tt" data-phase="1" data-dc-keep="" ref="{{ttRef}}" style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">Running in parallel</span></div>
+<h2 style="margin: 0; font-size: clamp(32px, 2.4vw + 18px, 46px); line-height: 1.1; font-weight: 800; color: #15283F">Two tracks, one program.</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45">While leaders work on the system, employees work on what is in their control. At every phase, both get something real, and both show up in the next measure.</p>
+</div>
+<div style="display: flex; gap: 10px"><button type="button" class="tt-nav" data-step="-1" aria-label="Previous phase"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M15 6l-6 6 6 6"></path></svg></button><button type="button" class="tt-nav" data-step="1" aria-label="Next phase"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+</div>
+<div role="group" aria-label="Program phases">
+<div class="tt-track" aria-hidden="true"><div class="tt-line"></div><div class="tt-fill"></div><div class="tt-dot"></div></div>
+<div class="tt-stops"><button type="button" class="tt-stop" data-dc-keep="" data-go="1" aria-current="step"><span class="tt-pin" aria-hidden="true"></span><span class="tt-num">Phase 1</span><span class="tt-name">Launch</span></button><button type="button" class="tt-stop" data-dc-keep="" data-go="2" aria-current="false"><span class="tt-pin" aria-hidden="true"></span><span class="tt-num">Phase 2</span><span class="tt-name">Measure</span></button><button type="button" class="tt-stop" data-dc-keep="" data-go="3" aria-current="false"><span class="tt-pin" aria-hidden="true"></span><span class="tt-num">Phase 3</span><span class="tt-name">Map</span></button><button type="button" class="tt-stop" data-dc-keep="" data-go="4" aria-current="false"><span class="tt-pin" aria-hidden="true"></span><span class="tt-num">Phase 4</span><span class="tt-name">Debrief and act</span></button><button type="button" class="tt-stop" data-dc-keep="" data-go="5" aria-current="false"><span class="tt-pin" aria-hidden="true"></span><span class="tt-num">Phase 5</span><span class="tt-name">Re-measure</span></button></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<div style="flex: 1 1 calc((760px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-top: 4px solid #15283F; border-radius: 12px; padding: clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 14px"><div style="display: flex; align-items: center; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 10px; background: #F1F4F6; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg></span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #5C7285">Top down</span><span style="font-size: 19px; font-weight: 800; color: #15283F">For leaders</span></span></div><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C7285">See where burnout is building, understand why, and act on the causes rather than the symptoms.</p><div style="height: 1px; background: #DDE3E8; margin: 4px 0"></div><div class="tt-stack" aria-live="polite"><div class="tt-c" data-ph="1"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 1 · Launch</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Set goals for the program and agree how results will be used.</div></div><div class="tt-c" data-ph="2"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 2 · Measure</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Track participation as it comes in, without seeing any individual answers.</div></div><div class="tt-c" data-ph="3"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 3 · Map</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Receive heat maps by team and department, with the drivers behind each score.</div><div style="border: 1px solid #DDE3E8; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF"><div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C7285"><span>Leader view</span><span style="letter-spacing: 0; text-transform: none; font-weight: 600">Customer Operations</span></div><div style="display: flex; flex-direction: column; gap: 5px"><div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #2E3A45"><span>Recovery</span><span>27</span></div><div style="height: 8px; background: #F1F4F6; border-radius: 4px; overflow: hidden"><div style="width: 27%; height: 100%; background: #EF6F6C; border-radius: 4px"></div></div></div><div style="display: flex; flex-direction: column; gap: 5px"><div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #2E3A45"><span>Workload</span><span>29</span></div><div style="height: 8px; background: #F1F4F6; border-radius: 4px; overflow: hidden"><div style="width: 29%; height: 100%; background: #EF6F6C; border-radius: 4px"></div></div></div><div style="display: flex; flex-direction: column; gap: 5px"><div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #2E3A45"><span>Recognition</span><span>40</span></div><div style="height: 8px; background: #F1F4F6; border-radius: 4px; overflow: hidden"><div style="width: 40%; height: 100%; background: #F39C5A; border-radius: 4px"></div></div></div></div><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px"><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Heat maps by team and department.</strong> Wellbeing, engagement and burnout risk in one view, tracked over time.</span></li><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">The drivers behind every score.</strong> Workload, recovery, connection and the other conditions that move the numbers.</span></li></ul></div><div class="tt-c" data-ph="4"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 4 · Debrief and act</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Work through the results with our experts and put a prevention strategy in place.</div><div style="border-left: 3px solid #F7C948; background: #FAF8F4; border-radius: 0 8px 8px 0; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C7285">Strategy for Customer Operations</span><span style="font-size: 15px; line-height: 1.5; color: #2E3A45">Protect recovery time across shifts, rebalance peak-hour staffing, and review progress with a WAIOS™ expert every two weeks.</span></div><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px"><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Expert-led debriefs and strategy.</strong> Our founders and experts help leaders build a prevention plan and hold it in place.</span></li></ul></div><div class="tt-c" data-ph="5"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 5 · Re-measure</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">See what changed, tied to performance.</div><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px"><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Progress tied to performance.</strong> Show the effect on turnover, absence and goals, so the investment can be defended.</span></li></ul></div></div></div>
+<div style="flex: 1 1 calc((760px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-top: 4px solid #F7C948; border-radius: 12px; padding: clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 14px"><div style="display: flex; align-items: center; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 10px; background: #FEF6DC; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path><circle cx="17" cy="9" r="2.5"></circle><path d="M16 14.2c3 .1 5.5 1.9 5.5 5.1"></path></svg></span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #5C7285">Ground up</span><span style="font-size: 19px; font-weight: 800; color: #15283F">For every employee</span></span></div><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C7285">Everyone who takes the measure gets something back, and the tools to use it at work.</p><div style="height: 1px; background: #DDE3E8; margin: 4px 0"></div><div class="tt-stack" aria-live="polite"><div class="tt-c" data-ph="1"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 1 · Launch</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Hear why the measure matters and how their answers are protected.</div></div><div class="tt-c" data-ph="2"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 2 · Measure</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Complete the measure privately in less than 10 minutes.</div><div style="display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.5; color: #2E3A45"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg><span>Private by design. Leaders only ever see results for groups that meet the minimum reporting threshold.</span></div></div><div class="tt-c" data-ph="3"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 3 · Map</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Receive personal results and a strategic guide.</div><div style="border: 1px solid #DDE3E8; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF"><div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C7285"><span>Your wellbeing guide</span><span style="letter-spacing: 0; text-transform: none; font-weight: 600">Private to you</span></div><div style="display: flex; flex-wrap: wrap; gap: 8px"><div style="flex: 1 1 120px; background: #FAF8F4; border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #5C7285">Your strength</span><span style="font-size: 16px; font-weight: 800; color: #15283F">Connection</span></div><div style="flex: 1 1 120px; background: #FDECEB; border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #5C7285">Your focus this month</span><span style="font-size: 16px; font-weight: 800; color: #15283F">Recovery</span></div></div></div><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px"><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Private personal results.</strong> Their own picture of wellbeing and burnout risk, seen only by them.</span></li><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">A strategic guide.</strong> A clear plan for their own wellbeing, grounded in the research on what prevents burnout.</span></li></ul></div><div class="tt-c" data-ph="4"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 4 · Debrief and act</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">Apply the guide in daily work, with check-ins and support.</div><div style="border-left: 3px solid #F7C948; background: #FAF8F4; border-radius: 0 8px 8px 0; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5C7285">Try this at work</span><span style="display: flex; gap: 10px; font-size: 15px; line-height: 1.45; color: #2E3A45"><span style="width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid #15283F; font-size: 12px; font-weight: 700; color: #15283F; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">1</span>Take a real break between back-to-back calls, away from the screen.</span><span style="display: flex; gap: 10px; font-size: 15px; line-height: 1.45; color: #2E3A45"><span style="width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid #15283F; font-size: 12px; font-weight: 700; color: #15283F; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">2</span>Use a short end-of-day shutdown routine to close out work.</span><span style="display: flex; gap: 10px; font-size: 15px; line-height: 1.45; color: #2E3A45"><span style="width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid #15283F; font-size: 12px; font-weight: 700; color: #15283F; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">3</span>Raise workload with your manager using the conversation guide.</span></div><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px"><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Practical applications at work.</strong> Small, specific changes they can make in their workday, their team and their conversations.</span></li><li style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span style="font-size: 15px; line-height: 1.5; color: #2E3A45"><strong style="color: #15283F">Access to experts.</strong> Check-ins, accountability and expert support when they need it, in person or virtually.</span></li></ul></div><div class="tt-c" data-ph="5"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Phase 5 · Re-measure</div><div style="font-size: 20px; line-height: 1.35; font-weight: 800; color: #15283F">See their own progress and set the next focus.</div></div></div></div>
+</div>
+<p style="margin: 0; font-size: 13px; color: #5C7285">Illustrative example. Employee guides are private, and leaders only ever see results for groups that meet the minimum reporting threshold.</p>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 48px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">Why both</span></div>
+<h2 style="margin: 0; font-size: 36px; line-height: 1.2; font-weight: 800; color: #15283F">Burnout is a systemic problem. Fixing the root causes takes time. People need support so that change can happen.</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-direction: column; gap: 6px; border-top: 3px solid #2E3A45; padding-top: 16px"><div style="font-size: 18px; font-weight: 700; color: #15283F">Top down alone is too slow</div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">Strategy and structural change take months. Employees struggling today cannot wait for them.</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px; border-top: 3px solid #2E3A45; padding-top: 16px"><div style="font-size: 18px; font-weight: 700; color: #15283F">Bottom up alone puts it on the individual</div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">Self-care cannot fix a broken workload. Without leadership action, the causes stay in place.</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px; border-top: 3px solid #EF6F6C; padding-top: 16px"><div style="font-size: 18px; font-weight: 700; color: #15283F">Together, it holds</div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">Leaders change the conditions, employees build the habits, and the next measure shows both.</div></div>
+</div>
+</section>
+
+<section aria-label="The WAIOS way" style="background: #FFFFFF; border-top: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; max-width: 840px; margin: 0 auto">
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">The WAIOS way</span></div>
+<h2 style="margin: 0; font-size: clamp(32px, 2.4vw + 18px, 46px); line-height: 1.1; font-weight: 800; color: #15283F; text-wrap: balance">Both sides of wellbeing, brought together.</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45">Most organizations work on one end of the wellbeing spectrum. They invest in wellness and the things they hope will help people thrive, while the hygiene factors and root causes of burnout stay in place. The WAIOS way brings both sides together, so you see the whole story: <span style="font-weight: 700; background: linear-gradient(to top, #F7C948 42%, transparent 42%)">what is pulling your people back, and what will drive them forward.</span></p>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 24px">
+<div style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 10px; border-top: 4px solid #EF6F6C"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #5C7285">Preventing burnout</div><div style="font-size: 22px; font-weight: 800; color: #15283F">What pulls people back</div><div style="font-size: 16px; line-height: 1.55; color: #2E3A45">The root causes most programs never reach: workload, control, reward and recognition, community, fairness and values. Left in place, they keep wellbeing from taking hold.</div></div>
+<figure style="margin: 0 auto; flex: 0 0 auto; align-self: center; display: flex; flex-direction: column; align-items: center; gap: 6px"><svg viewBox="0 0 220 220" role="img" aria-label="Two halves of the WAIOS dot, one coral and one yellow, come together to form one full dot" style="width: 220px; height: 220px; display: block; overflow: visible">
+<defs><clipPath id="wyTop"><rect x="0" y="0" width="220" height="131"></rect></clipPath><clipPath id="wyBot"><rect x="0" y="131" width="220" height="89"></rect></clipPath></defs>
+<circle class="wy-glow" cx="110" cy="110" r="94" fill="#F7C948" opacity="0.22"></circle>
+<g class="wy-half wy-coral"><circle cx="110" cy="110" r="70" fill="#EF6F6C" clip-path="url(#wyBot)"></circle></g>
+<g class="wy-half wy-yellow"><circle cx="110" cy="110" r="70" fill="#F7C948" clip-path="url(#wyTop)"></circle></g>
+</svg><figcaption style="font-size: 14px; font-weight: 700; color: #15283F">Together: the WAIOS way</figcaption></figure>
+<div style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 10px; border-top: 4px solid #F7C948"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #5C7285">Helping people thrive</div><div style="font-size: 22px; font-weight: 800; color: #15283F">What drives people forward</div><div style="font-size: 16px; line-height: 1.55; color: #2E3A45">Engagement, energy, connection and a life that is going well. This is where most wellness programs put their effort.</div></div>
+</div>
+<div style="width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px" aria-label="The wellbeing spectrum">
+<div style="display: flex; justify-content: flex-end"><div style="width: 40%; display: flex; flex-direction: column; gap: 6px; align-items: center"><span style="font-size: 13px; font-weight: 600; color: #5C7285; text-align: center">Where most programs focus</span><span aria-hidden="true" style="width: 100%; height: 10px; border: 2px solid #C9D3DC; border-bottom: 0; box-sizing: border-box"></span></div></div>
+<div aria-hidden="true" style="height: 16px; border-radius: 999px; background: linear-gradient(to right, #EF6F6C, #F3EDE2 50%, #F7C948)"></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; font-size: 13px; font-weight: 600; color: #2E3A45"><span>Root causes of burnout</span><span style="text-align: right">Helping people thrive</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><span aria-hidden="true" style="width: 100%; height: 12px; border: 2px solid #15283F; border-top: 0; box-sizing: border-box"></span><span style="display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 800; color: #15283F"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>The WAIOS way covers the whole spectrum</span></div>
+</div>
+</div>
+</section>
+
+<section id="risk-check" aria-label="Team burnout risk check" style="background: #FAF8F4; padding: 96px clamp(16px, 4vw, 32px)">
+<div style="max-width: 960px; margin: 0 auto">
+<section aria-labelledby="risk-title" style="max-width: 960px; margin: 0 auto; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 14px; overflow: hidden">
+
+<div style="padding: 24px clamp(24px, 5vw, 48px); border-bottom: 1px solid #DDE3E8; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%); flex-shrink: 0"></span><span id="risk-title" style="font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #5C7285">Team burnout risk check</span></div>
+<div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
+</div>
+
+<sc-if value="{{ risk.isIntro }}" hint-placeholder-val="{{ true }}">
+<div style="padding: clamp(28px, 6vw, 64px) clamp(24px, 5vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; font-weight: 800; color: #15283F">Is your team at risk of burnout?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #2E3A45">Seven quick questions about the conditions your team works in. It takes about two minutes, and you’ll see your result right away.</p>
+<div style="padding-top: 6px"><button type="button" onClick="{{ risk.start }}" style="font: inherit; font-weight: 700; font-size: 17px; background: #EF6F6C; color: #15283F; border: 0; border-radius: 6px; padding: 15px 28px; min-height: 52px; cursor: pointer">Start the check</button></div>
+<div style="font-size: 13px; color: #5C7285">For managers and team leads. No sign-up needed to see your result.</div>
+</div>
+<div aria-hidden="true" style="display: flex; flex-direction: column; gap: 14px; align-items: center">
+<div style="display: flex; gap: 14px; align-items: flex-end">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #F7C948"></span>
+<span style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 80%, #EF6F6C 80%)"></span>
+<span style="width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>
+<span style="width: 92px; height: 92px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 40%, #EF6F6C 40%)"></span>
+<span style="width: 128px; height: 128px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 15%, #EF6F6C 15%)"></span>
+</div>
+<div style="font-size: 13px; color: #5C7285">Burnout builds slowly. Catch it early.</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ risk.isQuestion }}" hint-placeholder-val="{{ false }}">
+<div style="padding: clamp(28px, 6vw, 56px) clamp(24px, 5vw, 48px); display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; gap: 10px; align-items: center" aria-hidden="true">
+<sc-for list="{{ risk.progress }}" as="d" hint-placeholder-count="7"><span style="{{ d.style }}"></span></sc-for>
+</div>
+<div style="font-size: 14px; font-weight: 600; color: #5C7285">Question {{ risk.qNum }} of {{ risk.qTotal }}</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 16px; font-weight: 600; color: #5C7285">How many people on your team…</div>
+<h3 aria-live="polite" style="margin: 0; font-size: clamp(24px, 4vw, 34px); line-height: 1.2; font-weight: 800; color: #15283F">{{ risk.qText }}</h3>
+</div>
+<div role="group" aria-label="Your answer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{ risk.options }}" as="o" hint-placeholder-count="4">
+<button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="{{ o.style }}">{{ o.label }}</button>
+</sc-for>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<sc-if value="{{ risk.canBack }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ risk.back }}" style="font: inherit; font-size: 15px; font-weight: 600; color: #15283F; background: none; border: 0; padding: 12px 0; min-height: 44px; cursor: pointer; text-decoration: underline; text-decoration-color: #EF6F6C; text-underline-offset: 4px">Back</button></sc-if>
+<div style="font-size: 13px; color: #5C7285">Go with your gut. Your answers stay on this page.</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ risk.isResult }}" hint-placeholder-val="{{ false }}">
+<div style="padding: clamp(28px, 6vw, 56px) clamp(24px, 5vw, 48px); display: flex; flex-direction: column; gap: 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 14px">
+<div role="img" aria-label="{{ risk.gaugeLabel }}" style="{{ risk.gauge }}"></div>
+<div style="display: flex; align-items: baseline; gap: 6px"><span style="font-size: 44px; font-weight: 800; color: #15283F; line-height: 1">{{ risk.risk }}</span><span style="font-size: 16px; font-weight: 600; color: #5C7285">/ 100 risk</span></div>
+<div style="display: flex; gap: 18px; font-size: 13px; color: #2E3A45"><span style="display: inline-flex; gap: 6px; align-items: center"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #F7C948"></span>Holding up</span><span style="display: inline-flex; gap: 6px; align-items: center"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #EF6F6C"></span>Under strain</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="{{ risk.bandPill }}">{{ risk.band }}</div>
+<h3 style="margin: 0; font-size: clamp(26px, 4vw, 36px); line-height: 1.15; font-weight: 800; color: #15283F">{{ risk.headline }}</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">{{ risk.summary }}</p>
+</div>
+</div>
+
+<sc-if value="{{ risk.hasDrivers }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-size: 15px; font-weight: 700; color: #15283F">What’s putting the most pressure on your team</div>
+<sc-for list="{{ risk.drivers }}" as="dr" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: minmax(0, 190px) 1fr minmax(0, 100px); gap: 14px; align-items: center; font-size: 15px; color: #2E3A45">
+<span style="font-weight: 600">{{ dr.label }}</span>
+<div style="height: 12px; background: #F1F4F6; border-radius: 6px; position: relative"><div style="{{ dr.bar }}"></div></div>
+<span style="font-weight: 700; color: #15283F; text-align: right">{{ dr.answer }}</span>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<div style="background: #15283F; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #F7C948">Where to start</div>
+<div style="font-size: 17px; line-height: 1.55; color: #FFFFFF">{{ risk.fix }}</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 32px; align-items: start; padding-top: 8px; border-top: 1px solid #DDE3E8">
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 24px">
+<h4 style="margin: 0; font-size: 22px; line-height: 1.25; font-weight: 800; color: #15283F">Want the full picture?</h4>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #2E3A45">This check is based on what you can see. WAIOS™ hears from your team directly, measures the factors proven to drive burnout, engagement, wellbeing and performance, and shows you which fixes will make the biggest difference.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 4px">
+<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 14px 24px; border-radius: 6px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Book a briefing</a>
+<button type="button" onClick="{{ risk.restart }}" style="font: inherit; font-size: 16px; font-weight: 600; color: #2E3A45; background: #FFFFFF; border: 1.5px solid #2E3A45; border-radius: 6px; padding: 12px 22px; min-height: 48px; cursor: pointer">Start over</button>
+</div>
+</div>
+<div style="background: #FAF8F4; border-radius: 10px; padding: 24px; margin-top: 24px">
+<sc-if value="{{ risk.notSent }}" hint-placeholder-val="{{ true }}">
+<form aria-label="Send me my results" onSubmit="{{ risk.onSend }}" style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-size: 17px; font-weight: 700; color: #15283F">Get a readout from our team</div>
+<div style="font-size: 14px; line-height: 1.5; color: #2E3A45">One of our experts will look at your answers and send you a short readout with practical next steps for your team.</div>
+<label for="risk-name" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">First name<input id="risk-name" type="text" value="{{ risk.name }}" onChange="{{ risk.onName }}" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 46px; box-sizing: border-box"></label>
+<label for="risk-email" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Work email<input id="risk-email" type="email" required="" value="{{ risk.email }}" onChange="{{ risk.onEmail }}" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 46px; box-sizing: border-box"></label>
+<button type="submit" style="font: inherit; font-weight: 700; font-size: 16px; background: #15283F; color: #FFFFFF; border: 0; border-radius: 6px; padding: 14px 20px; min-height: 48px; cursor: pointer">Send me my readout</button>
+<div style="font-size: 13px; line-height: 1.5; color: #5C7285">This opens an email to hello@waios.com with your details filled in.</div>
+</form>
+</sc-if>
+<sc-if value="{{ risk.sent }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; gap: 14px; align-items: flex-start">
+<span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%); flex-shrink: 0; margin-top: 3px"></span>
+<div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 17px; font-weight: 700; color: #15283F">Almost there.</div><div style="font-size: 14px; line-height: 1.5; color: #2E3A45">Your email app should now be open with your answers. Send it, and your readout will come from hello@waios.com.</div></div>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+
+<div style="border-top: 1px solid #DDE3E8; padding: 16px clamp(24px, 5vw, 48px); font-size: 12px; line-height: 1.5; color: #5C7285">A quick check based on what you see as a manager. It isn’t a diagnosis, and it doesn’t replace hearing from your team directly.</div>
+</section>
+</div>
+</section>
+
 <section style="background: #15283F">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
@@ -265,7 +484,6 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <div>WAIOS, P.B.C. · A women-founded public benefit corporation</div>
 </div>
 <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 24px">
-<a href="why-waios.html" style="color: #2E3A45; text-decoration: none">Why WAIOS</a>
 <a href="wellbeing-measure.html" style="color: #2E3A45; text-decoration: none">Wellbeing Measure</a>
 <a href="how-we-work.html" style="color: #2E3A45; text-decoration: none">How We Work</a>
 <a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
@@ -276,6 +494,171 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </div>
 </footer>
 
-</div>
+</div></template>
+<script type="text/plain" id="dc-logic">
+function waiosMail(subject, body) { var url = 'mailto:hello@waios.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body); try { window.location.href = url; } catch (e) {} }
+class RiskCheckTool {
+  constructor(host) {
+    this.host = host;
+    this.state = { step: 'intro', i: 0, answers: [null, null, null, null, null, null, null], name: '', email: '', sent: false };
+  }
+  setState(p) {
+    Object.assign(this.state, typeof p === 'function' ? p(this.state) : p);
+    var hs = this.host.state || {};
+    this.host.setState({ toolTick: (hs.toolTick || 0) + 1 });
+  }
+  renderVals() {
+    var self = this;
+    var s = this.state;
+    var Q = [
+      { label: 'Unmanageable workload', text: 'have more work than they can get through in a normal week?', fix: 'Start with workload. Run a quick workload audit with your team and agree what can be dropped, delayed or shared before anything new is added.' },
+      { label: 'Lack of recovery', text: 'are working evenings, weekends or through their time off?', fix: 'Protect recovery time. Agree as a team when people are offline, and make sure you model it yourself.' },
+      { label: 'Lack of control', text: 'have little say over how or when they do their work?', fix: 'Give back some control. Let people shape their own schedules and decide how the work gets done.' },
+      { label: 'Insufficient reward', text: 'feel their effort isn’t noticed or fairly rewarded?', fix: 'Make recognition specific and regular, and check that pay and promotion decisions feel fair to the people affected.' },
+      { label: 'Lack of community', text: 'seem cut off from the rest of the team?', fix: 'Make time to connect that isn’t about deadlines, and check in one to one with the people who seem most on the edge.' },
+      { label: 'Financial stress', text: 'are worried about money?', fix: 'Make sure people know what financial support you offer, and that it’s easy to find and use without having to ask.' },
+      { label: 'Caregiving demands', text: 'are stretched by caring for children, parents or others?', fix: 'Offer flexibility that works for carers, and make it normal to use it, starting with you.' }
+    ];
+    var OPTS = ['None', 'A few', 'About half', 'Most'];
+    var answers = s.answers;
+    var i = s.i;
+
+    function go(patch) { self.setState(patch); }
+
+    var progress = Q.map(function (q, k) {
+      var st;
+      if (answers[k] !== null && k !== i) st = 'width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)';
+      else if (k === i) st = 'width: 14px; height: 14px; border-radius: 50%; box-sizing: border-box; border: 2.5px solid #15283F; background: #FFFFFF';
+      else st = 'width: 14px; height: 14px; border-radius: 50%; background: #DDE3E8';
+      return { style: st };
+    });
+
+    var options = OPTS.map(function (label, v) {
+      var on = answers[i] === v;
+      return {
+        label: label,
+        pressed: on ? 'true' : 'false',
+        style: 'font: inherit; font-size: 17px; font-weight: 700; min-height: 64px; padding: 16px; border-radius: 10px; cursor: pointer; text-align: center; border: 1.5px solid ' + (on ? '#15283F' : '#C9D2DA') + '; background: ' + (on ? '#15283F' : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#15283F'),
+        pick: function () {
+          var next = answers.slice();
+          next[i] = v;
+          if (i < Q.length - 1) go({ answers: next, i: i + 1 });
+          else go({ answers: next, step: 'result' });
+        }
+      };
+    });
+
+    var sum = answers.reduce(function (a, b) { return a + (b || 0); }, 0);
+    var risk = Math.round(sum / (Q.length * 3) * 100);
+    var band, headline, summary, pillBg, pillFg;
+    if (risk < 34) {
+      band = 'Lower risk'; pillBg = '#F1F4F6'; pillFg = '#15283F';
+      headline = 'Your team looks to be in a good place.';
+      summary = 'Keep checking in. Burnout builds quietly, and the conditions behind it can change fast when deadlines or teams change.';
+    } else if (risk <= 60) {
+      band = 'Moderate risk'; pillBg = '#F7C948'; pillFg = '#15283F';
+      headline = 'Burnout pressure is building.';
+      summary = 'Several of the conditions that lead to burnout are showing up on your team. This is the best time to act, before people start to struggle or leave.';
+    } else {
+      band = 'High risk'; pillBg = '#EF6F6C'; pillFg = '#15283F';
+      headline = 'Your team is under serious strain.';
+      summary = 'Many of the conditions that drive burnout are present. Some people may already be struggling, even if they haven’t said so.';
+    }
+
+    var ranked = Q.map(function (q, k) { return { q: q, v: answers[k] || 0, k: k }; })
+      .sort(function (a, b) { return b.v - a.v || a.k - b.k; });
+    var top = ranked.filter(function (r) { return r.v >= 2; }).slice(0, 3);
+    if (top.length === 0 && ranked[0].v > 0) top = [ranked[0]];
+    var drivers = top.map(function (r) {
+      return {
+        label: r.q.label,
+        answer: OPTS[r.v],
+        bar: 'position: absolute; left: 0; top: 0; height: 12px; border-radius: 6px; width: ' + Math.round(r.v / 3 * 100) + '%; background: ' + (r.v >= 3 ? '#EF6F6C' : '#F7C948')
+      };
+    });
+    var fix = top.length ? top[0].q.fix : 'Keep the basics strong: regular one to ones, realistic workloads and real time off. Run this check again in a few months to see if anything has shifted.';
+
+    var split = 100 - risk;
+    return {
+      isIntro: s.step === 'intro',
+      isQuestion: s.step === 'q',
+      isResult: s.step === 'result',
+      start: function () { go({ step: 'q', i: 0 }); },
+      back: function () { if (i > 0) go({ i: i - 1 }); },
+      canBack: i > 0,
+      restart: function () { go({ step: 'intro', i: 0, answers: [null, null, null, null, null, null, null], sent: false }); },
+      progress: progress,
+      qNum: i + 1,
+      qTotal: Q.length,
+      qText: Q[i].text,
+      options: options,
+      risk: risk,
+      band: band,
+      bandPill: 'align-self: flex-start; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; border-radius: 16px; background: ' + pillBg + '; color: ' + pillFg,
+      headline: headline,
+      summary: summary,
+      gauge: 'width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 ' + split + '%, #EF6F6C ' + split + '%)',
+      gaugeLabel: 'Burnout risk ' + risk + ' out of 100',
+      drivers: drivers,
+      hasDrivers: drivers.length > 0,
+      fix: fix,
+      name: s.name,
+      email: s.email,
+      onName: function (e) { go({ name: e.target.value }); },
+      onEmail: function (e) { go({ email: e.target.value }); },
+      onSend: function (e) { e.preventDefault(); var lines = Q.map(function (q, k) { return q.label + ': ' + (answers[k] === null ? 'No answer' : OPTS[answers[k]]); }).join('\n'); waiosMail('Team burnout risk check readout', 'Please send me a readout of my team burnout risk check.\n\nFirst name: ' + s.name + '\nWork email: ' + s.email + '\n\nRisk: ' + risk + ' out of 100 (' + band + ')\n\nHow many people on my team...\n' + lines); go({ sent: true }); },
+      sent: s.sent,
+      notSent: !s.sent
+    };
+  }
+}
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    var self = this;
+    this.ttRef = function (el) { self.tt = el; };
+    this.risk = new RiskCheckTool(this);
+  }
+  componentDidMount() {
+    var box = this.tt;
+    if (!box) return;
+    var me = this, cur = 1, N = 5, timer = null, manual = false, inView = false, hover = false;
+    function set(n) {
+      cur = ((n - 1 + N) % N) + 1;
+      box.setAttribute('data-phase', String(cur));
+      [].forEach.call(box.querySelectorAll('[data-go]'), function (b) {
+        b.setAttribute('aria-current', b.getAttribute('data-go') === String(cur) ? 'step' : 'false');
+      });
+    }
+    function stopAuto() { manual = true; if (timer) { clearInterval(timer); timer = null; } }
+    function sync() {
+      var run = !manual && inView && !hover;
+      if (run && !timer) timer = setInterval(function () { set(cur + 1); }, 5000);
+      if (!run && timer) { clearInterval(timer); timer = null; }
+    }
+    [].forEach.call(box.querySelectorAll('[data-go]'), function (b) {
+      b.addEventListener('click', function () { stopAuto(); set(parseInt(b.getAttribute('data-go'), 10)); });
+    });
+    [].forEach.call(box.querySelectorAll('[data-step]'), function (b) {
+      b.addEventListener('click', function () { stopAuto(); set(cur + parseInt(b.getAttribute('data-step'), 10)); });
+    });
+    box.addEventListener('mouseenter', function () { hover = true; sync(); });
+    box.addEventListener('mouseleave', function () { hover = false; sync(); });
+    box.addEventListener('focusin', function () { stopAuto(); });
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!calm && 'IntersectionObserver' in window) {
+      this.ttIO = new IntersectionObserver(function (es) { es.forEach(function (e) { inView = e.isIntersecting; sync(); }); }, { threshold: 0.35 });
+      this.ttIO.observe(box);
+    }
+    this.ttStop = function () { manual = true; sync(); if (me.ttIO) me.ttIO.disconnect(); };
+  }
+  componentWillUnmount() { if (this.ttStop) this.ttStop(); }
+  renderVals() {
+    return { risk: this.risk.renderVals(), ttRef: this.ttRef };
+  }
+}
+</script>
+<script src="dc-lite.js"></script>
 </body>
 </html>
