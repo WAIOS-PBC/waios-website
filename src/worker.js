@@ -3,7 +3,8 @@
 import { EmailMessage } from 'cloudflare:email';
 
 const FROM = 'website@waios.com';
-const TO = 'dposa@globalwellbeinggroup.com';
+// Danielle gets every submission; Jen gets a copy
+const TO = ['dposa@globalwellbeinggroup.com', 'jen@jennifer-moss.com'];
 
 const KINDS = {
   contact: 'Contact form',
@@ -71,9 +72,9 @@ async function handleLead(request, env) {
 
   if (!env.LEADS) return json({ ok: false, error: 'not-configured' }, 503);
   const safe = (s) => s.replace(/[\r\n]+/g, ' ');
-  const raw = [
+  const message = (to) => [
     'From: "WAIOS website" <' + FROM + '>',
-    'To: <' + TO + '>',
+    'To: <' + to + '>',
     'Reply-To: ' + (name ? '"' + safe(name).replace(/"/g, '') + '" ' : '') + '<' + email + '>',
     'Subject: =?UTF-8?B?' + b64(safe(subject)) + '?=',
     'Date: ' + new Date().toUTCString(),
@@ -84,12 +85,12 @@ async function handleLead(request, env) {
     '',
     b64(body).replace(/(.{76})/g, '$1\r\n')
   ].join('\r\n');
-  try {
-    await env.LEADS.send(new EmailMessage(FROM, TO, raw));
-  } catch (e) {
-    console.log(JSON.stringify({ lead_error: String(e && e.message || e), lead: kind, email: email }));
-    return json({ ok: false, error: 'send' }, 502);
-  }
+  const results = await Promise.allSettled(TO.map((to) => env.LEADS.send(new EmailMessage(FROM, to, message(to)))));
+  results.forEach((r, i) => {
+    if (r.status === 'rejected') console.log(JSON.stringify({ lead_error: String(r.reason && r.reason.message || r.reason), to: TO[i], lead: kind, email: email }));
+  });
+  // the submission counts as sent if it reached Danielle's inbox
+  if (results[0].status === 'rejected') return json({ ok: false, error: 'send' }, 502);
   return json({ ok: true });
 }
 
