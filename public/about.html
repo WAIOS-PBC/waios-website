@@ -21,11 +21,29 @@
 <style>
 body{margin:0;background:#FAF8F4}
 a{color:#15283F}a:hover{color:#EF6F6C}
+.hl-ready{background-size:0% 100% !important;background-repeat:no-repeat !important;transition:none}
+.hl-ready.hl-on{background-size:100% 100% !important;transition:background-size 1.1s cubic-bezier(.2,.8,.2,1)}
+.jf-ready .jf-bar{transform:scaleX(0);transform-origin:left center;transition:none}
+.jf-ready.jf-on .jf-bar{transform:scaleX(1);transition:transform .9s cubic-bezier(.2,.8,.2,1) var(--d)}
+.jf-ready .jf-fix{opacity:0;transform:translateY(14px);transition:none}
+.jf-ready.jf-on .jf-fix{opacity:1;transform:none;transition:opacity .6s ease 2.2s,transform .6s ease 2.2s}
+.jf-ready.jf-on .jf-real{animation:jfPulse 1.3s ease-out 1.05s 1}
+@keyframes jfPulse{0%{box-shadow:0 0 0 0 rgba(239,111,108,.55)}100%{box-shadow:0 0 0 16px rgba(239,111,108,0)}}
+.fd-half{transform-box:fill-box;transform-origin:center}
+.fd-ready .fd-y{transform:translateX(-72px);opacity:.55;transition:none}
+.fd-ready .fd-c{transform:translateX(72px);opacity:.55;transition:none}
+.fd-ready.fd-on .fd-y,.fd-ready.fd-on .fd-c{transform:none;opacity:1;transition:transform 1.1s cubic-bezier(.45,0,.2,1) .25s,opacity .6s ease .25s}
+.fd-glow{transform-box:fill-box;transform-origin:center;opacity:.28}
+.fd-ready .fd-glow{opacity:0}
+.fd-ready.fd-on .fd-glow{animation:fdGlow 1.4s ease-out 1.3s 1 both,fdBreath 4.5s ease-in-out 2.7s infinite}
+@keyframes fdGlow{0%{transform:scale(.7);opacity:0}45%{transform:scale(1.2);opacity:.6}100%{transform:scale(1);opacity:.28}}
+@keyframes fdBreath{0%,100%{transform:scale(1);opacity:.28}50%{transform:scale(1.08);opacity:.4}}
+@media (prefers-reduced-motion: reduce){.hl-ready,.jf-ready .jf-bar,.jf-ready .jf-fix,.fd-ready .fd-y,.fd-ready .fd-c,.fd-ready .fd-glow{transition:none !important;animation:none !important;transform:none !important;opacity:1 !important;background-size:100% 100% !important}}
 </style>
 <style>[hidden]{display:none !important}</style>
 </head>
 <body>
-<div style="font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif; color: #1F1D1A; background: #FAF8F4; min-height: 100vh">
+<div id="dc-root"><div style="font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif; color: #1F1D1A; background: #FAF8F4; min-height: 100vh">
 
 <header style="background: #FFFFFF; border-bottom: 1px solid #DDE3E8">
 <div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
@@ -90,9 +108,16 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #2E3A45">Why together</div>
 <h2 style="margin: 0; font-size: clamp(28px, 2vw + 16px, 34px); line-height: 1.2; font-weight: 800; color: #15283F">Building what lifts people up. Removing what holds them back.</h2>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 14px">
-<div style="background: #FFFFFF; border-radius: 10px; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px"><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Danielle · What helps people thrive</span></div><div style="font-size: 16px; line-height: 1.55; color: #2E3A45">What helps people, and the organizations they work for, thrive. Shaped by her own experience as a cancer survivor and years of learning alongside Deepak Chopra, she brings the full picture of wellbeing and how work shapes it.</div></div>
-<div style="background: #FFFFFF; border-radius: 10px; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px"><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Jennifer · What protects people from burnout</span></div><div style="font-size: 16px; line-height: 1.55; color: #2E3A45">One of the world’s leading voices on burnout, she knows the working conditions that wear people down and hold organizations back, and how to change them so people can do their best work.</div></div>
+<div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: stretch">
+<div style="flex: 1 1 calc((820px - 100%) * 999); min-width: 0; position: relative; z-index: 1; background: #FFFFFF; border-radius: 10px; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 22px; height: 11px; border-radius: 22px 22px 0 0; background: #F7C948; flex-shrink: 0"></span><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Danielle · What helps people thrive</span></div><div style="font-size: 16px; line-height: 1.55; color: #2E3A45">What helps people, and the organizations they work for, thrive. Shaped by her own experience as a cancer survivor and years of learning alongside Deepak Chopra, she brings the full picture of wellbeing and how work shapes it.</div></div>
+<figure class="fd fd-ready" data-dc-keep="" style="position: relative; z-index: 0; margin: 0 auto; flex: 0 0 auto; align-self: center; display: flex; flex-direction: column; align-items: center; gap: 8px"><svg viewBox="0 0 180 180" role="img" aria-label="A yellow half and a coral half come together to form the WAIOS dot" style="width: 170px; height: 170px; display: block; overflow: visible">
+<defs><clipPath id="fdTop"><rect x="0" y="0" width="180" height="107.4"></rect></clipPath><clipPath id="fdBot"><rect x="0" y="107.4" width="180" height="72.6"></rect></clipPath></defs>
+<circle cx="90" cy="90" r="80" fill="#FFFFFF"></circle>
+<circle class="fd-glow" cx="90" cy="90" r="74" fill="#F7C948"></circle>
+<g class="fd-half fd-y"><circle cx="90" cy="90" r="58" fill="#F7C948" clip-path="url(#fdTop)"></circle></g>
+<g class="fd-half fd-c"><circle cx="90" cy="90" r="58" fill="#EF6F6C" clip-path="url(#fdBot)"></circle></g>
+</svg><figcaption style="font-size: 14px; font-weight: 800; color: #15283F">Together: the WAIOS way</figcaption></figure>
+<div style="flex: 1 1 calc((820px - 100%) * 999); min-width: 0; position: relative; z-index: 1; background: #FFFFFF; border-radius: 10px; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 22px; height: 11px; border-radius: 0 0 22px 22px; background: #EF6F6C; flex-shrink: 0"></span><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Jennifer · What protects people from burnout</span></div><div style="font-size: 16px; line-height: 1.55; color: #2E3A45">One of the world’s leading voices on burnout, she knows the working conditions that wear people down and hold organizations back, and how to change them so people can do their best work.</div></div>
 </div>
 <div style="display: flex; align-items: center; gap: 14px; background: #15283F; border-radius: 10px; padding: 16px 22px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><span style="font-size: 17px; line-height: 1.45; font-weight: 700; color: #F3EDE2">Both research obsessed. Both deeply committed. Both here to change how work shapes people’s lives.</span></div>
 </div>
@@ -239,6 +264,247 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </div>
 </footer>
 
+</div></div>
+<template id="dc-tpl"><div style="font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif; color: #1F1D1A; background: #FAF8F4; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="index.html" aria-label="waios home" style="text-decoration: none; font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 500">
+<a href="wellbeing-measure.html" style="text-decoration: none; color: #2E3A45">Wellbeing Measure</a>
+<a href="how-we-work.html" style="text-decoration: none; color: #2E3A45">How We Work</a>
+<a href="approach.html" style="text-decoration: none; color: #2E3A45">Our Approach</a>
+<a href="about.html" aria-current="page" style="text-decoration: underline; text-decoration-color: #EF6F6C; text-decoration-thickness: 1.5px; text-underline-offset: 6px; color: #15283F; font-weight: 600">About</a>
+<a href="contact.html" style="text-decoration: none; color: #2E3A45">Contact</a>
+<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; padding: 12px 20px; border-radius: 6px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Get in touch</a>
+</nav>
 </div>
+</header>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px) 72px; display: flex; flex-direction: column; gap: 22px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">About WAIOS™</div>
+<h1 style="margin: 0; font-size: 54px; line-height: 1.08; font-weight: 800; color: #15283F; max-width: 960px">Our mission is to make the quality of people's lives the measure of success, starting at work.</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45; max-width: 780px">WAIOS, P.B.C. is a women-founded public benefit corporation. We combine decades of wellbeing research with hands-on work inside organizations to help leaders measure how their people are really doing and act on it.</p>
+</section>
+
+<section style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 72px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">The founders</div>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">Two of the most experienced voices in workplace wellbeing, on the same team.</h2>
+</div>
+
+<article style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 56px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 380px">
+<img src="images/b88a438a9b72a68ab115ed7d9d463096.jpg" alt="Danielle Posa" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; display: block">
+<h3 style="margin: 0; font-size: 26px; font-weight: 800; color: #15283F">Danielle Posa</h3>
+<div style="font-size: 15px; font-weight: 500; color: #5C7285">Co-Founder and Chief Executive Officer</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px; font-size: 17px; line-height: 1.65; color: #2E3A45; max-width: 680px">
+<p style="margin: 0; font-size: 22px; line-height: 1.45; font-weight: 700; color: #15283F">Nearly two decades advocating for measuring wellbeing and making it a C-suite strategy.</p>
+<p style="margin: 0">Danielle began her career at Gallup as a management consultant to Fortune 500 companies, working on employee engagement, leadership and organizational performance. She was there when Gallup first turned its measurement rigor toward wellbeing, and she became the direct liaison between Gallup's wellbeing research and Deepak Chopra.</p>
+<p style="margin: 0">She went on to co-develop and co-lead the Workplace Wellbeing and Soul of Leadership program with Deepak, and later served as Director of Enterprise Solutions at Chopra Global. She has guest lectured on wellbeing in business at the Kellogg School of Management and Columbia University, and served as Vice Chair of the Workplace Wellbeing Initiative at the Global Wellness Institute.</p>
+<p style="margin: 0">For more than a decade she has advised CEOs and executive teams on embedding wellbeing into culture, people strategy and business strategy, at companies including LinkedIn, Comcast, AstraZeneca, Petco and Panera Bread. A childhood cancer survivor, she gave her first keynote at fifteen.</p>
+</div>
+</article>
+
+<article style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 56px; align-items: start; border-top: 1px solid #DDE3E8; padding-top: 72px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 380px">
+<img src="images/bcdf70f53b836e64808954873d6b1a0b.jpg" alt="Jennifer Moss" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 0%; border-radius: 8px; display: block">
+<h3 style="margin: 0; font-size: 26px; font-weight: 800; color: #15283F">Jennifer Moss</h3>
+<div style="font-size: 15px; font-weight: 500; color: #5C7285">Co-Founder and Chief Research and Strategy Officer</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px; font-size: 17px; line-height: 1.65; color: #2E3A45; max-width: 680px">
+<p style="margin: 0; font-size: 22px; line-height: 1.45; font-weight: 700; color: #15283F">One of the most recognized voices in the world on burnout.</p>
+<p style="margin: 0">Jennifer is an award-winning journalist, author and workplace culture strategist. She has written three books for Harvard Business Review Press: Unlocking Happiness at Work, The Burnout Epidemic, named by Thinkers50 one of the 10 Best New Management Books of 2022, and Why Are We Here?, which received the 2025 Outstanding Works of Literature Award and was named one of Big Think's Top 10 Management Books of 2025.</p>
+<p style="margin: 0">She writes for Harvard Business Review, Fast Company and Fortune, is a nationally syndicated radio columnist, and has delivered more than 750 keynotes to Fortune 100 companies, governments and healthcare systems. She is a former member of the Global Happiness Council in partnership with Gallup and co-founded Plasticity Labs, one of the earliest technologies built to measure employee wellbeing at scale.</p>
+<p style="margin: 0">Her honors include Canadian Innovator of the Year, a Public Service Award from the Office of President Obama, and Toastmasters' Golden Gavel for 2026.</p>
+</div>
+</article>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 72px clamp(16px, 4vw, 32px)">
+<div style="background: #F7C948; border-radius: 12px; padding: clamp(24px, 4vw, 44px); display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 10px; max-width: 760px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #2E3A45">Why together</div>
+<h2 style="margin: 0; font-size: clamp(28px, 2vw + 16px, 34px); line-height: 1.2; font-weight: 800; color: #15283F">Building what lifts people up. Removing what holds them back.</h2>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: stretch">
+<div style="flex: 1 1 calc((820px - 100%) * 999); min-width: 0; position: relative; z-index: 1; background: #FFFFFF; border-radius: 10px; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 22px; height: 11px; border-radius: 22px 22px 0 0; background: #F7C948; flex-shrink: 0"></span><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Danielle · What helps people thrive</span></div><div style="font-size: 16px; line-height: 1.55; color: #2E3A45">What helps people, and the organizations they work for, thrive. Shaped by her own experience as a cancer survivor and years of learning alongside Deepak Chopra, she brings the full picture of wellbeing and how work shapes it.</div></div>
+<figure class="fd" data-dc-keep="" style="position: relative; z-index: 0; margin: 0 auto; flex: 0 0 auto; align-self: center; display: flex; flex-direction: column; align-items: center; gap: 8px"><svg viewBox="0 0 180 180" role="img" aria-label="A yellow half and a coral half come together to form the WAIOS dot" style="width: 170px; height: 170px; display: block; overflow: visible">
+<defs><clipPath id="fdTop"><rect x="0" y="0" width="180" height="107.4"></rect></clipPath><clipPath id="fdBot"><rect x="0" y="107.4" width="180" height="72.6"></rect></clipPath></defs>
+<circle cx="90" cy="90" r="80" fill="#FFFFFF"></circle>
+<circle class="fd-glow" cx="90" cy="90" r="74" fill="#F7C948"></circle>
+<g class="fd-half fd-y"><circle cx="90" cy="90" r="58" fill="#F7C948" clip-path="url(#fdTop)"></circle></g>
+<g class="fd-half fd-c"><circle cx="90" cy="90" r="58" fill="#EF6F6C" clip-path="url(#fdBot)"></circle></g>
+</svg><figcaption style="font-size: 14px; font-weight: 800; color: #15283F">Together: the WAIOS way</figcaption></figure>
+<div style="flex: 1 1 calc((820px - 100%) * 999); min-width: 0; position: relative; z-index: 1; background: #FFFFFF; border-radius: 10px; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 22px; height: 11px; border-radius: 0 0 22px 22px; background: #EF6F6C; flex-shrink: 0"></span><span style="font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #15283F">Jennifer · What protects people from burnout</span></div><div style="font-size: 16px; line-height: 1.55; color: #2E3A45">One of the world&#8217;s leading voices on burnout, she knows the working conditions that wear people down and hold organizations back, and how to change them so people can do their best work.</div></div>
+</div>
+<div style="display: flex; align-items: center; gap: 14px; background: #15283F; border-radius: 10px; padding: 16px 22px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><span style="font-size: 17px; line-height: 1.45; font-weight: 700; color: #F3EDE2">Both research obsessed. Both deeply committed. Both here to change how work shapes people&#8217;s lives.</span></div>
+</div>
+</section>
+
+<section aria-label="Organizations our founders have advised" style="max-width: 1200px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 32px) 96px">
+<div style="display: flex; flex-direction: column; gap: 36px; align-items: center; text-align: center; padding-top: 0">
+<div style="font-size: 12px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: #5C7285">Our founders have advised</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 36px 52px; max-width: 1080px">
+<img src="images/9e1410e5729278f4448437b55764ae30.png" alt="Deloitte" style="height: 31px; width: 146px; display: block">
+<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #5C7285">LinkedIn</span>
+<img src="images/c259e23f69ead60e1b87d1ea1156b4a4.png" alt="Kraft Heinz" style="height: 29px; width: 158px; display: block">
+<img src="images/36a6fac1f4541259836f720192c4db9b.png" alt="Google" style="height: 40px; width: 114px; display: block">
+<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #5C7285">Amazon</span>
+<img src="images/e0bdf1d33dba1f725adbd4f2b371546d.png" alt="Habitat for Humanity" style="height: 40px; width: 115px; display: block">
+<img src="images/ea2da7980c49db6b4208cabec5db61fc.png" alt="TD Bank" style="height: 40px; width: 115px; display: block">
+<img src="images/bc6324614c20ed7dea7c5aaaa464ca54.png" alt="RSM" style="height: 45px; width: 102px; display: block">
+<img src="images/f2cb742be01187c0d2d4644d52d09bd2.png" alt="Oracle" style="height: 24px; width: 168px; display: block">
+<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #5C7285">Pearson</span>
+<img src="images/a49f408af3db960e4c4c4894cfcdaec0.png" alt="GSK" style="height: 62px; width: 71px; display: block">
+<img src="images/8b418b38e53ce28b4b0e2d8b9f65c26e.png" alt="Fidelity Investments" style="height: 33px; width: 140px; display: block">
+<img src="images/287292de65ba98ab3c2c15ee676fae07.png" alt="SMU" style="height: 40px; width: 115px; display: block">
+<img src="images/a0e41c6db196c5697cab57c8c5c8f7fb.png" alt="Nationwide" style="height: 62px; width: 60px; display: block">
+<img src="images/cc765c82bc0af1017b51b2371fc50fc8.png" alt="Merck" style="height: 39px; width: 117px; display: block">
+<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #5C7285">Charles Schwab</span>
+<img src="images/008cfb5acf36dbf735201d6de6ed47d5.png" alt="Capital One" style="height: 42px; width: 110px; display: block">
+<img src="images/5046b1d60b86a9bd6487890ae6967471.png" alt="UNICEF" style="height: 35px; width: 133px; display: block">
+<img src="images/328c8b9a0171c43378573b3705b76fb7.png" alt="MetLife" style="height: 33px; width: 138px; display: block">
+<img src="images/e5a050b896268ff719dafee34f629762.png" alt="Citi" style="height: 54px; width: 85px; display: block">
+<img src="images/5063d7ee8fe08a5ca177d11a297c43dc.png" alt="Edelman" style="height: 42px; width: 110px; display: block">
+<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #5C7285">Post University</span>
+<img src="images/8564576d6fcd2e1cce2506c445d54693.png" alt="J.P. Morgan" style="height: 33px; width: 141px; display: block">
+<img src="images/fca78c469e6c4c7ae6094ca4a4c174e1.png" alt="Sun Life" style="height: 34px; width: 137px; display: block">
+<img src="images/6edfb3652f4272ef78fdea72af180cf5.png" alt="RBC Royal Bank" style="height: 42px; width: 109px; display: block">
+<img src="images/c328ff57e477768aea76bd4d08e73203.png" alt="Magenta" style="height: 35px; width: 131px; display: block">
+<img src="images/0f6b8c4b225715c1389131fc456519a2.png" alt="Molson Coors" style="height: 37px; width: 124px; display: block">
+<img src="images/79b8f4816a4cd01f378924e88d810319.png" alt="Royal LePage" style="height: 39px; width: 117px; display: block">
+<img src="images/fe59ef21f428484379c216f94b0cda74.png" alt="AEG Vision" style="height: 40px; width: 114px; display: block">
+<img src="images/e5a1bf26ec63d74bd650db19e3b0df44.png" alt="Kaiser Permanente" style="height: 41px; width: 112px; display: block">
+<img src="images/5541a22d10620480db70ad4cb4c2c169.png" alt="Shopify" style="height: 38px; width: 121px; display: block">
+<img src="images/b3332a31f52865c1b3ee1c5ec60ba046.png" alt="Intuit" style="height: 38px; width: 121px; display: block">
+<img src="images/7b2098b7381cac3df21aec5bbf3ef828.png" alt="Raytheon" style="height: 32px; width: 143px; display: block">
+<img src="images/d85f210f5960d63c6619fb630abe8057.png" alt="Intel" style="height: 55px; width: 83px; display: block">
+<img src="images/075bfafa65d683828e2cb7f4f5760339.png" alt="UnitedHealth Group" style="height: 48px; width: 95px; display: block">
+<img src="images/276e2ce0ade65929d340d867da63526e.png" alt="University of Kentucky" style="height: 36px; width: 126px; display: block">
+<img src="images/97f57d913895a4b07eb5033bd4874e54.png" alt="The Economist" style="height: 49px; width: 93px; display: block">
+<img src="images/f9fa8448158d5b77704f50373fb13b9a.png" alt="CISA" style="height: 62px; width: 62px; display: block">
+</div>
+</div>
+</section>
+
+<section style="background: #2E3A45">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #F7C948; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #F7C948">Our vision</span></div>
+<h2 style="margin: 0; font-size: 36px; line-height: 1.2; font-weight: 800; color: #F3EDE2">A world where every person, organization, city and nation can see how well its people are living, and act on it.</h2>
+</div>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #F3EDE2">As a public benefit corporation, the quality of people's lives is written into why we exist, not added on. Measuring it well, inside organizations first, is how we get there.</p>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">Advisory board</div>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">Guided by leaders in research and people strategy.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 24px">
+<sc-for list="{{advisors}}" as="a" hint-placeholder-count="6">
+<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 24px; display: flex; gap: 18px; align-items: flex-start">
+<img src="{{a.img}}" alt="{{a.name}}" style="width: 88px; height: 88px; border-radius: 8px; object-fit: cover; flex-shrink: 0; display: block">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 18px; font-weight: 700; color: #15283F">{{a.name}}</div>
+<div style="font-size: 14px; line-height: 1.5; color: #5C7285">{{a.title}}</div>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="background: #15283F">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #EF6F6C">Work with us</div>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #F3EDE2">Let's measure what matters in your organization.</h2>
+</div>
+<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; font-size: 16px; padding: 15px 26px; border-radius: 6px">Talk to the founders</a>
+</div>
+</section>
+
+<footer style="background: #FFFFFF; border-top: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; font-size: 14px; color: #5C7285">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
+<div>WAIOS, P.B.C. · A women-founded public benefit corporation</div>
+</div>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 24px">
+<a href="wellbeing-measure.html" style="color: #2E3A45; text-decoration: none">Wellbeing Measure</a>
+<a href="how-we-work.html" style="color: #2E3A45; text-decoration: none">How We Work</a>
+<a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
+<a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
+<a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
+<a href="mailto:hello@waios.com" style="color: #2E3A45; text-decoration: none">hello@waios.com</a>
+</nav>
+</div>
+</footer>
+
+</div></template>
+<script type="text/plain" id="dc-logic">
+class Component extends DCLogic {
+  componentDidMount() {
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function whenSeen(el, cb, th) {
+      if (!('IntersectionObserver' in window)) { cb(); return; }
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { io.disconnect(); cb(); } }); }, { threshold: th || 0.35 });
+      io.observe(el);
+    }
+    function countUp(el, to, delay) {
+      el.textContent = '0';
+      setTimeout(function () {
+        var t0 = null;
+        function step(ts) { if (t0 === null) t0 = ts; var p = Math.min(1, (ts - t0) / 900), e = 1 - Math.pow(1 - p, 3); el.textContent = String(Math.round(to * e)); if (p < 1) requestAnimationFrame(step); }
+        requestAnimationFrame(step);
+      }, delay || 0);
+    }
+    function restart(el, on) { el.classList.remove(on); void el.offsetWidth; el.classList.add(on); }
+    var plays = {};
+    if (!calm) {
+      var hls = document.querySelectorAll('.hl');
+      [].forEach.call(hls, function (h) { h.classList.add('hl-ready'); whenSeen(h, function () { h.classList.add('hl-on'); }, 0.9); });
+      plays.hl = function () { [].forEach.call(hls, function (h) { restart(h, 'hl-on'); }); };
+      var jf = document.querySelector('.jf');
+      if (jf) {
+        jf.classList.add('jf-ready');
+        plays.jeff = function () { restart(jf, 'jf-on'); [].forEach.call(jf.querySelectorAll('[data-count]'), function (n, i) { countUp(n, parseInt(n.getAttribute('data-count'), 10), i * 600); }); };
+        whenSeen(jf, plays.jeff, 0.4);
+      }
+      var fd = document.querySelector('.fd');
+      if (fd) {
+        fd.classList.add('fd-ready');
+        plays.dot = function () { restart(fd, 'fd-on'); };
+        whenSeen(fd, plays.dot, 0.5);
+      }
+    }
+    [].forEach.call(document.querySelectorAll('[data-replay]'), function (b) {
+      b.addEventListener('click', function () {
+        var k = b.getAttribute('data-replay'), target = document.querySelector(b.getAttribute('data-target'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(function () { if (plays[k]) plays[k](); }, 500);
+      });
+    });
+  }
+  renderVals() {
+    return {
+      advisors: [
+        { name: 'KJ Payette', title: 'Former Chief People Officer, Panera Bread. Former CHRO, Cumberland Farms. Former SVP Human Resources, CVS Health.', img: 'images/7a2456c182bdbcd064c584e5f02be19b.jpg' },
+        { name: 'Denise Bober', title: 'Chief Human Resources Officer, The Breakers Palm Beach.', img: 'images/a2bb2d743f9aae1de6616c1a0301e137.jpg' },
+        { name: 'Geoff McDonald', title: 'Former Global VP of HR, Unilever. Global advocate for mental health at work.', img: 'images/7b0f18dcd47b5c87813d12e276b5932d.jpg' },
+        { name: 'Eileen McNeely, PhD', title: 'Founder and Director, Harvard SHINE, Harvard T.H. Chan School of Public Health.', img: 'images/3db4cd7ab70a5de16e5dc296fa1561a9.jpg' },
+        { name: 'Dan Witters', title: 'Research Director, Gallup National Health and Wellbeing Index.', img: 'images/2de21b22d1dd9c0ac75238a772acf308.jpg' },
+        { name: 'Jennifer Posa, PhD', title: 'Former Chief Wellbeing Officer, Central Intelligence Agency. Former Global Head of Employee Mental Wellbeing, Johnson and Johnson.', img: 'images/a522f5ade642807bcbc9b42180528a62.jpg' }
+      ]
+    };
+  }
+}
+</script>
+<script src="dc-lite.js"></script>
 </body>
 </html>
