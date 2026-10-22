@@ -21,6 +21,16 @@
 <style>
 body{margin:0;background:#FAF8F4}
 a{color:#15283F}a:hover{color:#EF6F6C}
+.mv-dot{position:absolute;top:2px;width:27px;height:27px;margin-left:-13.5px;border-radius:50%;background:linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%);box-shadow:0 0 0 6px rgba(247,201,72,.22);transition:left .6s cubic-bezier(.45,0,.2,1);pointer-events:none;z-index:2}
+.mv-fill{position:absolute;top:14px;height:3px;border-radius:2px;background:linear-gradient(to right,#F7C948,#EF6F6C);transition:width .6s cubic-bezier(.45,0,.2,1)}
+.mv-stop{font:inherit;background:none;border:0;padding:4px 2px 8px;min-height:64px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;border-radius:8px}
+.mv-stop:focus-visible,.mv-btn:focus-visible,.mv-tab:focus-visible{outline:3px solid #F7C948;outline-offset:2px}
+.mv-btn{font:inherit;width:44px;height:44px;border-radius:50%;border:1.5px solid #C9D3DC;background:#FFFFFF;color:#15283F;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.mv-btn:hover{border-color:#15283F}
+.mv-panel{animation:mvIn .45s ease}
+@keyframes mvIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width: 560px){.mv-tiername{font-size:12px !important}.mv-tiernum{display:none}}
+@media (prefers-reduced-motion: reduce){.mv-dot,.mv-fill{transition:none}.mv-panel{animation:none}}
 .hm-cell{transition:transform .12s ease, box-shadow .12s ease}
 .hm-cell:hover,.hm-cell:focus-visible{transform:scale(1.08);box-shadow:0 4px 12px rgba(21,40,63,0.25), inset 0 0 0 2px #15283F;position:relative;z-index:1;outline:none}
 </style>
@@ -49,335 +59,9 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45; max-width: 760px">Most tools measure one of these and guess at the rest. The WAIOS™ Wellbeing Measure asks about the specific factors proven to drive burnout, engagement, wellbeing and performance at the same time, so you can see which conditions are driving them on each team, and <span style="font-weight: 700; background: linear-gradient(to top, #F7C948 42%, transparent 42%)">the effect on turnover, absence and goals</span>.</p>
 </section>
 
-<section style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
-<div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
-<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">01 · The framework</div>
-<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">Five tiers. One Wellbeing Score.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">The WAIOS™ Framework follows the path work takes into a person's life: from how engaged they are in the work itself, to whether it is burning them out, to the environment around them, to how work shapes their life, to how their life is going overall. Each tier has its own score, and together they produce one Wellbeing Score.</p>
-</div>
-<div style="display: flex; flex-direction: column; gap: 16px">
-
-<div style="border: 1px solid #DDE3E8; border-radius: 10px; padding: 28px 30px; display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: flex-start; background: #FAF8F4">
-<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 12px">
-<div style="display: flex; justify-content: space-between; align-items: center"><div style="width: 52px; height: 52px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DDE3E8; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg></div><div style="font-size: 14px; font-weight: 700; color: #5C7285">Tier 1</div></div>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #15283F">Work Engagement</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E3A45">Is this person emotionally connected to their work? Measured first, because if someone is in the wrong role, every other change is harder.</p>
-</div>
-<div style="flex: 2 1 460px; display: flex; flex-direction: column; gap: 14px; padding-top: 4px">
-
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px">
-
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
-<span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Emotional connection to the work</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Purpose in the work</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Role alignment</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Natural strengths</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Values alignment</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Bringing out their best</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Growth toward potential</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Enjoyment of the daily work</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Role clarity</span>
-</div>
-</div>
-
-</div>
-</div>
-
-<div style="border: 1px solid #DDE3E8; border-radius: 10px; padding: 28px 30px; display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: flex-start; background: #FAF8F4">
-<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 12px">
-<div style="display: flex; justify-content: space-between; align-items: center"><div style="width: 52px; height: 52px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DDE3E8; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M4 18a8 8 0 1 1 16 0M12 18l4-6"></path></svg></div><div style="font-size: 14px; font-weight: 700; color: #5C7285">Tier 2</div></div>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #15283F">Burnout</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E3A45">Is the work sustainable? Measured through the six core drivers of burnout and the three dimensions that define it.</p>
-</div>
-<div style="flex: 2 1 460px; display: flex; flex-direction: column; gap: 14px; padding-top: 4px">
-
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Six core drivers</div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
-<span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Workload</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Control</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Reward and recognition</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Community</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Fairness</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Values</span>
-</div>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Three dimensions of burnout</div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
-<span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Exhaustion</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Cynicism</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Reduced professional efficacy</span>
-</div>
-</div>
-
-</div>
-</div>
-
-<div style="border: 1px solid #DDE3E8; border-radius: 10px; padding: 28px 30px; display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: flex-start; background: #FAF8F4">
-<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 12px">
-<div style="display: flex; justify-content: space-between; align-items: center"><div style="width: 52px; height: 52px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DDE3E8; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"></path></svg></div><div style="font-size: 14px; font-weight: 700; color: #5C7285">Tier 3</div></div>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #15283F">Work Environment</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E3A45">Is the environment helping or holding this person back? Removing barriers prevents harm. Strengthening drivers helps people thrive.</p>
-</div>
-<div style="flex: 2 1 460px; display: flex; flex-direction: column; gap: 14px; padding-top: 4px">
-
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Barriers</div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
-<span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Work-life harmony</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Job security</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Predictable hours</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Fair pay</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Working conditions</span>
-</div>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Drivers</div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
-<span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Relationship with manager</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Committed colleagues</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Connection to mission</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Growth</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Belonging</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Psychological safety</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Voice</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Cultural norms</span>
-</div>
-</div>
-
-</div>
-</div>
-
-<div style="border: 1px solid #DDE3E8; border-radius: 10px; padding: 28px 30px; display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: flex-start; background: #FAF8F4">
-<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 12px">
-<div style="display: flex; justify-content: space-between; align-items: center"><div style="width: 52px; height: 52px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DDE3E8; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3M4.0 3.0h16.0v18.0h-16.0z"></path></svg></div><div style="font-size: 14px; font-weight: 700; color: #5C7285">Tier 4</div></div>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #15283F">Work Wellbeing</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E3A45">Is work making this person’s life better or worse? It shows where the organization strengthens wellbeing and where to invest next.</p>
-</div>
-<div style="flex: 2 1 460px; display: flex; flex-direction: column; gap: 14px; padding-top: 4px">
-
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Overall</div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
-<span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Influence on quality of life</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">The organization cares</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Hope for the future here</span>
-</div>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">By area of life</div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
-<span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Emotional</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Physical</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Financial</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Social</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Purpose</span>
-</div>
-</div>
-
-</div>
-</div>
-
-<div style="border: 1px solid #DDE3E8; border-radius: 10px; padding: 28px 30px; display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: flex-start; background: #FAF8F4">
-<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 12px">
-<div style="display: flex; justify-content: space-between; align-items: center"><div style="width: 52px; height: 52px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DDE3E8; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M12.0 8.0a4.0 4.0 0 1 0 0.01 0M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></div><div style="font-size: 14px; font-weight: 700; color: #5C7285">Tier 5</div></div>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #15283F">Overall Wellbeing</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E3A45">Setting work aside, how is this person’s life going? Strength here builds resilience at work. This is the ultimate measure.</p>
-</div>
-<div style="flex: 2 1 460px; display: flex; flex-direction: column; gap: 14px; padding-top: 4px">
-
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px">
-
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
-<span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Life evaluation (Cantril Ladder)</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Emotional health</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Physical health</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Meaning and purpose</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Financial security</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Core relationships</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Social connectedness</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Inner strength</span>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<section style="max-width: 1200px; margin: 0 auto; padding: 96px 32px 0; display: flex; flex-direction: column; gap: 36px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 780px">
-<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">02 · What we ask</div>
-<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">The questions your people have been waiting for someone to ask.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">A sample from the measure. These are the conditions employees talk about with each other but rarely get asked about by their employer.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px">
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Engagement</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Role alignment</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“The nature of my work aligns with my skills and interests.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">People in the wrong role struggle no matter how good the environment is.</div>
-</div>
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Burnout</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Workload</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“My workload feels manageable.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">An unmanageable workload is one of the core drivers of burnout.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Burnout</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Fairness</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“Decisions that affect me are made transparently.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">People can accept hard decisions. Hidden ones erode trust.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Environment</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Work-life harmony</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“To what extent do you feel obligated to remain available and responsive to work-related communication (e.g., email, messaging platforms, calls) outside of your scheduled working hours?”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">The always-on expectation rarely shows up in an engagement survey.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Environment</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Fair pay</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“I feel that my compensation is fair for the work I do.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">Pay that feels unfair wears people down quietly.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Environment</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Psychological safety</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“I feel safe speaking up at work.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">Teams that cannot raise problems cannot fix them.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Environment</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Relationship with manager</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“My manager encourages me to prioritize my wellbeing.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">Managers give, or withhold, permission to recover.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Wellbeing</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">The organization cares</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“I believe my company genuinely cares about my wellbeing.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">Whether people feel cared for shapes everything else.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Overall Wellbeing</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Emotional health</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“Over the past two weeks, I have felt overwhelmed by stress or low mood.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">Life outside work shows up at work, in both directions.</div>
-</div>
-</div>
-<div style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: #5C7285"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg><span>Validated items are asked word for word. Answers are private, and no individual response is ever shared with an employer.</span></div>
-</section>
-
-<section id="wellbeing-score" aria-label="Quick wellbeing score" style="padding: 72px clamp(16px, 4vw, 32px) 0">
-<div style="max-width: 960px; margin: 0 auto">
-<section aria-labelledby="wb-title" style="max-width: 960px; margin: 0 auto; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 14px; overflow: hidden">
-
-<div style="padding: 24px clamp(24px, 5vw, 48px); border-bottom: 1px solid #DDE3E8; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
-<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%); flex-shrink: 0"></span><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #5C7285">Your wellbeing score</span></div>
-<div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
-</div>
-
-
-<div style="padding: clamp(28px, 6vw, 56px) clamp(24px, 5vw, 48px); display: flex; flex-direction: column; gap: 32px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px">
-<h2 id="wb-title" style="margin: 0; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; font-weight: 800; color: #15283F">How are you really doing?</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #2E3A45">Seven statements, about two minutes. Think about the last few weeks and pick how much you agree with each one.</p>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 0">
-
-<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
-<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>Most days, I have the energy I need to get through the day.</span></legend>
-<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
-
-</div>
-</fieldset>
-
-<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
-<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>I’m able to switch off from work and properly recharge.</span></legend>
-<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
-
-</div>
-</fieldset>
-
-<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
-<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>My workload is manageable most of the time.</span></legend>
-<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
-
-</div>
-</fieldset>
-
-<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
-<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>I have a real say in how I do my work.</span></legend>
-<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
-
-</div>
-</fieldset>
-
-<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
-<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>I feel connected to the people I work with.</span></legend>
-<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
-
-</div>
-</fieldset>
-
-<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
-<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>The work I do feels worthwhile to me.</span></legend>
-<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
-
-</div>
-</fieldset>
-
-<fieldset style="margin: 0; border: 0; border-top: 1px solid #DDE3E8; padding: 22px 0; display: flex; flex-direction: column; gap: 14px">
-<legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>Life outside work feels manageable right now.</span></legend>
-<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
-
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
-
-</div>
-</fieldset>
-
-</div>
-
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px solid #DDE3E8; padding-top: 24px">
-<div aria-live="polite" style="font-size: 15px; font-weight: 600; color: #5C7285">0 of 7 answered</div>
-<button type="button" disabled="" style="font: inherit; font-weight: 700; font-size: 17px; border: 0; border-radius: 6px; padding: 15px 28px; min-height: 52px; background: #DDE3E8; color: #5C7285; cursor: not-allowed">See my score</button>
-</div>
-</div>
-
-
-
-
-<div style="border-top: 1px solid #DDE3E8; padding: 16px clamp(24px, 5vw, 48px); font-size: 12px; line-height: 1.5; color: #5C7285">A quick self-check, not a diagnosis. If you’re finding things hard, please talk to someone you trust or a health professional.</div>
-</section>
-</div>
-</section>
-
 <section style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 36px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
-<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">03 · Heat maps</div>
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">01 · Heat maps</div>
 <h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">Two teams. Same company. Very different results.</h2>
 <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">Wellbeing, engagement and burnout, tracked month by month for every team and linked to the performance numbers you already report. You see where it is slipping, why, and what it is costing, before it shows up in turnover.</p>
 </div>
@@ -385,157 +69,15 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 6px; width: min(420px, 100%)">
 <div aria-hidden="true" style="height: 12px; border-radius: 6px; background: linear-gradient(to right, #2F5276 0%, #4F7AA3 38%, #8FB0CF 50%, #CFDCE8 60%, #F9E3A0 67%, #F7C948 73%, #F39C5A 80%, #EF6F6C 87%, #E25A57 100%)"></div>
-<div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: #2E3A45"><span>Suffering</span><span>Struggling</span><span>Watch</span><span>Healthy</span><span>Thriving</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: #2E3A45"><span>Suffering</span><span>Struggling</span><span>At risk</span><span>Sustaining</span><span>Thriving</span></div>
 </div>
 <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Illustrative data</div>
 </div>
 
-<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch">
+<div role="group" aria-label="Choose a team" style="display: flex; flex-wrap: wrap; gap: 10px"><button type="button" class="mv-tab" aria-pressed="true" style="font: inherit; font-size: 15px; font-weight: 700; min-height: 48px; padding: 8px 10px 8px 16px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid #15283F; background: #15283F; color: #FFFFFF">Mark’s team<span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: rgb(111, 149, 185); color: #FFFFFF">44 · Struggling</span></button><button type="button" class="mv-tab" aria-pressed="false" style="font: inherit; font-size: 15px; font-weight: 700; min-height: 48px; padding: 8px 10px 8px 16px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #15283F">Sarah’s team<span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: rgb(241, 130, 100); color: #15283F">84 · Thriving</span></button></div>
+<div style="display: flex; flex-direction: column; gap: 24px">
 
-<article style="flex: 1 1 520px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 24px">
-
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px">
-<div style="display: flex; gap: 14px; align-items: center">
-<div aria-hidden="true" style="width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; flex-shrink: 0; background: #FBE7A6; color: #15283F">SK</div>
-<div style="display: flex; flex-direction: column; gap: 3px">
-<h3 style="margin: 0; font-size: 22px; font-weight: 800; color: #15283F">Sarah’s team</h3>
-<div style="font-size: 14px; color: #2E3A45">VP, Product Engineering</div>
-<div style="font-size: 13px; color: #5C7285">42 people · hybrid</div>
-</div>
-</div>
-<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px">
-<div style="font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #5C7285">Wellbeing Score</div>
-<div style="display: flex; align-items: baseline; gap: 10px"><span style="font-size: 44px; font-weight: 800; line-height: 1; color: #15283F">84</span><span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: rgb(241, 130, 100); color: #15283F">Thriving</span></div>
-<div style="font-size: 13px; font-weight: 600; color: #2F6B4F">↑ 10 points since May</div>
-</div>
-</div>
-
-<div style="overflow-x: auto">
-<div role="group" aria-label="Sarah’s team, monthly scores May to October. Each square opens a breakdown." style="display: grid; grid-template-columns: 132px repeat(6, minmax(46px, 1fr)); gap: 5px; min-width: 470px; font-size: 13px">
-<div style="display: contents">
-<div></div>
-<div style="text-align: center; font-size: 12px; font-weight: 600; color: #5C7285; padding-bottom: 4px">May</div><div style="text-align: center; font-size: 12px; font-weight: 600; color: #5C7285; padding-bottom: 4px">Jun</div><div style="text-align: center; font-size: 12px; font-weight: 600; color: #5C7285; padding-bottom: 4px">Jul</div><div style="text-align: center; font-size: 12px; font-weight: 600; color: #5C7285; padding-bottom: 4px">Aug</div><div style="text-align: center; font-size: 12px; font-weight: 600; color: #5C7285; padding-bottom: 4px">Sep</div><div style="text-align: center; font-size: 12px; font-weight: 600; color: #5C7285; padding-bottom: 4px">Oct</div>
-</div>
-
-<div style="display: contents">
-<div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Wellbeing</span><span style="font-size: 11px; font-weight: 500; color: #5C7285"></span></div>
-<button type="button" class="hm-cell" aria-label="Wellbeing, May: 74, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(246, 195, 75); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">74</button><button type="button" class="hm-cell" aria-label="Wellbeing, Jun: 76, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(245, 182, 80); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">76</button><button type="button" class="hm-cell" aria-label="Wellbeing, Jul: 72, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(247, 205, 87); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">72</button><button type="button" class="hm-cell" aria-label="Wellbeing, Aug: 77, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(245, 175, 82); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">77</button><button type="button" class="hm-cell" aria-label="Wellbeing, Sep: 81, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(242, 150, 93); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">81</button><button type="button" class="hm-cell" aria-label="Wellbeing, Oct: 84, Thriving. Show breakdown" aria-pressed="true" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(241, 130, 100); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; box-shadow: inset 0 0 0 2px #15283F, 0 0 0 2px #FFFFFF, 0 0 0 4px #15283F">84</button>
-</div>
-
-<div style="display: contents">
-<div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Engagement</span><span style="font-size: 11px; font-weight: 500; color: #5C7285"></span></div>
-<button type="button" class="hm-cell" aria-label="Engagement, May: 70, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(248, 214, 116); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">70</button><button type="button" class="hm-cell" aria-label="Engagement, Jun: 73, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(247, 201, 72); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">73</button><button type="button" class="hm-cell" aria-label="Engagement, Jul: 71, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(248, 210, 101); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">71</button><button type="button" class="hm-cell" aria-label="Engagement, Aug: 75, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(246, 188, 77); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">75</button><button type="button" class="hm-cell" aria-label="Engagement, Sep: 79, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(244, 162, 87); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">79</button><button type="button" class="hm-cell" aria-label="Engagement, Oct: 82, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(242, 143, 95); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">82</button>
-</div>
-
-<div style="display: contents">
-<div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Burnout risk</span><span style="font-size: 11px; font-weight: 500; color: #5C7285">lower is better</span></div>
-<button type="button" class="hm-cell" aria-label="Burnout risk, May: 19 percent, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(242, 150, 93); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">19%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Jun: 16 percent, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(241, 130, 100); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">16%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Jul: 24 percent, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(245, 182, 80); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">24%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Aug: 17 percent, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(241, 137, 98); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">17%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Sep: 13 percent, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(239, 111, 108); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">13%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Oct: 10 percent, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(236, 106, 103); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">10%</button>
-</div>
-
-<div style="display: contents">
-<div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Workload</span><span style="font-size: 11px; font-weight: 500; color: #5C7285">sustainable pace</span></div>
-<button type="button" class="hm-cell" aria-label="Workload, May: 68, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(249, 223, 145); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">68</button><button type="button" class="hm-cell" aria-label="Workload, Jun: 71, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(248, 210, 101); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">71</button><button type="button" class="hm-cell" aria-label="Workload, Jul: 58, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(194, 211, 227); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">58</button><button type="button" class="hm-cell" aria-label="Workload, Aug: 70, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(248, 214, 116); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">70</button><button type="button" class="hm-cell" aria-label="Workload, Sep: 75, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(246, 188, 77); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">75</button><button type="button" class="hm-cell" aria-label="Workload, Oct: 78, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(244, 169, 85); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">78</button>
-</div>
-
-<div style="display: contents">
-<div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Recovery</span><span style="font-size: 11px; font-weight: 500; color: #5C7285">time to recharge</span></div>
-<button type="button" class="hm-cell" aria-label="Recovery, May: 72, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(247, 205, 87); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">72</button><button type="button" class="hm-cell" aria-label="Recovery, Jun: 74, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(246, 195, 75); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">74</button><button type="button" class="hm-cell" aria-label="Recovery, Jul: 61, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(213, 221, 222); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">61</button><button type="button" class="hm-cell" aria-label="Recovery, Aug: 73, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(247, 201, 72); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">73</button><button type="button" class="hm-cell" aria-label="Recovery, Sep: 79, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(244, 162, 87); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">79</button><button type="button" class="hm-cell" aria-label="Recovery, Oct: 83, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(241, 137, 98); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">83</button>
-</div>
-
-<div style="display: contents">
-<div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Connection</span><span style="font-size: 11px; font-weight: 500; color: #5C7285">support from peers</span></div>
-<button type="button" class="hm-cell" aria-label="Connection, May: 81, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(242, 150, 93); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">81</button><button type="button" class="hm-cell" aria-label="Connection, Jun: 83, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(241, 137, 98); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">83</button><button type="button" class="hm-cell" aria-label="Connection, Jul: 80, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(243, 156, 90); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">80</button><button type="button" class="hm-cell" aria-label="Connection, Aug: 84, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(241, 130, 100); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">84</button><button type="button" class="hm-cell" aria-label="Connection, Sep: 86, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(240, 117, 105); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">86</button><button type="button" class="hm-cell" aria-label="Connection, Oct: 88, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(238, 109, 106); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">88</button>
-</div>
-
-<div style="display: contents">
-<div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Recognition</span><span style="font-size: 11px; font-weight: 500; color: #5C7285">effort is seen</span></div>
-<button type="button" class="hm-cell" aria-label="Recognition, May: 69, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(248, 218, 131); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">69</button><button type="button" class="hm-cell" aria-label="Recognition, Jun: 72, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(247, 205, 87); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">72</button><button type="button" class="hm-cell" aria-label="Recognition, Jul: 74, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(246, 195, 75); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">74</button><button type="button" class="hm-cell" aria-label="Recognition, Aug: 78, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(244, 169, 85); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">78</button><button type="button" class="hm-cell" aria-label="Recognition, Sep: 80, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(243, 156, 90); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">80</button><button type="button" class="hm-cell" aria-label="Recognition, Oct: 85, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(240, 124, 103); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">85</button>
-</div>
-
-</div>
-</div>
-
-<div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5C7285; margin-top: -10px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M9 3v10.5l-2.2-2.2a1.6 1.6 0 0 0-2.3 2.3L9 18.5c1.3 1.6 2.6 2.5 5 2.5 3.3 0 5-2.4 5-5.5V10a1.5 1.5 0 0 0-3 0V9a1.5 1.5 0 0 0-3 0V8.5a1.5 1.5 0 0 0-3 0V3a1.5 1.5 0 0 0-3 0z"></path></svg><span>Hover or tap any square for the breakdown</span></div>
-
-<div aria-live="polite" style="background: #F7F9FB; border: 1px solid #DDE3E8; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 16px">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 12px">
-<div style="display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #5C7285">Oct breakdown</div>
-<div style="font-size: 20px; font-weight: 800; color: #15283F">Wellbeing</div>
-</div>
-<div style="display: flex; align-items: center; gap: 10px"><span style="font-size: 32px; font-weight: 800; line-height: 1; color: #15283F">84</span><span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: rgb(241, 130, 100); color: #15283F; box-shadow: inset 0 0 0 1px rgba(21,40,63,0.12)">Thriving</span></div>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: #2E3A45">
-<span><span style="font-weight: 700; color: #2F6B4F">+3</span> vs last month</span>
-<span><span style="font-weight: 700; color: #2F6B4F">+10</span> since May</span>
-<span>39 responses</span>
-</div>
-<div style="display: flex; flex-direction: column; gap: 8px">
-<div style="font-size: 12px; font-weight: 600; color: #5C7285">Where the team sits</div>
-<div aria-hidden="true" style="display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: #DDE3E8">
-<div style="width: 78%; background: #EF6F6C"></div><div style="width: 20%; background: #CFDCE8"></div><div style="width: 2%; background: #4F7AA3"></div>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: #2E3A45"><span><span style="font-weight: 700">78%</span> doing well</span><span><span style="font-weight: 700">20%</span> on watch</span><span><span style="font-weight: 700">2%</span> at risk</span></div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 10px">
-<div style="font-size: 12px; font-weight: 600; color: #5C7285">What is behind the score</div>
-
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) 120px 34px; align-items: center; gap: 10px; font-size: 14px; color: #2E3A45">
-<span>Energy</span>
-<div aria-hidden="true" style="height: 8px; background: #E6EBF0; border-radius: 4px"><div style="height: 8px; border-radius: 4px; width: 88%; background: rgb(238, 109, 106)"></div></div>
-<span style="font-weight: 700; color: #15283F; text-align: right">88</span>
-</div>
-
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) 120px 34px; align-items: center; gap: 10px; font-size: 14px; color: #2E3A45">
-<span>Mood</span>
-<div aria-hidden="true" style="height: 8px; background: #E6EBF0; border-radius: 4px"><div style="height: 8px; border-radius: 4px; width: 82%; background: rgb(242, 143, 95)"></div></div>
-<span style="font-weight: 700; color: #15283F; text-align: right">82</span>
-</div>
-
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) 120px 34px; align-items: center; gap: 10px; font-size: 14px; color: #2E3A45">
-<span>Life satisfaction</span>
-<div aria-hidden="true" style="height: 8px; background: #E6EBF0; border-radius: 4px"><div style="height: 8px; border-radius: 4px; width: 81%; background: rgb(242, 150, 93)"></div></div>
-<span style="font-weight: 700; color: #15283F; text-align: right">81</span>
-</div>
-
-</div>
-<div style="font-size: 14px; line-height: 1.5; color: #2E3A45; border-top: 1px solid #DDE3E8; padding-top: 12px; min-height: 54px"><span style="font-weight: 700; color: #15283F">What it means: </span>A dip during the July release, then a steady climb to the highest score in the company.</div>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #DDE3E8; padding-top: 20px">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Tied to performance</div>
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
-
-<div style="background: #F1F4F6; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 24px; font-weight: 800; color: #15283F">4%</div>
-<div style="font-size: 13px; line-height: 1.35; color: #2E3A45">Voluntary turnover, annualized</div>
-<div style="font-size: 12px; font-weight: 600; color: #2F6B4F">Lowest in the company</div>
-</div>
-
-<div style="background: #F1F4F6; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 24px; font-weight: 800; color: #15283F">−8%</div>
-<div style="font-size: 13px; line-height: 1.35; color: #2E3A45">Unplanned absence since May</div>
-<div style="font-size: 12px; font-weight: 600; color: #2F6B4F">Steady decline</div>
-</div>
-
-<div style="background: #F1F4F6; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 24px; font-weight: 800; color: #15283F">108%</div>
-<div style="font-size: 13px; line-height: 1.35; color: #2E3A45">Of quarterly goals met</div>
-<div style="font-size: 12px; font-weight: 600; color: #2F6B4F">Up from 97%</div>
-</div>
-
-</div>
-</div>
-
-<div style="border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; background: #F1F4F6">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">What is working</div>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #2E3A45">The measure flagged a workload spike during the July release. Sarah moved two deadlines and protected focus time, and every score recovered within a month. We capture what her team does differently so other leaders can use it.</p>
-</div>
-
-</article>
-
-<article style="flex: 1 1 520px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 24px">
-
+<article class="mv-panel" style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; padding: clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 24px">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px">
 <div style="display: flex; gap: 14px; align-items: center">
 <div aria-hidden="true" style="width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; flex-shrink: 0; background: #CFDCE8; color: #15283F">MR</div>
@@ -551,7 +93,8 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <div style="font-size: 13px; font-weight: 600; color: #B3423F">↓ 21 points since May</div>
 </div>
 </div>
-
+<div style="display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start">
+<div style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 20px">
 <div style="overflow-x: auto">
 <div role="group" aria-label="Mark’s team, monthly scores May to October. Each square opens a breakdown." style="display: grid; grid-template-columns: 132px repeat(6, minmax(46px, 1fr)); gap: 5px; min-width: 470px; font-size: 13px">
 <div style="display: contents">
@@ -561,22 +104,22 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 
 <div style="display: contents">
 <div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Wellbeing</span><span style="font-size: 11px; font-weight: 500; color: #5C7285"></span></div>
-<button type="button" class="hm-cell" aria-label="Wellbeing, May: 66, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(243, 226, 170); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">66</button><button type="button" class="hm-cell" aria-label="Wellbeing, Jun: 63, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(225, 223, 201); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">63</button><button type="button" class="hm-cell" aria-label="Wellbeing, Jul: 58, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(194, 211, 227); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">58</button><button type="button" class="hm-cell" aria-label="Wellbeing, Aug: 55, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(175, 198, 220); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">55</button><button type="button" class="hm-cell" aria-label="Wellbeing, Sep: 49, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(138, 172, 203); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">49</button><button type="button" class="hm-cell" aria-label="Wellbeing, Oct: 44, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(111, 149, 185); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">44</button>
+<button type="button" class="hm-cell" aria-label="Wellbeing, May: 66, At risk. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(243, 226, 170); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">66</button><button type="button" class="hm-cell" aria-label="Wellbeing, Jun: 63, At risk. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(225, 223, 201); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">63</button><button type="button" class="hm-cell" aria-label="Wellbeing, Jul: 58, At risk. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(194, 211, 227); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">58</button><button type="button" class="hm-cell" aria-label="Wellbeing, Aug: 55, At risk. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(175, 198, 220); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">55</button><button type="button" class="hm-cell" aria-label="Wellbeing, Sep: 49, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(138, 172, 203); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">49</button><button type="button" class="hm-cell" aria-label="Wellbeing, Oct: 44, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(111, 149, 185); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">44</button>
 </div>
 
 <div style="display: contents">
 <div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Engagement</span><span style="font-size: 11px; font-weight: 500; color: #5C7285"></span></div>
-<button type="button" class="hm-cell" aria-label="Engagement, May: 72, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(247, 205, 87); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">72</button><button type="button" class="hm-cell" aria-label="Engagement, Jun: 70, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(248, 214, 116); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">70</button><button type="button" class="hm-cell" aria-label="Engagement, Jul: 66, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(243, 226, 170); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">66</button><button type="button" class="hm-cell" aria-label="Engagement, Aug: 58, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(194, 211, 227); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">58</button><button type="button" class="hm-cell" aria-label="Engagement, Sep: 51, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(149, 180, 210); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">51</button><button type="button" class="hm-cell" aria-label="Engagement, Oct: 46, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(122, 158, 192); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">46</button>
+<button type="button" class="hm-cell" aria-label="Engagement, May: 72, Sustaining. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(247, 205, 87); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">72</button><button type="button" class="hm-cell" aria-label="Engagement, Jun: 70, Sustaining. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(248, 214, 116); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">70</button><button type="button" class="hm-cell" aria-label="Engagement, Jul: 66, At risk. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(243, 226, 170); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">66</button><button type="button" class="hm-cell" aria-label="Engagement, Aug: 58, At risk. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(194, 211, 227); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">58</button><button type="button" class="hm-cell" aria-label="Engagement, Sep: 51, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(149, 180, 210); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">51</button><button type="button" class="hm-cell" aria-label="Engagement, Oct: 46, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(122, 158, 192); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">46</button>
 </div>
 
 <div style="display: contents">
 <div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Burnout risk</span><span style="font-size: 11px; font-weight: 500; color: #5C7285">lower is better</span></div>
-<button type="button" class="hm-cell" aria-label="Burnout risk, May: 26 percent, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(246, 195, 75); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">26%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Jun: 31 percent, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(248, 218, 131); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">31%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Jul: 37 percent, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(225, 223, 201); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">37%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Aug: 45 percent, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(175, 198, 220); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">45%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Sep: 52 percent, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(132, 167, 200); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">52%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Oct: 61 percent, Suffering. Show breakdown" aria-pressed="true" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(84, 127, 167); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; box-shadow: inset 0 0 0 2px #15283F, 0 0 0 2px #FFFFFF, 0 0 0 4px #15283F">61%</button>
+<button type="button" class="hm-cell" aria-label="Burnout risk, May: 26 percent, Sustaining. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(246, 195, 75); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">26%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Jun: 31 percent, Sustaining. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(248, 218, 131); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">31%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Jul: 37 percent, At risk. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(225, 223, 201); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">37%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Aug: 45 percent, At risk. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(175, 198, 220); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">45%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Sep: 52 percent, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(132, 167, 200); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">52%</button><button type="button" class="hm-cell" aria-label="Burnout risk, Oct: 61 percent, Suffering. Show breakdown" aria-pressed="true" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(84, 127, 167); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; box-shadow: inset 0 0 0 2px #15283F, 0 0 0 2px #FFFFFF, 0 0 0 4px #15283F">61%</button>
 </div>
 
 <div style="display: contents">
 <div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Workload</span><span style="font-size: 11px; font-weight: 500; color: #5C7285">sustainable pace</span></div>
-<button type="button" class="hm-cell" aria-label="Workload, May: 55, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(175, 198, 220); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">55</button><button type="button" class="hm-cell" aria-label="Workload, Jun: 50, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(143, 176, 207); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">50</button><button type="button" class="hm-cell" aria-label="Workload, Jul: 41, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(95, 136, 174); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">41</button><button type="button" class="hm-cell" aria-label="Workload, Aug: 39, Suffering. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(84, 127, 167); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">39</button><button type="button" class="hm-cell" aria-label="Workload, Sep: 32, Suffering. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(74, 116, 156); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">32</button><button type="button" class="hm-cell" aria-label="Workload, Oct: 29, Suffering. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(71, 113, 152); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">29</button>
+<button type="button" class="hm-cell" aria-label="Workload, May: 55, At risk. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(175, 198, 220); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">55</button><button type="button" class="hm-cell" aria-label="Workload, Jun: 50, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(143, 176, 207); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">50</button><button type="button" class="hm-cell" aria-label="Workload, Jul: 41, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(95, 136, 174); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">41</button><button type="button" class="hm-cell" aria-label="Workload, Aug: 39, Suffering. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(84, 127, 167); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">39</button><button type="button" class="hm-cell" aria-label="Workload, Sep: 32, Suffering. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(74, 116, 156); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">32</button><button type="button" class="hm-cell" aria-label="Workload, Oct: 29, Suffering. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(71, 113, 152); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">29</button>
 </div>
 
 <div style="display: contents">
@@ -586,19 +129,43 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 
 <div style="display: contents">
 <div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Connection</span><span style="font-size: 11px; font-weight: 500; color: #5C7285">support from peers</span></div>
-<button type="button" class="hm-cell" aria-label="Connection, May: 81, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(242, 150, 93); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">81</button><button type="button" class="hm-cell" aria-label="Connection, Jun: 80, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(243, 156, 90); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">80</button><button type="button" class="hm-cell" aria-label="Connection, Jul: 82, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(242, 143, 95); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">82</button><button type="button" class="hm-cell" aria-label="Connection, Aug: 79, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(244, 162, 87); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">79</button><button type="button" class="hm-cell" aria-label="Connection, Sep: 78, Healthy. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(244, 169, 85); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">78</button><button type="button" class="hm-cell" aria-label="Connection, Oct: 80, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(243, 156, 90); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">80</button>
+<button type="button" class="hm-cell" aria-label="Connection, May: 81, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(242, 150, 93); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">81</button><button type="button" class="hm-cell" aria-label="Connection, Jun: 80, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(243, 156, 90); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">80</button><button type="button" class="hm-cell" aria-label="Connection, Jul: 82, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(242, 143, 95); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">82</button><button type="button" class="hm-cell" aria-label="Connection, Aug: 79, Sustaining. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(244, 162, 87); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">79</button><button type="button" class="hm-cell" aria-label="Connection, Sep: 78, Sustaining. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(244, 169, 85); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">78</button><button type="button" class="hm-cell" aria-label="Connection, Oct: 80, Thriving. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(243, 156, 90); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">80</button>
 </div>
 
 <div style="display: contents">
 <div style="display: flex; flex-direction: column; justify-content: center; gap: 1px; font-size: 13px; font-weight: 700; color: #15283F; padding-right: 8px; min-height: 40px"><span>Recognition</span><span style="font-size: 11px; font-weight: 500; color: #5C7285">effort is seen</span></div>
-<button type="button" class="hm-cell" aria-label="Recognition, May: 57, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(188, 207, 225); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">57</button><button type="button" class="hm-cell" aria-label="Recognition, Jun: 55, Watch. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(175, 198, 220); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">55</button><button type="button" class="hm-cell" aria-label="Recognition, Jul: 52, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(156, 185, 212); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">52</button><button type="button" class="hm-cell" aria-label="Recognition, Aug: 47, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(127, 163, 196); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">47</button><button type="button" class="hm-cell" aria-label="Recognition, Sep: 45, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(116, 154, 189); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">45</button><button type="button" class="hm-cell" aria-label="Recognition, Oct: 41, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(95, 136, 174); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">41</button>
+<button type="button" class="hm-cell" aria-label="Recognition, May: 57, At risk. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(188, 207, 225); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">57</button><button type="button" class="hm-cell" aria-label="Recognition, Jun: 55, At risk. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(175, 198, 220); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">55</button><button type="button" class="hm-cell" aria-label="Recognition, Jul: 52, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(156, 185, 212); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">52</button><button type="button" class="hm-cell" aria-label="Recognition, Aug: 47, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(127, 163, 196); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">47</button><button type="button" class="hm-cell" aria-label="Recognition, Sep: 45, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(116, 154, 189); color: #15283F; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">45</button><button type="button" class="hm-cell" aria-label="Recognition, Oct: 41, Struggling. Show breakdown" aria-pressed="false" style="font: inherit; border: 0; width: 100%; cursor: pointer; background: rgb(95, 136, 174); color: #FFFFFF; border-radius: 4px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">41</button>
 </div>
 
 </div>
 </div>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5C7285; margin-top: -6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M9 3v10.5l-2.2-2.2a1.6 1.6 0 0 0-2.3 2.3L9 18.5c1.3 1.6 2.6 2.5 5 2.5 3.3 0 5-2.4 5-5.5V10a1.5 1.5 0 0 0-3 0V9a1.5 1.5 0 0 0-3 0V8.5a1.5 1.5 0 0 0-3 0V3a1.5 1.5 0 0 0-3 0z"></path></svg><span>Hover or tap any square for the breakdown</span></div>
+<div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #DDE3E8; padding-top: 20px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Tied to performance</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
 
-<div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5C7285; margin-top: -10px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M9 3v10.5l-2.2-2.2a1.6 1.6 0 0 0-2.3 2.3L9 18.5c1.3 1.6 2.6 2.5 5 2.5 3.3 0 5-2.4 5-5.5V10a1.5 1.5 0 0 0-3 0V9a1.5 1.5 0 0 0-3 0V8.5a1.5 1.5 0 0 0-3 0V3a1.5 1.5 0 0 0-3 0z"></path></svg><span>Hover or tap any square for the breakdown</span></div>
+<div style="background: #F1F4F6; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 24px; font-weight: 800; color: #15283F">19%</div>
+<div style="font-size: 13px; line-height: 1.35; color: #2E3A45">Voluntary turnover, annualized</div>
+<div style="font-size: 12px; font-weight: 600; color: #B3423F">Up from 9% in May</div>
+</div>
 
+<div style="background: #F1F4F6; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 24px; font-weight: 800; color: #15283F">+41%</div>
+<div style="font-size: 13px; line-height: 1.35; color: #2E3A45">Unplanned absence since May</div>
+<div style="font-size: 12px; font-weight: 600; color: #B3423F">Two people on leave</div>
+</div>
+
+<div style="background: #F1F4F6; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 24px; font-weight: 800; color: #15283F">72%</div>
+<div style="font-size: 13px; line-height: 1.35; color: #2E3A45">Of quarterly goals met</div>
+<div style="font-size: 12px; font-weight: 600; color: #B3423F">Down from 91%</div>
+</div>
+
+</div>
+</div>
+</div>
+<div style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 20px">
 <div aria-live="polite" style="background: #F7F9FB; border: 1px solid #DDE3E8; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 16px">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 12px">
 <div style="display: flex; flex-direction: column; gap: 4px">
@@ -617,7 +184,7 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <div aria-hidden="true" style="display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: #DDE3E8">
 <div style="width: 25%; background: #EF6F6C"></div><div style="width: 14%; background: #CFDCE8"></div><div style="width: 61%; background: #4F7AA3"></div>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: #2E3A45"><span><span style="font-weight: 700">25%</span> doing well</span><span><span style="font-weight: 700">14%</span> on watch</span><span><span style="font-weight: 700">61%</span> at risk</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: #2E3A45"><span><span style="font-weight: 700">25%</span> doing well</span><span><span style="font-weight: 700">14%</span> sustaining</span><span><span style="font-weight: 700">61%</span> at risk</span></div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px">
 <div style="font-size: 12px; font-weight: 600; color: #5C7285">What is behind the score</div>
@@ -643,41 +210,89 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </div>
 <div style="font-size: 14px; line-height: 1.5; color: #2E3A45; border-top: 1px solid #DDE3E8; padding-top: 12px; min-height: 54px"><span style="font-weight: 700; color: #15283F">What it means: </span>Exhaustion is the leading signal. Six in ten people on the team are now at risk.</div>
 </div>
-
-<div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #DDE3E8; padding-top: 20px">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Tied to performance</div>
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
-
-<div style="background: #F1F4F6; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 24px; font-weight: 800; color: #15283F">19%</div>
-<div style="font-size: 13px; line-height: 1.35; color: #2E3A45">Voluntary turnover, annualized</div>
-<div style="font-size: 12px; font-weight: 600; color: #B3423F">Up from 9% in May</div>
-</div>
-
-<div style="background: #F1F4F6; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 24px; font-weight: 800; color: #15283F">+41%</div>
-<div style="font-size: 13px; line-height: 1.35; color: #2E3A45">Unplanned absence since May</div>
-<div style="font-size: 12px; font-weight: 600; color: #B3423F">Two people on leave</div>
-</div>
-
-<div style="background: #F1F4F6; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 24px; font-weight: 800; color: #15283F">72%</div>
-<div style="font-size: 13px; line-height: 1.35; color: #2E3A45">Of quarterly goals met</div>
-<div style="font-size: 12px; font-weight: 600; color: #B3423F">Down from 91%</div>
-</div>
-
-</div>
-</div>
-
 <div style="border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; background: #15283F">
 <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #F7C948">Where to start</div>
 <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #FFFFFF">Workload and recovery fell first, and engagement followed two months later. A WAIOS™ expert works with Mark on a workload reset and protected recovery time, then checks in every two weeks until the trend turns.</p>
 </div>
-
+</div>
+</div>
 </article>
 
 </div>
 <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #5C7285">Scores run 0 to 100 and higher is healthier, except burnout risk, where lower is better. All data is aggregated: team results only appear once they meet the minimum reporting threshold, so no individual’s answers can ever be identified.</p>
+</section>
+
+<section aria-label="The framework" style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">02 · The framework</div>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">One measure. Five scores.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">The WAIOS™ Framework follows the path work takes into a person's life: from how engaged they are in the work itself, to whether it is burning them out, to the environment around them, to how work shapes their life, to how their life is going overall. Each tier has its own score.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div role="group" aria-label="The five tiers">
+<div aria-hidden="true" style="position: relative; height: 30px; margin-bottom: 6px"><div style="position: absolute; left: 10%; right: 10%; top: 14px; height: 3px; border-radius: 2px; background: #DDE3E8"></div><div class="mv-fill" style="left: 10%; width: 0%"></div><div class="mv-dot" style="left: 10%"></div></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px">
+<button type="button" class="mv-stop" aria-pressed="true"><span aria-hidden="true" style="display: none"></span><span style="width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-top: 4px; transition: background .3s, border-color .3s; background: #FEF6DC; border: 1.5px solid #F7C948"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg></span><span class="mv-tiernum" style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">Tier 1</span><span class="mv-tiername" style="font-size: 15px; line-height: 1.25; font-weight: 800; color: #15283F">Work Engagement</span></button><button type="button" class="mv-stop" aria-pressed="false"><span aria-hidden="true" style="display: none"></span><span style="width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-top: 4px; transition: background .3s, border-color .3s; background: #F1F4F6; border: 1.5px solid transparent"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M4 18a8 8 0 1 1 16 0M12 18l4-6"></path></svg></span><span class="mv-tiernum" style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">Tier 2</span><span class="mv-tiername" style="font-size: 15px; line-height: 1.25; font-weight: 600; color: #2E3A45">Burnout</span></button><button type="button" class="mv-stop" aria-pressed="false"><span aria-hidden="true" style="display: none"></span><span style="width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-top: 4px; transition: background .3s, border-color .3s; background: #F1F4F6; border: 1.5px solid transparent"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"></path></svg></span><span class="mv-tiernum" style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">Tier 3</span><span class="mv-tiername" style="font-size: 15px; line-height: 1.25; font-weight: 600; color: #2E3A45">Work Environment</span></button><button type="button" class="mv-stop" aria-pressed="false"><span aria-hidden="true" style="display: none"></span><span style="width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-top: 4px; transition: background .3s, border-color .3s; background: #F1F4F6; border: 1.5px solid transparent"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3M4.0 3.0h16.0v18.0h-16.0z"></path></svg></span><span class="mv-tiernum" style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">Tier 4</span><span class="mv-tiername" style="font-size: 15px; line-height: 1.25; font-weight: 600; color: #2E3A45">Work Wellbeing</span></button><button type="button" class="mv-stop" aria-pressed="false"><span aria-hidden="true" style="display: none"></span><span style="width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-top: 4px; transition: background .3s, border-color .3s; background: #F1F4F6; border: 1.5px solid transparent"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M12.0 8.0a4.0 4.0 0 1 0 0.01 0M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></span><span class="mv-tiernum" style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">Tier 5</span><span class="mv-tiername" style="font-size: 15px; line-height: 1.25; font-weight: 600; color: #2E3A45">Overall Wellbeing</span></button>
+</div>
+</div>
+
+<div class="mv-panel" aria-live="polite" style="border: 1px solid #DDE3E8; border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: flex-start; background: #FAF8F4">
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">Tier 1</div>
+<h3 style="margin: 0; font-size: 26px; font-weight: 800; color: #15283F">Work Engagement</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #2E3A45">Is this person emotionally connected to their work? Measured first, because if someone is in the wrong role, every other change is harder.</p>
+</div>
+<div style="flex: 2 1 460px; display: flex; flex-direction: column; gap: 14px; padding-top: 4px">
+
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px">
+
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Emotional connection to the work</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Purpose in the work</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Role alignment</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Natural strengths</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Values alignment</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Bringing out their best</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Growth toward potential</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Enjoyment of the daily work</span><span style="font-size: 13px; font-weight: 500; color: #2E3A45; background: #FFFFFF; border: 1px solid #C9D2DA; border-radius: 999px; padding: 6px 12px">Role clarity</span>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section aria-label="What we ask" style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px) 96px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 780px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">03 · What we ask</div>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">The questions your people have been waiting for someone to ask.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">A sample from the measure. These are the conditions employees talk about with each other but rarely get asked about by their employer.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div class="mv-panel" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+
+<div style="flex: 1 1 calc((860px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Engagement</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Role alignment</span></div>
+<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“The nature of my work aligns with my skills and interests.”</blockquote>
+<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">People in the wrong role struggle no matter how good the environment is.</div>
+</div>
+
+<div style="flex: 1 1 calc((860px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Burnout</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Workload</span></div>
+<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“My workload feels manageable.”</blockquote>
+<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">An unmanageable workload is one of the core drivers of burnout.</div>
+</div>
+
+<div style="flex: 1 1 calc((860px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Burnout</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Fairness</span></div>
+<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“Decisions that affect me are made transparently.”</blockquote>
+<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">People can accept hard decisions. Hidden ones erode trust.</div>
+</div>
+
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; align-items: center; gap: 10px" aria-hidden="true"><span style="width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #DDE3E8"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #DDE3E8"></span><span style="font-size: 14px; font-weight: 600; color: #5C7285; margin-left: 6px">1 of 3</span></div>
+<div style="display: flex; gap: 10px"><button type="button" class="mv-btn" aria-label="Previous questions"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M15 6l-6 6 6 6"></path></svg></button><button type="button" class="mv-btn" aria-label="More questions"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+</div>
+</div>
+<div style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: #5C7285"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg><span>Validated items are asked word for word. Answers are private, and no individual response is ever shared with an employer.</span></div>
 </section>
 
 <section style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
@@ -693,6 +308,36 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #EF6F6C; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 4</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 5h16v11h-9l-5 4v-4H4z"></path><path d="M8 9h8M8 12h5"></path></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Debrief and act</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">Our founders walk your leaders through the results and build a focused action plan.</div></li>
 <li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #2E3A45; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 5</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M20 12a8 8 0 1 1-2.3-5.7"></path><path d="M20 4v5h-5"></path></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Re-measure</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">We measure again to show what changed and where to focus next.</div></li>
 </ol>
+</div>
+</section>
+
+<section id="wellbeing-score" aria-label="Quick wellbeing score" style="padding: 96px clamp(16px, 4vw, 32px)">
+<div style="max-width: 960px; margin: 0 auto">
+<section aria-labelledby="wb-title" style="max-width: 960px; margin: 0 auto; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 14px; overflow: hidden">
+
+<div style="padding: 24px clamp(24px, 5vw, 48px); border-bottom: 1px solid #DDE3E8; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%); flex-shrink: 0"></span><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #5C7285">Your wellbeing score</span></div>
+<div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
+</div>
+
+
+<div style="padding: clamp(28px, 6vw, 56px) clamp(24px, 5vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: clamp(30px, 5vw, 42px); line-height: 1.1; font-weight: 800; color: #15283F">How are you really doing?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #2E3A45">Seven statements, about two minutes. You see your score and your strongest area right away.</p>
+<div style="padding-top: 4px"><button type="button" style="font: inherit; font-weight: 700; font-size: 17px; background: #EF6F6C; color: #15283F; border: 0; border-radius: 6px; padding: 15px 28px; min-height: 52px; cursor: pointer">Start the check</button></div>
+</div>
+<div aria-hidden="true" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center">
+<span style="display: inline-flex; align-items: center; gap: 8px; background: #FAF8F4; border: 1px solid #DDE3E8; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: #15283F"><span style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>Energy</span><span style="display: inline-flex; align-items: center; gap: 8px; background: #FAF8F4; border: 1px solid #DDE3E8; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: #15283F"><span style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>Recovery</span><span style="display: inline-flex; align-items: center; gap: 8px; background: #FAF8F4; border: 1px solid #DDE3E8; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: #15283F"><span style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>Workload</span><span style="display: inline-flex; align-items: center; gap: 8px; background: #FAF8F4; border: 1px solid #DDE3E8; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: #15283F"><span style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>Control</span><span style="display: inline-flex; align-items: center; gap: 8px; background: #FAF8F4; border: 1px solid #DDE3E8; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: #15283F"><span style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>Connection</span><span style="display: inline-flex; align-items: center; gap: 8px; background: #FAF8F4; border: 1px solid #DDE3E8; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: #15283F"><span style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>Meaning</span><span style="display: inline-flex; align-items: center; gap: 8px; background: #FAF8F4; border: 1px solid #DDE3E8; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: #15283F"><span style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>Life outside work</span>
+</div>
+</div>
+
+
+
+
+
+<div style="border-top: 1px solid #DDE3E8; padding: 16px clamp(24px, 5vw, 48px); font-size: 12px; line-height: 1.5; color: #5C7285">A quick self-check, not a diagnosis. If you’re finding things hard, please talk to someone you trust or a health professional.</div>
+</section>
 </div>
 </section>
 
@@ -747,20 +392,135 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #2E3A45; max-width: 760px">Most tools measure one of these and guess at the rest. The WAIOS™ Wellbeing Measure asks about the specific factors proven to drive burnout, engagement, wellbeing and performance at the same time, so you can see which conditions are driving them on each team, and <span style="font-weight: 700; background: linear-gradient(to top, #F7C948 42%, transparent 42%)">the effect on turnover, absence and goals</span>.</p>
 </section>
 
-<section style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
+<section style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">01 · Heat maps</div>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">Two teams. Same company. Very different results.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">Wellbeing, engagement and burnout, tracked month by month for every team and linked to the performance numbers you already report. You see where it is slipping, why, and what it is costing, before it shows up in turnover.</p>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px; width: min(420px, 100%)">
+<div aria-hidden="true" style="height: 12px; border-radius: 6px; background: linear-gradient(to right, #2F5276 0%, #4F7AA3 38%, #8FB0CF 50%, #CFDCE8 60%, #F9E3A0 67%, #F7C948 73%, #F39C5A 80%, #EF6F6C 87%, #E25A57 100%)"></div>
+<div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: #2E3A45"><span>Suffering</span><span>Struggling</span><span>At risk</span><span>Sustaining</span><span>Thriving</span></div>
+</div>
+<div style="font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Illustrative data</div>
+</div>
+
+<div role="group" aria-label="Choose a team" style="display: flex; flex-wrap: wrap; gap: 10px"><sc-for list="{{hmTabs}}" as="tb" hint-placeholder-count="2"><button type="button" class="mv-tab" onClick="{{tb.pick}}" aria-pressed="{{tb.pressed}}" style="{{tb.style}}">{{tb.label}}<span style="{{tb.chip}}">{{tb.score}} · {{tb.status}}</span></button></sc-for></div>
+<div style="display: flex; flex-direction: column; gap: 24px">
+<sc-for list="{{shownManagers}}" as="m" hint-placeholder-count="1">
+<article class="mv-panel" style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; padding: clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px">
+<div style="display: flex; gap: 14px; align-items: center">
+<div aria-hidden="true" style="{{m.avatarStyle}}">{{m.initials}}</div>
+<div style="display: flex; flex-direction: column; gap: 3px">
+<h3 style="margin: 0; font-size: 22px; font-weight: 800; color: #15283F">{{m.name}}&#8217;s team</h3>
+<div style="font-size: 14px; color: #2E3A45">{{m.title}}</div>
+<div style="font-size: 13px; color: #5C7285">{{m.team}}</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px">
+<div style="font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #5C7285">Wellbeing Score</div>
+<div style="display: flex; align-items: baseline; gap: 10px"><span style="font-size: 44px; font-weight: 800; line-height: 1; color: #15283F">{{m.score}}</span><span style="{{m.chipStyle}}">{{m.status}}</span></div>
+<div style="font-size: 13px; font-weight: 600; color: {{m.trendColor}}">{{m.trend}}</div>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start">
+<div style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<div style="overflow-x: auto">
+<div role="group" aria-label="{{m.tableLabel}}" style="display: grid; grid-template-columns: 132px repeat(6, minmax(46px, 1fr)); gap: 5px; min-width: 470px; font-size: 13px">
+<div style="display: contents">
+<div></div>
+<sc-for list="{{months}}" as="mo" hint-placeholder-count="6"><div style="text-align: center; font-size: 12px; font-weight: 600; color: #5C7285; padding-bottom: 4px">{{mo}}</div></sc-for>
+</div>
+<sc-for list="{{m.rows}}" as="row" hint-placeholder-count="7">
+<div style="display: contents">
+<div style="{{row.labelStyle}}"><span>{{row.label}}</span><span style="font-size: 11px; font-weight: 500; color: #5C7285">{{row.note}}</span></div>
+<sc-for list="{{row.cells}}" as="cell" hint-placeholder-count="6"><button type="button" class="hm-cell" aria-label="{{cell.aria}}" aria-pressed="{{cell.pressed}}" onMouseEnter="{{cell.pick}}" onFocus="{{cell.pick}}" onClick="{{cell.pick}}" style="{{cell.style}}">{{cell.v}}</button></sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5C7285; margin-top: -6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M9 3v10.5l-2.2-2.2a1.6 1.6 0 0 0-2.3 2.3L9 18.5c1.3 1.6 2.6 2.5 5 2.5 3.3 0 5-2.4 5-5.5V10a1.5 1.5 0 0 0-3 0V9a1.5 1.5 0 0 0-3 0V8.5a1.5 1.5 0 0 0-3 0V3a1.5 1.5 0 0 0-3 0z"></path></svg><span>Hover or tap any square for the breakdown</span></div>
+<div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #DDE3E8; padding-top: 20px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Tied to performance</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{m.kpis}}" as="k" hint-placeholder-count="3">
+<div style="background: #F1F4F6; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 24px; font-weight: 800; color: #15283F">{{k.v}}</div>
+<div style="font-size: 13px; line-height: 1.35; color: #2E3A45">{{k.label}}</div>
+<div style="font-size: 12px; font-weight: 600; color: {{k.color}}">{{k.delta}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<div aria-live="polite" style="background: #F7F9FB; border: 1px solid #DDE3E8; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #5C7285">{{m.d.month}} breakdown</div>
+<div style="font-size: 20px; font-weight: 800; color: #15283F">{{m.d.measure}}</div>
+</div>
+<div style="display: flex; align-items: center; gap: 10px"><span style="font-size: 32px; font-weight: 800; line-height: 1; color: #15283F">{{m.d.value}}</span><span style="{{m.d.chipStyle}}">{{m.d.band}}</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: #2E3A45">
+<span><span style="font-weight: 700; color: {{m.d.momColor}}">{{m.d.mom}}</span> vs last month</span>
+<span><span style="font-weight: 700; color: {{m.d.ytdColor}}">{{m.d.ytd}}</span> since May</span>
+<span>{{m.d.n}} responses</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 12px; font-weight: 600; color: #5C7285">Where the team sits</div>
+<div aria-hidden="true" style="display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: #DDE3E8">
+<div style="width: {{m.d.pGood}}%; background: #EF6F6C"></div><div style="width: {{m.d.pMid}}%; background: #CFDCE8"></div><div style="width: {{m.d.pBad}}%; background: #4F7AA3"></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: #2E3A45"><span><span style="font-weight: 700">{{m.d.pGood}}%</span> doing well</span><span><span style="font-weight: 700">{{m.d.pMid}}%</span> sustaining</span><span><span style="font-weight: 700">{{m.d.pBad}}%</span> at risk</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 12px; font-weight: 600; color: #5C7285">What is behind the score</div>
+<sc-for list="{{m.d.subs}}" as="sub" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 120px 34px; align-items: center; gap: 10px; font-size: 14px; color: #2E3A45">
+<span>{{sub.label}}</span>
+<div aria-hidden="true" style="height: 8px; background: #E6EBF0; border-radius: 4px"><div style="{{sub.bar}}"></div></div>
+<span style="font-weight: 700; color: #15283F; text-align: right">{{sub.v}}</span>
+</div>
+</sc-for>
+</div>
+<div style="font-size: 14px; line-height: 1.5; color: #2E3A45; border-top: 1px solid #DDE3E8; padding-top: 12px; min-height: 54px"><span style="font-weight: 700; color: #15283F">What it means: </span>{{m.d.note}}</div>
+</div>
+<div style="{{m.actionStyle}}">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: {{m.actionLabelColor}}">{{m.actionLabel}}</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: {{m.actionText}}">{{m.action}}</p>
+</div>
+</div>
+</div>
+</article>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #5C7285">Scores run 0 to 100 and higher is healthier, except burnout risk, where lower is better. All data is aggregated: team results only appear once they meet the minimum reporting threshold, so no individual’s answers can ever be identified.</p>
+</section>
+
+<section aria-label="The framework" style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
-<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">01 · The framework</div>
-<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">Five tiers. One Wellbeing Score.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">The WAIOS™ Framework follows the path work takes into a person's life: from how engaged they are in the work itself, to whether it is burning them out, to the environment around them, to how work shapes their life, to how their life is going overall. Each tier has its own score, and together they produce one Wellbeing Score.</p>
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">02 · The framework</div>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">One measure. Five scores.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">The WAIOS™ Framework follows the path work takes into a person's life: from how engaged they are in the work itself, to whether it is burning them out, to the environment around them, to how work shapes their life, to how their life is going overall. Each tier has its own score.</p>
 </div>
-<div style="display: flex; flex-direction: column; gap: 16px">
-<sc-for list="{{categories}}" as="cat" hint-placeholder-count="5">
-<div style="border: 1px solid #DDE3E8; border-radius: 10px; padding: 28px 30px; display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: flex-start; background: #FAF8F4">
-<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 12px">
-<div style="display: flex; justify-content: space-between; align-items: center"><div style="width: 52px; height: 52px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DDE3E8; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="{{cat.icon}}"></path></svg></div><div style="font-size: 14px; font-weight: 700; color: #5C7285">{{cat.num}}</div></div>
-<h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #15283F">{{cat.title}}</h3>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E3A45">{{cat.desc}}</p>
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div role="group" aria-label="The five tiers">
+<div aria-hidden="true" style="position: relative; height: 30px; margin-bottom: 6px"><div style="position: absolute; left: 10%; right: 10%; top: 14px; height: 3px; border-radius: 2px; background: #DDE3E8"></div><div class="mv-fill" style="{{fwFill}}"></div><div class="mv-dot" style="{{fwDot}}"></div></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px">
+<sc-for list="{{tierStops}}" as="ts" hint-placeholder-count="5"><button type="button" class="mv-stop" onClick="{{ts.pick}}" aria-pressed="{{ts.pressed}}"><span aria-hidden="true" style="{{ts.pin}}"></span><span style="{{ts.iconBox}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="{{ts.icon}}"></path></svg></span><span class="mv-tiernum" style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C7285">{{ts.num}}</span><span class="mv-tiername" style="{{ts.nameStyle}}">{{ts.title}}</span></button></sc-for>
+</div>
+</div>
+<sc-for list="{{tierShown}}" as="cat" hint-placeholder-count="1">
+<div class="mv-panel" aria-live="polite" style="border: 1px solid #DDE3E8; border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: flex-start; background: #FAF8F4">
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EF6F6C">{{cat.num}}</div>
+<h3 style="margin: 0; font-size: 26px; font-weight: 800; color: #15283F">{{cat.title}}</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #2E3A45">{{cat.desc}}</p>
 </div>
 <div style="flex: 2 1 460px; display: flex; flex-direction: column; gap: 14px; padding-top: 4px">
 <sc-for list="{{cat.groups}}" as="g" hint-placeholder-count="1">
@@ -778,56 +538,47 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </div>
 </section>
 
-<section style="max-width: 1200px; margin: 0 auto; padding: 96px 32px 0; display: flex; flex-direction: column; gap: 36px">
+<section aria-label="What we ask" style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px) 96px; display: flex; flex-direction: column; gap: 36px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 780px">
-<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">02 · What we ask</div>
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">03 · What we ask</div>
 <h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">The questions your people have been waiting for someone to ask.</h2>
 <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">A sample from the measure. These are the conditions employees talk about with each other but rarely get asked about by their employer.</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px">
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Engagement</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Role alignment</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“The nature of my work aligns with my skills and interests.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">People in the wrong role struggle no matter how good the environment is.</div>
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div class="mv-panel" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<sc-for list="{{qShown}}" as="qc" hint-placeholder-count="3">
+<div style="flex: 1 1 calc((860px - 100%) * 999); min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">{{qc.tier}}</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">{{qc.tag}}</span></div>
+<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">{{qc.q}}</blockquote>
+<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">{{qc.why}}</div>
 </div>
-<div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Burnout</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Workload</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“My workload feels manageable.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">An unmanageable workload is one of the core drivers of burnout.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Burnout</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Fairness</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“Decisions that affect me are made transparently.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">People can accept hard decisions. Hidden ones erode trust.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Environment</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Work-life harmony</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“To what extent do you feel obligated to remain available and responsive to work-related communication (e.g., email, messaging platforms, calls) outside of your scheduled working hours?”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">The always-on expectation rarely shows up in an engagement survey.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Environment</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Fair pay</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“I feel that my compensation is fair for the work I do.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">Pay that feels unfair wears people down quietly.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Environment</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Psychological safety</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“I feel safe speaking up at work.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">Teams that cannot raise problems cannot fix them.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Environment</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Relationship with manager</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“My manager encourages me to prioritize my wellbeing.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">Managers give, or withhold, permission to recover.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Work Wellbeing</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">The organization cares</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“I believe my company genuinely cares about my wellbeing.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">Whether people feel cared for shapes everything else.</div>
-</div><div style="background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 12px; font-weight: 600; color: #15283F; background: #F3ECDF; border-radius: 999px; padding: 5px 11px">Overall Wellbeing</span><span style="font-size: 12px; font-weight: 500; color: #2E3A45; border: 1px solid #C9D2DA; border-radius: 999px; padding: 4px 10px">Emotional health</span></div>
-<blockquote style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #15283F">“Over the past two weeks, I have felt overwhelmed by stress or low mood.”</blockquote>
-<div style="font-size: 14px; line-height: 1.5; color: #5C7285; margin-top: auto">Life outside work shows up at work, in both directions.</div>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; align-items: center; gap: 10px" aria-hidden="true"><sc-for list="{{qDots}}" as="qd" hint-placeholder-count="3"><span style="{{qd.style}}"></span></sc-for><span style="font-size: 14px; font-weight: 600; color: #5C7285; margin-left: 6px">{{qLabel}}</span></div>
+<div style="display: flex; gap: 10px"><button type="button" class="mv-btn" onClick="{{qPrev}}" aria-label="Previous questions"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M15 6l-6 6 6 6"></path></svg></button><button type="button" class="mv-btn" onClick="{{qNext}}" aria-label="More questions"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: #15283F; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round"><path d="M9 6l6 6-6 6"></path></svg></button></div>
 </div>
 </div>
 <div style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: #5C7285"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg><span>Validated items are asked word for word. Answers are private, and no individual response is ever shared with an employer.</span></div>
 </section>
 
-<section id="wellbeing-score" aria-label="Quick wellbeing score" style="padding: 72px clamp(16px, 4vw, 32px) 0">
+<section style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">04 · How it works</div>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">From baseline score to a clear plan.</h2>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 24px">
+<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #2E3A45; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 1</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="12" r="9"></circle><path d="M10 8.5l5 3.5-5 3.5z"></path></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Launch</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">We set up the measure, your context questions and a communication plan for employees.</div></li>
+<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #2E3A45; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 2</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><rect x="5" y="4" width="14" height="17" rx="2"></rect><rect x="9" y="2" width="6" height="4" rx="1"></rect><path d="M9 11h6M9 15h4"></path></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Measure</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">Employees complete it privately in less than 10 minutes. Every person sees their own results.</div></li>
+<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #2E3A45; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 3</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Map</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">You receive heat maps by team and department, with the drivers behind each score.</div></li>
+<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #EF6F6C; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 4</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 5h16v11h-9l-5 4v-4H4z"></path><path d="M8 9h8M8 12h5"></path></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Debrief and act</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">Our founders walk your leaders through the results and build a focused action plan.</div></li>
+<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #2E3A45; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 5</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M20 12a8 8 0 1 1-2.3-5.7"></path><path d="M20 4v5h-5"></path></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Re-measure</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">We measure again to show what changed and where to focus next.</div></li>
+</ol>
+</div>
+</section>
+
+<section id="wellbeing-score" aria-label="Quick wellbeing score" style="padding: 96px clamp(16px, 4vw, 32px)">
 <div style="max-width: 960px; margin: 0 auto">
 <section aria-labelledby="wb-title" style="max-width: 960px; margin: 0 auto; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 14px; overflow: hidden">
 
@@ -836,7 +587,19 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
 </div>
 
-<sc-if value="{{ wb.isAsk }}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{ wb.isIntro }}" hint-placeholder-val="{{ true }}">
+<div style="padding: clamp(28px, 6vw, 56px) clamp(24px, 5vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: clamp(30px, 5vw, 42px); line-height: 1.1; font-weight: 800; color: #15283F">How are you really doing?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #2E3A45">Seven statements, about two minutes. You see your score and your strongest area right away.</p>
+<div style="padding-top: 4px"><button type="button" onClick="{{ wb.begin }}" style="font: inherit; font-weight: 700; font-size: 17px; background: #EF6F6C; color: #15283F; border: 0; border-radius: 6px; padding: 15px 28px; min-height: 52px; cursor: pointer">Start the check</button></div>
+</div>
+<div aria-hidden="true" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center">
+<sc-for list="{{ wb.areaNames }}" as="an" hint-placeholder-count="7"><span style="display: inline-flex; align-items: center; gap: 8px; background: #FAF8F4; border: 1px solid #DDE3E8; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: #15283F"><span style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span>{{ an }}</span></sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ wb.isAsk }}" hint-placeholder-val="{{ false }}">
 <div style="padding: clamp(28px, 6vw, 56px) clamp(24px, 5vw, 48px); display: flex; flex-direction: column; gap: 32px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px">
 <h2 id="wb-title" style="margin: 0; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; font-weight: 800; color: #15283F">How are you really doing?</h2>
@@ -929,131 +692,6 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </div>
 </section>
 
-<section style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 36px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
-<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">03 · Heat maps</div>
-<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">Two teams. Same company. Very different results.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E3A45">Wellbeing, engagement and burnout, tracked month by month for every team and linked to the performance numbers you already report. You see where it is slipping, why, and what it is costing, before it shows up in turnover.</p>
-</div>
-
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px">
-<div style="display: flex; flex-direction: column; gap: 6px; width: min(420px, 100%)">
-<div aria-hidden="true" style="height: 12px; border-radius: 6px; background: linear-gradient(to right, #2F5276 0%, #4F7AA3 38%, #8FB0CF 50%, #CFDCE8 60%, #F9E3A0 67%, #F7C948 73%, #F39C5A 80%, #EF6F6C 87%, #E25A57 100%)"></div>
-<div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: #2E3A45"><span>Suffering</span><span>Struggling</span><span>Watch</span><span>Healthy</span><span>Thriving</span></div>
-</div>
-<div style="font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Illustrative data</div>
-</div>
-
-<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch">
-<sc-for list="{{managers}}" as="m" hint-placeholder-count="2">
-<article style="flex: 1 1 520px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE3E8; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 24px">
-
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px">
-<div style="display: flex; gap: 14px; align-items: center">
-<div aria-hidden="true" style="{{m.avatarStyle}}">{{m.initials}}</div>
-<div style="display: flex; flex-direction: column; gap: 3px">
-<h3 style="margin: 0; font-size: 22px; font-weight: 800; color: #15283F">{{m.name}}&#8217;s team</h3>
-<div style="font-size: 14px; color: #2E3A45">{{m.title}}</div>
-<div style="font-size: 13px; color: #5C7285">{{m.team}}</div>
-</div>
-</div>
-<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px">
-<div style="font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #5C7285">Wellbeing Score</div>
-<div style="display: flex; align-items: baseline; gap: 10px"><span style="font-size: 44px; font-weight: 800; line-height: 1; color: #15283F">{{m.score}}</span><span style="{{m.chipStyle}}">{{m.status}}</span></div>
-<div style="font-size: 13px; font-weight: 600; color: {{m.trendColor}}">{{m.trend}}</div>
-</div>
-</div>
-
-<div style="overflow-x: auto">
-<div role="group" aria-label="{{m.tableLabel}}" style="display: grid; grid-template-columns: 132px repeat(6, minmax(46px, 1fr)); gap: 5px; min-width: 470px; font-size: 13px">
-<div style="display: contents">
-<div></div>
-<sc-for list="{{months}}" as="mo" hint-placeholder-count="6"><div style="text-align: center; font-size: 12px; font-weight: 600; color: #5C7285; padding-bottom: 4px">{{mo}}</div></sc-for>
-</div>
-<sc-for list="{{m.rows}}" as="row" hint-placeholder-count="7">
-<div style="display: contents">
-<div style="{{row.labelStyle}}"><span>{{row.label}}</span><span style="font-size: 11px; font-weight: 500; color: #5C7285">{{row.note}}</span></div>
-<sc-for list="{{row.cells}}" as="cell" hint-placeholder-count="6"><button type="button" class="hm-cell" aria-label="{{cell.aria}}" aria-pressed="{{cell.pressed}}" onMouseEnter="{{cell.pick}}" onFocus="{{cell.pick}}" onClick="{{cell.pick}}" style="{{cell.style}}">{{cell.v}}</button></sc-for>
-</div>
-</sc-for>
-</div>
-</div>
-
-<div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5C7285; margin-top: -10px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: #5C7285; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M9 3v10.5l-2.2-2.2a1.6 1.6 0 0 0-2.3 2.3L9 18.5c1.3 1.6 2.6 2.5 5 2.5 3.3 0 5-2.4 5-5.5V10a1.5 1.5 0 0 0-3 0V9a1.5 1.5 0 0 0-3 0V8.5a1.5 1.5 0 0 0-3 0V3a1.5 1.5 0 0 0-3 0z"></path></svg><span>Hover or tap any square for the breakdown</span></div>
-
-<div aria-live="polite" style="background: #F7F9FB; border: 1px solid #DDE3E8; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 16px">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 12px">
-<div style="display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #5C7285">{{m.d.month}} breakdown</div>
-<div style="font-size: 20px; font-weight: 800; color: #15283F">{{m.d.measure}}</div>
-</div>
-<div style="display: flex; align-items: center; gap: 10px"><span style="font-size: 32px; font-weight: 800; line-height: 1; color: #15283F">{{m.d.value}}</span><span style="{{m.d.chipStyle}}">{{m.d.band}}</span></div>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: #2E3A45">
-<span><span style="font-weight: 700; color: {{m.d.momColor}}">{{m.d.mom}}</span> vs last month</span>
-<span><span style="font-weight: 700; color: {{m.d.ytdColor}}">{{m.d.ytd}}</span> since May</span>
-<span>{{m.d.n}} responses</span>
-</div>
-<div style="display: flex; flex-direction: column; gap: 8px">
-<div style="font-size: 12px; font-weight: 600; color: #5C7285">Where the team sits</div>
-<div aria-hidden="true" style="display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: #DDE3E8">
-<div style="width: {{m.d.pGood}}%; background: #EF6F6C"></div><div style="width: {{m.d.pMid}}%; background: #CFDCE8"></div><div style="width: {{m.d.pBad}}%; background: #4F7AA3"></div>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: #2E3A45"><span><span style="font-weight: 700">{{m.d.pGood}}%</span> doing well</span><span><span style="font-weight: 700">{{m.d.pMid}}%</span> on watch</span><span><span style="font-weight: 700">{{m.d.pBad}}%</span> at risk</span></div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 10px">
-<div style="font-size: 12px; font-weight: 600; color: #5C7285">What is behind the score</div>
-<sc-for list="{{m.d.subs}}" as="sub" hint-placeholder-count="3">
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) 120px 34px; align-items: center; gap: 10px; font-size: 14px; color: #2E3A45">
-<span>{{sub.label}}</span>
-<div aria-hidden="true" style="height: 8px; background: #E6EBF0; border-radius: 4px"><div style="{{sub.bar}}"></div></div>
-<span style="font-weight: 700; color: #15283F; text-align: right">{{sub.v}}</span>
-</div>
-</sc-for>
-</div>
-<div style="font-size: 14px; line-height: 1.5; color: #2E3A45; border-top: 1px solid #DDE3E8; padding-top: 12px; min-height: 54px"><span style="font-weight: 700; color: #15283F">What it means: </span>{{m.d.note}}</div>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #DDE3E8; padding-top: 20px">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C7285">Tied to performance</div>
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
-<sc-for list="{{m.kpis}}" as="k" hint-placeholder-count="3">
-<div style="background: #F1F4F6; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 24px; font-weight: 800; color: #15283F">{{k.v}}</div>
-<div style="font-size: 13px; line-height: 1.35; color: #2E3A45">{{k.label}}</div>
-<div style="font-size: 12px; font-weight: 600; color: {{k.color}}">{{k.delta}}</div>
-</div>
-</sc-for>
-</div>
-</div>
-
-<div style="{{m.actionStyle}}">
-<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: {{m.actionLabelColor}}">{{m.actionLabel}}</div>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: {{m.actionText}}">{{m.action}}</p>
-</div>
-
-</article>
-</sc-for>
-</div>
-<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #5C7285">Scores run 0 to 100 and higher is healthier, except burnout risk, where lower is better. All data is aggregated: team results only appear once they meet the minimum reporting threshold, so no individual’s answers can ever be identified.</p>
-</section>
-
-<section style="background: #FFFFFF; border-top: 1px solid #DDE3E8; border-bottom: 1px solid #DDE3E8">
-<div style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
-<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">04 · How it works</div>
-<h2 style="margin: 0; font-size: 38px; line-height: 1.15; font-weight: 800; color: #15283F">From baseline score to a clear plan.</h2>
-</div>
-<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 24px">
-<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #2E3A45; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 1</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="12" r="9"></circle><path d="M10 8.5l5 3.5-5 3.5z"></path></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Launch</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">We set up the measure, your context questions and a communication plan for employees.</div></li>
-<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #2E3A45; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 2</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><rect x="5" y="4" width="14" height="17" rx="2"></rect><rect x="9" y="2" width="6" height="4" rx="1"></rect><path d="M9 11h6M9 15h4"></path></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Measure</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">Employees complete it privately in less than 10 minutes. Every person sees their own results.</div></li>
-<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #2E3A45; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 3</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Map</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">You receive heat maps by team and department, with the drivers behind each score.</div></li>
-<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #EF6F6C; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 4</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M4 5h16v11h-9l-5 4v-4H4z"></path><path d="M8 9h8M8 12h5"></path></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Debrief and act</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">Our founders walk your leaders through the results and build a focused action plan.</div></li>
-<li style="flex: 1 1 calc((900px - 100%) * 999); min-width: 0; display: flex; flex-direction: column; gap: 10px; border-top: 3px solid #2E3A45; padding-top: 18px"><div style="font-size: 14px; font-weight: 700; color: #5C7285">Step 5</div><div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: none; stroke: #2E3A45; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><path d="M20 12a8 8 0 1 1-2.3-5.7"></path><path d="M20 4v5h-5"></path></svg><span style="font-size: 19px; font-weight: 700; color: #15283F">Re-measure</span></div><div style="font-size: 15px; line-height: 1.6; color: #2E3A45">We measure again to show what changed and where to focus next.</div></li>
-</ol>
-</div>
-</section>
-
 <section style="background: #15283F">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px">
 <div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
@@ -1088,7 +726,7 @@ function waiosMail(subject, body) { var url = 'mailto:hello@waios.com?subject=' 
 class WellbeingScoreTool {
   constructor(host) {
     this.host = host;
-    this.state = { step: 'ask', answers: [null, null, null, null, null, null, null], name: '', email: '', org: '', sent: false };
+    this.state = { step: 'intro', answers: [null, null, null, null, null, null, null], name: '', email: '', org: '', sent: false };
   }
   setState(p) {
     Object.assign(this.state, typeof p === 'function' ? p(this.state) : p);
@@ -1157,6 +795,9 @@ class WellbeingScoreTool {
     });
 
     return {
+      isIntro: s.step === 'intro',
+      begin: function () { go({ step: 'ask' }); },
+      areaNames: A.map(function (a) { return a.name; }),
       isAsk: s.step === 'ask',
       isResult: s.step === 'result',
       items: items,
@@ -1259,7 +900,7 @@ class Component extends DCLogic {
     ];
     var offsets = [[6, -3, -5], [-6, 4, 2], [5, -2, -4], [-7, 3, 5], [4, -6, 1], [3, -5, 2], [-4, 6, -2]];
     var stops = [[0, [47, 82, 118]], [38, [79, 122, 163]], [50, [143, 176, 207]], [60, [207, 220, 232]], [67, [249, 227, 160]], [73, [247, 201, 72]], [80, [243, 156, 90]], [87, [239, 111, 108]], [100, [226, 90, 87]]];
-    function band(h) { return h >= 80 ? 'Thriving' : h >= 68 ? 'Healthy' : h >= 55 ? 'Watch' : h >= 40 ? 'Struggling' : 'Suffering'; }
+    function band(h) { return h >= 80 ? 'Thriving' : h >= 68 ? 'Sustaining' : h >= 55 ? 'At risk' : h >= 40 ? 'Struggling' : 'Suffering'; }
     function heat(h) {
       var i = 0; while (i < stops.length - 2 && h > stops[i + 1][0]) i++;
       var a = stops[i], b = stops[i + 1], t = Math.max(0, Math.min(1, (h - a[0]) / (b[0] - a[0])));
@@ -1334,8 +975,44 @@ class Component extends DCLogic {
       };
     });
     var categories = [{"num": "Tier 1", "icon": "M13 2L4 14h7l-1 8 9-12h-7z", "title": "Work Engagement", "desc": "Is this person emotionally connected to their work? Measured first, because if someone is in the wrong role, every other change is harder.", "groups": [{"hasLabel": false, "label": "", "items": ["Emotional connection to the work", "Purpose in the work", "Role alignment", "Natural strengths", "Values alignment", "Bringing out their best", "Growth toward potential", "Enjoyment of the daily work", "Role clarity"]}]}, {"num": "Tier 2", "icon": "M4 18a8 8 0 1 1 16 0M12 18l4-6", "title": "Burnout", "desc": "Is the work sustainable? Measured through the six core drivers of burnout and the three dimensions that define it.", "groups": [{"hasLabel": true, "label": "Six core drivers", "items": ["Workload", "Control", "Reward and recognition", "Community", "Fairness", "Values"]}, {"hasLabel": true, "label": "Three dimensions of burnout", "items": ["Exhaustion", "Cynicism", "Reduced professional efficacy"]}]}, {"num": "Tier 3", "icon": "M12 3v18M7 21h10M5 7h14M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z", "title": "Work Environment", "desc": "Is the environment helping or holding this person back? Removing barriers prevents harm. Strengthening drivers helps people thrive.", "groups": [{"hasLabel": true, "label": "Barriers", "items": ["Work-life harmony", "Job security", "Predictable hours", "Fair pay", "Working conditions"]}, {"hasLabel": true, "label": "Drivers", "items": ["Relationship with manager", "Committed colleagues", "Connection to mission", "Growth", "Belonging", "Psychological safety", "Voice", "Cultural norms"]}]}, {"num": "Tier 4", "icon": "M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3M4.0 3.0h16.0v18.0h-16.0z", "title": "Work Wellbeing", "desc": "Is work making this person’s life better or worse? It shows where the organization strengthens wellbeing and where to invest next.", "groups": [{"hasLabel": true, "label": "Overall", "items": ["Influence on quality of life", "The organization cares", "Hope for the future here"]}, {"hasLabel": true, "label": "By area of life", "items": ["Emotional", "Physical", "Financial", "Social", "Purpose"]}]}, {"num": "Tier 5", "icon": "M12.0 8.0a4.0 4.0 0 1 0 0.01 0M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4", "title": "Overall Wellbeing", "desc": "Setting work aside, how is this person’s life going? Strength here builds resilience at work. This is the ultimate measure.", "groups": [{"hasLabel": false, "label": "", "items": ["Life evaluation (Cantril Ladder)", "Emotional health", "Physical health", "Meaning and purpose", "Financial security", "Core relationships", "Social connectedness", "Inner strength"]}]}];
+
+    var st = this.state;
+    var hmPick = st.hmPick == null ? 1 : st.hmPick;
+    var tabOrder = [1, 0];
+    var hmTabs = tabOrder.map(function (i) {
+      var m = managers[i], on = i === hmPick;
+      return { label: m.name + '\u2019s team', score: m.score, status: m.status, pressed: on ? 'true' : 'false',
+        chip: m.chipStyle,
+        style: 'font: inherit; font-size: 15px; font-weight: 700; min-height: 48px; padding: 8px 10px 8px 16px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px' + '; border: 1.5px solid ' + (on ? '#15283F' : '#C9D2DA') + '; background: ' + (on ? '#15283F' : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#15283F'),
+        pick: function () { self.setState({ hmPick: i }); } };
+    });
+    var tier = st.tier == null ? 0 : st.tier;
+    var tx = [10, 30, 50, 70, 90][tier];
+    var tierStops = categories.map(function (c, i) {
+      var on = i === tier;
+      return { num: c.num, title: c.title, icon: c.icon, pressed: on ? 'true' : 'false',
+        pin: 'display: none',
+        iconBox: 'width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-top: 4px; transition: background .3s, border-color .3s; background: ' + (on ? '#FEF6DC' : '#F1F4F6') + '; border: 1.5px solid ' + (on ? '#F7C948' : 'transparent'),
+        nameStyle: 'font-size: 15px; line-height: 1.25; font-weight: ' + (on ? '800' : '600') + '; color: ' + (on ? '#15283F' : '#2E3A45'),
+        pick: function () { self.setState({ tier: i }); } };
+    });
+    var QS = [{"tier": "Work Engagement", "tag": "Role alignment", "q": "“The nature of my work aligns with my skills and interests.”", "why": "People in the wrong role struggle no matter how good the environment is."}, {"tier": "Burnout", "tag": "Workload", "q": "“My workload feels manageable.”", "why": "An unmanageable workload is one of the core drivers of burnout."}, {"tier": "Burnout", "tag": "Fairness", "q": "“Decisions that affect me are made transparently.”", "why": "People can accept hard decisions. Hidden ones erode trust."}, {"tier": "Work Environment", "tag": "Work-life harmony", "q": "“To what extent do you feel obligated to remain available and responsive to work-related communication (e.g., email, messaging platforms, calls) outside of your scheduled working hours?”", "why": "The always-on expectation rarely shows up in an engagement survey."}, {"tier": "Work Environment", "tag": "Fair pay", "q": "“I feel that my compensation is fair for the work I do.”", "why": "Pay that feels unfair wears people down quietly."}, {"tier": "Work Environment", "tag": "Psychological safety", "q": "“I feel safe speaking up at work.”", "why": "Teams that cannot raise problems cannot fix them."}, {"tier": "Work Environment", "tag": "Relationship with manager", "q": "“My manager encourages me to prioritize my wellbeing.”", "why": "Managers give, or withhold, permission to recover."}, {"tier": "Work Wellbeing", "tag": "The organization cares", "q": "“I believe my company genuinely cares about my wellbeing.”", "why": "Whether people feel cared for shapes everything else."}, {"tier": "Overall Wellbeing", "tag": "Emotional health", "q": "“Over the past two weeks, I have felt overwhelmed by stress or low mood.”", "why": "Life outside work shows up at work, in both directions."}];
+    var qp = st.qPage || 0, qn = Math.ceil(QS.length / 3);
+    var qShown = QS.slice(qp * 3, qp * 3 + 3);
+    var qDots = []; for (var qi = 0; qi < qn; qi++) qDots.push({ style: 'width: 10px; height: 10px; border-radius: 50%; ' + (qi === qp ? 'background: ' + 'linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)' : 'background: #DDE3E8') });
     return { wb: this.wb.renderVals(),
       managers: managers,
+      hmTabs: hmTabs,
+      shownManagers: [managers[hmPick]],
+      tierStops: tierStops,
+      tierShown: [categories[tier]],
+      fwDot: 'left: ' + tx + '%',
+      fwFill: 'left: 10%; width: ' + (tx - 10) + '%',
+      qShown: qShown,
+      qDots: qDots,
+      qLabel: (qp + 1) + ' of ' + qn,
+      qPrev: function () { self.setState({ qPage: (qp + qn - 1) % qn }); },
+      qNext: function () { self.setState({ qPage: (qp + 1) % qn }); },
       months: months,
       categories: categories,
       cols: cols,
