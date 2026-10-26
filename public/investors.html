@@ -20,6 +20,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Montserrat:wght@700&amp;display=swap" rel="stylesheet">
 <style>
+@media (pointer: coarse), (max-width: 560px){.tap44{display:inline-flex;align-items:center;min-height:44px}}
+/* phones */@media (max-width: 560px){.tool-logo{display:none !important}.lw{zoom:.66}.lw-h{zoom:.8}.fd-photo{max-height:380px}.hb-card{padding:14px 16px !important;gap:8px !important}.hb-card .hb-ic{display:none}.hb-title{font-size:17px !important}.hb-status{border-top:0 !important;padding-top:0 !important}.hb-card[aria-pressed="true"]::after{display:none}.hb-cards{gap:10px !important}.rs{min-height:0 !important;padding:14px 16px 16px !important;gap:8px !important}.rs-num{font-size:26px !important}}
 body{margin:0;background:#FAF8F4}
 a{color:#15283F}a:hover{color:#EF6F6C}
 </style>
@@ -43,10 +45,10 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </header>
 
 <section style="background: #15283F">
-<div style="max-width: 1200px; margin: 0 auto; padding: 104px clamp(16px, 4vw, 32px) 96px; display: flex; flex-direction: column; gap: 56px">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(64px, 4.94vw + 44.7px, 104px) clamp(16px, 4vw, 32px) clamp(56px, 4.94vw + 36.7px, 96px); display: flex; flex-direction: column; gap: clamp(32px, 2.96vw + 20.4px, 56px)">
 <div style="display: flex; flex-direction: column; gap: 22px; max-width: 900px">
 <div style="display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: #EF6F6C; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #EF6F6C">What we are building</span></div>
-<h1 style="margin: 0; font-size: 58px; line-height: 1.06; font-weight: 800; color: #F3EDE2">The Wellbeing AI Operating System™</h1>
+<h1 style="margin: 0; font-size: clamp(40px, 2.22vw + 31.3px, 58px); line-height: 1.06; font-weight: 800; color: #F3EDE2">The Wellbeing AI Operating System™</h1>
 <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #F3EDE2">WAIOS™ will measure wellbeing continuously, explain what is driving it, route the right action to the person who can change it, and show the effect in the numbers a business already runs on. The WAIOS™ Wellbeing Measure is where it begins.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 40px; border-top: 1px solid rgba(243,237,226,0.25); padding-top: 40px">
@@ -57,10 +59,10 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </div>
 </section>
 
-<section style="max-width: 1200px; margin: 0 auto; padding: 104px clamp(16px, 4vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 64px; align-items: start">
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(64px, 4.94vw + 44.7px, 104px) clamp(16px, 4vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: clamp(40px, 2.96vw + 28.4px, 64px); align-items: start">
 <div style="display: flex; flex-direction: column; gap: 20px">
 <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #5C7285">For conscious investors</div>
-<h2 style="margin: 0; font-size: 40px; line-height: 1.15; font-weight: 800; color: #15283F">We are building this with partners, not just capital.</h2>
+<h2 style="margin: 0; font-size: clamp(29px, 1.36vw + 23.7px, 40px); line-height: 1.15; font-weight: 800; color: #15283F">We are building this with partners, not just capital.</h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #2E3A45">We are inviting a small group of mission-aligned investors to learn more about WAIOS™. If the quality of people's lives matters to you as much as the return, we would like to hear from you.</p>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #2E3A45">Request access and our founders will follow up personally. Approved visitors receive access to our investor materials.</p>
 <div style="display: flex; flex-direction: column; gap: 14px; padding-top: 8px">
@@ -78,7 +80,7 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <label for="ifirm" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">Firm or organization (optional)<input id="ifirm" name="ifirm" data-label="Firm or organization" type="text" autocomplete="organization" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
 <label for="ilinkedin" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">LinkedIn profile (optional)<input id="ilinkedin" name="ilinkedin" data-label="LinkedIn" type="text" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; min-height: 44px; box-sizing: border-box"></label>
 <label for="inote" style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #2E3A45">What draws you to WAIOS™? (optional)<textarea id="inote" name="inote" data-label="What draws them to WAIOS" rows="3" style="font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #C9D2DA; border-radius: 6px; background: #FFFFFF; resize: vertical"></textarea></label>
-<label for="iaccredited" style="display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.5; color: #2E3A45"><input id="iaccredited" name="iaccredited" data-label="Accredited investor" type="checkbox" style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0">I am an accredited investor.</label>
+<label for="iaccredited" style="display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; font-size: 13px; line-height: 1.5; color: #2E3A45"><input id="iaccredited" name="iaccredited" data-label="Accredited investor" type="checkbox" style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0">I am an accredited investor.</label>
 <button type="submit" style="font: inherit; font-weight: 700; font-size: 16px; background: #EF6F6C; color: #15283F; border: 0; border-radius: 6px; padding: 14px 20px; min-height: 48px; cursor: pointer">Request access</button>
 <div aria-hidden="true" style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 <p data-lead-error hidden role="alert" style="margin: 0; font-size: 14px; line-height: 1.5; color: #B3423F">Something went wrong and this did not send. Please try again in a moment.</p>
@@ -91,7 +93,7 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 </div>
 </section>
 
-<section style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px) 72px">
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px) clamp(44px, 3.46vw + 30.5px, 72px)">
 <p style="margin: 0; font-size: 12px; line-height: 1.6; color: #5C7285; max-width: 900px">This page is for information only and is not an offer to sell, or a solicitation of an offer to buy, any securities.</p>
 </section>
 
@@ -101,13 +103,13 @@ a{color:#15283F}a:hover{color:#EF6F6C}
 <div aria-label="waios" style="font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</div>
 <div>WAIOS, P.B.C. · A women-founded public benefit corporation</div>
 </div>
-<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 24px">
-<a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
-<a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
-<a href="wellbeing-measure.html" style="color: #2E3A45; text-decoration: none">Wellbeing Measure</a>
-<a href="how-we-work.html" style="color: #2E3A45; text-decoration: none">How We Work</a>
-<a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
-<a href="contact.html" style="color: #2E3A45; text-decoration: none">Contact</a>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 0 24px">
+<a class="tap44" href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
+<a class="tap44" href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
+<a class="tap44" href="wellbeing-measure.html" style="color: #2E3A45; text-decoration: none">Wellbeing Measure</a>
+<a class="tap44" href="how-we-work.html" style="color: #2E3A45; text-decoration: none">How We Work</a>
+<a class="tap44" href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
+<a class="tap44" href="contact.html" style="color: #2E3A45; text-decoration: none">Contact</a>
 </nav>
 </div>
 </footer>
