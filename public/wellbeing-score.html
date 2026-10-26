@@ -20,6 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Montserrat:wght@700&amp;display=swap" rel="stylesheet">
 <style>
+.qz-opt{transition:background .15s,border-color .15s,color .15s,transform .1s,box-shadow .15s}.qz-opt[aria-pressed="false"]:hover{background:#F1F4F6 !important;border-color:#15283F !important}.qz-opt:active{transform:scale(.97)}.qz-opt[aria-pressed="true"]{box-shadow:0 0 0 4px rgba(247,201,72,.55)}.qz-opt[aria-pressed="true"]::before{content:"";display:inline-block;width:.45em;height:.8em;border:solid currentColor;border-width:0 .16em .16em 0;transform:rotate(45deg);margin:0 .6em .15em 0;vertical-align:middle}.qz-opt:focus-visible{outline:3px solid #F7C948;outline-offset:2px}
 body{margin:0;background:#FAF8F4}
 a{color:#15283F}a:hover{color:#EF6F6C}
 input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C948;outline-offset:2px}
@@ -33,12 +34,12 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
 <a href="index.html" aria-label="waios home" style="text-decoration: none; font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</a>
 <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 500">
+<a href="about.html" style="text-decoration: none; color: #2E3A45">About</a>
+<a href="approach.html" style="text-decoration: none; color: #2E3A45">Our Approach</a>
 <a href="wellbeing-measure.html" style="text-decoration: none; color: #2E3A45">Wellbeing Measure</a>
 <a href="how-we-work.html" style="text-decoration: none; color: #2E3A45">How We Work</a>
-<a href="approach.html" style="text-decoration: none; color: #2E3A45">Our Approach</a>
-<a href="about.html" style="text-decoration: none; color: #2E3A45">About</a>
 <a href="contact.html" style="text-decoration: none; color: #2E3A45">Contact</a>
-<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; padding: 12px 20px; border-radius: 6px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Get in touch</a>
+<a href="team-burnout-risk-check.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; padding: 12px 20px; border-radius: 6px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px">Take the burnout check</a>
 </nav>
 </div>
 </header>
@@ -65,15 +66,15 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>Most days, I have the energy I need to get through the day.</span></legend>
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
 
 </div>
 </fieldset>
@@ -82,15 +83,15 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>I’m able to switch off from work and properly recharge.</span></legend>
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
 
 </div>
 </fieldset>
@@ -99,15 +100,15 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>My workload is manageable most of the time.</span></legend>
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
 
 </div>
 </fieldset>
@@ -116,15 +117,15 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>I have a real say in how I do my work.</span></legend>
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
 
 </div>
 </fieldset>
@@ -133,15 +134,15 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>I feel connected to the people I work with.</span></legend>
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
 
 </div>
 </fieldset>
@@ -150,15 +151,15 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>The work I do feels worthwhile to me.</span></legend>
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
 
 </div>
 </fieldset>
@@ -167,15 +168,15 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; border: 2px solid #C9D2DA; background: #FFFFFF; margin-top: 3px"></span><span>Life outside work feels manageable right now.</span></legend>
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Disagree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Neutral</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Agree</button>
 
-<button type="button" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
+<button type="button" class="qz-opt" aria-pressed="false" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 10px 16px; border-radius: 22px; cursor: pointer; border: 1.5px solid #C9D2DA; background: #FFFFFF; color: #2E3A45">Strongly agree</button>
 
 </div>
 </fieldset>
@@ -203,10 +204,10 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <div>WAIOS, P.B.C. · A women-founded public benefit corporation</div>
 </div>
 <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 24px">
+<a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
+<a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
 <a href="wellbeing-measure.html" style="color: #2E3A45; text-decoration: none">Wellbeing Measure</a>
 <a href="how-we-work.html" style="color: #2E3A45; text-decoration: none">How We Work</a>
-<a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
-<a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
 <a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
 <a href="contact.html" style="color: #2E3A45; text-decoration: none">Contact</a>
 </nav>
@@ -220,12 +221,12 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
 <a href="index.html" aria-label="waios home" style="text-decoration: none; font-family: Montserrat, Inter, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 0.035em; color: #2E3A45; display: inline-flex; align-items: flex-end; line-height: 1">wa<span style="position: relative; display: inline-block">ı<span aria-hidden="true" style="position: absolute; left: 50%; top: -0.06em; width: 0.3em; height: 0.3em; margin-left: -0.15em; border-radius: 50%; background: linear-gradient(to bottom, #F7C948 65%, #EF6F6C 65%)"></span></span>os</a>
 <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; font-weight: 500">
+<a href="about.html" style="text-decoration: none; color: #2E3A45">About</a>
+<a href="approach.html" style="text-decoration: none; color: #2E3A45">Our Approach</a>
 <a href="wellbeing-measure.html" style="text-decoration: none; color: #2E3A45">Wellbeing Measure</a>
 <a href="how-we-work.html" style="text-decoration: none; color: #2E3A45">How We Work</a>
-<a href="approach.html" style="text-decoration: none; color: #2E3A45">Our Approach</a>
-<a href="about.html" style="text-decoration: none; color: #2E3A45">About</a>
 <a href="contact.html" style="text-decoration: none; color: #2E3A45">Contact</a>
-<a href="contact.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; padding: 12px 20px; border-radius: 6px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Get in touch</a>
+<a href="team-burnout-risk-check.html" style="text-decoration: none; background: #EF6F6C; color: #15283F; font-weight: 700; padding: 12px 20px; border-radius: 6px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px">Take the burnout check</a>
 </nav>
 </div>
 </header>
@@ -252,7 +253,7 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <legend style="padding: 0; float: left; width: 100%; display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 1.4; font-weight: 600; color: #15283F"><span aria-hidden="true" style="{{ it.dot }}"></span><span>{{ it.text }}</span></legend>
 <div style="display: flex; flex-wrap: wrap; gap: 8px; padding-left: 32px">
 <sc-for list="{{ it.opts }}" as="o" hint-placeholder-count="5">
-<button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="{{ o.style }}">{{ o.label }}</button>
+<button type="button" class="qz-opt" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="{{ o.style }}">{{ o.label }}</button>
 </sc-for>
 </div>
 </fieldset>
@@ -339,10 +340,10 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #F7C9
 <div>WAIOS, P.B.C. · A women-founded public benefit corporation</div>
 </div>
 <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 24px">
+<a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
+<a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
 <a href="wellbeing-measure.html" style="color: #2E3A45; text-decoration: none">Wellbeing Measure</a>
 <a href="how-we-work.html" style="color: #2E3A45; text-decoration: none">How We Work</a>
-<a href="approach.html" style="color: #2E3A45; text-decoration: none">Our Approach</a>
-<a href="about.html" style="color: #2E3A45; text-decoration: none">About</a>
 <a href="investors.html" style="color: #2E3A45; text-decoration: none">Investors</a>
 <a href="contact.html" style="color: #2E3A45; text-decoration: none">Contact</a>
 </nav>
