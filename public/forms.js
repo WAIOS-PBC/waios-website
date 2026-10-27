@@ -58,7 +58,8 @@
     audit: 'I would like the workload audit template.',
     discussion: 'I would like the discussion points for leading the conversation with my team.',
     walkthrough: 'I would like an expert walkthrough of our results.',
-    demo: 'I would like to see a heat map demo.'
+    demo: 'I would like to see a heat map demo.',
+    product: 'I would like a demo of WAIOS.'
   };
   function prefill() {
     var form = document.querySelector('form[data-lead="contact"]');
