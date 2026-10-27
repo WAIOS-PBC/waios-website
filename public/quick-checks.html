@@ -905,6 +905,8 @@ class Component extends DCLogic {
     this.risk = new RiskCheckTool(this);
     this.wb = new WellbeingScoreTool(this);
     this.calc0 = JSON.stringify(this.calc.state);
+    var nn = typeof location !== 'undefined' && (location.search.match(/[?&]n=(\d{1,7})\b/) || [])[1];
+    if (nn) this.calc.state.headcount = nn;
     // ?check=cost, risk or wb opens that check first
     var pick = (typeof location !== 'undefined' && (location.search.match(/[?&]check=(cost|risk|wb)\b/) || [])[1]) || 'cost';
     this.state = { tool: pick, name: '', email: '', org: '', sent: false, sendError: false, sending: false };
