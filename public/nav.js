@@ -10,6 +10,8 @@
     var css = document.createElement('style');
     css.textContent =
       'header nav[aria-label="Main"] > a{min-height:44px;display:inline-flex;align-items:center}' +
+      'header{position:sticky;top:0;z-index:60;transition:box-shadow .25s ease}' +
+      'html{scroll-padding-top:88px}html.waios-scrolled header{box-shadow:0 6px 20px rgba(21,40,63,.08)}' +
       '.waios-menu-btn{display:none;align-items:center;justify-content:center;width:46px;height:46px;padding:0;font:inherit;background:transparent;border:1.5px solid currentColor;border-radius:6px;cursor:pointer}' +
       '@media (max-width: 1040px){' +
         'header nav[aria-label="Main"]{display:none !important;width:100%;flex-direction:column !important;align-items:stretch !important;gap:0 !important;padding:4px 0 8px}' +
@@ -46,6 +48,8 @@
   }
 
   init();
+  function onScroll() { document.documentElement.classList.toggle('waios-scrolled', (window.scrollY || 0) > 12); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   // pages with interactive sections redraw the header; add the button again when they do
   new MutationObserver(init).observe(document.body, { childList: true, subtree: true });
 })();
