@@ -13,7 +13,8 @@ const KINDS = {
   'cost-estimate': 'Burnout cost calculator',
   'risk-readout': 'Team burnout risk check',
   'wellbeing-score': 'Quick wellbeing score',
-  'quick-checks': 'Quick checks results'
+  'quick-checks': 'Quick checks results',
+  'financial-checkin': 'Financial wellbeing check-in results'
 };
 
 const ALLOWED_ORIGINS = ['https://waios.com', 'https://www.waios.com'];
