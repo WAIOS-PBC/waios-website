@@ -6,7 +6,7 @@
     "directory": "./public",
     "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "run_worker_first": ["/api/*"]
+    "run_worker_first": ["/api/*", "/clients/*"]
   },
   // Form submissions are emailed to these verified Email Routing addresses
   // (Danielle, plus a copy to Jen).
@@ -14,4 +14,9 @@
     { "name": "LEADS", "allowed_destination_addresses": ["dposa@globalwellbeinggroup.com", "jen@jennifer-moss.com"] }
   ],
   "observability": { "enabled": true }
+  // Private client pages (/clients/<slug>). Turn on after the one-time setup in
+  // tools/clients/README.md: create the KV namespace and R2 bucket, paste the id
+  // below, then uncomment. Until then, /clients/* simply returns "Not found".
+  // ,"kv_namespaces": [{ "binding": "CLIENTS", "id": "PASTE_KV_NAMESPACE_ID" }]
+  // ,"r2_buckets": [{ "binding": "CLIENT_FILES", "bucket_name": "client-files" }]
 }
