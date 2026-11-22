@@ -519,6 +519,10 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
 .kinds-block { margin-top: 16px; background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; }
 .kinds-block > p { color: var(--tonal); max-width: 72ch; }
 .kinds-block .kind { background: var(--offwhite); }
+.kinds-catch { display: flex; gap: 14px; align-items: flex-start; background: var(--cream); border-radius: 12px; padding: 18px 20px; margin-top: 4px; }
+.kinds-catch .icon-tile { flex: none; }
+.kinds-catch h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 4px; }
+.kinds-catch p { color: var(--slate); font-size: 0.95rem; margin-bottom: 6px; }
 
 /* ---------- Research page ---------- */
 .spotlight { position: relative; background: var(--navy); color: var(--cream); border-radius: 18px; padding: 34px 36px 26px; margin-bottom: 28px; overflow: hidden; min-height: 250px; display: grid; }
@@ -810,24 +814,31 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
         </div>
         <div class="kinds-block">
           <h3>Two kinds of wellbeing: how you feel today, and how you rate your life</h3>
-          <p>Research on money measures wellbeing in two ways, and they do not always move together. Happiness is an emotion that comes and goes; life satisfaction is a lasting judgment. Financial wellbeing is linked to both.</p>
+          <p>Research on money measures wellbeing in two ways, and money does not affect them equally. Happiness is an emotion that comes and goes; life satisfaction is a lasting judgment. Financial wellbeing is linked to both.</p>
           <div class="kinds">
         <div class="kind">
           <span class="icon-tile" data-icon="scale"></span>
           <span class="label">Life satisfaction</span>
           <h3>How you judge your life overall</h3>
           <p>A considered evaluation when you step back, often asked as a rating of your life from 0 to 10. Security, progress and a sense of control shape it.</p>
-          <p class="income"><strong>With income:</strong> keeps rising. No plateau has been found.</p>
+          <p class="income"><strong>With income:</strong> keeps rising, with no plateau found. This is where money shows up most clearly.</p>
         </div>
         <div class="kind">
           <span class="icon-tile" data-icon="pulse"></span>
           <span class="label">Daily emotions</span>
           <h3>How you feel from moment to moment</h3>
           <p>Joy, calm, stress, worry and sadness, measured by asking about yesterday or checking in during the day. This is what research usually means by happiness.</p>
-          <p class="income"><strong>With income:</strong> rises for most people. Levels off above about $100K only for the least happy group.</p>
+          <p class="income"><strong>With income:</strong> improves for most people too, but less than you might expect. The exception is the unhappiest fifth of people: their daily emotions stop improving above about $100,000, likely because more money cannot fix causes like grief or depression.</p>
         </div>
       </div>
-        
+          <div class="kinds-catch">
+            <span class="icon-tile" data-icon="pulse"></span>
+            <div>
+              <h3>The catch: money can quietly cost you joy</h3>
+              <p>Wealthier people, and even people who are simply reminded of money, savor everyday pleasures less (Quoidbach and colleagues, 2010). Day to day, health, caregiving and loneliness shape how people feel more than income does (Kahneman and Deaton, 2010). That is why <strong>how</strong> you use money matters as much as how much you have.</p>
+              <a class="seelink" href="#research">See the research &rarr;</a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1202,8 +1213,9 @@ const RESEARCH = [
   ]},
   { group: "Money, income and wellbeing", kind: "research", items: [
     { t: "Wellbeing Meta-Analysis: A Worldwide Study of the Five Elements of Wellbeing and Life Evaluation, Daily Experiences, Health, and Giving", m: "Agrawal and Harter. Gallup, 2011", w: "Across 117 countries and areas, people with high financial wellbeing rated their lives higher and reported better daily experiences than those with low financial wellbeing, even after accounting for income. Industry research, not peer reviewed.", u: "https://www.gallup.com/services/176330/wellbeing-meta-analysis.aspx", ms: "Life satisfaction and daily emotions", p: ["foundations"] },
-    { t: "Income and Emotional Well-Being: A Conflict Resolved", m: "Killingsworth, Kahneman and Mellers. PNAS, 2023", w: "Daily emotional wellbeing rises with income for most people. It levels off above about $100K only for the least happy group.", u: "https://doi.org/10.1073/pnas.2208661120", ms: "Daily emotions", ev: "strong", p: ["foundations"] },
+    { t: "Income and Emotional Well-Being: A Conflict Resolved", m: "Killingsworth, Kahneman and Mellers. PNAS, 2023", w: "For most people, daily emotions keep improving with income. Only the unhappiest fifth stop improving, above about $100,000, likely because their unhappiness has causes money cannot fix.", u: "https://doi.org/10.1073/pnas.2208661120", ms: "Daily emotions", ev: "strong", p: ["foundations"] },
     { t: "Experienced Well-Being Rises with Income, Even Above $75,000 per Year", m: "Killingsworth. PNAS, 2021", w: "Large experience-sampling study: both daily feelings and life satisfaction kept rising with income, with no plateau on average.", u: "https://doi.org/10.1073/pnas.2016976118", ms: "Daily emotions and life satisfaction", ev: "strong", p: ["foundations"] },
+    { t: "Money Giveth, Money Taketh Away: The Dual Effect of Wealth on Happiness", m: "Quoidbach, Dunn, Petrides and Mikolajczak. Psychological Science, 2010", w: "Wealthier people reported less ability to savor everyday pleasures, which offset some of money's benefits. A simple reminder of money cut how long people savored a piece of chocolate.", u: "https://pubmed.ncbi.nlm.nih.gov/20483819/", ms: "Savoring ability and happiness", ev: "solid", p: ["foundations", "anticipate"] },
     { t: "High Income Improves Evaluation of Life but Not Emotional Well-Being", m: "Kahneman and Deaton. PNAS, 2010", w: "Life evaluation kept rising with income. Daily emotions leveled off around $75,000, a finding later refined by the 2023 study.", u: "https://doi.org/10.1073/pnas.1011492107", ms: "Life satisfaction and daily emotions", ev: "strong", p: ["foundations"] },
     { t: "The Relationship Between Materialism and Personal Well-Being: A Meta-Analysis", m: "Dittmar, Bond, Hurst and Kasser. JPSP, 2014", w: "259 samples: materialist values consistently linked to lower wellbeing across measures.", u: "https://doi.org/10.1037/a0037409", ms: "Mixed measures", ev: "strong", p: ["values", "mindset"] }
   ]},
@@ -1642,9 +1654,9 @@ const STATS = [
  },
  {
   "id": "inc",
-  "num": "~$100K",
-  "label": "Income and emotions",
-  "text": "Above about $100,000, daily emotions stop improving only for the least happy group. For most people, both life ratings and daily feelings keep rising with income.",
+  "num": "Most keep rising",
+  "label": "Income and daily emotions",
+  "text": "Daily emotions keep improving with income for most people. Only the unhappiest fifth stop improving, above about $100,000.",
   "src": "Killingsworth, Kahneman and Mellers, PNAS, 2023",
   "u": "https://doi.org/10.1073/pnas.2208661120",
   "p": [
@@ -1701,6 +1713,19 @@ const STATS = [
   "p": [
    "others",
    "experiences"
+  ],
+  "kind": "peer"
+ },
+ {
+  "id": "savor",
+  "num": "Less savoring",
+  "label": "The hidden cost of money",
+  "text": "Wealthier people savored everyday pleasures less, and a simple reminder of money cut how long people savored a piece of chocolate.",
+  "src": "Quoidbach, Dunn, Petrides and Mikolajczak, Psychological Science, 2010",
+  "u": "https://pubmed.ncbi.nlm.nih.gov/20483819/",
+  "p": [
+   "foundations",
+   "anticipate"
   ],
   "kind": "peer"
  }
