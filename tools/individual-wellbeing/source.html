@@ -522,7 +522,10 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
 .kinds-catch { display: flex; gap: 14px; align-items: flex-start; background: var(--cream); border-radius: 12px; padding: 18px 20px; margin-top: 4px; }
 .kinds-catch .icon-tile { flex: none; }
 .kinds-catch h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 4px; }
-.kinds-catch p { color: var(--slate); font-size: 0.95rem; margin-bottom: 6px; }
+.kinds-catch p { color: var(--slate); font-size: 0.95rem; margin-bottom: 8px; }
+.kc-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.kc-links a { font-size: 0.86rem; font-weight: 600; color: var(--navy); background: var(--white); border-radius: 999px; padding: 6px 12px; text-decoration: none; }
+.kc-links a:hover { background: var(--pale); }
 
 /* ---------- Research page ---------- */
 .spotlight { position: relative; background: var(--navy); color: var(--cream); border-radius: 18px; padding: 34px 36px 26px; margin-bottom: 28px; overflow: hidden; min-height: 250px; display: grid; }
@@ -834,9 +837,10 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
           <div class="kinds-catch">
             <span class="icon-tile" data-icon="pulse"></span>
             <div>
-              <h3>The catch: money can quietly cost you joy</h3>
-              <p>Wealthier people, and even people who are simply reminded of money, savor everyday pleasures less (Quoidbach and colleagues, 2010). Day to day, health, caregiving and loneliness shape how people feel more than income does (Kahneman and Deaton, 2010). That is why <strong>how</strong> you use money matters as much as how much you have.</p>
-              <a class="seelink" href="#research">See the research &rarr;</a>
+              <h3>The key: money on your mind costs you joy</h3>
+              <p>It is not money itself that dulls enjoyment. It is thinking about it. In one study, simply seeing a picture of money made people savor a piece of chocolate for less time and enjoy it less (Quoidbach and colleagues, 2010). Thinking about the cost while you enjoy something has a similar effect, like a ticking taxi meter that takes the pleasure out of the ride (Prelec and Loewenstein, 1998).</p>
+              <p>That is the thread running through the ten ways. A cushion, money on autopilot and paying ahead for what you enjoy all keep money off your mind, so you can be present for the parts of life it pays for.</p>
+              <div class="kc-links"><a href="#buffer">Build a cushion</a><a href="#automate">Put money on autopilot</a><a href="#anticipate">Create distance from purchases</a></div>
             </div>
           </div>
         </div>
@@ -1129,7 +1133,7 @@ const PRINCIPLES = [
   "name": "Create distance from purchases",
   "short": "Pay now, enjoy later, keep treats special",
   "what": "Putting time between buying and enjoying, and between one treat and the next, makes pleasures last longer. Waiting builds anticipation, and breaks keep favorites from becoming ordinary.",
-  "ev": "Looking forward to an experience is itself enjoyable, more so than looking forward to a thing (Kumar, Killingsworth and Gilovich, 2014). People who gave up chocolate for a week enjoyed it more afterward than people who ate it freely (Quoidbach and Dunn, 2013).",
+  "ev": "Looking forward to an experience is itself enjoyable, more so than looking forward to a thing (Kumar, Killingsworth and Gilovich, 2014). People who gave up chocolate for a week enjoyed it more afterward than people who ate it freely (Quoidbach and Dunn, 2013). Paying ahead helps for another reason: once something is paid for, you can enjoy it without the cost on your mind (Prelec and Loewenstein, 1998).",
   "ms": "Daily emotions",
   "practices": [
    "Book and pay for experiences well ahead, then enjoy the wait.",
@@ -1216,6 +1220,7 @@ const RESEARCH = [
     { t: "Income and Emotional Well-Being: A Conflict Resolved", m: "Killingsworth, Kahneman and Mellers. PNAS, 2023", w: "For most people, daily emotions keep improving with income. Only the unhappiest fifth stop improving, above about $100,000, likely because their unhappiness has causes money cannot fix.", u: "https://doi.org/10.1073/pnas.2208661120", ms: "Daily emotions", ev: "strong", p: ["foundations"] },
     { t: "Experienced Well-Being Rises with Income, Even Above $75,000 per Year", m: "Killingsworth. PNAS, 2021", w: "Large experience-sampling study: both daily feelings and life satisfaction kept rising with income, with no plateau on average.", u: "https://doi.org/10.1073/pnas.2016976118", ms: "Daily emotions and life satisfaction", ev: "strong", p: ["foundations"] },
     { t: "Money Giveth, Money Taketh Away: The Dual Effect of Wealth on Happiness", m: "Quoidbach, Dunn, Petrides and Mikolajczak. Psychological Science, 2010", w: "Wealthier people reported less ability to savor everyday pleasures, which offset some of money's benefits. A simple reminder of money cut how long people savored a piece of chocolate.", u: "https://pubmed.ncbi.nlm.nih.gov/20483819/", ms: "Savoring ability and happiness", ev: "solid", p: ["foundations", "anticipate"] },
+    { t: "The Red and the Black: Mental Accounting of Savings and Debt", m: "Prelec and Loewenstein. Marketing Science, 1998", w: "Thinking about payment takes pleasure out of what you are enjoying. Paying ahead lets you enjoy something as if it were free, which is why most people in their survey preferred to prepay for a vacation.", u: "https://doi.org/10.1287/mksc.17.1.4", ms: "Payment preferences and enjoyment (theory and surveys)", ev: "solid", p: ["foundations", "anticipate", "automate"] },
     { t: "High Income Improves Evaluation of Life but Not Emotional Well-Being", m: "Kahneman and Deaton. PNAS, 2010", w: "Life evaluation kept rising with income. Daily emotions leveled off around $75,000, a finding later refined by the 2023 study.", u: "https://doi.org/10.1073/pnas.1011492107", ms: "Life satisfaction and daily emotions", ev: "strong", p: ["foundations"] },
     { t: "The Relationship Between Materialism and Personal Well-Being: A Meta-Analysis", m: "Dittmar, Bond, Hurst and Kasser. JPSP, 2014", w: "259 samples: materialist values consistently linked to lower wellbeing across measures.", u: "https://doi.org/10.1037/a0037409", ms: "Mixed measures", ev: "strong", p: ["values", "mindset"] }
   ]},
@@ -1719,8 +1724,8 @@ const STATS = [
  {
   "id": "savor",
   "num": "Less savoring",
-  "label": "The hidden cost of money",
-  "text": "Wealthier people savored everyday pleasures less, and a simple reminder of money cut how long people savored a piece of chocolate.",
+  "label": "Money on your mind",
+  "text": "A simple reminder of money cut how long people savored a piece of chocolate and how much they enjoyed it. Wealthier people also reported savoring everyday pleasures less.",
   "src": "Quoidbach, Dunn, Petrides and Mikolajczak, Psychological Science, 2010",
   "u": "https://pubmed.ncbi.nlm.nih.gov/20483819/",
   "p": [
