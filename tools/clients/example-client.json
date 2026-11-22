@@ -13,9 +13,10 @@
   "intro": "Everything from our sessions together, in one place: the recordings, the slides and the research behind them.",
 
   "welcome": {
+    "_note": "Leave from, role and photo empty to show Danielle Posa, Workplace Wellbeing Advisor.",
     "text": "Thank you for having me. Here are the recordings and slides from our sessions, plus a few places to keep going.\n\nI hope they help you and your teams keep wellbeing on the agenda.",
-    "from": "Presenter name",
-    "role": "Title",
+    "from": "",
+    "role": "",
     "photo": ""
   },
 

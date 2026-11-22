@@ -30,7 +30,7 @@ fs.writeFileSync(out, JSON.stringify(client, null, 2));
 
 const files = new Set();
 if (client.logo) files.add(client.logo);
-if (client.welcome && client.welcome.photo) files.add(client.welcome.photo);
+if (client.welcome && client.welcome.photo && !/^(\/|https:)/.test(client.welcome.photo)) files.add(client.welcome.photo);
 for (const s of client.sessions || []) if (s.slides) files.add(s.slides);
 for (const d of client.downloads || []) if (d.file) files.add(d.file);
 

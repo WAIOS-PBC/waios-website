@@ -10,6 +10,12 @@
 // Pages are generic: no company branding beyond what each client entry provides.
 
 const COOKIE_DAYS = 30;
+// Shown on every client page unless a client entry sets its own "welcome" details.
+const DEFAULT_PRESENTER = {
+  from: 'Danielle Posa',
+  role: 'Workplace Wellbeing Advisor',
+  photo: '/images/b88a438a9b72a68ab115ed7d9d463096.jpg'
+};
 const enc = new TextEncoder();
 
 export async function handleClients(request, env) {
@@ -51,7 +57,7 @@ export async function handleClients(request, env) {
 
   if (sub.startsWith('files/')) {
     const name = sub.slice(6);
-    const allowed = (client.sessions || []).some(s => s.slides === name) || (client.downloads || []).some(d => d.file === name);
+    const allowed = (client.sessions || []).some(s => s.slides === name) || (client.downloads || []).some(d => d.file === name) || (client.welcome && client.welcome.photo === name);
     return allowed ? serveFile(env, `${slug}/${name}`, true) : notFound();
   }
   if (sub) return notFound();
@@ -142,7 +148,7 @@ a{color:#15283F}h1,h2,h3{color:#15283F;line-height:1.2;margin:0}p{margin:0 0 10p
 .hero h1{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:8px 0 10px;letter-spacing:-.02em}.hero .lede{font-size:1.1rem;max-width:62ch}
 .horizon{height:6px;width:140px;margin:22px 0 0;background:linear-gradient(#F7C948 50%,#EF6F6C 50%);border-radius:3px}
 .welcome{background:#fff;border:1px solid #E6E2DA;border-radius:16px;padding:24px 26px;margin:8px 0 36px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
-.welcome img{width:64px;height:64px;border-radius:50%;object-fit:cover}.welcome .sig{font-weight:600;color:#15283F;margin-top:6px}.welcome .role{font-size:.9rem;color:#5C7285}
+.welcome img{width:76px;height:76px;border-radius:50%;object-fit:cover;object-position:50% 15%}.welcome .sig{font-weight:700;color:#15283F;margin-top:6px}.welcome .role{font-size:.9rem;color:#5C7285}
 .sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 16px;border-bottom:1px solid #E6E2DA;padding-bottom:10px}.sec-h h2{font-size:1.4rem}
 .sessions{display:grid;gap:22px;margin-bottom:44px}
 .session{background:#fff;border:1px solid #E6E2DA;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1.35fr 1fr}
@@ -195,8 +201,9 @@ function gatePage(client, slug, error) {
 
 function clientPage(c, slug, videos) {
   const logo = c.logo ? `<div class="logo"><img src="/clients/${esc(slug)}/logo" alt="${esc(c.name)} logo"></div>` : '';
-  const w = c.welcome || {};
-  const welcome = w.text ? `<section class="welcome">${w.photo ? `<img src="/clients/${esc(slug)}/files/${esc(w.photo)}" alt="">` : ''}<div>${paras(w.text)}${w.from ? `<div class="sig">${esc(w.from)}</div>` : ''}${w.role ? `<div class="role">${esc(w.role)}</div>` : ''}</div></section>` : '';
+  const w = Object.assign({}, DEFAULT_PRESENTER, Object.fromEntries(Object.entries(c.welcome || {}).filter(([, v]) => v)));
+  const photoSrc = !w.photo ? '' : /^(\/|https:)/.test(w.photo) ? w.photo : `/clients/${slug}/files/${w.photo}`;
+  const welcome = w.text ? `<section class="welcome">${photoSrc ? `<img src="${esc(photoSrc)}" alt="${esc(w.from || '')}">` : ''}<div>${paras(w.text)}${w.from ? `<div class="sig">${esc(w.from)}</div>` : ''}${w.role ? `<div class="role">${esc(w.role)}</div>` : ''}</div></section>` : '';
   const sessions = (c.sessions || []).map((s, i) => {
     const v = s.video ? videos[s.video] : null;
     const player = v ? `<iframe src="${esc(v)}" title="${esc(s.title)}" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`
