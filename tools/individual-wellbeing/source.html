@@ -746,6 +746,17 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
 .nextsteps a { color: var(--navy); font-weight: 600; }
 .profile-h { font-size: 1.1rem; color: var(--navy); margin: 8px 0 4px; }
 
+.results-bar { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 14px; background: var(--navy); color: var(--cream); border-radius: 999px; padding: 8px 10px 8px 18px; box-shadow: 0 10px 30px rgba(21, 40, 63, .25); font-size: 0.92rem; max-width: calc(100% - 24px); animation: settle .45s cubic-bezier(.2,.7,.3,1) both; }
+.results-bar .rb-link { color: var(--butter); font-weight: 700; text-decoration: none; display: inline-flex; gap: 8px; align-items: center; white-space: nowrap; }
+.results-bar .rb-link:hover { text-decoration: underline; }
+.results-bar .rb-note { color: var(--cream); opacity: .9; white-space: nowrap; }
+.results-bar .rb-note strong { color: #fff; }
+.results-bar .rb-close { background: transparent; border: 0; color: var(--cream); font-size: 1.2rem; line-height: 1; cursor: pointer; padding: 4px 8px; border-radius: 999px; }
+.results-bar .rb-close:hover { background: rgba(255,255,255,.12); }
+@media (max-width: 480px) { .results-bar .rb-note { display: none; } }
+.savebox { background: var(--cream); border-radius: 14px; padding: 18px 22px; margin: 18px 0; display: grid; gap: 10px; color: var(--slate); }
+@media print { .results-bar { display: none !important; } }
+
 </style>
 </head>
 <body>
@@ -1949,7 +1960,8 @@ function route() {
   if (v === "library") renderLibrary();
   if (v === "model") renderFamilies();
   if (v === "start") renderWheel();
-  if (v === "checkin") renderHub();
+  if (v === "checkin") { let viewing = false; try { viewing = sessionStorage.getItem("fwb-viewing") === "1"; } catch (e) {} if (!(viewing && showSavedResult())) renderHub(); }
+  renderResultsBar(v);
   if (v === "research") renderResearch();
   if (v === "workplaces") renderWorkplaces();
   if (v === "start") renderPlan();
@@ -2498,6 +2510,27 @@ function scoreWaios() {
   const sums = {}, counts = {};
   qs.forEach((q, i) => { sums[q.a] = (sums[q.a] || 0) + vals[i]; counts[q.a] = (counts[q.a] || 0) + 1; });
   const scores = {}; PRINCIPLES.forEach(p => { scores[p.id] = Math.round(sums[p.id] / counts[p.id] / 4 * 100); });
+  saveResult(scores);
+  showWaiosResult(scores, true);
+}
+// Results stay available: saved in this browser so people can explore and come back.
+const RESULT_KEY = "fwb-last-result";
+function saveResult(scores) { try { localStorage.setItem(RESULT_KEY, JSON.stringify({ scores, at: Date.now() })); sessionStorage.setItem("fwb-viewing", "1"); } catch (e) {} }
+function loadResult() { try { const r = JSON.parse(localStorage.getItem(RESULT_KEY) || "null"); return r && r.scores && PRINCIPLES.every(p => typeof r.scores[p.id] === "number") ? r : null; } catch (e) { return null; } }
+function showSavedResult() {
+  const r = loadResult(); if (!r) return false;
+  INST = "waios";
+  const c = INST_COPY.waios;
+  document.getElementById("checkin-eyebrow").textContent = "Your check-in results";
+  document.getElementById("checkin-h").textContent = "Here is where you stand";
+  document.getElementById("checkin-intro").textContent = "Your latest results, saved in this browser. Explore any of the ten ways and come back here anytime.";
+  document.getElementById("checkin-fine").innerHTML = c.fine;
+  document.getElementById("hub").classList.add("hidden");
+  document.getElementById("assessment-wrap").classList.remove("hidden");
+  showWaiosResult(r.scores, false);
+  return true;
+}
+function showWaiosResult(scores, fresh) {
   const avg = ids => Math.round(ids.reduce((a, id) => a + scores[id], 0) / ids.length);
   const overall = avg(PRINCIPLES.map(p => p.id));
   const fam = { peace: avg(PRINCIPLES.filter(p => p.fam === "peace").map(p => p.id)), living: avg(PRINCIPLES.filter(p => p.fam === "living").map(p => p.id)) };
@@ -2531,7 +2564,7 @@ function scoreWaios() {
     </div>
     <div class="group"><h3>${focusLabel}: more detail</h3><div class="focus">${focus.map(x => { const p = PRINCIPLES.find(q => q.id === x.id); return `<div class="card"><span class="icon-tile">${icon(p.id)}</span><h3>${esc(p.name)}</h3><p>${esc(p.what)}</p><p><strong>Try first:</strong> ${esc(p.practices[0])}</p>${topResHtml(p.id)}<button type="button" data-id="${p.id}">See practices and resources</button></div>`; }).join("")}</div></div>
     ${strengths.length ? `<div class="group"><h3>Your strengths</h3><div class="chips-row">${strengths.map(x => `<a class="chip" href="#${x.id}">${icon(x.id)}${esc(PNAME[x.id])} · ${x.sc}</a>`).join("")}</div></div>` : ""}
-    ${emailBlock()}
+    ${saveBlock()}
     <div class="learnmore"><div><strong>Want to go deeper?</strong> Compare yourself with a national benchmark using the validated CFPB Financial Well-Being Scale.</div><button type="button" class="btn secondary" id="go-fwb">Take the CFPB scale</button></div>
     <div class="actions"><a class="btn" href="#${focus[0].id}">Start with ${esc(PNAME[focus[0].id])}</a><a class="btn secondary" href="#model">See the full model</a><button type="button" class="btn secondary" id="fwb-retake">Retake the check-in</button></div>`;
   res.classList.remove("hidden");
@@ -2539,10 +2572,13 @@ function scoreWaios() {
   res.querySelectorAll(".focus button[data-id]").forEach(b => b.addEventListener("click", () => go(b.dataset.id)));
   document.getElementById("go-fwb").addEventListener("click", () => openAssessment("fwb"));
   document.getElementById("fwb-retake").addEventListener("click", () => openAssessment("waios"));
-  wireEmail();
-  savePlan(focus.map(x => x.id), overall, "waios");
-  track("checkin_complete", { instrument: "checkin", score: overall });
-  document.getElementById("checkin").scrollIntoView();
+  wireCopy();
+  try { sessionStorage.setItem("fwb-viewing", "1"); } catch (e) {}
+  if (fresh) {
+    savePlan(focus.map(x => x.id), overall, "waios");
+    track("checkin_complete", { instrument: "checkin", score: overall });
+    document.getElementById("checkin").scrollIntoView();
+  }
   if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const el = document.getElementById("score-num"); const t0 = performance.now(); const dur = 900;
     const st = now => { const k = Math.min(1, (now - t0) / dur); el.textContent = Math.round(overall * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(st); };
@@ -2606,23 +2642,11 @@ async function postForm(payload) {
   if (!r.ok || !out.ok) throw new Error(out.error || "Request failed");
   return out;
 }
-function emailBlock() {
-  return `<div class="emailcap" data-slot="email-capture">
-    <div class="ec-text"><span class="eyebrow">Keep your results</span><h3>Email me my results</h3>
-      <p>Get your scores, your focus areas and the matching practices and resources in your inbox.</p></div>
-    <form id="email-form" novalidate>
-      <div class="ec-fields">
-        <div><label for="em-name">First name <span class="opt">(optional)</span></label><input id="em-name" name="name" autocomplete="given-name"></div>
-        <div><label for="em-email">Email</label><input id="em-email" name="email" type="email" autocomplete="email" required></div>
-      </div>
-      <label class="consent" for="em-remind"><input type="checkbox" id="em-remind" name="remind"> Remind me to retake the check-in in 90 days.</label>
-      <label class="consent" for="em-updates"><input type="checkbox" id="em-updates" name="updates"> Also send me occasional research-backed ideas. I can unsubscribe anytime.</label>
-      <div class="hp" aria-hidden="true"><label for="em-hp">Leave this empty</label><input id="em-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
-      <p class="privacy-note" style="font-size:0.82rem;color:var(--tonal)">We use your email only to send what you ask for.<span class="pp"> See our <a href="${esc(CONFIG.privacyUrl)}" data-slot="privacy" class="privacy-link">privacy policy</a>.</span></p>
-      <div class="actions"><button type="submit" class="btn" id="em-send">Email my results</button><button type="button" class="btn secondary" id="em-copy">Copy my results</button></div>
-      <p class="ec-msg" id="em-msg" role="status"></p>
-      <textarea id="em-text" class="hidden" readonly aria-label="Your results as text" rows="8"></textarea>
-    </form></div>`;
+function saveBlock() {
+  return `<div class="savebox"><div><strong>Your results are saved in this browser.</strong> Explore the ten ways and come back anytime from the bar at the bottom of the page, or keep a copy.</div>
+    <div class="actions"><button type="button" class="btn secondary" id="em-copy">Copy my results</button></div>
+    <p class="ec-msg" id="em-msg" role="status"></p>
+    <textarea id="em-text" class="hidden" readonly aria-label="Your results as text" rows="8"></textarea></div>`;
 }
 function resultsText() {
   const R = LAST_RESULT; if (!R) return "";
@@ -2634,24 +2658,8 @@ function resultsText() {
   lines.push(``, site ? `Explore the practices and resources: ${site}` : `Explore the practices and resources on the Individual Wellbeing site.`);
   return lines.join("\n");
 }
-function wireEmail() {
-  const form = document.getElementById("email-form"); const msg = document.getElementById("em-msg");
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
-    const email = document.getElementById("em-email").value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { msg.textContent = "Please enter a valid email address."; msg.className = "ec-msg err"; document.getElementById("em-email").focus(); return; }
-    const R = LAST_RESULT || {};
-    const payload = { type: "results", email, name: document.getElementById("em-name").value.trim(), updates: document.getElementById("em-updates").checked, remind: document.getElementById("em-remind").checked,
-      score: R.overall != null ? String(R.overall) : "", instrument: "Financial Wellbeing Check-in", focus: (R.focus || []).map(id => PNAME[id]).join(", "), results: resultsText(), company_website: document.getElementById("em-hp").value };
-    if (!FORMS_LIVE) { msg.textContent = "Email delivery turns on when this page goes live. For now, use Copy my results to keep them."; msg.className = "ec-msg"; return; }
-    const btn = document.getElementById("em-send"); btn.disabled = true; msg.className = "ec-msg"; msg.textContent = "Sending...";
-    try {
-      const out = await postForm(payload);
-      track("results_email_submit", { score: R.overall, updates: payload.updates, remind: payload.remind });
-      msg.textContent = out.sentToVisitor ? "Sent. Check your inbox for your results." : "Thanks, we have your request. Use Copy my results to keep a copy right now too.";
-      msg.className = "ec-msg ok";
-    } catch (err) { msg.textContent = "We could not send that just now. Please try again, or copy your results."; msg.className = "ec-msg err"; btn.disabled = false; }
-  });
+function wireCopy() {
+  const msg = document.getElementById("em-msg");
   document.getElementById("em-copy").addEventListener("click", async () => {
     const t = resultsText();
     try { await navigator.clipboard.writeText(t); msg.textContent = "Copied. Paste your results anywhere to keep them."; msg.className = "ec-msg ok"; }
@@ -2686,7 +2694,7 @@ function renderHub() {
         <div class="meta-row">${wDone ? `<span class="status done">Done · score ${SC.waios}</span>` : `<span class="status live">Start here</span>`}<span>4 min · 20 questions</span></div>
         <h2>The Financial Wellbeing Check-in</h2>
         <p>Our check-in covers all ten ways to thrive with money. You get an overall score, a score for each of the ten ways, and the resources that fit your focus areas.</p>
-        <div class="actions"><button type="button" class="btn" data-start="waios" id="start-waios">${wDone ? "Retake the check-in" : "Start the check-in"}</button></div>
+        <div class="actions">${loadResult() ? `<button type="button" class="btn" id="see-results">See my results</button>` : ""}<button type="button" class="btn${loadResult() ? " secondary" : ""}" data-start="waios" id="start-waios">${wDone ? "Retake the check-in" : "Start the check-in"}</button></div>
       </div>
       <div class="fc-covers">${PRINCIPLES.map(pp => `<span class="cv yes">${icon(pp.id)}${esc(pp.name)}</span>`).join("")}</div>
     </div>
@@ -2704,12 +2712,13 @@ function renderHub() {
         ${a.status === "live" ? `<button type="button" class="btn secondary" data-start="${a.id}" id="start-${a.id}">${done ? "Retake" : "Take this scale"}</button>` : ""}
       </div>`; }).join("")}</div>`;
   document.querySelectorAll("[data-start]").forEach(b => b.addEventListener("click", () => openAssessment(b.dataset.start)));
+  const sr = document.getElementById("see-results"); if (sr) sr.addEventListener("click", () => { showSavedResult(); window.scrollTo(0, 0); });
   document.getElementById("coverage").innerHTML = "";
   document.getElementById("coverage").classList.add("hidden");
 }
 const INST_COPY = {
   waios: { eyebrow: "Financial wellbeing check-in", title: "Where do you stand today?", intro: "Twenty short statements, one at a time. Say how much you agree with each. Your results show an overall score and a score for each of the ten ways to thrive with money.",
-    fine: "Your answers stay in your browser unless you choose to email your results. This check-in is a research preview built on the studies in this library. It has not yet been validated, so treat your scores as a guide, not a diagnosis. This check-in is for education and is not financial advice." },
+    fine: "Your answers stay in your browser. Nothing is sent. This check-in is a research preview built on the studies in this library. It has not yet been validated, so treat your scores as a guide, not a diagnosis. This check-in is for education and is not financial advice." },
   fwb: { eyebrow: "Validated scale", title: "CFPB Financial Well-Being Scale", intro: "Answer 10 short questions, one at a time. The questions are the Consumer Financial Protection Bureau's Financial Well-Being Scale, used exactly as published.",
     fine: 'Your answers stay in your browser. Nothing is saved or sent. Questions and scoring are from the <a href="https://www.consumerfinance.gov/data-research/research-reports/financial-well-being/">CFPB Financial Well-Being Scale</a> (2015), which is free and publicly available. This site is not affiliated with or endorsed by the CFPB. This check-in is for education and is not financial advice.' }
 };
@@ -2729,7 +2738,7 @@ function openAssessment(id) {
   startCheckin();
   window.scrollTo(0, 0);
 }
-document.getElementById("back-to-hub").addEventListener("click", e => { e.preventDefault(); renderHub(); window.scrollTo(0, 0); });
+document.getElementById("back-to-hub").addEventListener("click", e => { e.preventDefault(); try { sessionStorage.removeItem("fwb-viewing"); } catch (err) {} renderHub(); window.scrollTo(0, 0); });
 
 // ---------- Gift and experience finder ----------
 const FQ = {
@@ -2846,6 +2855,26 @@ document.getElementById("finder-reset").addEventListener("click", () => { finder
   document.querySelectorAll(".privacy-link").forEach(a => a.setAttribute("href", CONFIG.privacyUrl));
   if (!CONFIG.privacyUrl) document.documentElement.classList.add("no-privacy-page");
 })();
+
+// A bar that follows people around the site after a check-in, so results are one tap away.
+function renderResultsBar(v) {
+  let bar = document.getElementById("results-bar");
+  const r = loadResult(); let viewing = false, closed = false;
+  try { viewing = sessionStorage.getItem("fwb-viewing") === "1"; closed = sessionStorage.getItem("fwb-bar-closed") === "1"; } catch (e) {}
+  if (!r || !viewing || closed || v === "checkin") { if (bar) bar.classList.add("hidden"); return; }
+  if (!bar) {
+    bar = document.createElement("div"); bar.id = "results-bar"; bar.className = "results-bar";
+    bar.setAttribute("role", "region"); bar.setAttribute("aria-label", "Your check-in results");
+    document.body.appendChild(bar);
+  }
+  const overall = Math.round(PRINCIPLES.reduce((a, p) => a + r.scores[p.id], 0) / PRINCIPLES.length);
+  const here = PRINCIPLES.find(p => p.id === v);
+  const note = here ? `Your score here: <strong>${r.scores[v]}</strong>` : `Overall score: <strong>${overall}</strong>`;
+  bar.innerHTML = `<a href="#checkin" class="rb-link"><span class="rb-arrow" aria-hidden="true">&larr;</span><span>Back to my results</span></a><span class="rb-note">${note}</span><button type="button" class="rb-close" aria-label="Hide this bar">&times;</button>`;
+  fixLinks(bar);
+  bar.classList.remove("hidden");
+  bar.querySelector(".rb-close").addEventListener("click", () => { try { sessionStorage.setItem("fwb-bar-closed", "1"); } catch (e) {} bar.classList.add("hidden"); });
+}
 
 renderQuestions();
 paintIcons();
