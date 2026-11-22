@@ -736,6 +736,16 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
 .print-only { display: none; }
 
 .no-privacy-page .pp { display: none !important; }
+.rsummary { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; margin: 14px 0; display: grid; gap: 6px; }
+.rsummary .rs-lead { font-size: 1.08rem; font-weight: 600; color: var(--navy); }
+.rsummary p { color: var(--slate); }
+.nextsteps { background: var(--cream); border-radius: 16px; padding: 22px 24px; margin: 14px 0 22px; }
+.nextsteps h3 { font-size: 1.25rem; color: var(--navy); margin: 6px 0 10px; }
+.nextsteps ol { margin: 0; padding-left: 22px; display: grid; gap: 8px; color: var(--slate); }
+.nextsteps li::marker { color: var(--navy); font-weight: 700; }
+.nextsteps a { color: var(--navy); font-weight: 600; }
+.profile-h { font-size: 1.1rem; color: var(--navy); margin: 8px 0 4px; }
+
 </style>
 </head>
 <body>
@@ -1354,9 +1364,18 @@ const LISTEN = [
 ];
 
 const TOOLS = [
+  { group: "Build a cushion", kind: "tool", items: [
+    { t: "SaverLife", m: "Free nonprofit app", w: "Rewards you with cash prizes and challenges for building a savings habit. It never holds your money; it tracks your progress.", u: "https://www.saverlife.org", p: ["buffer"] },
+    { t: "America Saves pledge", m: "Free, from the nonprofit Consumer Federation of America", w: "Pick a savings goal and get short reminders and tips to stay on track. A simple first step toward an emergency fund.", u: "https://americasaves.org", p: ["buffer", "automate"] }
+  ]},
+  { group: "Put money on autopilot", kind: "tool", items: [
+    { t: "Qapital", m: "App. Monthly fee", w: "Set rules that move money into savings for you, like rounding up purchases or saving a set amount each week.", u: "https://www.qapital.com", p: ["automate", "buffer"] },
+    { t: "Rocket Money", m: "App. Free version, paid upgrade", w: "Finds the subscriptions and recurring bills you forgot about, so you can cancel what you do not value and stop thinking about the rest.", u: "https://www.rocketmoney.com", p: ["automate", "values"] }
+  ]},
   { group: "Plan and spend", kind: "tool", items: [
     { t: "YNAB (You Need A Budget)", m: "App. About $109 a year, 34-day free trial", w: "Give every dollar a job based on your priorities. Its method builds a buffer over time.", u: "https://www.ynab.com", p: ["values", "buffer"] },
-    { t: "Monarch Money", m: "App. Core plan about $99.99 a year", w: "A full view of accounts and goals, with shared access for couples.", u: "https://www.monarch.com", p: ["values", "buffer"] }
+    { t: "Monarch Money", m: "App. Core plan about $99.99 a year", w: "A full view of accounts and goals, with shared access for couples.", u: "https://www.monarch.com", p: ["values", "buffer"] },
+    { t: "Goodbudget", m: "App. Free version, paid upgrade", w: "Digital envelope budgeting: decide ahead of time how much goes to what you care about, then spend without second-guessing.", u: "https://goodbudget.com", p: ["values", "buffer"] }
   ]},
   { group: "Give", kind: "tool", items: [
     { t: "Daffy", m: "Donor-advised fund app. Free under $100, then from $3 a month", w: "Set money aside for giving and donate to more than 1.7 million US charities.", u: "https://www.daffy.org", p: ["giving", "automate"] },
@@ -1367,19 +1386,30 @@ const TOOLS = [
     { t: "Airbnb Experiences", m: "Marketplace. Prices vary", w: "Classes, tours and activities led by local hosts. Booking a few weeks out gives you time to look forward to it.", u: "https://www.airbnb.com/s/experiences", p: ["experiences", "anticipate"] },
     { t: "Atlas Obscura Experiences", m: "Small-group trips, tours and online classes", w: "Unusual outings and classes that make for a story worth telling.", u: "https://www.atlasobscura.com/experiences", p: ["experiences"] },
     { t: "Eventbrite", m: "Event listings. Many events are free", w: "Concerts, talks, classes and local events near you, to do on your own or with others.", u: "https://www.eventbrite.com", p: ["experiences", "others"] },
-    { t: "Meetup", m: "Interest groups and events", w: "Find people who share an interest. Shared experiences tend to bring the most joy.", u: "https://www.meetup.com", p: ["experiences"] }
+    { t: "Meetup", m: "Interest groups and events", w: "Find people who share an interest. Shared experiences tend to bring the most joy.", u: "https://www.meetup.com", p: ["experiences"] },
+    { t: "Cozymeal", m: "Cooking classes, food tours and private chefs in 400+ cities, plus online classes", w: "A shared meal you make together. Gift cards can be used for any experience on the site.", u: "https://www.cozymeal.com", p: ["experiences", "others", "anticipate"] },
+    { t: "CourseHorse", m: "Class marketplace, in person and live online", w: "Thousands of classes, from pottery to improv. Gift cards do not expire, so the person can choose when they are ready.", u: "https://coursehorse.com", p: ["experiences", "others"] },
+    { t: "Sofar Sounds", m: "Small live concerts in unexpected spaces", w: "The venue is revealed shortly before the show and the artists when they take the stage, which builds anticipation into the night.", u: "https://www.sofarsounds.com", p: ["experiences", "anticipate"] },
+    { t: "Hipcamp", m: "Campsites, cabins and glamping on private land", w: "Time outdoors that you plan ahead and look forward to. Gift cards never expire.", u: "https://www.hipcamp.com", p: ["experiences", "anticipate"] },
+    { t: "America the Beautiful pass", m: "National parks annual pass, $80 for US residents in 2026", w: "A year of entry to national parks and federal recreation lands. A gift that turns into many days out.", u: "https://www.nps.gov/planyourvisit/passes.htm", p: ["experiences", "others"] }
   ]},
   { group: "Give thoughtful gifts", kind: "tool", items: [
-    { t: "Giftster", m: "Wish list app", w: "Family and friends share wish lists, so you can give what people actually want. Research says they appreciate it more.", u: "https://www.giftster.com", p: ["others"] },
+    { t: "Giftster", m: "Wish list app", w: "Family and friends share wish lists, so you can give what people actually want. Research says they appreciate it more. It also works as a waiting list for things you want yourself.", u: "https://www.giftster.com", p: ["others", "anticipate"] },
     { t: "Elfster", m: "Wish lists and gift exchanges", w: "Run a gift exchange with wish lists built in, so nobody has to guess.", u: "https://www.elfster.com", p: ["others"] },
     { t: "Tinggly", m: "Experience gift boxes and cards", w: "Let the person choose an experience. Check expiration and booking terms before you buy.", u: "https://tinggly.com", p: ["others", "experiences"] },
-    { t: "Meal Train", m: "Free meal coordination", w: "Organize meals for someone with a new baby, an illness or a loss. Practical help is a gift people remember.", u: "https://www.mealtrain.com", p: ["others", "time"] }
+    { t: "Meal Train", m: "Free meal coordination", w: "Organize meals for someone with a new baby, an illness or a loss. Practical help is a gift people remember.", u: "https://www.mealtrain.com", p: ["others", "time"] },
+    { t: "Uncommon Goods experiences", m: "Online classes and experience gifts", w: "Classes like mixology, songwriting and truffle making, good for long-distance friends. The company donates $1 per purchase to a nonprofit you pick.", u: "https://www.uncommongoods.com/sets/uncommon-experiences", p: ["others", "experiences"] },
+    { t: "Virgin Experience Gifts", m: "Experience gift marketplace across the US", w: "Thousands of experiences, from food tours to hot air balloons. Read booking terms first, since availability varies by location.", u: "https://www.virgingifts.com", p: ["others", "experiences"] },
+    { t: "Goldbelly", m: "Food shipped from well-known restaurants and bakeries", w: "Send a taste of a place someone loves or misses, best enjoyed together.", u: "https://www.goldbelly.com", p: ["others"] },
+    { t: "Honeyfund", m: "Experience and cash registry", w: "For weddings and milestones: guests fund a trip or experience instead of more things.", u: "https://www.honeyfund.com", p: ["others", "experiences"] },
+    { t: "Give InKind", m: "Free support pages and care calendars", w: "Coordinate meals, rides, childcare and gift cards for someone going through a new baby, illness or loss.", u: "https://www.giveinkind.com", p: ["others", "time"] }
   ]},
   { group: "Give in someone's honor", kind: "tool", items: [
     { t: "Every.org gift cards", m: "Charity gift cards", w: "The person you give it to picks the nonprofit, so the gift supports a cause they care about.", u: "https://www.every.org/gift-cards", p: ["giving", "others"] },
     { t: "GlobalGiving: give in honor", m: "Donations and gift cards", w: "Give to a project in someone's honor or memory, or send a gift card so they can choose.", u: "https://www.globalgiving.org/gifts/inhonor/", p: ["giving", "others"] },
     { t: "Charity Navigator", m: "Free charity ratings", w: "Check a charity's finances and accountability before you give.", u: "https://www.charitynavigator.org", p: ["giving"] },
-    { t: "VolunteerMatch", m: "Free volunteer listings", w: "Find ways to give your time, on your own or with friends, family or coworkers.", u: "https://www.volunteermatch.org", p: ["giving"] }
+    { t: "VolunteerMatch", m: "Free volunteer listings", w: "Find ways to give your time, on your own or with friends, family or coworkers.", u: "https://www.volunteermatch.org", p: ["giving"] },
+    { t: "Kiva Cards", m: "Microloan gift cards from a nonprofit", w: "The person chooses a borrower to lend to, and can lend again when the loan is repaid. Unused cards become a donation after 12 months.", u: "https://www.kiva.org/gifts/kiva-cards", p: ["giving", "others"] }
   ]},
   { group: "Buy back time", kind: "tool", items: [
     { t: "TaskRabbit", m: "Hire help for tasks. Prices vary", w: "Hand off a chore you dread, like assembly, moving or yard work. Start with the task that drains you most.", u: "https://www.taskrabbit.com", p: ["time"] },
@@ -1388,12 +1418,18 @@ const TOOLS = [
   ]},
   { group: "Your future self", kind: "tool", items: [
     { t: "Future You", m: "Free web tool, MIT Media Lab", w: "Chat with an AI version of yourself at 60. The most research-backed tool on this page.", u: "https://futureyou.media.mit.edu", p: ["future"] },
-    { t: "stickK", m: "Free commitment contract website", w: "Put something at stake to follow through on a goal, a tool from behavioral economics.", u: "https://www.stickk.com", p: ["future"] }
+    { t: "stickK", m: "Free commitment contract website", w: "Put something at stake to follow through on a goal, a tool from behavioral economics.", u: "https://www.stickk.com", p: ["future"] },
+    { t: "my Social Security", m: "Free account, Social Security Administration", w: "See your estimated retirement benefits at different ages. A concrete picture of your future self's income.", u: "https://www.ssa.gov/myaccount/", p: ["future"] },
+    { t: "Compound interest calculator", m: "Free, Investor.gov (SEC)", w: "See how small automatic contributions grow over time. Useful when deciding how much to put on autopilot.", u: "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator", p: ["future", "automate"] },
+    { t: "Let's Make a Plan", m: "Free search for CFP professionals, CFP Board", w: "Find a certified financial planner and see any public disciplinary history before you reach out.", u: "https://www.letsmakeaplan.org", p: ["future", "mindset"] }
   ]},
   { group: "Support and self-assessment", kind: "tool", items: [
     { t: "Financial Therapy Association directory", m: "Find a financial therapist", w: "Practitioners who combine therapy and financial coaching. Look for the CFT-I credential.", u: "https://financialtherapyassociation.org", p: ["mindset"] },
     { t: "CFPB Financial Well-Being Scale", m: "Free 10-question self-assessment, Consumer Financial Protection Bureau", w: "See where you stand on the national benchmark. Linked from the CFPB research page.", u: "https://www.consumerfinance.gov/data-research/research-reports/financial-well-being/", p: ["measure"] },
-    { t: "Perceived Financial Wellbeing Scale", m: "Netemeyer et al., 2018. 10 items", w: "Measures current money stress and expected future security.", u: "https://dlab.sauder.ubc.ca/sjdm/dmidi/Perceived_Financial_Well_Being_Scale.html", p: ["measure"] }
+    { t: "Perceived Financial Wellbeing Scale", m: "Netemeyer et al., 2018. 10 items", w: "Measures current money stress and expected future security.", u: "https://dlab.sauder.ubc.ca/sjdm/dmidi/Perceived_Financial_Well_Being_Scale.html", p: ["measure"] },
+    { t: "Klontz Money Script Inventory", m: "Free questionnaire from financial psychologist Brad Klontz", w: "Uncover the beliefs about money you learned growing up, like avoiding it or tying it to your worth. A good first step in knowing your money story.", u: "https://form.typeform.com/to/Bh9cPW", p: ["mindset"] },
+    { t: "Find an Accredited Financial Counselor", m: "AFCPE directory", w: "Counselors trained in budgeting, debt and savings, with a recognized credential.", u: "https://www.afcpe.org", p: ["mindset", "buffer"] },
+    { t: "NFCC nonprofit credit counseling", m: "First budget session free", w: "If debt is keeping money on your mind, a certified nonprofit counselor can help you build a plan.", u: "https://www.nfcc.org", p: ["mindset", "buffer"] }
   ]}
 ];
 
@@ -2485,12 +2521,15 @@ function scoreWaios() {
         <div><span class="lab">Living well</span><strong>${fam.living}</strong></div>
       </div>
     </div>
+    ${resultSummary(overall, fam)}
+    ${nextStepsHtml(focus.map(x => x.id))}
+    <h3 class="profile-h">Your full profile</h3>
     <p style="max-width:68ch">Your overall score is the average of your scores on the ten ways. Each one runs from 0 to 100: 75 and up is a strength, 50 to 74 is building, and below 50 is a place to focus. Retake the check-in in a few months to see what moves.</p>
     <div class="profile">
       <div class="pfam"><h3><span class="bar peace"></span>Peace of mind</h3>${rows("peace")}</div>
       <div class="pfam"><h3><span class="bar living"></span>Living well</h3>${rows("living")}</div>
     </div>
-    <div class="group"><h3>${focusLabel}</h3><div class="focus">${focus.map(x => { const p = PRINCIPLES.find(q => q.id === x.id); return `<div class="card"><span class="icon-tile">${icon(p.id)}</span><h3>${esc(p.name)}</h3><p>${esc(p.what)}</p><p><strong>Try first:</strong> ${esc(p.practices[0])}</p>${topResHtml(p.id)}<button type="button" data-id="${p.id}">See practices and resources</button></div>`; }).join("")}</div></div>
+    <div class="group"><h3>${focusLabel}: more detail</h3><div class="focus">${focus.map(x => { const p = PRINCIPLES.find(q => q.id === x.id); return `<div class="card"><span class="icon-tile">${icon(p.id)}</span><h3>${esc(p.name)}</h3><p>${esc(p.what)}</p><p><strong>Try first:</strong> ${esc(p.practices[0])}</p>${topResHtml(p.id)}<button type="button" data-id="${p.id}">See practices and resources</button></div>`; }).join("")}</div></div>
     ${strengths.length ? `<div class="group"><h3>Your strengths</h3><div class="chips-row">${strengths.map(x => `<a class="chip" href="#${x.id}">${icon(x.id)}${esc(PNAME[x.id])} · ${x.sc}</a>`).join("")}</div></div>` : ""}
     ${emailBlock()}
     <div class="learnmore"><div><strong>Want to go deeper?</strong> Compare yourself with a national benchmark using the validated CFPB Financial Well-Being Scale.</div><button type="button" class="btn secondary" id="go-fwb">Take the CFPB scale</button></div>
@@ -2514,13 +2553,43 @@ function scoreWaios() {
 
 // Best two or three resources for a focus area: tools first, then books and episodes.
 function topRes(id, n) {
-  const out = [];
-  [[TOOLS, "Tool"], [READ, "Read"], [LISTEN, "Listen"]].forEach(([groups, lab]) => groups.forEach(g => g.items.forEach(i => { if (i.p.includes(id) && out.length < (n || 3) && !out.some(o => o.lab === lab && lab !== "Tool")) out.push({ t: i.t, u: i.u, lab }); })));
-  return out.slice(0, n || 3);
+  // A balanced mix: up to two tools, then one book and one episode.
+  const pick = (groups, lab, max) => groups.flatMap(g => g.items).filter(i => i.p.includes(id)).slice(0, max).map(i => ({ t: i.t, u: i.u, lab }));
+  return [...pick(TOOLS, "Tool", 2), ...pick(READ, "Read", 1), ...pick(LISTEN, "Listen", 1)].slice(0, n || 3);
 }
 function topResHtml(id) {
   const r = topRes(id, 3); if (!r.length) return "";
   return `<ul class="toprec">${r.map(x => `<li><span class="lab">${x.lab}</span> <a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a></li>`).join("")}</ul>`;
+}
+
+// Plain-language summary of the overall score and where to start.
+function resultSummary(overall, fam) {
+  const lead = overall >= 75 ? "You are in a strong place. Keep what is working and build on your strengths."
+    : overall >= 50 ? "You have a solid base, with clear room to grow."
+    : "Money may be taking up more of your mind than you would like. A few small steps in the areas below can make a real difference.";
+  const gap = fam.living - fam.peace;
+  const where = gap >= 10 ? "Your <strong>peace of mind</strong> scores trail your living well scores. In this model, peace of mind is the foundation, so start there: the goal is to get money off your mind."
+    : gap <= -10 ? (fam.peace >= 75 ? "Your foundation is solid." : "Your peace of mind scores are ahead of your living well scores.") + " Your biggest gains are in <strong>living well</strong>: using money in ways that make life better."
+    : "Your peace of mind and living well scores are close, so start with the focus areas below.";
+  return `<div class="rsummary"><p class="rs-lead">${lead}</p><p>${where}</p></div>`;
+}
+// A short, ordered plan built from the top focus area.
+function nextStepsHtml(ids) {
+  const p = PRINCIPLES.find(q => q.id === ids[0]); if (!p) return "";
+  const tool = topRes(p.id, 4).find(x => x.lab === "Tool");
+  const read = topRes(p.id, 4).find(x => x.lab !== "Tool");
+  const living = p.fam === "living" && ["others", "experiences", "giving", "time", "anticipate"].includes(p.id);
+  const others = ids.slice(1).map(id => `<a href="#${id}">${esc(PNAME[id])}</a>`);
+  const steps = [
+    `<strong>This week:</strong> ${esc(p.practices[0])}`,
+    tool ? `<strong>Try a tool:</strong> <a href="${esc(tool.u)}" target="_blank" rel="noopener">${esc(tool.t)}</a>` : "",
+    living ? `<strong>Put it into practice:</strong> use the <a href="#finder">gift and experience finder</a> for ideas that fit your budget.` : "",
+    read ? `<strong>${read.lab === "Read" ? "Read" : "Listen"}:</strong> <a href="${esc(read.u)}" target="_blank" rel="noopener">${esc(read.t)}</a>` : "",
+    `<strong>Go deeper:</strong> the <a href="#${p.id}">${esc(p.name)}</a> page has all the practices, research and resources.`,
+    others.length ? `<strong>Next up:</strong> ${others.join(" and ")}.` : "",
+    `<strong>In 90 days:</strong> retake the check-in to see what has moved.`
+  ].filter(Boolean);
+  return `<div class="nextsteps"><span class="eyebrow">Your next steps</span><h3>Start with: ${esc(p.name)}</h3><ol>${steps.map(x => `<li>${x}</li>`).join("")}</ol></div>`;
 }
 let LAST_RESULT = null;
 
@@ -2681,31 +2750,35 @@ const SCI = { asked: GIFT_SCI[0], exp: GIFT_SCI[1], price: GIFT_SCI[2], cause: G
   doing: { src: "Van Boven and Gilovich, 2003", d: "Experiences tend to bring more lasting happiness than material things." },
   social: { src: "Chan and Mogilner, 2017", d: "Shared and solo experiences both build connection when they stir emotion." } };
 const IDEAS = [
-  { t: "Plan an outing and put the date on the calendar", d: "Pick something you will both enjoy, like a hike, a concert or a new restaurant, and set the date now. The wait becomes part of the gift.", who: ["partner", "family", "friend"], b: ["free", "low", "mid"], k: ["together", "any"], sci: ["exp", "anticipate"], res: ["Eventbrite", "Meetup"], icon: "experiences" },
-  { t: "Take a class together", d: "Cooking, pottery, dancing or a guided tour. Learning something new side by side creates a shared story.", who: ["partner", "family", "friend"], b: ["low", "mid"], k: ["together", "any"], sci: ["exp"], res: ["Airbnb Experiences", "Atlas Obscura Experiences"], icon: "experiences" },
-  { t: "Tickets to something they love, with a date already picked", d: "A game, a show or an exhibit tied to what they care about. Add a note about why you chose it.", who: ["partner", "family", "friend"], b: ["mid", "high"], k: ["together", "solo", "any"], sci: ["exp", "anticipate"], res: ["Eventbrite"], icon: "anticipate" },
-  { t: "A weekend away or a day trip", d: "Plan it well ahead so there is plenty of time to look forward to it.", who: ["partner", "family", "friend", "self"], b: ["high"], k: ["together", "solo", "any"], sci: ["anticipate", "doing"], res: ["Airbnb Experiences", "Atlas Obscura Experiences"], icon: "experiences" },
-  { t: "An experience gift card they can choose from", d: "Good when you do not know their schedule or tastes well. They pick the experience, and you still give a memory rather than an object.", who: ["colleague", "friend", "family"], b: ["mid", "high"], k: ["solo", "any"], sci: ["exp"], res: ["Tinggly"], icon: "gift" },
-  { t: "A local experience just for them", d: "A massage, a museum membership, a class they have mentioned. Something they will live through rather than store.", who: ["partner", "family", "friend", "colleague"], b: ["low", "mid"], k: ["solo", "any"], sci: ["exp"], res: ["Airbnb Experiences", "Atlas Obscura Experiences"], icon: "experiences" },
+  { t: "Plan an outing and put the date on the calendar", d: "Pick something you will both enjoy, like a hike, a concert or a new restaurant, and set the date now. The wait becomes part of the gift.", who: ["partner", "family", "friend"], b: ["free", "low", "mid"], k: ["together", "any"], sci: ["exp", "anticipate"], res: ["Eventbrite", "Sofar Sounds", "Meetup"], icon: "experiences" },
+  { t: "Take a class together", d: "Cooking, pottery, dancing or a guided tour. Learning something new side by side creates a shared story.", who: ["partner", "family", "friend"], b: ["low", "mid"], k: ["together", "any"], sci: ["exp"], res: ["Cozymeal", "CourseHorse", "Airbnb Experiences"], icon: "experiences" },
+  { t: "Tickets to something they love, with a date already picked", d: "A game, a show or an exhibit tied to what they care about. Add a note about why you chose it.", who: ["partner", "family", "friend"], b: ["mid", "high"], k: ["together", "solo", "any"], sci: ["exp", "anticipate"], res: ["Eventbrite", "Sofar Sounds"], icon: "anticipate" },
+  { t: "A weekend away or a day trip", d: "Plan it well ahead so there is plenty of time to look forward to it.", who: ["partner", "family", "friend", "self"], b: ["high"], k: ["together", "solo", "any"], sci: ["anticipate", "doing"], res: ["Hipcamp", "Airbnb Experiences", "America the Beautiful pass"], icon: "experiences" },
+  { t: "An experience gift card they can choose from", d: "Good when you do not know their schedule or tastes well. They pick the experience, and you still give a memory rather than an object.", who: ["colleague", "friend", "family"], b: ["mid", "high"], k: ["solo", "any"], sci: ["exp"], res: ["CourseHorse", "Cozymeal", "Virgin Experience Gifts", "Tinggly"], icon: "gift" },
+  { t: "A local experience just for them", d: "A massage, a museum membership, a class they have mentioned. Something they will live through rather than store.", who: ["partner", "family", "friend", "colleague"], b: ["low", "mid"], k: ["solo", "any"], sci: ["exp"], res: ["Virgin Experience Gifts", "CourseHorse", "Atlas Obscura Experiences"], icon: "experiences" },
   { t: "Give what is on their list", d: "If they have a wish list, use it. It can feel less personal to you, but it lands better with them.", who: ["partner", "family", "friend", "colleague"], b: ["free", "low", "mid", "high"], k: ["wish", "any"], sci: ["asked", "price"], res: ["Giftster", "Elfster"], icon: "gift" },
   { t: "Ask for one specific idea, then get exactly that", d: "A single clear suggestion is easier to act on than a long list. Asking shows care, not a lack of effort.", who: ["partner", "family", "friend"], b: ["low", "mid", "high"], k: ["wish", "any"], sci: ["asked"], res: ["Giftster"], icon: "gift" },
   { t: "Set up a shared wish list for the holidays", d: "Everyone adds what they actually want, so nobody has to guess and fewer gifts go unused.", who: ["family", "friend"], b: ["free"], k: ["wish", "any"], sci: ["asked"], res: ["Elfster", "Giftster"], icon: "gift" },
   { t: "A donation to a cause they already support", d: "Give where they already give or volunteer, and write a note about why. Skip your own favorite cause unless it is theirs too.", who: ["partner", "family", "friend"], b: ["low", "mid", "high"], k: ["give", "any"], sci: ["cause"], res: ["GlobalGiving: give in honor", "Charity Navigator"], icon: "giving" },
-  { t: "A charity gift card so they choose the cause", d: "A safer choice than picking a charity for someone you do not know well. They get the good feeling of choosing.", who: ["colleague", "friend", "family"], b: ["low", "mid"], k: ["give", "any"], sci: ["cause", "others"], res: ["Every.org gift cards", "GlobalGiving: give in honor"], icon: "giving" },
+  { t: "A charity gift card so they choose the cause", d: "A safer choice than picking a charity for someone you do not know well. They get the good feeling of choosing.", who: ["colleague", "friend", "family"], b: ["low", "mid"], k: ["give", "any"], sci: ["cause", "others"], res: ["Every.org gift cards", "Kiva Cards", "GlobalGiving: give in honor"], icon: "giving" },
   { t: "Volunteer together", d: "Spend a morning helping out side by side. It is a shared experience and a way to give back at the same time.", who: ["partner", "family", "friend", "colleague", "self"], b: ["free"], k: ["give", "together", "any"], sci: [], res: ["VolunteerMatch"], icon: "giving" },
-  { t: "Organize meals for them", d: "Coordinate friends to drop off dinners during a hard stretch. Practical help often matters more than the perfect gift.", who: ["hard", "family", "friend"], b: ["free", "low"], k: ["time", "give", "any"], sci: ["others"], res: ["Meal Train"], icon: "others" },
+  { t: "Organize meals for them", d: "Coordinate friends to drop off dinners during a hard stretch. Practical help often matters more than the perfect gift.", who: ["hard", "family", "friend"], b: ["free", "low"], k: ["time", "give", "any"], sci: ["others"], res: ["Give InKind", "Meal Train"], icon: "others" },
   { t: "Pay for a chore they dread", d: "Cleaning, yard work, assembly or a repair. Choose the task that weighs on them most.", who: ["partner", "family", "hard", "friend"], b: ["low", "mid"], k: ["time", "any"], sci: ["time"], res: ["TaskRabbit", "Thumbtack"], icon: "time" },
   { t: "Grocery delivery for a busy few weeks", d: "A new baby, an illness or a crunch at work. Turn their weekly errand into time to rest.", who: ["hard", "family", "self"], b: ["low", "mid"], k: ["time", "any"], sci: ["time"], res: ["Instacart"], icon: "time" },
   { t: "Offer your own time", d: "A promise to cook, babysit, help move or fix something, with a date attached. Free, and often the most appreciated.", who: ["partner", "family", "friend", "hard"], b: ["free"], k: ["time", "together", "any"], sci: [], res: [], icon: "time" },
   { t: "Just show up", d: "A walk, a coffee or a call on a day that matters to them. Presence is a gift in itself.", who: ["hard", "friend", "family"], b: ["free", "low"], k: ["together", "any"], sci: [], res: [], icon: "others" },
-  { t: "A team experience instead of individual gifts", d: "A group lunch, a class or an outing builds more connection than a desk trinket for each person.", who: ["colleague"], b: ["low", "mid", "high"], k: ["together", "any"], sci: ["exp", "others"], res: ["Eventbrite", "Airbnb Experiences"], icon: "experiences" },
+  { t: "A team experience instead of individual gifts", d: "A group lunch, a class or an outing builds more connection than a desk trinket for each person.", who: ["colleague"], b: ["low", "mid", "high"], k: ["together", "any"], sci: ["exp", "others"], res: ["Cozymeal", "CourseHorse", "Eventbrite"], icon: "experiences" },
   { t: "A small gift card for a shared moment", d: "Coffee, lunch or a movie. Modest is fine: price matters less to the person receiving it than most givers think.", who: ["colleague", "friend"], b: ["low"], k: ["solo", "any"], sci: ["price", "exp"], res: [], icon: "gift" },
-  { t: "Treat yourself to an experience, not a thing", d: "Book the class, the concert or the day trip you keep putting off.", who: ["self"], b: ["low", "mid", "high"], k: ["solo", "together", "any"], sci: ["doing", "anticipate"], res: ["Airbnb Experiences", "Atlas Obscura Experiences", "Meetup"], icon: "experiences" },
+  { t: "Treat yourself to an experience, not a thing", d: "Book the class, the concert or the day trip you keep putting off.", who: ["self"], b: ["low", "mid", "high"], k: ["solo", "together", "any"], sci: ["doing", "anticipate"], res: ["Cozymeal", "Sofar Sounds", "Hipcamp", "Meetup"], icon: "experiences" },
   { t: "Buy yourself an hour back", d: "Hand off the chore you dread most this month and use the time on something you enjoy.", who: ["self"], b: ["low", "mid"], k: ["time", "any"], sci: ["time"], res: ["TaskRabbit", "Instacart"], icon: "time" },
-  { t: "Plan a free day out for yourself", d: "A museum's free day, a library pass, a new trail or a free concert in the park. Put it on the calendar so you have something to look forward to.", who: ["self"], b: ["free", "low"], k: ["solo", "together", "any"], sci: ["anticipate", "doing"], res: ["Eventbrite", "Meetup"], icon: "experiences" },
+  { t: "Plan a free day out for yourself", d: "A museum's free day, a library pass, a new trail or a free concert in the park. Put it on the calendar so you have something to look forward to.", who: ["self"], b: ["free", "low"], k: ["solo", "together", "any"], sci: ["anticipate", "doing"], res: ["America the Beautiful pass", "Eventbrite", "Meetup"], icon: "experiences" },
   { t: "Keep a wish list and wait 30 days", d: "Add things you want to a list instead of buying right away. If you still want it in a month, buy it and enjoy the wait. Often the urge passes.", who: ["self"], b: ["free", "low", "mid", "high"], k: ["wish", "any"], sci: ["anticipate"], res: ["Giftster"], icon: "anticipate" },
   { t: "Give an hour of your time", d: "Volunteer, mentor or help a neighbor. Giving time can feel as good as giving money, and it costs nothing.", who: ["self"], b: ["free"], k: ["give", "time", "any"], sci: [], res: ["VolunteerMatch"], icon: "giving" },
   { t: "Trade a chore for an hour you enjoy", d: "Swap a dreaded task with a friend or family member, so each of you does the one you mind least.", who: ["self"], b: ["free"], k: ["time", "together", "any"], sci: [], res: [], icon: "time" },
+  { t: "An online class you take together from afar", d: "For a long-distance friend or relative: book the same live class and do it together on video.", who: ["partner", "family", "friend"], b: ["low", "mid"], k: ["together", "any"], sci: ["exp"], res: ["Uncommon Goods experiences", "Cozymeal", "CourseHorse"], icon: "experiences" },
+  { t: "Chip in on a trip or experience they are planning", d: "For a wedding, graduation or big birthday, contribute to the honeymoon, the trip or the class they have their eye on.", who: ["partner", "family", "friend", "colleague"], b: ["low", "mid", "high"], k: ["wish", "solo", "any"], sci: ["asked", "exp"], res: ["Honeyfund"], icon: "anticipate" },
+  { t: "A taste of a place they love", d: "Ship food from a restaurant or bakery tied to a memory, a hometown or a trip, then enjoy it together if you can.", who: ["partner", "family", "friend", "hard"], b: ["mid", "high"], k: ["solo", "together", "any"], sci: [], res: ["Goldbelly"], icon: "gift" },
+  { t: "A year of days outdoors", d: "A national parks pass, with a first trip already on the calendar.", who: ["partner", "family", "friend", "self"], b: ["mid"], k: ["together", "solo", "any"], sci: ["anticipate", "doing"], res: ["America the Beautiful pass", "Hipcamp"], icon: "experiences" },
   { t: "Set aside money just for giving", d: "A small amount each month, set aside ahead of time, makes it easy to say yes when a cause or a friend needs help.", who: ["self"], b: ["low", "mid"], k: ["give", "any"], sci: ["others"], res: ["Daffy", "Giving Multiplier"], icon: "giving" }
 ];
 const finder = { who: null, budget: null, type: null };
