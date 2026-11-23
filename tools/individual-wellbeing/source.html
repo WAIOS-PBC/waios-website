@@ -348,6 +348,66 @@ nav.sections a.on { background: var(--navy); color: var(--cream); }
 .highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
 
 /* Principle tiles on the What works view */
+/* Ten ways as a journey */
+.journey { display: grid; grid-template-columns: minmax(300px, 0.95fr) 1.15fr; gap: 40px; align-items: start; margin-top: 12px; }
+.j-wheel { position: sticky; top: 84px; background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 10px 10px 16px; }
+.j-wheel .wheel { max-height: none; }
+.j-now { display: flex; justify-content: center; align-items: baseline; gap: 10px; margin: 0; font-size: .95rem; }
+.j-now span { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--tonal); }
+.j-now strong { color: var(--navy); }
+#wheel-j .node { transition: opacity .5s ease; }
+#wheel-j.journeying .node { opacity: .35; }
+#wheel-j.journeying .node.lit { opacity: 1; }
+#wheel-j .node.lit.peace circle.bg { fill: #E4EAF0; }
+#wheel-j .node.lit.living circle.bg { fill: #FCEFC6; }
+#wheel-j .node.here .grp { transform: scale(1.18); }
+#wheel-j .node.here circle.bg { stroke: var(--coral); stroke-width: 5; }
+.j-path { list-style: none; margin: 0; padding: 0 0 0 64px; position: relative; --fill: 0px; }
+.j-path::before, .j-path::after { content: ""; position: absolute; left: 25px; top: 30px; width: 4px; border-radius: 2px; }
+.j-path::before { bottom: 40px; background: repeating-linear-gradient(var(--line) 0 8px, transparent 8px 14px); }
+.j-path::after { height: var(--fill); background: linear-gradient(var(--tonal), var(--butter) 45%, var(--coral)); transition: height .25s linear; }
+.j-stage { position: relative; margin: 10px 0 18px; padding: 18px 20px; border-radius: 16px; color: var(--cream); background: var(--navy); }
+.j-stage.living { background: linear-gradient(120deg, #F7C948, #F4A261); color: var(--navy); margin-top: 34px; }
+.j-stage::before { content: ""; position: absolute; left: -46px; top: 22px; width: 20px; height: 20px; border-radius: 50%; background: inherit; box-shadow: 0 0 0 5px var(--offwhite); z-index: 1; }
+.j-stage-n { font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .85; }
+.j-stage h2 { color: inherit; font-size: 1.6rem; margin: 2px 0; }
+.j-stage p { opacity: .9; }
+.j-stop { position: relative; margin-bottom: 18px; }
+.j-dot { position: absolute; left: -64px; top: 10px; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: var(--white); border: 2.5px solid var(--line); z-index: 1; transition: border-color .4s, background-color .4s, transform .4s cubic-bezier(.2,.7,.2,1); }
+.j-dot .ic { width: 24px; height: 24px; color: var(--mist); transition: color .4s; }
+.j-stop.reached .j-dot { transform: scale(1.06); }
+.j-stop.peace.reached .j-dot { border-color: var(--tonal); background: #E4EAF0; }
+.j-stop.living.reached .j-dot { border-color: #E9B33A; background: #FCEFC6; }
+.j-stop.reached .j-dot .ic { color: var(--navy); }
+.j-card { display: grid; gap: 6px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; text-decoration: none; color: var(--slate); opacity: .55; transform: translateX(10px); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .3s; }
+.j-stop.reached .j-card, .j-end .j-card { opacity: 1; transform: none; }
+.j-card:hover { border-color: var(--mist); box-shadow: 0 14px 30px -18px rgba(21,40,63,.45); }
+.j-n { font-size: .74rem; font-weight: 700; letter-spacing: .14em; color: var(--tonal); display: flex; gap: 10px; align-items: center; }
+.j-n .yours { font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; background: var(--butter); color: var(--navy); border-radius: 999px; padding: 2px 8px; }
+.j-card h3 { font-size: 1.3rem; }
+.j-card p { font-size: .95rem; }
+.j-first { background: var(--pale); border-radius: 10px; padding: 8px 12px; font-size: .9rem !important; }
+.j-stop.living .j-first { background: #FDF6E1; }
+.j-first b { color: var(--navy); }
+.j-card .go { font-weight: 600; color: var(--navy); font-size: .9rem; }
+.j-stop.mine .j-card { border-color: var(--butter); box-shadow: inset 0 0 0 1px var(--butter); }
+.j-end { position: relative; margin-top: 30px; }
+.j-dot.end { background: var(--coral); border-color: var(--coral); }
+.j-dot.end .ic { color: var(--navy); }
+.j-card.end { background: var(--cream); border: 0; }
+.j-card.end .btn { justify-self: start; margin-top: 6px; }
+@media (max-width: 900px) {
+  .journey { grid-template-columns: 1fr; gap: 18px; }
+  .j-wheel { position: static; padding: 6px 6px 12px; }
+  .j-path { padding-left: 54px; }
+  .j-path::before, .j-path::after { left: 20px; }
+  .j-dot { left: -54px; width: 44px; height: 44px; }
+  .j-dot .ic { width: 20px; height: 20px; }
+  .j-stage::before { left: -40px; }
+  .j-card { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .j-card, .j-dot, .j-path::after, #wheel-j .node { transition: none; } }
+
 .ptiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
 .ptile { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 8px; align-content: start; text-decoration: none; color: var(--slate); transition: transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s cubic-bezier(.2,.7,.3,1), border-color .45s ease-out; }
 .ptile:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -16px rgba(21,40,63,.4); border-color: var(--mist); }
@@ -1103,7 +1163,13 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
         <p>Financial wellbeing rests on two foundations: peace of mind, and living well. Each comes from a handful of habits backed by research. Choose one to see what it means, the best practices and the resources that help.</p>
         <div class="hero-actions"><a class="btn" href="#checkin">Not sure where to start? Take a check-in</a></div>
       </div>
-      <div id="families"></div>
+      <div class="journey">
+        <aside class="j-wheel" aria-label="Where you are on the wheel">
+          <svg class="wheel" id="wheel-j" viewBox="-70 0 1040 640" role="group" aria-label="The ten ways around financial wellbeing"></svg>
+          <p class="j-now" id="j-now" aria-live="polite"><span>You are here</span><strong></strong></p>
+        </aside>
+        <ol class="j-path" id="j-path"></ol>
+      </div>
     </section>
 
     <!-- PRINCIPLE DETAIL (one view reused for all seven) -->
@@ -2132,7 +2198,7 @@ function route() {
   document.querySelectorAll("[data-nav]").forEach(a => a.classList.toggle("on", a.dataset.nav === v || (isP && a.dataset.nav === "model")));
   if (isP) renderPrinciple(v);
   if (v === "library") renderLibrary();
-  if (v === "model") renderFamilies();
+  if (v === "model") renderJourney();
   if (v === "start") renderWheel();
   if (v === "checkin") { let viewing = false; try { viewing = sessionStorage.getItem("fwb-viewing") === "1"; } catch (e) {} if (!(viewing && showSavedResult())) renderHub(); }
   renderResultsBar(v);
@@ -2234,9 +2300,10 @@ function renderPlan() {
 
 // The model: wheel + grouped tiles
 function renderModel() { renderWheel(); renderFamilies(); }
-function renderWheel() {
+function renderWheel(target) {
   const plan = loadPlan(); const mine = new Set(plan && plan.ids ? plan.ids : []);
-  const svg = document.getElementById("wheel");
+  const main = !target || target === "wheel";
+  const svg = document.getElementById(target || "wheel"); if (!svg) return;
   const cx = 450, cy = 320, R = 228, nodeR = 36, n = PRINCIPLES.length;
   const NS = "http://www.w3.org/2000/svg";
   // order: peace on the left half, living on the right half, starting at top
@@ -2258,7 +2325,7 @@ function renderWheel() {
     const lx = cx + (R + nodeR + 14) * cos, ly = cy + (R + nodeR + 14) * sin;
     const ty = Math.abs(cos) < 0.25 ? (sin < 0 ? ly - 18 : ly + 14) : ly - 2;
     const words = o.p.name;
-    return `<a class="node ${o.p.fam}" href="#${o.p.id}" style="animation-delay:${0.35 + 0.06 * k}s" aria-label="${esc(o.p.name)}">
+    return `<a class="node ${o.p.fam}" data-id="${o.p.id}" href="#${o.p.id}" style="animation-delay:${0.35 + 0.06 * k}s" aria-label="${esc(o.p.name)}">
       <g class="grp"><circle class="bg" cx="${o.x.toFixed(1)}" cy="${o.y.toFixed(1)}" r="${nodeR}"/>
       <g class="ico" transform="translate(${(o.x - 14).toFixed(1)} ${(o.y - 14).toFixed(1)}) scale(1.17)">${ICONS[o.p.id]}</g></g>
       <text x="${lx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="${anchor}">${esc(words)}</text>
@@ -2271,8 +2338,8 @@ function renderWheel() {
     <g class="line"><path d="M10 9.5V4a2 2 0 0 0-4 0v10"/><path d="M14 10V9a2 2 0 0 0-4 0v1"/><path d="M18 11v-1a2 2 0 0 0-4 0"/><path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-6-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></g>
   </g></g>`;
   svg.innerHTML = html;
-  WHEEL = { cx, cy, pos };
-  armTour(svg);
+  if (!main) { svg.querySelector("#wheel-hand")?.remove(); svg.querySelector("title")?.remove(); }
+  if (main) { WHEEL = { cx, cy, pos }; armTour(svg); }
   if (!matchMedia("(prefers-reduced-motion: reduce)").matches) { svg.classList.remove("animate"); void svg.getBoundingClientRect(); svg.classList.add("animate"); }
 
 }
@@ -2290,6 +2357,44 @@ function renderFamilies() {
           <span class="go">Explore &rarr;</span>
         </a>`).join("")}</div>
     </div>`).join("");
+}
+
+// The ten ways as a journey: a path of stops, with the wheel lighting up as you go
+let journeyScroll = null;
+function renderJourney() {
+  const plan = loadPlan(); const mine = new Set(plan && plan.ids ? plan.ids : []);
+  renderWheel("wheel-j");
+  let n = 0;
+  const stage = (f, k) => `<li class="j-stage ${f}"><span class="j-stage-n">Stage ${k}</span><h2>${FAMILIES[f].name}</h2><p>${FAMILIES[f].line}</p></li>`;
+  const stop = p => { n++; return `<li class="j-stop ${p.fam}${mine.has(p.id) ? " mine" : ""}" data-id="${p.id}">
+      <span class="j-dot">${icon(p.id)}</span>
+      <a class="j-card" href="#${p.id}">
+        <span class="j-n">${String(n).padStart(2, "0")}${mine.has(p.id) ? '<span class="yours">Your focus</span>' : ""}</span>
+        <h3>${esc(p.name)}</h3>
+        <p>${esc(p.short)}</p>
+        <p class="j-first"><b>Try this first:</b> ${esc(p.practices[0])}</p>
+        <span class="go">Explore ${esc(p.name.toLowerCase())} &rarr;</span>
+      </a></li>`; };
+  document.getElementById("j-path").innerHTML =
+    stage("peace", 1) + PRINCIPLES.filter(p => p.fam === "peace").map(stop).join("") +
+    stage("living", 2) + PRINCIPLES.filter(p => p.fam === "living").map(stop).join("") +
+    `<li class="j-end"><span class="j-dot end">${icon("measure")}</span><div class="j-card end"><h3>Find your starting point</h3><p>A four-minute check-in shows which of the ten ways to focus on first.</p><a class="btn" href="#checkin">Take the check-in</a></div></li>`;
+  const path = document.getElementById("j-path"), wheel = document.getElementById("wheel-j"), now = document.querySelector("#j-now strong");
+  const stops = [...path.querySelectorAll(".j-stop")];
+  const update = () => {
+    journeyScroll = null;
+    if (!path.isConnected || !path.offsetParent) return;
+    const line = innerHeight * 0.55, top = path.getBoundingClientRect().top;
+    let cur = null, fill = 0;
+    stops.forEach(li => { const d = li.querySelector(".j-dot").getBoundingClientRect(); const on = d.top + d.height / 2 < line; li.classList.toggle("reached", on); if (on) { cur = li; fill = d.top + d.height / 2 - top; } });
+    path.style.setProperty("--fill", Math.max(0, fill) + "px");
+    wheel.querySelectorAll(".node").forEach(nd => { const li = stops.find(s => s.dataset.id === nd.dataset.id); nd.classList.toggle("lit", !!(li && li.classList.contains("reached"))); nd.classList.toggle("here", !!(cur && cur.dataset.id === nd.dataset.id)); });
+    wheel.classList.toggle("journeying", !!cur);
+    now.textContent = cur ? PNAME[cur.dataset.id] : "Start at stage 1";
+  };
+  if (!window._journeyBound) { window._journeyBound = true; addEventListener("scroll", () => { if (!journeyScroll) journeyScroll = requestAnimationFrame(window._journeyUpdate); }, { passive: true }); addEventListener("resize", () => window._journeyUpdate && window._journeyUpdate()); }
+  window._journeyUpdate = update;
+  update();
 }
 
 // Principle detail
