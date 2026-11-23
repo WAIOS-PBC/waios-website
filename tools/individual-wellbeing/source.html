@@ -136,6 +136,10 @@ section.block { padding: 44px 0; border-top: 1px solid var(--line); }
 .group > h3 { display: flex; align-items: center; gap: 10px; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; color: var(--navy); padding-bottom: 10px; border-bottom: 2px solid var(--line); margin-top: 6px; }
 .group > h3::before { content: ""; flex: none; width: 6px; height: 1.15em; border-radius: 3px; background: linear-gradient(var(--butter) 0 50%, var(--coral) 50% 100%); }
 .group.start > h3 { border-bottom-color: rgba(21, 40, 63, 0.12); }
+/* Resource sections: each sits on its own soft panel, with clear space between */
+.group.rgroup { background: #F4EFE6; border-radius: 18px; padding: 22px 22px 24px; margin-bottom: 36px; }
+.group.rgroup > h3 { font-size: 1.55rem; border-bottom-color: rgba(21, 40, 63, 0.12); }
+@media (max-width: 640px) { .group.rgroup { padding: 16px 14px 18px; margin-left: -6px; margin-right: -6px; } .group.rgroup > h3 { font-size: 1.35rem; } }
 .items { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
 .item { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; gap: 6px; align-content: start; }
 .item .title { font-weight: 600; line-height: 1.35; color: var(--navy); }
@@ -1855,7 +1859,7 @@ function renderList(el, groups) {
     const items = g.items.filter(i => active === "all" || i.p.includes(active));
     if (!items.length) continue;
     any = true;
-    html += `<div class="group"><h3>${esc(g.group)}</h3><div class="items${g.kind === "book" ? " books" : ""}">` +
+    html += `<div class="group rgroup"><h3>${esc(g.group)}</h3><div class="items${g.kind === "book" ? " books" : ""}">` +
       items.map(i => cardFor(i, g.kind, g.kind === "episode" ? g.group : null)).join("") + `</div></div>`;
   }
   el.innerHTML = any ? html : `<p class="empty">Nothing in this section for "${esc(PNAME[active])}" yet.</p>`;
