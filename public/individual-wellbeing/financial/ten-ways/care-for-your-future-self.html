@@ -349,65 +349,103 @@ nav.sections a.on { background: var(--navy); color: var(--cream); }
 .highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
 
 /* Principle tiles on the What works view */
-/* Ten ways as a journey */
-.journey { display: grid; grid-template-columns: minmax(300px, 0.95fr) 1.15fr; gap: 40px; align-items: start; margin-top: 12px; }
-.j-wheel { position: sticky; top: 84px; background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 10px 10px 16px; }
-.j-wheel .wheel { max-height: none; }
-.j-now { display: flex; justify-content: center; align-items: baseline; gap: 10px; margin: 0; font-size: .95rem; }
-.j-now span { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--tonal); }
-.j-now strong { color: var(--navy); }
-#wheel-j .node { transition: opacity .5s ease; }
-#wheel-j.journeying .node { opacity: .35; }
-#wheel-j.journeying .node.lit { opacity: 1; }
-#wheel-j .node.lit.peace circle.bg { fill: #E4EAF0; }
-#wheel-j .node.lit.living circle.bg { fill: #FCEFC6; }
-#wheel-j .node.here .grp { transform: scale(1.18); }
-#wheel-j .node.here circle.bg { stroke: var(--coral); stroke-width: 5; }
-.j-path { list-style: none; margin: 0; padding: 0 0 0 64px; position: relative; --fill: 0px; }
-.j-path::before, .j-path::after { content: ""; position: absolute; left: 25px; top: 30px; width: 4px; border-radius: 2px; }
+/* Ten ways: wheel with preview, sticky progress strip, full-width path */
+.tw-explore { display: grid; grid-template-columns: 1.35fr 1fr; gap: 22px; align-items: stretch; background: var(--white); border: 1px solid var(--line); border-radius: 22px; padding: 14px 14px 14px 6px; margin-top: 10px; }
+.tw-wheel .wheel { max-height: none; }
+#wheel-j .node text { font-size: 21px; }
+#wheel-j .node text.s { font-size: 15px; }
+#wheel-j .node.sel circle.bg, .wheel.mini .node.here circle.bg { stroke: var(--coral); stroke-width: 5; fill: #FDF1EC; }
+#wheel-j .node.sel .grp, .wheel.mini .node.here .grp { transform: scale(1.15); }
+.tw-preview { background: var(--cream); border-radius: 18px; padding: 24px 24px 20px; display: grid; gap: 14px; align-content: start; }
+.tw-preview.swap > * { animation: fadeUp .4s ease both; }
+.twp-top { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; }
+.twp-top .icon-tile { width: 56px; height: 56px; background: var(--white); }
+.twp-top .icon-tile .ic { width: 28px; height: 28px; }
+.twp-top h2 { font-size: 1.6rem; margin-top: 4px; }
+.twp-what { font-size: 1rem; color: var(--slate); }
+.twp-first { background: var(--white); border-radius: 12px; padding: 12px 14px; font-size: .95rem; }
+.twp-first b, .j-first b { display: block; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tonal); margin-bottom: 4px; }
+.twp-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+.twp-actions .btn { margin: 0; }
+.twp-nav { display: flex; gap: 8px; }
+.twp-nav button { font: inherit; font-size: 1.1rem; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--white); color: var(--navy); cursor: pointer; }
+.twp-nav button:hover { border-color: var(--navy); }
+.tw-strip { position: sticky; top: 64px; z-index: 8; display: flex; align-items: center; gap: 0; background: rgba(250,248,244,.94); backdrop-filter: blur(6px); padding: 10px 6px; margin: 0 -6px; opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity .35s, transform .35s; }
+.tw-strip.show { opacity: 1; transform: none; }
+.tw-strip .sd { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--white); border: 2px solid var(--line); flex: none; transition: all .35s; }
+.tw-strip .sd .ic { width: 15px; height: 15px; color: var(--mist); }
+.tw-strip .ln { flex: 1; height: 2px; background: var(--line); }
+.tw-strip .sd.lit.peace { border-color: var(--tonal); background: #E4EAF0; }
+.tw-strip .sd.lit.living { border-color: #E9B33A; background: #FCEFC6; }
+.tw-strip .sd.lit .ic { color: var(--navy); }
+.tw-strip .sd.here { border-color: var(--coral); transform: scale(1.18); box-shadow: 0 0 0 4px rgba(239,111,108,.18); }
+.j-path { list-style: none; margin: 0; padding: 0 0 0 72px; position: relative; --fill: 0px; }
+.j-path::before, .j-path::after { content: ""; position: absolute; left: 29px; top: 30px; width: 4px; border-radius: 2px; }
 .j-path::before { bottom: 40px; background: repeating-linear-gradient(var(--line) 0 8px, transparent 8px 14px); }
 .j-path::after { height: var(--fill); background: linear-gradient(var(--tonal), var(--butter) 45%, var(--coral)); transition: height .25s linear; }
-.j-stage { position: relative; margin: 10px 0 18px; padding: 18px 20px; border-radius: 16px; color: var(--cream); background: var(--navy); }
-.j-stage.living { background: linear-gradient(120deg, #F7C948, #F4A261); color: var(--navy); margin-top: 34px; }
-.j-stage::before { content: ""; position: absolute; left: -46px; top: 22px; width: 20px; height: 20px; border-radius: 50%; background: inherit; box-shadow: 0 0 0 5px var(--offwhite); z-index: 1; }
+.j-stage { position: relative; margin: 10px 0 18px; padding: 20px 24px; border-radius: 18px; color: var(--cream); background: var(--navy); }
+.j-stage.living { background: linear-gradient(120deg, #F7C948, #F4A261); color: var(--navy); margin-top: 38px; }
+.j-stage::before { content: ""; position: absolute; left: -50px; top: 24px; width: 20px; height: 20px; border-radius: 50%; background: inherit; box-shadow: 0 0 0 5px var(--offwhite); z-index: 1; }
 .j-stage-n { font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .85; }
-.j-stage h2 { color: inherit; font-size: 1.6rem; margin: 2px 0; }
+.j-stage h2 { color: inherit; font-size: 1.8rem; margin: 2px 0; }
 .j-stage p { opacity: .9; }
 .j-stop { position: relative; margin-bottom: 18px; }
-.j-dot { position: absolute; left: -64px; top: 10px; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: var(--white); border: 2.5px solid var(--line); z-index: 1; transition: border-color .4s, background-color .4s, transform .4s cubic-bezier(.2,.7,.2,1); }
-.j-dot .ic { width: 24px; height: 24px; color: var(--mist); transition: color .4s; }
+.j-dot { position: absolute; left: -72px; top: 14px; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: var(--white); border: 2.5px solid var(--line); z-index: 1; transition: border-color .4s, background-color .4s, transform .4s cubic-bezier(.2,.7,.2,1); }
+.j-dot .ic { width: 26px; height: 26px; color: var(--mist); transition: color .4s; }
 .j-stop.reached .j-dot { transform: scale(1.06); }
 .j-stop.peace.reached .j-dot { border-color: var(--tonal); background: #E4EAF0; }
 .j-stop.living.reached .j-dot { border-color: #E9B33A; background: #FCEFC6; }
 .j-stop.reached .j-dot .ic { color: var(--navy); }
-.j-card { display: grid; gap: 6px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; text-decoration: none; color: var(--slate); opacity: .55; transform: translateX(10px); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .3s; }
+.j-card { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 20px 24px; text-decoration: none; color: var(--slate); opacity: .55; transform: translateX(10px); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .3s; }
+.j-main { display: grid; gap: 6px; }
 .j-stop.reached .j-card, .j-end .j-card { opacity: 1; transform: none; }
 .j-card:hover { border-color: var(--mist); box-shadow: 0 14px 30px -18px rgba(21,40,63,.45); }
 .j-n { font-size: .74rem; font-weight: 700; letter-spacing: .14em; color: var(--tonal); display: flex; gap: 10px; align-items: center; }
 .j-n .yours { font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; background: var(--butter); color: var(--navy); border-radius: 999px; padding: 2px 8px; }
-.j-card h3 { font-size: 1.3rem; }
-.j-card p { font-size: .95rem; }
-.j-first { background: var(--pale); border-radius: 10px; padding: 8px 12px; font-size: .9rem !important; }
+.j-card h3 { font-size: 1.4rem; }
+.j-card p { font-size: .97rem; }
+.j-first { background: var(--pale); border-radius: 12px; padding: 12px 14px; font-size: .93rem !important; margin: 0; }
 .j-stop.living .j-first { background: #FDF6E1; }
-.j-first b { color: var(--navy); }
 .j-card .go { font-weight: 600; color: var(--navy); font-size: .9rem; }
 .j-stop.mine .j-card { border-color: var(--butter); box-shadow: inset 0 0 0 1px var(--butter); }
 .j-end { position: relative; margin-top: 30px; }
 .j-dot.end { background: var(--coral); border-color: var(--coral); }
 .j-dot.end .ic { color: var(--navy); }
 .j-card.end { background: var(--cream); border: 0; }
-.j-card.end .btn { justify-self: start; margin-top: 6px; }
+.j-card.end .btn { justify-self: end; }
+/* One of the ten: a mini wheel to jump between them */
+.p-main { min-width: 0; }
+.p-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 36px; align-items: start; }
+.p-side { position: sticky; top: 84px; margin-top: 24px; background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 14px; display: grid; gap: 6px; }
+.wheel.mini { max-height: none; }
+.wheel.mini .node text, .wheel.mini .center text { display: none; }
+.wheel.mini .node circle.bg { stroke-width: 3.5; }
+.p-hover { text-align: center; font-size: .9rem; font-weight: 600; color: var(--navy); margin: 0; min-height: 1.4em; }
+.p-back { display: inline-flex; gap: 6px; font-weight: 600; color: var(--navy); text-decoration: none; font-size: .92rem; margin-top: 22px; }
+.p-back:hover { text-decoration: underline; }
+.p-back.side { margin: 0 0 4px; justify-self: center; }
+.p-main .p-back { display: none; }
+.p-layout .tracker { display: none; }
+@media (max-width: 1000px) {
+  .p-layout { grid-template-columns: minmax(0, 1fr); }
+  .p-side { display: none; }
+  .p-main .p-back { display: inline-flex; }
+  .p-layout .tracker { display: flex; margin-top: 14px; }
+}
 @media (max-width: 900px) {
-  .journey { grid-template-columns: 1fr; gap: 18px; }
-  .j-wheel { position: static; padding: 6px 6px 12px; }
+  .tw-explore { grid-template-columns: 1fr; padding: 8px; }
+  .tw-preview { padding: 20px 18px; }
+  .j-card { grid-template-columns: 1fr; gap: 12px; }
   .j-path { padding-left: 54px; }
   .j-path::before, .j-path::after { left: 20px; }
   .j-dot { left: -54px; width: 44px; height: 44px; }
   .j-dot .ic { width: 20px; height: 20px; }
   .j-stage::before { left: -40px; }
   .j-card { transform: none; }
+  .tw-strip .sd { width: 26px; height: 26px; }
+  .tw-strip .sd .ic { width: 12px; height: 12px; }
 }
-@media (prefers-reduced-motion: reduce) { .j-card, .j-dot, .j-path::after, #wheel-j .node { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .j-card, .j-dot, .j-path::after, .tw-strip, .tw-preview.swap > * { transition: none; animation: none; } }
 
 .ptiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
 .ptile { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 8px; align-content: start; text-decoration: none; color: var(--slate); transition: transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s cubic-bezier(.2,.7,.3,1), border-color .45s ease-out; }
@@ -1165,19 +1203,29 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
         <p>Financial wellbeing rests on two foundations: peace of mind, and living well. Each comes from a handful of habits backed by research. Choose one to see what it means, the best practices and the resources that help.</p>
         <div class="hero-actions"><a class="btn" href="/individual-wellbeing/financial/check-in">Not sure where to start? Take a check-in</a></div>
       </div>
-      <div class="journey">
-        <aside class="j-wheel" aria-label="Where you are on the wheel">
-          <svg class="wheel" id="wheel-j" viewBox="-70 0 1040 640" role="group" aria-label="The ten ways around financial wellbeing"></svg>
-          <p class="j-now" id="j-now" aria-live="polite"><span>You are here</span><strong></strong></p>
-        </aside>
-        <ol class="j-path" id="j-path"></ol>
+      <div class="tw-explore">
+        <div class="tw-wheel"><svg class="wheel" id="wheel-j" viewBox="-70 0 1040 640" role="group" aria-label="The ten ways around financial wellbeing. Choose one to preview it."></svg></div>
+        <div class="tw-preview" id="tw-preview" aria-live="polite"></div>
       </div>
+      <div class="tw-strip" id="tw-strip" aria-hidden="true"></div>
+      <div class="res-head" style="margin-top:44px"><h2>The path, step by step</h2></div>
+      <ol class="j-path" id="j-path"></ol>
     </section>
 
     <!-- PRINCIPLE DETAIL (one view reused for all seven) -->
     <section class="view" data-view="principle" aria-live="polite">
-      <nav class="tracker" id="tracker" aria-label="The ten ways"></nav>
-      <div id="pdetail"></div>
+      <div class="p-layout">
+        <div class="p-main">
+          <a class="p-back" href="/individual-wellbeing/financial/ten-ways">&larr; All ten ways</a>
+          <nav class="tracker" id="tracker" aria-label="The ten ways"></nav>
+          <div id="pdetail"></div>
+        </div>
+        <aside class="p-side" aria-label="Jump to another of the ten ways">
+          <a class="p-back side" href="/individual-wellbeing/financial/ten-ways">&larr; All ten ways</a>
+          <svg class="wheel mini" id="wheel-p" viewBox="150 30 600 590" role="group" aria-label="The ten ways"></svg>
+          <p class="p-hover" id="p-hover">Tap any way to jump to it</p>
+        </aside>
+      </div>
     </section>
 
     <!-- RESEARCH -->
@@ -2361,40 +2409,54 @@ function renderFamilies() {
     </div>`).join("");
 }
 
-// The ten ways as a journey: a path of stops, with the wheel lighting up as you go
-let journeyScroll = null;
+// The ten ways: a wheel you can preview from, then a path that lights up as you scroll
+let journeyScroll = null, twSel = null;
+function twPreview(id) {
+  const k = PRINCIPLES.findIndex(p => p.id === id), p = PRINCIPLES[k]; twSel = id;
+  const prev = PRINCIPLES[(k + PRINCIPLES.length - 1) % PRINCIPLES.length], next = PRINCIPLES[(k + 1) % PRINCIPLES.length];
+  const el = document.getElementById("tw-preview");
+  el.classList.remove("swap"); void el.offsetWidth; el.classList.add("swap");
+  el.innerHTML = `<div class="twp-top"><span class="icon-tile">${icon(id)}</span><div><span class="p-fam ${p.fam}">${FAMILIES[p.fam].name} · ${k + 1} of ${PRINCIPLES.length}</span><h2>${esc(p.name)}</h2></div></div>
+    <p class="twp-what">${esc(p.what)}</p>
+    <div class="twp-first"><b>Try this first</b>${esc(p.practices[0])}</div>
+    <div class="twp-actions"><a class="btn" href="#${id}">Go deeper &rarr;</a>
+      <span class="twp-nav"><button type="button" data-go="${prev.id}" aria-label="Previous: ${esc(prev.name)}">&larr;</button><button type="button" data-go="${next.id}" aria-label="Next: ${esc(next.name)}">&rarr;</button></span></div>`;
+  el.querySelectorAll("[data-go]").forEach(bt => bt.addEventListener("click", () => twPreview(bt.dataset.go)));
+  document.querySelectorAll("#wheel-j .node").forEach(nd => nd.classList.toggle("sel", nd.dataset.id === id));
+}
 function renderJourney() {
   const plan = loadPlan(); const mine = new Set(plan && plan.ids ? plan.ids : []);
   renderWheel("wheel-j");
+  const wj = document.getElementById("wheel-j");
+  wj.onclick = e => { const nd = e.target.closest && e.target.closest(".node"); if (!nd) return; e.preventDefault(); twPreview(nd.dataset.id); track("wheel_preview", { way: nd.dataset.id }); };
+  twPreview(twSel || [...mine][0] || PRINCIPLES[0].id);
+  document.getElementById("tw-strip").innerHTML = PRINCIPLES.map((p, k) => `${k ? '<i class="ln"></i>' : ""}<span class="sd ${p.fam}" data-id="${p.id}" title="${esc(p.name)}">${icon(p.id)}</span>`).join("");
   let n = 0;
   const stage = (f, k) => `<li class="j-stage ${f}"><span class="j-stage-n">Stage ${k}</span><h2>${FAMILIES[f].name}</h2><p>${FAMILIES[f].line}</p></li>`;
   const stop = p => { n++; return `<li class="j-stop ${p.fam}${mine.has(p.id) ? " mine" : ""}" data-id="${p.id}">
       <span class="j-dot">${icon(p.id)}</span>
       <a class="j-card" href="#${p.id}">
-        <span class="j-n">${String(n).padStart(2, "0")}${mine.has(p.id) ? '<span class="yours">Your focus</span>' : ""}</span>
-        <h3>${esc(p.name)}</h3>
-        <p>${esc(p.short)}</p>
-        <p class="j-first"><b>Try this first:</b> ${esc(p.practices[0])}</p>
-        <span class="go">Explore ${esc(p.name.toLowerCase())} &rarr;</span>
+        <div class="j-main"><span class="j-n">${String(n).padStart(2, "0")}${mine.has(p.id) ? '<span class="yours">Your focus</span>' : ""}</span>
+        <h3>${esc(p.name)}</h3><p>${esc(p.short)}</p><span class="go">Explore ${esc(p.name.toLowerCase())} &rarr;</span></div>
+        <p class="j-first"><b>Try this first</b>${esc(p.practices[0])}</p>
       </a></li>`; };
   document.getElementById("j-path").innerHTML =
     stage("peace", 1) + PRINCIPLES.filter(p => p.fam === "peace").map(stop).join("") +
     stage("living", 2) + PRINCIPLES.filter(p => p.fam === "living").map(stop).join("") +
-    `<li class="j-end"><span class="j-dot end">${icon("measure")}</span><div class="j-card end"><h3>Find your starting point</h3><p>A four-minute check-in shows which of the ten ways to focus on first.</p><a class="btn" href="/individual-wellbeing/financial/check-in">Take the check-in</a></div></li>`;
-  const path = document.getElementById("j-path"), wheel = document.getElementById("wheel-j"), now = document.querySelector("#j-now strong");
+    `<li class="j-end"><span class="j-dot end">${icon("measure")}</span><div class="j-card end"><div class="j-main"><h3>Find your starting point</h3><p>A four-minute check-in shows which of the ten ways to focus on first.</p></div><a class="btn" href="/individual-wellbeing/financial/check-in">Take the check-in</a></div></li>`;
+  const path = document.getElementById("j-path"), strip = document.getElementById("tw-strip");
   const stops = [...path.querySelectorAll(".j-stop")];
   const update = () => {
     journeyScroll = null;
     if (!path.isConnected || !path.offsetParent) return;
-    const line = innerHeight * 0.55, top = path.getBoundingClientRect().top;
+    const line = innerHeight * 0.55, r = path.getBoundingClientRect();
     let cur = null, fill = 0;
-    stops.forEach(li => { const d = li.querySelector(".j-dot").getBoundingClientRect(); const on = d.top + d.height / 2 < line; li.classList.toggle("reached", on); if (on) { cur = li; fill = d.top + d.height / 2 - top; } });
+    stops.forEach(li => { const d = li.querySelector(".j-dot").getBoundingClientRect(); const on = d.top + d.height / 2 < line; li.classList.toggle("reached", on); if (on) { cur = li; fill = d.top + d.height / 2 - r.top; } });
     path.style.setProperty("--fill", Math.max(0, fill) + "px");
-    wheel.querySelectorAll(".node").forEach(nd => { const li = stops.find(s => s.dataset.id === nd.dataset.id); nd.classList.toggle("lit", !!(li && li.classList.contains("reached"))); nd.classList.toggle("here", !!(cur && cur.dataset.id === nd.dataset.id)); });
-    wheel.classList.toggle("journeying", !!cur);
-    now.textContent = cur ? PNAME[cur.dataset.id] : "Start at stage 1";
+    strip.classList.toggle("show", r.top < innerHeight * 0.6 && r.bottom > 200);
+    strip.querySelectorAll(".sd").forEach(sd => { const li = stops.find(x => x.dataset.id === sd.dataset.id); sd.classList.toggle("lit", !!(li && li.classList.contains("reached"))); sd.classList.toggle("here", !!(cur && cur.dataset.id === sd.dataset.id)); });
   };
-  if (!window._journeyBound) { window._journeyBound = true; addEventListener("scroll", () => { if (!journeyScroll) journeyScroll = requestAnimationFrame(window._journeyUpdate); }, { passive: true }); addEventListener("resize", () => window._journeyUpdate && window._journeyUpdate()); }
+  if (!window._journeyBound) { window._journeyBound = true; addEventListener("scroll", () => { if (!journeyScroll) journeyScroll = requestAnimationFrame(() => window._journeyUpdate && window._journeyUpdate()); }, { passive: true }); addEventListener("resize", () => window._journeyUpdate && window._journeyUpdate()); }
   window._journeyUpdate = update;
   update();
 }
@@ -2442,6 +2504,17 @@ function renderPrinciple(id) {
       ${next ? `<a class="btn" href="#${next.id}">Next: ${esc(next.name)} &rarr;</a>` : `<a class="btn" href="/individual-wellbeing/financial/resources">Browse all resources &rarr;</a>`}
     </div>`;
   document.querySelectorAll("#pdetail .rtab").forEach(b => b.addEventListener("click", () => { pTab = b.dataset.tab; renderPrinciple(id); document.getElementById("pt-" + pTab).focus(); }));
+  renderWheel("wheel-p");
+  const wp = document.getElementById("wheel-p"), hov = document.getElementById("p-hover");
+  if (wp) {
+    wp.querySelectorAll(".node").forEach(nd => {
+      nd.classList.toggle("here", nd.dataset.id === id);
+      nd.addEventListener("mouseenter", () => { hov.textContent = PNAME[nd.dataset.id]; });
+      nd.addEventListener("focus", () => { hov.textContent = PNAME[nd.dataset.id]; });
+    });
+    wp.addEventListener("mouseleave", () => { hov.textContent = "Now: " + PNAME[id]; });
+    hov.textContent = "Now: " + PNAME[id];
+  }
 }
 
 
