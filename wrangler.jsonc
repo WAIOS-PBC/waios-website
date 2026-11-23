@@ -6,12 +6,27 @@
     "directory": "./public",
     "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "run_worker_first": ["/api/*"]
+    "run_worker_first": ["/api/*", "/clients/*"]
   },
   // Form submissions are emailed to these verified Email Routing addresses
   // (Danielle, plus a copy to Jen).
   "send_email": [
     { "name": "LEADS", "allowed_destination_addresses": ["dposa@globalwellbeinggroup.com", "jen@jennifer-moss.com"] }
   ],
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  // Private client pages (/clients/<slug>). See tools/clients/README.md.
+  // Until the secrets are set, /clients/* simply returns "Not found".
+  "kv_namespaces": [{ "binding": "CLIENTS", "id": "5a24f7ea8e2b4926bfba6fd88b8f8ddd" }],
+  // Uncomment once the "client-files" R2 bucket exists (a deploy fails if it is missing):
+  // "r2_buckets": [{ "binding": "CLIENT_FILES", "bucket_name": "client-files" }],
+
+  // Branch previews (Cloudflare builds each pull request with "wrangler preview").
+  // Previews only see the bindings listed here, and their secrets are set separately.
+  "previews": {
+    "send_email": [
+      { "name": "LEADS", "allowed_destination_addresses": ["dposa@globalwellbeinggroup.com", "jen@jennifer-moss.com"] }
+    ],
+    "kv_namespaces": [{ "binding": "CLIENTS", "id": "5a24f7ea8e2b4926bfba6fd88b8f8ddd" }]
+    // ,"r2_buckets": [{ "binding": "CLIENT_FILES", "bucket_name": "client-files" }]
+  }
 }

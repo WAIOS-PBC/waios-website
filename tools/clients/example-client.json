@@ -1,0 +1,45 @@
+{
+  "name": "Example Co",
+  "siteName": "Client resources",
+  "active": true,
+
+  "logo": "logo.png",
+  "gateTitle": "Welcome, Example Co team",
+  "gateText": "Enter the access code you received to see your session videos, slides and resources.",
+  "contactText": "Need the code? Ask the person who invited you.",
+
+  "eyebrow": "Private resources",
+  "title": "Resources for the Example Co team",
+  "intro": "Everything from our sessions together, in one place: the recordings, the slides and the research behind them.",
+
+  "welcome": {
+    "_note": "Leave from, role and photo empty to show Danielle Posa, Workplace Wellbeing Advisor.",
+    "text": "Thank you for having me. Here are the recordings and slides from our sessions, plus a few places to keep going.\n\nI hope they help you and your teams keep wellbeing on the agenda.",
+    "from": "",
+    "role": "",
+    "photo": ""
+  },
+
+  "sessionsTitle": "Your sessions",
+  "sessions": [
+    {
+      "label": "Session 1",
+      "title": "Session title",
+      "date": "March 2026",
+      "length": "45 min",
+      "description": "Two or three sentences on what the session covered and why it matters.",
+      "video": "",
+      "slides": "session-1-slides.pdf"
+    }
+  ],
+
+  "linksTitle": "Keep going",
+  "links": [
+    { "title": "Ten ways to thrive with money", "text": "The research-backed model of financial wellbeing.", "url": "/individual-wellbeing/financial/ten-ways" },
+    { "title": "Take the check-in", "text": "Four minutes to see where to focus first.", "url": "/individual-wellbeing/financial/check-in" },
+    { "title": "Gift and experience finder", "text": "Ideas that bring people closer, without overspending.", "url": "/individual-wellbeing/financial/gift-and-experience-finder" }
+  ],
+
+  "contact": "Questions or ideas for a follow-up session? Email us at hello@example.com.",
+  "footer": "Prepared for Example Co. Please do not share these materials outside your organization."
+}

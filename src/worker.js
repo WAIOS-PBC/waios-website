@@ -1,6 +1,7 @@
 // waios.com: static pages are served from ./public. This Worker only handles
 // form submissions at /api/lead and emails each one to the founders' inbox.
 import { EmailMessage } from 'cloudflare:email';
+import { handleClients } from './clients.js';
 
 const FROM = 'website@waios.com';
 // Danielle gets every submission; Jen gets a copy
@@ -13,7 +14,8 @@ const KINDS = {
   'cost-estimate': 'Burnout cost calculator',
   'risk-readout': 'Team burnout risk check',
   'wellbeing-score': 'Quick wellbeing score',
-  'quick-checks': 'Quick checks results'
+  'quick-checks': 'Quick checks results',
+  'financial-checkin': 'Financial wellbeing check-in results'
 };
 
 const ALLOWED_ORIGINS = ['https://waios.com', 'https://www.waios.com'];
@@ -106,6 +108,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === '/api/lead') return handleLead(request, env);
+    if (url.pathname === '/clients' || url.pathname.startsWith('/clients/')) return handleClients(request, env);
     return env.ASSETS.fetch(request);
   }
 };

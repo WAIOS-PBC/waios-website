@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Individual Wellbeing landing page (the five-area wheel). Edited by hand.
+     To open an area on the wheel, set live: true and its href in AREAS near the bottom. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What it takes to thrive: the five areas of wellbeing</title>
+<meta name="description" content="Wellbeing is the quality of your life, as you judge it and as you live it day to day. Explore the five areas of life that shape it, starting with money.">
+<meta property="og:title" content="What it takes to thrive: the five areas of wellbeing">
+<meta property="og:description" content="Wellbeing is the quality of your life, as you judge it and as you live it day to day. Explore the five areas of life that shape it.">
+<meta property="og:image" content="https://waios.com/individual-wellbeing/financial/og-image.png">
+<meta property="og:url" content="https://waios.com/individual-wellbeing/">
+<link rel="canonical" href="https://waios.com/individual-wellbeing/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #15283F; --slate: #2E3A45; --butter: #F7C948; --coral: #EF6F6C; --tonal: #5C7285;
+  --pale: #F1F4F6; --offwhite: #FAF8F4; --white: #FFFFFF; --cream: #F3ECDF; --mist: #A3B3C2; --line: #E4E1DA;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--offwhite); color: var(--slate); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--navy); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { color: var(--navy); line-height: 1.15; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: 1.12rem; font-weight: 700; }
+p { margin: 0; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tonal); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(var(--butter) 0 65%, var(--coral) 65% 100%); }
+.horizon { display: block; width: 48px; height: 4px; border-radius: 2px; background: linear-gradient(var(--butter) 0 50%, var(--coral) 50% 100%); margin-top: 14px; }
+
+/* Header */
+header.top { border-bottom: 1px solid var(--line); background: var(--offwhite); }
+.topbar { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 16px; }
+.mark { font-weight: 700; color: var(--navy); text-decoration: none; font-size: 1.05rem; }
+.top nav a { font-size: 0.9rem; color: var(--tonal); text-decoration: none; margin-left: 18px; }
+.top nav a:hover { color: var(--navy); }
+
+/* Hero with wheel */
+.hero { padding: 56px 0 40px; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; }
+.lede { font-size: 1.15rem; margin-top: 18px; max-width: 46ch; }
+.hero .sub { margin-top: 14px; color: var(--tonal); max-width: 46ch; }
+.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: var(--navy); font-weight: 600; border-radius: 10px; padding: 12px 18px; text-decoration: none; margin-top: 26px; }
+.btn:hover { filter: brightness(0.97); }
+
+.wheel-box { position: relative; }
+.wheel { width: 100%; max-width: 480px; display: block; margin: 0 auto; overflow: visible; }
+.slice path { stroke: var(--offwhite); stroke-width: 4; transition: transform 0.25s ease, fill 0.25s ease; transform-origin: 250px 250px; }
+.slice text { font-family: var(--font-body); font-size: 15px; font-weight: 700; text-anchor: middle; pointer-events: none; }
+.slice .status { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.slice.soon path { fill: var(--pale); }
+.slice.soon text { fill: var(--mist); }
+.slice.soon { cursor: default; }
+.slice.live path { fill: var(--butter); filter: url(#glow); animation: breathe 3.2s ease-in-out infinite; }
+.slice.live text { fill: var(--navy); }
+.slice.live .status { fill: var(--slate); }
+.slice.live { cursor: pointer; }
+.slice.live:hover path, .slice.live:focus-visible path { transform: scale(1.035); animation: none; fill: #F9D56B; }
+.slice:focus { outline: none; }
+.slice.live:focus-visible path { stroke: var(--navy); stroke-width: 3; }
+@keyframes breathe { 0%, 100% { opacity: 1; } 50% { opacity: 0.82; } }
+@media (prefers-reduced-motion: reduce) { .slice.live path { animation: none; } }
+.hub-ring { fill: var(--white); stroke: var(--line); stroke-width: 1.5; }
+.hub-title { font-family: var(--font-body); font-size: 19px; font-weight: 800; fill: var(--navy); text-anchor: middle; }
+.hub-sub { font-family: var(--font-body); font-size: 12px; fill: var(--tonal); text-anchor: middle; }
+.wheel-note { text-align: center; font-size: 0.88rem; color: var(--tonal); margin-top: 12px; }
+.wheel-note .key { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--butter); box-shadow: 0 0 0 3px rgba(247, 201, 72, 0.35); margin-right: 6px; vertical-align: -1px; }
+
+/* Two lenses */
+section.band { padding: 64px 0; border-top: 1px solid var(--line); }
+.intro { max-width: 64ch; margin-top: 14px; font-size: 1.05rem; }
+.lenses { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+.lens { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 26px 26px 24px; display: grid; gap: 10px; align-content: start; }
+.lens .tag { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tonal); }
+.lens .q { font-style: italic; color: var(--navy); border-left: 3px solid var(--butter); padding-left: 12px; }
+.both { margin-top: 20px; background: var(--navy); color: var(--cream); border-radius: 18px; padding: 30px 32px; display: grid; grid-template-columns: auto 1fr; gap: 26px; align-items: center; }
+.both h3 { color: var(--white); font-size: 1.4rem; }
+.both p { color: #D5DDE4; margin-top: 8px; max-width: 70ch; }
+.venn { width: 120px; height: 84px; }
+
+/* Five areas */
+.areas { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 32px; }
+.area { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 20px 18px; display: grid; gap: 8px; align-content: start; text-decoration: none; color: var(--slate); }
+.area .pill { justify-self: start; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; }
+.area.live { border-color: var(--butter); box-shadow: 0 0 0 3px rgba(247, 201, 72, 0.28); }
+.area.live .pill { background: var(--butter); color: var(--navy); }
+.area.live:hover { box-shadow: 0 0 0 4px rgba(247, 201, 72, 0.45); }
+.area.soon .pill { background: var(--pale); color: var(--tonal); }
+.area.soon h3 { color: var(--tonal); }
+.area .go { font-weight: 600; color: var(--navy); font-size: 0.92rem; margin-top: 4px; }
+
+.sources { font-size: 0.82rem; color: var(--tonal); margin-top: 36px; display: grid; gap: 4px; }
+.sources strong { color: var(--slate); }
+footer { border-top: 1px solid var(--line); padding: 26px 0 44px; font-size: 0.86rem; color: var(--tonal); }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .wheel-box { order: -1; }
+  .areas { grid-template-columns: 1fr 1fr; }
+  .lenses { grid-template-columns: 1fr; }
+  .both { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) { .areas { grid-template-columns: 1fr; } .top nav { display: none; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap topbar">
+    <a class="mark" href="/individual-wellbeing/">Individual Wellbeing</a>
+    <nav aria-label="Sections"><a href="#what">What wellbeing means</a><a href="#areas">The five areas</a></nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Individual Wellbeing</span>
+        <h1 style="margin-top:12px">What it takes to thrive</h1>
+        <span class="horizon" aria-hidden="true"></span>
+        <p class="lede">Wellbeing is the quality of your life: how satisfied you are with it as a whole, and how it feels to live it day to day.</p>
+        <p class="sub">Five areas of life shape it. We are building out each one with research, practical steps and resources, starting with money. As each area opens, it lights up on the wheel.</p>
+        <a class="btn" id="start-btn" href="/individual-wellbeing/financial/">Start with financial wellbeing <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="wheel-box">
+        <svg class="wheel" id="wheel" viewBox="0 0 500 500" role="group" aria-label="The five areas of wellbeing">
+          <defs>
+            <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b"/>
+              <feFlood flood-color="#F7C948" flood-opacity="0.75"/>
+              <feComposite in2="b" operator="in" result="g"/>
+              <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g id="slices"></g>
+          <circle class="hub-ring" cx="250" cy="250" r="78"/>
+          <text class="hub-title" x="250" y="248">Wellbeing</text>
+          <text class="hub-sub" x="250" y="268">Quality of life</text>
+        </svg>
+        <p class="wheel-note"><span class="key" aria-hidden="true"></span>Lit areas are ready to explore. Select one to go deeper.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="what" aria-labelledby="what-h">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>What wellbeing means</span>
+      <h2 id="what-h" style="margin-top:12px">Two ways to see a life going well</h2>
+      <p class="intro">Researchers look at wellbeing from two vantage points. One asks how you judge your life when you step back from it. The other asks how you actually feel as you move through your days. Each captures something the other misses.</p>
+
+      <div class="lenses">
+        <article class="lens">
+          <span class="tag">Evaluative wellbeing</span>
+          <h3>How you judge your life</h3>
+          <p class="q">All things considered, how satisfied are you with your life as a whole?</p>
+          <p>This is the reflective view: a sense that life is going well, that it has meaning and direction, and that you are moving toward the life you want. It is closest to what most people mean by quality of life, and to the deep satisfaction of a life well lived.</p>
+        </article>
+        <article class="lens">
+          <span class="tag">Experienced wellbeing</span>
+          <h3>How you experience your days</h3>
+          <p class="q">Across an ordinary day, do you feel more enjoyment, calm and interest than stress, worry and sadness?</p>
+          <p>This is the moment-to-moment view: the balance of positive and negative emotions you actually live through. Good days are not free of hard feelings, but they lean toward the positive more often than not.</p>
+        </article>
+      </div>
+
+      <div class="both">
+        <svg class="venn" viewBox="0 0 120 84" aria-hidden="true"><circle cx="44" cy="42" r="36" fill="#F7C948" opacity="0.9"/><circle cx="76" cy="42" r="36" fill="#EF6F6C" opacity="0.8"/></svg>
+        <div>
+          <h3>Thriving means both</h3>
+          <p>Someone can rate their life highly and still feel stretched thin most days, or enjoy their days while feeling stuck in the bigger picture. The two are related but distinct, and they can respond differently to the same circumstances. To thrive is to be deeply satisfied with your life as a whole and to live it through days where positive emotions outweigh negative ones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="areas" aria-labelledby="areas-h">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>The five areas</span>
+      <h2 id="areas-h" style="margin-top:12px">Where wellbeing is built</h2>
+      <p class="intro">Both views of wellbeing are shaped by the same five areas of life. They are connected: strain in one tends to spill into the others, and progress in one makes the rest easier.</p>
+      <div class="areas" id="area-cards"></div>
+
+      <div class="sources">
+        <strong>Research behind this page</strong>
+        <span>Diener, E. (1984). Subjective well-being. <em>Psychological Bulletin</em>, 95(3), 542 to 575.</span>
+        <span>Kahneman, D., and Deaton, A. (2010). High income improves evaluation of life but not emotional well-being. <em>Proceedings of the National Academy of Sciences</em>, 107(38), 16489 to 16493.</span>
+        <span>OECD (2013). <em>OECD Guidelines on Measuring Subjective Well-being</em>. OECD Publishing, Paris.</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Individual Wellbeing: research, practices and resources for living well. Resources are listed for education, not as financial, legal or medical advice.</div>
+</footer>
+
+<script>
+// The wheel. To open an area: set live: true and add its href. Order runs clockwise from the top.
+const AREAS = [
+  { id: "financial", name: "Financial", live: true, href: "/individual-wellbeing/financial/",
+    text: "Feeling secure about money today and confident about the future, so money supports the life you want instead of crowding it out." },
+  { id: "career", name: "Career", live: false, href: "",
+    text: "Finding purpose and energy in how you spend most of your days, whether paid work, caregiving, study or volunteering." },
+  { id: "social", name: "Social", live: false, href: "",
+    text: "Close, supportive relationships and the everyday connection that makes life feel shared." },
+  { id: "physical", name: "Physical", live: false, href: "",
+    text: "Sleep, movement, nutrition and health that give you the capacity to live the way you want." },
+  { id: "community", name: "Community", live: false, href: "",
+    text: "Belonging and safety where you live, and the chance to contribute to it." }
+];
+
+(function () {
+  const NS = "http://www.w3.org/2000/svg", C = 250, R1 = 92, R2 = 232, n = AREAS.length, gap = 0;
+  const pt = (r, a) => [C + r * Math.cos(a), C + r * Math.sin(a)];
+  const g = document.getElementById("slices");
+  AREAS.forEach((a, i) => {
+    const start = -Math.PI / 2 - Math.PI / n + (2 * Math.PI * i) / n + gap, end = start + (2 * Math.PI) / n - 2 * gap;
+    const [x1, y1] = pt(R2, start), [x2, y2] = pt(R2, end), [x3, y3] = pt(R1, end), [x4, y4] = pt(R1, start);
+    const d = `M${x1},${y1} A${R2},${R2} 0 0 1 ${x2},${y2} L${x3},${y3} A${R1},${R1} 0 0 0 ${x4},${y4} Z`;
+    const mid = (start + end) / 2, [lx, ly] = pt((R1 + R2) / 2, mid);
+    const el = document.createElementNS(NS, a.live ? "a" : "g");
+    el.setAttribute("class", "slice " + (a.live ? "live" : "soon"));
+    if (a.live) { el.setAttribute("href", a.href); el.setAttribute("aria-label", a.name + " wellbeing: explore"); }
+    else { el.setAttribute("aria-label", a.name + " wellbeing: coming soon"); el.setAttribute("role", "img"); }
+    const title = document.createElementNS(NS, "title"); title.textContent = a.live ? a.name + " wellbeing: explore" : a.name + " wellbeing: coming soon";
+    const path = document.createElementNS(NS, "path"); path.setAttribute("d", d);
+    const t1 = document.createElementNS(NS, "text"); t1.setAttribute("x", lx); t1.setAttribute("y", ly - 2); t1.textContent = a.name;
+    const t2 = document.createElementNS(NS, "text"); t2.setAttribute("class", "status"); t2.setAttribute("x", lx); t2.setAttribute("y", ly + 16); t2.textContent = a.live ? "Explore" : "Coming soon";
+    el.append(title, path, t1, t2); g.appendChild(el);
+  });
+
+  document.getElementById("area-cards").innerHTML = AREAS.map(a => a.live
+    ? `<a class="area live" href="${a.href}"><span class="pill">Open now</span><h3>${a.name}</h3><p>${a.text}</p><span class="go">Explore ${a.name.toLowerCase()} wellbeing &rarr;</span></a>`
+    : `<div class="area soon"><span class="pill">Coming soon</span><h3>${a.name}</h3><p>${a.text}</p></div>`).join("");
+})();
+</script>
+</body>
+</html>
