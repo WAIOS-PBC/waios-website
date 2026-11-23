@@ -62,7 +62,22 @@ header.top { border-bottom: 1px solid var(--line); background: var(--offwhite); 
 .slice .status { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
 .slice.soon path { fill: var(--pale); }
 .slice.soon text { fill: var(--mist); }
-.slice.soon { cursor: default; }
+.slice.soon { cursor: pointer; }
+.slice.soon:hover path, .slice.soon:focus-visible path, .slice.soon.peek path { fill: #E6ECF1; }
+.slice.soon:hover text, .slice.soon.peek text { fill: var(--tonal); }
+.slice.soon:focus-visible path { stroke: var(--navy); stroke-width: 3; }
+.wheel-info { min-height: 112px; margin-top: 12px; }
+.wi-card { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: grid; gap: 4px; animation: wiIn .3s ease both; }
+@keyframes wiIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.wi-card .wi-h { display: flex; align-items: center; gap: 10px; }
+.wi-card strong { color: var(--navy); font-size: 1.05rem; }
+.wi-card .pill { font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; background: var(--pale); color: var(--tonal); }
+.wi-card.live .pill { background: var(--butter); color: var(--navy); }
+.wi-card p { font-size: .92rem; }
+.wi-card .wi-go { font-size: .85rem; font-weight: 600; color: var(--navy); }
+.area.flash { animation: flash 1.6s ease; }
+@keyframes flash { 0%, 100% { box-shadow: none; } 25%, 60% { box-shadow: 0 0 0 4px var(--coral); } }
+@media (prefers-reduced-motion: reduce) { .wi-card, .area.flash { animation: none; } }
 .slice.live .face { fill: var(--butter); animation: lift 2.8s ease-in-out infinite; }
 .slice .halo { fill: var(--butter); filter: url(#halo); opacity: 0.55; stroke: none; animation: halo 2.8s ease-in-out infinite; pointer-events: none; }
 .slice .ripple { fill: none; stroke: var(--butter); stroke-width: 3; opacity: 0; animation: ripple 2.8s ease-out infinite; pointer-events: none; }
@@ -160,7 +175,7 @@ footer { border-top: 1px solid var(--line); padding: 26px 0 44px; font-size: 0.8
           <text class="hub-title" x="250" y="248">Wellbeing</text>
           <text class="hub-sub" x="250" y="268">Quality of life</text>
         </svg>
-        <p class="wheel-note"><span class="key" aria-hidden="true"></span>Lit areas are open. Tap or click one to go deeper.</p>
+        <div class="wheel-info" id="wheel-info" aria-live="polite"><p class="wheel-note"><span class="key" aria-hidden="true"></span>Hover over any area to see what it means. Lit areas are open to explore.</p></div>
       </div>
     </div>
   </section>
@@ -244,7 +259,8 @@ const AREAS = [
     const el = document.createElementNS(NS, a.live ? "a" : "g");
     el.setAttribute("class", "slice " + (a.live ? "live" : "soon"));
     if (a.live) { el.setAttribute("href", a.href); el.setAttribute("aria-label", a.name + " wellbeing: explore"); }
-    else { el.setAttribute("aria-label", a.name + " wellbeing: coming soon"); el.setAttribute("role", "img"); }
+    else { el.setAttribute("aria-label", a.name + " wellbeing: coming soon. Read the definition"); el.setAttribute("role", "button"); el.setAttribute("tabindex", "0"); }
+    el.dataset.id = a.id;
     const title = document.createElementNS(NS, "title"); title.textContent = a.live ? a.name + " wellbeing: explore" : a.name + " wellbeing: coming soon";
     const path = document.createElementNS(NS, "path"); path.setAttribute("d", d); path.setAttribute("class", "face");
     const extra = [];
@@ -256,8 +272,30 @@ const AREAS = [
   });
 
   document.getElementById("area-cards").innerHTML = AREAS.map(a => a.live
-    ? `<a class="area live" href="${a.href}"><span class="pill">Open now</span><h3>${a.name}</h3><p>${a.text}</p><span class="go">Explore ${a.name.toLowerCase()} wellbeing &rarr;</span></a>`
-    : `<div class="area soon"><span class="pill">Coming soon</span><h3>${a.name}</h3><p>${a.text}</p></div>`).join("");
+    ? `<a class="area live" id="area-${a.id}" href="${a.href}"><span class="pill">Open now</span><h3>${a.name}</h3><p>${a.text}</p><span class="go">Explore ${a.name.toLowerCase()} wellbeing &rarr;</span></a>`
+    : `<div class="area soon" id="area-${a.id}"><span class="pill">Coming soon</span><h3>${a.name}</h3><p>${a.text}</p></div>`).join("");
+  // Hover or focus a slice to see its definition; click a coming-soon slice to jump to its card
+  const info = document.getElementById("wheel-info"), base = info.innerHTML;
+  const show = a => {
+    info.innerHTML = `<div class="wi-card ${a.live ? "live" : ""}"><div class="wi-h"><strong>${a.name} wellbeing</strong><span class="pill">${a.live ? "Open now" : "Coming soon"}</span></div><p>${a.text}</p><span class="wi-go">${a.live ? "Click to explore &rarr;" : "Click to read more below &darr;"}</span></div>`;
+    document.querySelectorAll(".slice").forEach(s => s.classList.toggle("peek", s.dataset.id === a.id));
+  };
+  const reset = () => { info.innerHTML = base; document.querySelectorAll(".slice").forEach(s => s.classList.remove("peek")); };
+  const jump = a => {
+    const card = document.getElementById("area-" + a.id); if (!card) return;
+    card.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+    card.classList.remove("flash"); void card.offsetWidth; card.classList.add("flash");
+  };
+  document.querySelectorAll(".slice").forEach(el => {
+    const a = AREAS.find(x => x.id === el.dataset.id);
+    el.addEventListener("mouseenter", () => show(a));
+    el.addEventListener("focus", () => show(a));
+    if (!a.live) {
+      el.addEventListener("click", () => { show(a); jump(a); });
+      el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(a); jump(a); } });
+    }
+  });
+  document.getElementById("wheel").addEventListener("mouseleave", reset);
 })();
 </script>
 </body>
