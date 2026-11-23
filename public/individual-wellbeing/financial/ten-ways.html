@@ -193,6 +193,13 @@ section.block { padding: 44px 0; border-top: 1px solid var(--line); }
 .focus .card.strength { border-left-color: var(--navy); }
 .focus .card p { font-size: 0.92rem; color: var(--tonal); }
 
+/* Tool cards: the service's own icon in a small tile */
+.item.has-logo { grid-template-columns: 48px 1fr; column-gap: 14px; align-content: start; }
+.item.has-logo > :not(.tool-logo) { grid-column: 2; }
+.tool-logo { grid-row: 1 / span 4; width: 48px; height: 48px; border-radius: 12px; background: var(--white); border: 1px solid var(--line); display: grid; place-items: center; position: relative; overflow: hidden; }
+.tool-logo > svg { width: 22px; height: 22px; color: var(--mist); }
+.tool-logo img { position: absolute; width: 32px; height: 32px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--white); border-radius: 6px; }
+
 /* Book tiles: the real cover (from Open Library) sits over the designed tile, which shows if the image fails */
 .cover { position: relative; overflow: hidden; }
 .cover .cover-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: var(--white); z-index: 1; }
@@ -1411,7 +1418,7 @@ const TOOLS = [
     { t: "Every.org gift cards", m: "Charity gift cards", w: "The person you give it to picks the nonprofit, so the gift supports a cause they care about.", u: "https://www.every.org/gift-cards", p: ["giving", "others"] },
     { t: "GlobalGiving: give in honor", m: "Donations and gift cards", w: "Give to a project in someone's honor or memory, or send a gift card so they can choose.", u: "https://www.globalgiving.org/gifts/inhonor/", p: ["giving", "others"] },
     { t: "Charity Navigator", m: "Free charity ratings", w: "Check a charity's finances and accountability before you give.", u: "https://www.charitynavigator.org", p: ["giving"] },
-    { t: "VolunteerMatch", m: "Free volunteer listings", w: "Find ways to give your time, on your own or with friends, family or coworkers.", u: "https://www.volunteermatch.org", p: ["giving"] },
+    { t: "Idealist (formerly VolunteerMatch)", m: "Free volunteer listings", w: "Find ways to give your time, on your own or with friends, family or coworkers.", u: "https://www.idealist.org/volunteermatch", p: ["giving"] },
     { t: "Kiva Cards", m: "Microloan gift cards from a nonprofit", w: "The person chooses a borrower to lend to, and can lend again when the loan is repaid. Unused cards become a donation after 12 months.", u: "https://www.kiva.org/gifts/kiva-cards", p: ["giving", "others"] }
   ]},
   { group: "Buy back time", kind: "tool", items: [
@@ -1822,8 +1829,11 @@ function cardFor(i, kind, show) {
     </article>`;
   }
   const KR = { research: ["flask", "Study"], article: ["article", "Article"], tool: ["tool", "Tool"] }[kind];
-  return `<article class="item">
-    ${KR ? `<div class="kind-row">${icon(KR[0])}${KR[1]}</div>` : ""}
+  // Tools show the service's own site icon; if it fails to load, the generic tool icon stays.
+  let host = ""; try { host = new URL(i.u).hostname; } catch (e) {}
+  const logo = kind === "tool" && host ? `<span class="tool-logo">${icon("tool")}<img src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=64" alt="" width="32" height="32" loading="lazy" onerror="this.remove()"></span>` : "";
+  return `<article class="item${logo ? " has-logo" : ""}">
+    ${logo || (KR ? `<div class="kind-row">${icon(KR[0])}${KR[1]}</div>` : "")}
     <div class="title"><a href="${esc(i.u)}" target="_blank" rel="noopener">${esc(i.t)}</a></div>
     <div class="meta">${esc(i.m)}</div>
     <p class="why">${esc(i.w)}</p>
