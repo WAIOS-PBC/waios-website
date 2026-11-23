@@ -176,6 +176,57 @@ section.block { padding: 44px 0; border-top: 1px solid var(--line); }
 .fcard .src { font-size: .76rem; color: var(--tonal); }
 .fcard .src a { color: inherit; }
 .more-row { display: flex; justify-content: center; margin-top: 14px; }
+/* Findings mosaic */
+.mosaic-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; margin-top: 8px; }
+.mosaic { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 92px; grid-auto-flow: dense; gap: 8px; }
+.tile { font: inherit; text-align: left; border: 0; border-radius: 14px; padding: 12px 12px 10px; display: flex; flex-direction: column; justify-content: flex-end; gap: 3px; cursor: pointer; position: relative; overflow: hidden; color: var(--navy); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, opacity .4s, filter .4s; animation: tileIn .5s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes tileIn { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: none; } }
+.tile.w2 { grid-column: span 2; }
+.tile.t2 { grid-row: span 2; }
+.tile.b2 { grid-column: span 2; grid-row: span 2; }
+.tile.peace.v0 { background: #DCE4EB; } .tile.peace.v1 { background: #C9D5DF; } .tile.peace.v2 { background: var(--tonal); color: #fff; }
+.tile.living.v0 { background: #FCEFC6; } .tile.living.v1 { background: var(--butter); } .tile.living.v2 { background: #F7B69B; }
+.tile.found.v0 { background: var(--navy); color: var(--cream); } .tile.found.v1 { background: #2E3A45; color: var(--cream); } .tile.found.v2 { background: var(--cream); }
+.tile .t-ic { position: absolute; top: 10px; right: 10px; opacity: .55; }
+.tile .t-ic .ic { width: 16px; height: 16px; }
+.tile .t-num { font-size: 1.15rem; font-weight: 800; line-height: 1.05; letter-spacing: -0.01em; }
+.tile.w2 .t-num, .tile.t2 .t-num { font-size: 1.5rem; }
+.tile.b2 .t-num { font-size: 2.4rem; }
+.tile .t-lab { font-size: .72rem; font-weight: 600; line-height: 1.25; opacity: .85; }
+.tile:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 26px -16px rgba(21,40,63,.55); z-index: 1; }
+.tile.sel { box-shadow: 0 0 0 3px var(--offwhite), 0 0 0 6px var(--coral); z-index: 2; }
+.tile:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+.mosaic.filtering .tile:not(.match) { opacity: .22; filter: grayscale(.6); }
+.fdetail { position: sticky; top: 84px; background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: grid; gap: 10px; overflow: hidden; }
+.fdetail::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: var(--navy); }
+.fdetail.peace::before { background: var(--tonal); }
+.fdetail.living::before { background: linear-gradient(90deg, var(--butter), var(--coral)); }
+.fdetail > * { animation: fadeUp .35s ease both; }
+.fd-top { display: flex; align-items: center; gap: 8px; }
+.fd-top .icon-tile { width: 32px; height: 32px; }
+.fd-top .flab { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--tonal); flex: 1; }
+.fd-count { font-size: .75rem; color: var(--tonal); }
+.fd-num { font-size: 2.4rem; font-weight: 800; color: var(--navy); line-height: 1.05; letter-spacing: -0.02em; }
+.fdetail p { font-size: .97rem; }
+.fdetail .src { font-size: .8rem; color: var(--tonal); }
+.fdetail .src a { color: inherit; }
+.fdetail .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.fdetail .tags a { text-decoration: none; display: inline-flex; align-items: center; gap: 5px; font-size: 0.74rem; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--pale); color: var(--slate); }
+.fdetail .tags .ic { width: 13px; height: 13px; }
+.fd-nav { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 10px; margin-top: 4px; font-size: .82rem; color: var(--tonal); }
+.fd-nav button { font: inherit; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--white); color: var(--navy); cursor: pointer; font-size: 1.05rem; }
+.fd-nav button:hover { border-color: var(--navy); }
+.fd-close { display: none; }
+@media (max-width: 1000px) {
+  .mosaic-wrap { grid-template-columns: 1fr; }
+  .mosaic { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 84px; }
+  .fdetail { position: fixed; left: 10px; right: 10px; bottom: 10px; top: auto; z-index: 70; max-height: 70vh; overflow-y: auto; box-shadow: 0 -10px 40px -10px rgba(21,40,63,.45); transform: translateY(120%); transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+  .fdetail.open { transform: none; }
+  .fd-close { display: block; position: absolute; top: 10px; right: 12px; font: inherit; font-size: 1.6rem; line-height: 1; border: 0; background: none; color: var(--tonal); cursor: pointer; z-index: 1; }
+  .fd-top { padding-right: 30px; }
+}
+@media (max-width: 520px) { .mosaic { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 80px; gap: 6px; } .tile.b2 .t-num { font-size: 1.9rem; } .tile .t-num { font-size: 1.02rem; } }
+@media (prefers-reduced-motion: reduce) { .tile, .fdetail > * { animation: none; } .fdetail { transition: none; } }
 .legend .evkey { display: inline-flex; align-items: center; gap: 6px; font-size: .82rem; color: var(--tonal); margin-left: 12px; }
 .evdot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex: none; }
 .evdot.ev-strong { background: var(--navy); }
@@ -1285,10 +1336,11 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
         <h1 id="research-h">What the research says about money and a good life</h1>
         <p>The findings behind the model, from peer-reviewed studies and leading research groups. Each one is tagged with the part of the model it supports.</p>
       </div>
-      <div class="spotlight" id="spotlight" aria-roledescription="carousel" aria-label="Featured findings"></div>
       <div class="lib-tools" role="group" aria-label="Filter findings by part of the model"><span class="label">Show findings for</span><span id="rchips" style="display:flex;gap:8px;flex-wrap:wrap"></span></div>
-      <div class="fgrid" id="statgrid"></div>
-      <div class="more-row"><button type="button" class="btn secondary" id="more-findings" hidden></button></div>
+      <div class="mosaic-wrap">
+        <div class="mosaic" id="statgrid" role="list" aria-label="All headline findings. Choose one to read it."></div>
+        <aside class="fdetail" id="fdetail" aria-live="polite"></aside>
+      </div>
       <div class="res-head" style="margin-top:40px"><h2>The studies</h2><span class="legend"><span class="evkey"><i class="evdot ev-strong"></i>Strong</span><span class="evkey"><i class="evdot ev-solid"></i>Solid</span><span class="evkey"><i class="evdot ev-contested"></i>Mixed</span></span></div>
       <p class="wsub" style="margin-top:-6px">Tap a topic to open it. Each dot is one study, colored by how strong the evidence is.</p>
       <div class="sindex" id="study-list"></div>
@@ -2307,6 +2359,7 @@ function route() {
   renderResultsBar(v);
   if (v === "research") renderResearch();
   if (v === "workplaces") renderWorkplaces();
+  if (v !== "research") { const fd = document.getElementById("fdetail"); if (fd) fd.classList.remove("open"); }
   if (v === "start") renderPlan();
   if (v === "finder") renderFinder();
   document.querySelectorAll("[data-nav]").forEach(a => a.toggleAttribute("aria-current", a.classList.contains("on")));
@@ -2645,16 +2698,51 @@ function renderStudies(el, filter) {
       <span class="stags">${i.ms ? `<span class="ms">Measured: ${esc(i.ms)}</span>` : ""}${i.p.filter(x => PNAME[x]).map(x => `<span>${esc(PNAME[x])}</span>`).join("")}</span></span></a>`).join("")}</div>
   </details>`).join("") || `<p class="empty">No studies for this yet.</p>`;
 }
+let fSel = 0;
+function tileSize(st, k) {
+  const len = st.num.length;
+  if (st.feat && k % 3 === 0) return "b2";
+  if (len > 9) return "w2";
+  if (st.feat) return k % 2 ? "t2" : "w2";
+  return "s1";
+}
+function showFinding(k, open) {
+  const list = STATS, st = list[k]; fSel = k;
+  const id = (st.p || []).find(x => PNAME[x]) || "foundations";
+  const d = document.getElementById("fdetail");
+  // On small screens the panel is a bottom sheet, so it must sit outside the animated page section
+  const small = matchMedia("(max-width: 1000px)").matches, home = document.querySelector(".mosaic-wrap");
+  if (small && d.parentNode !== document.body) document.body.appendChild(d);
+  if (!small && home && d.parentNode !== home) home.appendChild(d);
+  if (small && !open) d.classList.remove("open");
+  d.className = "fdetail " + famOf(st.p) + (open ? " open" : "") + (small ? " sheet" : "");
+  d.innerHTML = `<button type="button" class="fd-close" aria-label="Close">&times;</button>
+    <div class="fd-top"><span class="icon-tile">${icon(id)}</span><span class="flab">${esc(st.label)}</span><span class="fd-count">${k + 1} of ${list.length}</span></div>
+    <div class="fd-num">${esc(st.num)}</div>
+    <p>${esc(st.text)}</p>
+    <span class="src">${st.u ? `<a href="${esc(st.u)}" target="_blank" rel="noopener">${esc(st.src)}</a>` : esc(st.src)}${st.kind ? ` · ${esc(KIND_LABEL[st.kind] || "")}` : ""}</span>
+    <div class="tags">${tagLinks(st.p)}</div>
+    <div class="fd-nav"><button type="button" data-d="-1" aria-label="Previous finding">&larr;</button><span>Browse findings</span><button type="button" data-d="1" aria-label="Next finding">&rarr;</button></div>`;
+  d.querySelector(".fd-close").onclick = () => d.classList.remove("open");
+  d.querySelectorAll("[data-d]").forEach(bt => bt.onclick = () => showFinding((fSel + +bt.dataset.d + list.length) % list.length, true));
+  d.querySelectorAll('[data-rf]').forEach(a => a.addEventListener("click", e => { e.preventDefault(); setRFilter("foundations"); }));
+  document.querySelectorAll("#statgrid .tile").forEach((t, j) => { t.classList.toggle("sel", j === k); t.setAttribute("aria-pressed", String(j === k)); });
+}
 function setRFilter(id) {
-  if (id !== rFilter) showAllFindings = false;
   rFilter = id;
-  const grid = document.getElementById("statgrid"), more = document.getElementById("more-findings");
-  const list = STATS.filter(st => rFilter === "all" || st.p.includes(rFilter));
-  const LIMIT = 6, shown = showAllFindings ? list : list.slice(0, LIMIT);
-  grid.innerHTML = shown.map(findingCard).join("") || `<p class="empty">No headline findings for this yet. See the studies below.</p>`;
-  more.hidden = list.length <= LIMIT;
-  more.textContent = showAllFindings ? "Show fewer findings" : `Show all ${list.length} findings`;
-  more.onclick = () => { showAllFindings = !showAllFindings; setRFilter(rFilter); if (!showAllFindings) grid.scrollIntoView({ block: "start", behavior: "smooth" }); };
+  const grid = document.getElementById("statgrid");
+  if (!grid.children.length) {
+    grid.innerHTML = STATS.map((st, k) => {
+      const ic = (st.p || []).find(x => PNAME[x]) || "foundations", sz = tileSize(st, k);
+      return `<button type="button" role="listitem" class="tile ${sz} ${famOf(st.p)} v${k % 3}" data-k="${k}" aria-pressed="false" style="animation-delay:${k * 30}ms" aria-label="${esc(st.num)}: ${esc(st.label)}">
+        <span class="t-ic">${icon(ic)}</span><span class="t-num">${esc(st.num)}</span><span class="t-lab">${esc(st.label)}</span></button>`;
+    }).join("");
+    grid.querySelectorAll(".tile").forEach(t => t.addEventListener("click", () => { showFinding(+t.dataset.k, true); track("finding_open", { k: t.dataset.k }); }));
+    showFinding(0, false);
+  }
+  grid.classList.toggle("filtering", rFilter !== "all");
+  grid.querySelectorAll(".tile").forEach(t => t.classList.toggle("match", rFilter === "all" || STATS[+t.dataset.k].p.includes(rFilter)));
+  if (rFilter !== "all") { const first = STATS.findIndex(st => st.p.includes(rFilter)); if (first >= 0) showFinding(first, false); }
   document.querySelectorAll("#rchips .chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.id === rFilter ? "true" : "false"));
   renderStudies(document.getElementById("study-list"), rFilter);
 }
@@ -2662,7 +2750,6 @@ function renderResearch() {
   const defs = [["all", "All findings"], ["foundations", "Foundations"], ...PRINCIPLES.map(p => [p.id, p.name])];
   document.getElementById("rchips").innerHTML = defs.map(([id, name]) => `<button type="button" class="chip" data-id="${id}" aria-pressed="false">${id === "foundations" ? icon("foundations") : icon(id)}${esc(name)}</button>`).join("");
   document.querySelectorAll("#rchips .chip").forEach(c => c.addEventListener("click", () => setRFilter(c.dataset.id)));
-  renderSpot();
   setRFilter(rFilter);
 }
 const WSTATS = [{"num": "59%", "label": "Money stress", "text": "of employees say they are stressed about their finances right now.", "src": "PwC Employee Financial Wellness Survey, 2026", "u": "https://www.pwc.com/us/en/services/consulting/human-resources/library/employee-financial-wellness-survey.html", "kind": "estimate", "p": ["mindset"]}, {"num": "3.3 hrs", "label": "Time lost each week", "text": "per employee, on average, spent dealing with personal finances during work hours.", "src": "Valoir, survey of 500+ US employees, 2025", "u": "https://hrexecutive.com/the-1-1-trillion-employer-cost-of-financial-stress/", "kind": "estimate", "p": ["mindset"]}, {"num": "$1.1T", "label": "Cost to US employers", "text": "estimated in lost productivity each year from employees' financial stress.", "src": "Valoir, 2025", "u": "https://hrexecutive.com/the-1-1-trillion-employer-cost-of-financial-stress/", "kind": "estimate", "p": ["foundations"]}, {"num": "7%", "label": "The support gap", "text": "of employees strongly agree their organization does things to help them manage their finances more effectively.", "src": "Gallup, Financial Wellbeing manager resource, 2021", "u": "", "kind": "industry", "p": ["foundations"]}, {"num": "~3×", "label": "Security beats pay", "text": "Financial security has nearly three times the impact of income alone on employees' overall wellbeing. Higher pay alone does not guarantee financial wellbeing.", "src": "Rath and Harter, The Economics of Wellbeing, Gallup, 2010", "u": "https://www.gallup.com/services/177050/economics-wellbeing.aspx", "kind": "industry", "p": ["buffer"]}, {"num": "4×", "label": "Managers matter", "text": "Engaged employees are about four times as likely as disengaged employees to feel comfortable discussing financial wellbeing with their manager.", "src": "Gallup, Financial Wellbeing manager resource, 2021", "u": "", "kind": "industry", "p": ["mindset"]}, {"num": "More accidents", "label": "Worry at work", "text": "Financial worry reduces people's mental capacity on the job. Among truck drivers, it was linked to more preventable accidents.", "src": "Meuris and Leana, Organization Science, 2018", "u": "https://doi.org/10.1287/orsc.2017.1187", "kind": "peer", "p": ["mindset"]}, {"num": "Autonomy helps", "label": "Job design is a lever", "text": "Daily data show financial strain hurts work quality most in jobs with little autonomy, so how work is designed is a lever too.", "src": "Meuris and Gladstone, Journal of Management, 2023", "u": "https://doi.org/10.1177/01492063231153136", "kind": "peer", "p": ["foundations"]}];
