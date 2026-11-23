@@ -134,7 +134,9 @@ section.block { padding: 44px 0; border-top: 1px solid var(--line); }
 
 /* Resource lists */
 .group { display: grid; gap: 12px; margin-bottom: 28px; }
-.group > h3 { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tonal); }
+.group > h3 { display: flex; align-items: center; gap: 10px; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; color: var(--navy); padding-bottom: 10px; border-bottom: 2px solid var(--line); margin-top: 6px; }
+.group > h3::before { content: ""; flex: none; width: 6px; height: 1.15em; border-radius: 3px; background: linear-gradient(var(--butter) 0 50%, var(--coral) 50% 100%); }
+.group.start > h3 { border-bottom-color: rgba(21, 40, 63, 0.12); }
 .items { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
 .item { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; gap: 6px; align-content: start; }
 .item .title { font-weight: 600; line-height: 1.35; color: var(--navy); }
