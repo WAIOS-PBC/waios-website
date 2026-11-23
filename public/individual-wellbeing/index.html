@@ -18,7 +18,7 @@
 <style>
 :root {
   --navy: #15283F; --slate: #2E3A45; --butter: #F7C948; --coral: #EF6F6C; --tonal: #5C7285;
-  --pale: #F1F4F6; --offwhite: #FAF8F4; --white: #FFFFFF; --cream: #F3ECDF; --mist: #A3B3C2; --line: #E4E1DA;
+  --pale: #F1F4F6; --cream-type: #F3EDE2; --offwhite: #FAF8F4; --white: #FFFFFF; --cream: #F3ECDF; --mist: #A3B3C2; --line: #E4E1DA;
   --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 * { box-sizing: border-box; }
@@ -63,7 +63,7 @@ header.top { border-bottom: 1px solid var(--line); background: var(--offwhite); 
 .slice.soon path { fill: var(--pale); }
 .slice.soon text { fill: var(--mist); }
 .slice.soon { cursor: pointer; }
-.slice.soon:hover path, .slice.soon:focus-visible path, .slice.soon.peek path { fill: #E6ECF1; }
+.slice.soon:hover path, .slice.soon:focus-visible path, .slice.soon.peek path { fill: var(--white); }
 .slice.soon:hover text, .slice.soon.peek text { fill: var(--tonal); }
 .slice.soon:focus-visible path { stroke: var(--navy); stroke-width: 3; }
 .wheel-info { min-height: 112px; margin-top: 12px; }
@@ -76,7 +76,7 @@ header.top { border-bottom: 1px solid var(--line); background: var(--offwhite); 
 .wi-card p { font-size: .92rem; }
 .wi-card .wi-go { font-size: .85rem; font-weight: 600; color: var(--navy); }
 .area.flash { animation: flash 1.6s ease; }
-@keyframes flash { 0%, 100% { box-shadow: none; } 25%, 60% { box-shadow: 0 0 0 4px var(--coral); } }
+@keyframes flash { 0%, 100% { box-shadow: none; } 25%, 60% { box-shadow: 0 0 0 4px var(--navy); } }
 @media (prefers-reduced-motion: reduce) { .wi-card, .area.flash { animation: none; } }
 .slice.live .face { fill: var(--butter); animation: lift 2.8s ease-in-out infinite; }
 .slice .halo { fill: var(--butter); filter: url(#halo); opacity: 0.55; stroke: none; animation: halo 2.8s ease-in-out infinite; pointer-events: none; }
@@ -85,11 +85,11 @@ header.top { border-bottom: 1px solid var(--line); background: var(--offwhite); 
 .slice.live text { fill: var(--navy); }
 .slice.live .status { fill: var(--slate); }
 .slice.live { cursor: pointer; }
-.slice.live:hover .face, .slice.live:focus-visible .face { transform: scale(1.05); animation: none; fill: #FAD566; }
+.slice.live:hover .face, .slice.live:focus-visible .face { transform: scale(1.05); animation: none; }
 .slice.live:hover .halo { opacity: 1; animation: none; }
 .slice:focus { outline: none; }
 .slice.live:focus-visible .face { stroke: var(--navy); stroke-width: 3; }
-@keyframes lift { 0%, 100% { transform: scale(1); fill: #F7C948; } 50% { transform: scale(1.025); fill: #FAD566; } }
+@keyframes lift { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.025); } }
 @keyframes halo { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 @keyframes ripple { 0% { transform: scale(1); opacity: 0.75; } 70% { opacity: 0; } 100% { transform: scale(1.14); opacity: 0; } }
 
@@ -109,7 +109,7 @@ section.band { padding: 64px 0; border-top: 1px solid var(--line); }
 .lens .q { font-style: italic; color: var(--navy); border-left: 3px solid var(--butter); padding-left: 12px; }
 .both { margin-top: 20px; background: var(--navy); color: var(--cream); border-radius: 18px; padding: 30px 32px; display: grid; grid-template-columns: auto 1fr; gap: 26px; align-items: center; }
 .both h3 { color: var(--white); font-size: 1.4rem; }
-.both p { color: #D5DDE4; margin-top: 8px; max-width: 70ch; }
+.both p { color: var(--cream-type); margin-top: 8px; max-width: 70ch; }
 .venn { width: 120px; height: 84px; }
 
 /* Five areas */
@@ -202,7 +202,7 @@ footer { border-top: 1px solid var(--line); padding: 26px 0 44px; font-size: 0.8
       </div>
 
       <div class="both">
-        <svg class="venn" viewBox="0 0 120 84" aria-hidden="true"><circle cx="44" cy="42" r="36" fill="#F7C948" opacity="0.9"/><circle cx="76" cy="42" r="36" fill="#EF6F6C" opacity="0.8"/></svg>
+        <svg class="venn" viewBox="0 0 120 84" aria-hidden="true"><circle cx="44" cy="42" r="34" fill="none" stroke="#F7C948" stroke-width="5"/><circle cx="76" cy="42" r="34" fill="none" stroke="#F3EDE2" stroke-width="5"/></svg>
         <div>
           <h3>Thriving means both</h3>
           <p>Someone can rate their life highly and still feel stretched thin most days, or enjoy their days while feeling stuck in the bigger picture. The two are related but distinct, and they can respond differently to the same circumstances. To thrive is to be deeply satisfied with your life as a whole and to live it through days where positive emotions outweigh negative ones.</p>
