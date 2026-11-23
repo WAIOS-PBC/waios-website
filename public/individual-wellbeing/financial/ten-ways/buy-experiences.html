@@ -1831,7 +1831,7 @@ function cardFor(i, kind, show) {
   const KR = { research: ["flask", "Study"], article: ["article", "Article"], tool: ["tool", "Tool"] }[kind];
   // Tools show the service's own site icon; if it fails to load, the generic tool icon stays.
   let host = ""; try { host = new URL(i.u).hostname; } catch (e) {}
-  const logo = kind === "tool" && host ? `<span class="tool-logo">${icon("tool")}<img src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=64" alt="" width="32" height="32" loading="lazy" onerror="this.remove()"></span>` : "";
+  const logo = kind === "tool" && host ? `<span class="tool-logo">${icon("tool")}<img src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=64" alt="" width="32" height="32" loading="lazy" onload="if(this.naturalWidth<=16)this.remove()" onerror="this.remove()"></span>` : "";
   return `<article class="item${logo ? " has-logo" : ""}">
     ${logo || (KR ? `<div class="kind-row">${icon(KR[0])}${KR[1]}</div>` : "")}
     <div class="title"><a href="${esc(i.u)}" target="_blank" rel="noopener">${esc(i.t)}</a></div>
