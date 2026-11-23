@@ -13,10 +13,20 @@
   "send_email": [
     { "name": "LEADS", "allowed_destination_addresses": ["dposa@globalwellbeinggroup.com", "jen@jennifer-moss.com"] }
   ],
-  "observability": { "enabled": true }
-  // Private client pages (/clients/<slug>). Turn on after the one-time setup in
-  // tools/clients/README.md: create the KV namespace and R2 bucket, paste the id
-  // below, then uncomment. Until then, /clients/* simply returns "Not found".
-  // ,"kv_namespaces": [{ "binding": "CLIENTS", "id": "PASTE_KV_NAMESPACE_ID" }]
-  // ,"r2_buckets": [{ "binding": "CLIENT_FILES", "bucket_name": "client-files" }]
+  "observability": { "enabled": true },
+  // Private client pages (/clients/<slug>). See tools/clients/README.md.
+  // Until the secrets are set, /clients/* simply returns "Not found".
+  "kv_namespaces": [{ "binding": "CLIENTS", "id": "5a24f7ea8e2b4926bfba6fd88b8f8ddd" }],
+  // Uncomment once the "client-files" R2 bucket exists (a deploy fails if it is missing):
+  // "r2_buckets": [{ "binding": "CLIENT_FILES", "bucket_name": "client-files" }],
+
+  // Branch previews (Cloudflare builds each pull request with "wrangler preview").
+  // Previews only see the bindings listed here, and their secrets are set separately.
+  "previews": {
+    "send_email": [
+      { "name": "LEADS", "allowed_destination_addresses": ["dposa@globalwellbeinggroup.com", "jen@jennifer-moss.com"] }
+    ],
+    "kv_namespaces": [{ "binding": "CLIENTS", "id": "5a24f7ea8e2b4926bfba6fd88b8f8ddd" }]
+    // ,"r2_buckets": [{ "binding": "CLIENT_FILES", "bucket_name": "client-files" }]
+  }
 }
