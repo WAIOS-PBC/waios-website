@@ -58,8 +58,12 @@ def page_for(v):
     h = re.sub(r'href="#(\w+)"', lambda m: f'href="{path_for(m.group(1))}"' if m.group(1) in all_views else m.group(0), h)
     return h.replace("</head>", config_tag + "\n</head>", 1)
 
-# Start clean: remove earlier output.
-if os.path.isdir(OUT): shutil.rmtree(OUT)
+# Start clean: remove earlier generated pages, but keep other files here
+# (such as the resource guide PDF).
+if os.path.isdir(OUT):
+    for root, _, files in os.walk(OUT):
+        for f in files:
+            if f.endswith(".html") or f == "sitemap.xml": os.remove(os.path.join(root, f))
 old = os.path.join(REPO, "public", "individual-wellbeing.html")
 if os.path.exists(old): os.remove(old)
 os.makedirs(OUT, exist_ok=True)

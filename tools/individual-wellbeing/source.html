@@ -996,30 +996,7 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
       <div class="res-head" style="margin-top:36px"><h2>Resources for employers</h2></div>
       <div id="work-resources"></div>
 
-      <div class="cta-band">
-        <div>
-          <span class="eyebrow" style="color:var(--cream)">Measure what matters</span>
-          <h2>See where your people stand</h2>
-          <p>Start with a baseline, then track change over time, so you know what is working and what to fix next.</p>
-        </div>
-        <button type="button" class="btn" id="open-contact" aria-controls="contact-form" aria-expanded="false">Get in touch</button>
-      </div>
-      <form class="contact-card hidden" id="contact-form" novalidate>
-        <div><span class="eyebrow">Get in touch</span><h3>Tell us about your organization</h3></div>
-        <div class="contact-grid">
-          <div><label for="ct-name">Name</label><input id="ct-name" name="name" autocomplete="name" required maxlength="120"></div>
-          <div><label for="ct-email">Work email</label><input id="ct-email" name="email" type="email" autocomplete="email" required maxlength="254"></div>
-          <div><label for="ct-org">Organization <span class="opt">(optional)</span></label><input id="ct-org" name="org" autocomplete="organization" maxlength="160"></div>
-          <div><label for="ct-role">Role <span class="opt">(optional)</span></label><input id="ct-role" name="role" autocomplete="organization-title" maxlength="120"></div>
-          <div class="full"><label for="ct-interest">I am interested in</label>
-            <select id="ct-interest" name="interest"><option>Measuring wellbeing in my organization</option><option>Improving financial wellbeing benefits</option><option>A talk or workshop</option><option>Something else</option></select></div>
-          <div class="full"><label for="ct-msg">Message <span class="opt">(optional)</span></label><textarea id="ct-msg" name="message" maxlength="4000"></textarea></div>
-          <div class="hp" aria-hidden="true"><label for="ct-hp">Leave this empty</label><input id="ct-hp" name="company_website" tabindex="-1" autocomplete="off"></div>
-        </div>
-        <p class="privacy-note">We will only use your details to reply to you.<span class="pp"> See our <a href="/privacy" data-slot="privacy" class="privacy-link">privacy policy</a>.</span></p>
-        <div class="actions"><button type="submit" class="btn" id="ct-send">Send</button></div>
-        <p class="ec-msg" id="ct-msg-out" role="status"></p>
-      </form>
+      <!-- Contact form removed for now. It is in git history (before this commit) if you want it back. -->
     </section>
 
     <!-- FINDER -->
@@ -2835,6 +2812,7 @@ document.getElementById("finder-reset").addEventListener("click", () => { finder
 // ---------- Contact form (workplaces) ----------
 (function () {
   const open = document.getElementById("open-contact"), form = document.getElementById("contact-form"), msg = document.getElementById("ct-msg-out");
+  if (open && form) {
   open.addEventListener("click", () => { form.classList.remove("hidden"); open.setAttribute("aria-expanded", "true"); form.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); setTimeout(() => document.getElementById("ct-name").focus({ preventScroll: true }), 300); track("contact_open"); });
   form.addEventListener("submit", async e => {
     e.preventDefault();
@@ -2850,6 +2828,7 @@ document.getElementById("finder-reset").addEventListener("click", () => { finder
     } catch (err) { msg.textContent = "We could not send that just now. Please try again in a moment."; msg.className = "ec-msg err"; }
     btn.disabled = false;
   });
+  }
   document.getElementById("print-work").addEventListener("click", () => { document.body.classList.add("print-work"); track("print_business_case"); window.print(); });
   window.addEventListener("afterprint", () => document.body.classList.remove("print-work"));
   document.querySelectorAll(".privacy-link").forEach(a => a.setAttribute("href", CONFIG.privacyUrl));
