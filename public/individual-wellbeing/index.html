@@ -46,7 +46,10 @@ header.top { border-bottom: 1px solid var(--line); background: var(--offwhite); 
 
 /* Hero with wheel */
 .hero { padding: 56px 0 40px; }
-.hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; grid-template-areas: "head wheel" "body wheel"; column-gap: 48px; align-items: center; }
+.hero-head { grid-area: head; align-self: end; }
+.hero-body { grid-area: body; align-self: start; }
+.wheel-box { grid-area: wheel; }
 .lede { font-size: 1.15rem; margin-top: 18px; max-width: 46ch; }
 .hero .sub { margin-top: 14px; color: var(--tonal); max-width: 46ch; }
 .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: var(--navy); font-weight: 600; border-radius: 10px; padding: 12px 18px; text-decoration: none; margin-top: 26px; }
@@ -55,20 +58,27 @@ header.top { border-bottom: 1px solid var(--line); background: var(--offwhite); 
 .wheel-box { position: relative; }
 .wheel { width: 100%; max-width: 480px; display: block; margin: 0 auto; overflow: visible; }
 .slice path { stroke: var(--offwhite); stroke-width: 4; transition: transform 0.25s ease, fill 0.25s ease; transform-origin: 250px 250px; }
-.slice text { font-family: var(--font-body); font-size: 15px; font-weight: 700; text-anchor: middle; pointer-events: none; }
-.slice .status { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.slice text { font-family: var(--font-body); font-size: 17px; font-weight: 700; text-anchor: middle; pointer-events: none; }
+.slice .status { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
 .slice.soon path { fill: var(--pale); }
 .slice.soon text { fill: var(--mist); }
 .slice.soon { cursor: default; }
-.slice.live path { fill: var(--butter); filter: url(#glow); animation: breathe 3.2s ease-in-out infinite; }
+.slice.live .face { fill: var(--butter); animation: lift 2.8s ease-in-out infinite; }
+.slice .halo { fill: var(--butter); filter: url(#halo); opacity: 0.55; stroke: none; animation: halo 2.8s ease-in-out infinite; pointer-events: none; }
+.slice .ripple { fill: none; stroke: var(--butter); stroke-width: 3; opacity: 0; animation: ripple 2.8s ease-out infinite; pointer-events: none; }
+.slice .chev { font-weight: 700; }
 .slice.live text { fill: var(--navy); }
 .slice.live .status { fill: var(--slate); }
 .slice.live { cursor: pointer; }
-.slice.live:hover path, .slice.live:focus-visible path { transform: scale(1.035); animation: none; fill: #F9D56B; }
+.slice.live:hover .face, .slice.live:focus-visible .face { transform: scale(1.05); animation: none; fill: #FAD566; }
+.slice.live:hover .halo { opacity: 1; animation: none; }
 .slice:focus { outline: none; }
-.slice.live:focus-visible path { stroke: var(--navy); stroke-width: 3; }
-@keyframes breathe { 0%, 100% { opacity: 1; } 50% { opacity: 0.82; } }
-@media (prefers-reduced-motion: reduce) { .slice.live path { animation: none; } }
+.slice.live:focus-visible .face { stroke: var(--navy); stroke-width: 3; }
+@keyframes lift { 0%, 100% { transform: scale(1); fill: #F7C948; } 50% { transform: scale(1.025); fill: #FAD566; } }
+@keyframes halo { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+@keyframes ripple { 0% { transform: scale(1); opacity: 0.75; } 70% { opacity: 0; } 100% { transform: scale(1.14); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) { .slice.live .face, .slice .halo, .slice .ripple { animation: none; } .slice .ripple { display: none; } .slice .halo { opacity: 0.8; } }
 .hub-ring { fill: var(--white); stroke: var(--line); stroke-width: 1.5; }
 .hub-title { font-family: var(--font-body); font-size: 19px; font-weight: 800; fill: var(--navy); text-anchor: middle; }
 .hub-sub { font-family: var(--font-body); font-size: 12px; fill: var(--tonal); text-anchor: middle; }
@@ -103,8 +113,14 @@ section.band { padding: 64px 0; border-top: 1px solid var(--line); }
 footer { border-top: 1px solid var(--line); padding: 26px 0 44px; font-size: 0.86rem; color: var(--tonal); }
 
 @media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-  .wheel-box { order: -1; }
+  .hero { padding-top: 32px; }
+  .hero-grid { grid-template-columns: 1fr; grid-template-areas: "head" "wheel" "body"; row-gap: 22px; }
+  .wheel { max-width: 400px; }
+  .slice text { font-size: 22px; }
+  .slice .status { font-size: 14px; }
+  .hub-title { font-size: 25px; }
+  .hub-sub { font-size: 15px; }
+  .lede { margin-top: 4px; }
   .areas { grid-template-columns: 1fr 1fr; }
   .lenses { grid-template-columns: 1fr; }
   .both { grid-template-columns: 1fr; }
@@ -124,10 +140,12 @@ footer { border-top: 1px solid var(--line); padding: 26px 0 44px; font-size: 0.8
 <main>
   <section class="hero">
     <div class="wrap hero-grid">
-      <div>
+      <div class="hero-head">
         <span class="eyebrow"><span class="dot"></span>Individual Wellbeing</span>
         <h1 style="margin-top:12px">What it takes to thrive</h1>
         <span class="horizon" aria-hidden="true"></span>
+      </div>
+      <div class="hero-body">
         <p class="lede">Wellbeing is the quality of your life: how satisfied you are with it as a whole, and how it feels to live it day to day.</p>
         <p class="sub">Five areas of life shape it. We are building out each one with research, practical steps and resources, starting with money. As each area opens, it lights up on the wheel.</p>
         <a class="btn" id="start-btn" href="/individual-wellbeing/financial/">Start with financial wellbeing <span aria-hidden="true">&rarr;</span></a>
@@ -135,19 +153,14 @@ footer { border-top: 1px solid var(--line); padding: 26px 0 44px; font-size: 0.8
       <div class="wheel-box">
         <svg class="wheel" id="wheel" viewBox="0 0 500 500" role="group" aria-label="The five areas of wellbeing">
           <defs>
-            <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b"/>
-              <feFlood flood-color="#F7C948" flood-opacity="0.75"/>
-              <feComposite in2="b" operator="in" result="g"/>
-              <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
+            <filter id="halo" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="16"/></filter>
           </defs>
           <g id="slices"></g>
           <circle class="hub-ring" cx="250" cy="250" r="78"/>
           <text class="hub-title" x="250" y="248">Wellbeing</text>
           <text class="hub-sub" x="250" y="268">Quality of life</text>
         </svg>
-        <p class="wheel-note"><span class="key" aria-hidden="true"></span>Lit areas are ready to explore. Select one to go deeper.</p>
+        <p class="wheel-note"><span class="key" aria-hidden="true"></span>Lit areas are open. Tap or click one to go deeper.</p>
       </div>
     </div>
   </section>
@@ -233,10 +246,13 @@ const AREAS = [
     if (a.live) { el.setAttribute("href", a.href); el.setAttribute("aria-label", a.name + " wellbeing: explore"); }
     else { el.setAttribute("aria-label", a.name + " wellbeing: coming soon"); el.setAttribute("role", "img"); }
     const title = document.createElementNS(NS, "title"); title.textContent = a.live ? a.name + " wellbeing: explore" : a.name + " wellbeing: coming soon";
-    const path = document.createElementNS(NS, "path"); path.setAttribute("d", d);
+    const path = document.createElementNS(NS, "path"); path.setAttribute("d", d); path.setAttribute("class", "face");
+    const extra = [];
+    if (a.live) ["halo", "ripple"].forEach(c => { const e = document.createElementNS(NS, "path"); e.setAttribute("d", d); e.setAttribute("class", c); extra.push(e); });
     const t1 = document.createElementNS(NS, "text"); t1.setAttribute("x", lx); t1.setAttribute("y", ly - 2); t1.textContent = a.name;
     const t2 = document.createElementNS(NS, "text"); t2.setAttribute("class", "status"); t2.setAttribute("x", lx); t2.setAttribute("y", ly + 16); t2.textContent = a.live ? "Explore" : "Coming soon";
-    el.append(title, path, t1, t2); g.appendChild(el);
+    if (a.live) { const ch = document.createElementNS(NS, "tspan"); ch.setAttribute("class", "chev"); ch.setAttribute("dx", "4"); ch.textContent = "\u2192"; t2.appendChild(ch); }
+    el.append(title, ...extra, path, t1, t2); g.appendChild(el);
   });
 
   document.getElementById("area-cards").innerHTML = AREAS.map(a => a.live
