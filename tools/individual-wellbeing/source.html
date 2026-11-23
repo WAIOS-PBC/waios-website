@@ -153,10 +153,60 @@ section.block { padding: 44px 0; border-top: 1px solid var(--line); }
 .pill.ev-solid { background: var(--cream); color: var(--slate); }
 .pill.ev-contested { background: transparent; border: 1px solid var(--tonal); color: var(--slate); }
 .pill.ms { background: transparent; border: 1px solid var(--line); color: var(--tonal); }
-.people { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
-.person { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; font-size: 0.9rem; }
-.person strong { display: block; }
-.person span { color: var(--tonal); }
+.people { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 6px 18px; }
+.person { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: center; padding: 8px 0; font-size: 0.9rem; border-bottom: 1px solid var(--line); }
+.person .av { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: .85rem; color: var(--navy); background: var(--cream); }
+.person:nth-child(3n+2) .av { background: #FCEFC6; }
+.person:nth-child(3n) .av { background: #E4EAF0; }
+.person strong { display: block; color: var(--navy); }
+.person span.d { color: var(--tonal); font-size: .84rem; }
+/* Research: compact findings and a collapsible study index */
+.fgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.fcard { position: relative; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 16px 16px 14px; display: grid; gap: 6px; align-content: start; overflow: hidden; animation: fadeUp .45s ease both; }
+.fcard::before { content: ""; position: absolute; left: 0; top: 0; right: 0; height: 4px; background: var(--navy); }
+.fcard.peace::before { background: var(--tonal); }
+.fcard.living::before { background: linear-gradient(90deg, var(--butter), var(--coral)); }
+.fcard .ftop { display: flex; align-items: center; gap: 8px; }
+.fcard .ftop .icon-tile { width: 30px; height: 30px; }
+.fcard .ftop .ic { width: 16px; height: 16px; }
+.fcard .flab { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--tonal); }
+.fcard .fnum { font-size: 1.7rem; font-weight: 800; color: var(--navy); line-height: 1.05; letter-spacing: -0.01em; }
+.fcard p { font-size: .9rem; }
+.fcard .src { font-size: .76rem; color: var(--tonal); }
+.fcard .src a { color: inherit; }
+.more-row { display: flex; justify-content: center; margin-top: 14px; }
+.legend .evkey { display: inline-flex; align-items: center; gap: 6px; font-size: .82rem; color: var(--tonal); margin-left: 12px; }
+.evdot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.evdot.ev-strong { background: var(--navy); }
+.evdot.ev-solid { background: var(--butter); }
+.evdot.ev-contested { background: var(--white); border: 2px solid var(--coral); }
+.sindex { display: grid; gap: 10px; }
+.sgroup { background: var(--white); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; transition: border-color .3s, box-shadow .3s; }
+.sgroup[open] { border-color: var(--mist); box-shadow: 0 14px 30px -22px rgba(21,40,63,.45); }
+.sgroup summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 44px 1fr auto 24px; gap: 14px; align-items: center; padding: 14px 18px; }
+.sgroup summary::-webkit-details-marker { display: none; }
+.sgroup summary:hover { background: var(--pale); }
+.sgroup summary .icon-tile { width: 44px; height: 44px; }
+.sgroup .sg-t { font-weight: 700; color: var(--navy); font-size: 1.05rem; }
+.sgroup .sg-n { display: block; font-size: .8rem; color: var(--tonal); font-weight: 500; }
+.sgroup .sg-dots { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; max-width: 120px; }
+.sgroup .chev { width: 22px; height: 22px; color: var(--tonal); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.sgroup[open] .chev { transform: rotate(180deg); }
+.srows { border-top: 1px solid var(--line); }
+.sgroup[open] .srows { animation: fadeUp .4s ease both; }
+.srow { display: grid; grid-template-columns: 14px 1fr; gap: 12px; padding: 14px 18px 14px 22px; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--slate); }
+.srow:last-child { border-bottom: 0; }
+.srow:hover { background: #FBFAF6; }
+.srow .evdot { margin-top: 6px; }
+.srow strong { color: var(--navy); font-size: .98rem; display: block; line-height: 1.35; }
+.srow:hover strong { text-decoration: underline; }
+.srow .sm { display: block; font-size: .8rem; color: var(--tonal); margin-top: 2px; }
+.srow .sw { display: block; font-size: .9rem; margin-top: 4px; }
+.srow .stags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.srow .stags span { font-size: .7rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--pale); color: var(--slate); }
+.srow .stags span.ms { background: #FCEFC6; color: var(--navy); }
+@media (max-width: 640px) { .sgroup summary { grid-template-columns: 38px 1fr 20px; gap: 10px; padding: 12px 14px; } .sgroup summary .icon-tile { width: 38px; height: 38px; } .sgroup .sg-dots { display: none; } .srow { padding: 12px 14px 12px 16px; } }
+@media (prefers-reduced-motion: reduce) { .fcard, .sgroup[open] .srows { animation: none; } }
 .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 0.85rem; color: var(--tonal); align-items: center; }
 
 /* Check-in */
@@ -1187,10 +1237,13 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
       </div>
       <div class="spotlight" id="spotlight" aria-roledescription="carousel" aria-label="Featured findings"></div>
       <div class="lib-tools" role="group" aria-label="Filter findings by part of the model"><span class="label">Show findings for</span><span id="rchips" style="display:flex;gap:8px;flex-wrap:wrap"></span></div>
-      <div class="statgrid" id="statgrid"></div>
-      <div class="res-head" style="margin-top:36px"><h2>The studies</h2><span class="legend"><span class="pill ev-strong">Strong</span><span class="pill ev-solid">Solid</span><span class="pill ev-contested">Mixed</span></span></div>
-      <div id="study-list"></div>
-      <div class="group" style="margin-top:12px"><h3>Researchers to follow</h3><div class="people" id="people"></div></div>
+      <div class="fgrid" id="statgrid"></div>
+      <div class="more-row"><button type="button" class="btn secondary" id="more-findings" hidden></button></div>
+      <div class="res-head" style="margin-top:40px"><h2>The studies</h2><span class="legend"><span class="evkey"><i class="evdot ev-strong"></i>Strong</span><span class="evkey"><i class="evdot ev-solid"></i>Solid</span><span class="evkey"><i class="evdot ev-contested"></i>Mixed</span></span></div>
+      <p class="wsub" style="margin-top:-6px">Tap a topic to open it. Each dot is one study, colored by how strong the evidence is.</p>
+      <div class="sindex" id="study-list"></div>
+      <div class="res-head" style="margin-top:40px"><h2>Researchers to follow</h2></div>
+      <div class="people" id="people"></div>
     </section>
 
     <!-- WORKPLACES -->
@@ -2493,17 +2546,42 @@ function restartSpot() {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   spot.timer = setInterval(() => { if (currentView() === "research") showSpot(spot.i + 1); else clearInterval(spot.timer); }, 6000);
 }
+let showAllFindings = false;
+const GROUP_ICON = { "Defining and measuring financial wellbeing": "measure", "Money, income and wellbeing": "scale", "Automation and defaults": "automate", "Security": "buffer", "How you spend": "experiences", "Creating distance": "anticipate", "Giving": "giving", "Gifts": "gift", "Future self and delayed gratification": "future", "Scarcity and financial strain": "mindset" };
+const EV_NAME = { strong: "Strong evidence", solid: "Solid evidence", contested: "Mixed evidence" };
+function famOf(ids) { const p = PRINCIPLES.find(x => (ids || []).includes(x.id)); return p ? p.fam : "found"; }
+function findingCard(st, k) {
+  const id = (st.p || []).find(x => PNAME[x]) || "foundations";
+  return `<article class="fcard ${famOf(st.p)}" style="animation-delay:${Math.min(k, 8) * 40}ms">
+    <div class="ftop"><span class="icon-tile">${icon(id)}</span><span class="flab">${esc(st.label)}</span></div>
+    <div class="fnum">${esc(st.num)}</div><p>${esc(st.text)}</p>
+    <span class="src">${st.u ? `<a href="${esc(st.u)}" target="_blank" rel="noopener">${esc(st.src)}</a>` : esc(st.src)}</span></article>`;
+}
+function renderStudies(el, filter) {
+  const groups = RESEARCH.map(g => ({ g, items: g.items.filter(i => filter === "all" || i.p.includes(filter)) })).filter(x => x.items.length);
+  el.innerHTML = groups.map(({ g, items }, k) => `<details class="sgroup"${filter !== "all" || k === 0 ? " open" : ""}>
+    <summary><span class="icon-tile">${icon(GROUP_ICON[g.group] || "flask")}</span>
+      <span><span class="sg-t">${esc(g.group)}</span><span class="sg-n">${items.length} ${items.length === 1 ? "study" : "studies"}</span></span>
+      <span class="sg-dots" aria-hidden="true">${items.map(i => `<i class="evdot ev-${esc(i.ev || "solid")}"></i>`).join("")}</span>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="srows">${items.map(i => `<a class="srow" href="${esc(i.u)}" target="_blank" rel="noopener">
+      <i class="evdot ev-${esc(i.ev || "solid")}" title="${EV_NAME[i.ev] || ""}"></i>
+      <span><strong>${esc(i.t)}</strong><span class="sm">${esc(i.m)} · ${EV_NAME[i.ev] || "Study"}</span><span class="sw">${esc(i.w)}</span>
+      <span class="stags">${i.ms ? `<span class="ms">Measured: ${esc(i.ms)}</span>` : ""}${i.p.filter(x => PNAME[x]).map(x => `<span>${esc(PNAME[x])}</span>`).join("")}</span></span></a>`).join("")}</div>
+  </details>`).join("") || `<p class="empty">No studies for this yet.</p>`;
+}
 function setRFilter(id) {
+  if (id !== rFilter) showAllFindings = false;
   rFilter = id;
-  const grid = document.getElementById("statgrid");
+  const grid = document.getElementById("statgrid"), more = document.getElementById("more-findings");
   const list = STATS.filter(st => rFilter === "all" || st.p.includes(rFilter));
-  grid.innerHTML = list.map(statCard).join("") || `<p class="empty">No headline findings for this yet. See the studies below.</p>`;
-  grid.querySelectorAll('[data-rf]').forEach(a => a.addEventListener("click", e => { e.preventDefault(); setRFilter("foundations"); }));
-  grid.classList.remove("settle"); void grid.offsetWidth; grid.classList.add("settle");
+  const LIMIT = 6, shown = showAllFindings ? list : list.slice(0, LIMIT);
+  grid.innerHTML = shown.map(findingCard).join("") || `<p class="empty">No headline findings for this yet. See the studies below.</p>`;
+  more.hidden = list.length <= LIMIT;
+  more.textContent = showAllFindings ? "Show fewer findings" : `Show all ${list.length} findings`;
+  more.onclick = () => { showAllFindings = !showAllFindings; setRFilter(rFilter); if (!showAllFindings) grid.scrollIntoView({ block: "start", behavior: "smooth" }); };
   document.querySelectorAll("#rchips .chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.id === rFilter ? "true" : "false"));
-  const saved = active; active = (rFilter === "all") ? "all" : rFilter;
-  renderList(document.getElementById("study-list"), RESEARCH);
-  active = saved;
+  renderStudies(document.getElementById("study-list"), rFilter);
 }
 function renderResearch() {
   const defs = [["all", "All findings"], ["foundations", "Foundations"], ...PRINCIPLES.map(p => [p.id, p.name])];
@@ -2636,7 +2714,7 @@ const chipDefs = [["all", "All"], ...PRINCIPLES.map(p => [p.id, p.name]), ["meas
 document.getElementById("chips").innerHTML = chipDefs.map(([id, name]) =>
   `<button type="button" class="chip" id="chip-${id}" data-id="${id}" aria-pressed="false">${icon(id)}${esc(name)}</button>`).join("");
 document.querySelectorAll("#chips .chip").forEach(c => c.addEventListener("click", () => setFilter(c.dataset.id)));
-document.getElementById("people").innerHTML = PEOPLE.map(([n, d]) => `<div class="person"><strong>${esc(n)}</strong><span>${esc(d)}</span></div>`).join("");
+document.getElementById("people").innerHTML = PEOPLE.map(([n, d]) => `<div class="person"><span class="av" aria-hidden="true">${esc(n.split(" ").map(w => w[0]).slice(0, 2).join(""))}</span><span><strong>${esc(n)}</strong><span class="d">${esc(d)}</span></span></div>`).join("");
 
 // ---------- Financial wellbeing check-in (CFPB Financial Well-Being Scale) ----------
 const DESCRIBE = ["Completely", "Very well", "Somewhat", "Very little", "Not at all"];
