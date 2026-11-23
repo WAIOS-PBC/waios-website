@@ -190,7 +190,10 @@ section.block { padding: 44px 0; border-top: 1px solid var(--line); }
 .focus .card.strength { border-left-color: var(--navy); }
 .focus .card p { font-size: 0.92rem; color: var(--tonal); }
 
-/* Book tiles: placeholder covers (data-slot="book-cover", replace with real cover images on waios.com) */
+/* Book tiles: the real cover (from Open Library) sits over the designed tile, which shows if the image fails */
+.cover { position: relative; overflow: hidden; }
+.cover .cover-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: var(--white); z-index: 1; }
+.cover.has-img > span { visibility: hidden; }
 .items.books { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
 .item.book { padding: 14px; }
 .item.book > a { text-decoration: none; color: inherit; display: block; }
@@ -203,8 +206,14 @@ section.block { padding: 44px 0; border-top: 1px solid var(--line); }
 .cover .ca { font-size: 0.78rem; opacity: 0.9; }
 .cover .cp { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; }
 
-/* Podcast embed placeholders (data-slot="podcast-embed", replace with Spotify, Apple or YouTube embeds) */
-.embed-slot { border: 1px dashed var(--mist); border-radius: 8px; min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--offwhite); flex-wrap: wrap; }
+/* Podcast players: the official Apple Podcasts embed, loaded when the visitor taps Play */
+.embed-slot .play-btn { font: inherit; font-weight: 600; font-size: 0.92rem; border: 0; cursor: pointer; border-radius: 999px; padding: 10px 18px; min-height: 44px; background: var(--navy); color: var(--cream); }
+.embed-slot .play-btn:hover { filter: brightness(1.15); }
+.embed-slot .listen-link { font-size: 0.85rem; color: var(--tonal); }
+.embed-slot.playing { display: block; padding: 0; border: 0; background: none; min-height: 0; }
+.embed-slot iframe { width: 100%; height: 175px; border: 0; border-radius: 12px; display: block; }
+.embed-slot.playing .listen-link { display: inline-block; margin-top: 6px; }
+.embed-slot { border: 1px solid var(--line); border-radius: 8px; min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--offwhite); flex-wrap: wrap; }
 .embed-slot .ph { font-size: 0.78rem; color: var(--tonal); }
 .listen-btn { text-decoration: none; font-weight: 600; font-size: 0.88rem; border-radius: 999px; padding: 6px 14px; background: var(--navy); color: var(--cream); display: inline-flex; align-items: center; gap: 6px; }
 .listen-btn:hover { filter: brightness(1.15); }
@@ -1046,7 +1055,7 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
     <span class="footmark footmark-generic" data-slot="logo">Individual Wellbeing</span>
     <p>Individual Wellbeing: research, practices and resources for financial wellbeing. Last updated November 20, 2026.</p>
     <p><a href="#workplaces">For workplaces: where employers can make an impact</a></p>
-    <p>Resources are listed for education, not as financial, legal or medical advice. We do not earn commissions from any link on this site.</p>
+    <p>Resources are listed for education, not as financial, legal or medical advice. We do not earn commissions from any link on this site. Book covers from <a href="https://openlibrary.org" target="_blank" rel="noopener">Open Library</a>.</p>
     <p class="pp"><a href="/privacy" data-slot="privacy" class="privacy-link">Privacy policy</a></p>
   </div>
 </footer>
@@ -1289,19 +1298,19 @@ function bk(q) { return "https://bookshop.org/search?keywords=" + encodeURICompo
 
 const READ = [
   { group: "Books", kind: "book", items: [
-    { t: "Happy Money: The Science of Happier Spending", m: "Elizabeth Dunn and Michael Norton, 2013", w: "The five research-backed principles: buy experiences, make it a treat, buy time, pay now and consume later, invest in others.", u: bk("Happy Money Dunn Norton"), p: ["experiences", "time", "others", "giving", "anticipate", "values"] },
-    { t: "Wellbeing: The Five Essential Elements", m: "Tom Rath and Jim Harter, Gallup Press, 2010", w: "Gallup's global research on what separates thriving lives, with financial wellbeing as one of five connected parts of life.", u: bk("Wellbeing The Five Essential Elements Rath Harter"), p: ["foundations", "experiences", "others", "giving"] },
-    { t: "Nudge: The Final Edition", m: "Richard Thaler and Cass Sunstein, 2021", w: "How defaults and choice design shape behavior, including automatic saving.", u: bk("Nudge The Final Edition Thaler Sunstein"), p: ["automate", "future"] },
+    { t: "Happy Money: The Science of Happier Spending", cv: 7926235, m: "Elizabeth Dunn and Michael Norton, 2013", w: "The five research-backed principles: buy experiences, make it a treat, buy time, pay now and consume later, invest in others.", u: bk("Happy Money Dunn Norton"), p: ["experiences", "time", "others", "giving", "anticipate", "values"] },
+    { t: "Wellbeing: The Five Essential Elements", cv: 10413170, m: "Tom Rath and Jim Harter, Gallup Press, 2010", w: "Gallup's global research on what separates thriving lives, with financial wellbeing as one of five connected parts of life.", u: bk("Wellbeing The Five Essential Elements Rath Harter"), p: ["foundations", "experiences", "others", "giving"] },
+    { t: "Nudge: The Final Edition", cv: 11515487, m: "Richard Thaler and Cass Sunstein, 2021", w: "How defaults and choice design shape behavior, including automatic saving.", u: bk("Nudge The Final Edition Thaler Sunstein"), p: ["automate", "future"] },
     { t: "Time Smart", m: "Ashley Whillans, 2020", w: "Practical guide to winning back time and spending money to buy it.", u: bk("Time Smart Whillans"), p: ["time"] },
     { t: "Happier Hour", m: "Cassie Mogilner Holmes, 2022", w: "How to spend the time you have in ways that feel better.", u: bk("Happier Hour Mogilner Holmes"), p: ["time"] },
-    { t: "Your Future Self", m: "Hal Hershfield, 2023", w: "The future-self research and simple ways to strengthen the connection.", u: bk("Your Future Self Hershfield"), p: ["future"] },
-    { t: "The Art of Spending Money", m: "Morgan Housel, 2025", w: "Spending as an expression of values, with independence as the thing money buys best.", u: bk("The Art of Spending Money Housel"), p: ["values"] },
-    { t: "The Psychology of Money", m: "Morgan Housel, 2020", w: "Short essays on how behavior, not knowledge, drives financial outcomes.", u: bk("The Psychology of Money Housel"), p: ["mindset", "buffer"] },
-    { t: "Die With Zero", m: "Bill Perkins, 2020", w: "Plan experiences across life stages and collect what he calls a memory dividend.", u: bk("Die With Zero Perkins"), p: ["experiences"] },
-    { t: "I Will Teach You to Be Rich", m: "Ramit Sethi, 2nd edition, 2019", w: "Automate the basics, then spend extravagantly on what you love and cut costs on what you don't.", u: bk("I Will Teach You to Be Rich Sethi"), p: ["values", "automate", "buffer"] },
-    { t: "Mind over Money", m: "Brad Klontz and Ted Klontz, 2009", w: "Identifying the money scripts we learn early and how they drive behavior.", u: bk("Mind over Money Klontz"), p: ["mindset"] },
-    { t: "Scarcity", m: "Sendhil Mullainathan and Eldar Shafir, 2013", w: "How having too little, of money or time, narrows attention and decisions.", u: bk("Scarcity Mullainathan Shafir"), p: ["mindset", "time"] },
-    { t: "The High Price of Materialism", m: "Tim Kasser, 2002", w: "The research on why materialist values undermine wellbeing.", u: bk("The High Price of Materialism Kasser"), p: ["values"] }
+    { t: "Your Future Self", cv: 14333234, m: "Hal Hershfield, 2023", w: "The future-self research and simple ways to strengthen the connection.", u: bk("Your Future Self Hershfield"), p: ["future"] },
+    { t: "The Art of Spending Money", cv: 15142229, m: "Morgan Housel, 2025", w: "Spending as an expression of values, with independence as the thing money buys best.", u: bk("The Art of Spending Money Housel"), p: ["values"] },
+    { t: "The Psychology of Money", cv: 10389354, m: "Morgan Housel, 2020", w: "Short essays on how behavior, not knowledge, drives financial outcomes.", u: bk("The Psychology of Money Housel"), p: ["mindset", "buffer"] },
+    { t: "Die With Zero", cv: 10433791, m: "Bill Perkins, 2020", w: "Plan experiences across life stages and collect what he calls a memory dividend.", u: bk("Die With Zero Perkins"), p: ["experiences"] },
+    { t: "I Will Teach You to Be Rich", cv: 10089296, m: "Ramit Sethi, 2nd edition, 2019", w: "Automate the basics, then spend extravagantly on what you love and cut costs on what you don't.", u: bk("I Will Teach You to Be Rich Sethi"), p: ["values", "automate", "buffer"] },
+    { t: "Mind over Money", cv: 6410479, m: "Brad Klontz and Ted Klontz, 2009", w: "Identifying the money scripts we learn early and how they drive behavior.", u: bk("Mind over Money Klontz"), p: ["mindset"] },
+    { t: "Scarcity", cv: 9015637, m: "Sendhil Mullainathan and Eldar Shafir, 2013", w: "How having too little, of money or time, narrows attention and decisions.", u: bk("Scarcity Mullainathan Shafir"), p: ["mindset", "time"] },
+    { t: "The High Price of Materialism", cv: 150158, m: "Tim Kasser, 2002", w: "The research on why materialist values undermine wellbeing.", u: bk("The High Price of Materialism Kasser"), p: ["values"] }
   ]},
   { group: "Articles", kind: "article", items: [
     { t: "The Five Essential Elements of Well-Being", m: "Gallup, Tom Rath and Jim Harter", w: "How Gallup frames financial wellbeing alongside career, social, physical and community wellbeing.", u: "https://www.gallup.com/workplace/237020/five-essential-elements.aspx", p: ["foundations"] },
@@ -1319,37 +1328,37 @@ const READ = [
 
 const LISTEN = [
   { group: "The Happiness Lab with Dr. Laurie Santos", kind: "episode", items: [
-    { start: true, t: "Why Experiences Make You Happier Than Things", m: "The Happiness Lab", w: "The psychology of material versus experiential spending.", u: "https://www.drlauriesantos.com/happiness-lab-with-dr-laurie-santos-podcast/episodes/experiences-make-happier-things", p: ["experiences"] },
-    { t: "Giving Tuesday: Why Giving Money to Others Makes Us Happier", m: "The Happiness Lab", w: "The prosocial spending research, with Harvard's Josh Greene.", u: "https://www.pushkin.fm/podcasts/the-happiness-lab-with-dr-laurie-santos/giving-tuesday-why-giving-money-to-others-makes-us-happier", p: ["others", "giving"] },
-    { t: "How to Spend Your Time and Money Better (with Richard Thaler)", m: "The Happiness Lab", w: "Behavioral economics for everyday spending and saving choices.", u: "https://www.pushkin.fm/podcasts/the-happiness-lab-with-dr-laurie-santos/how-to-spend-your-time-and-money-better-with-nobel-prize-winner-richard-thaler", p: ["time", "experiences", "others"] }
+    { start: true, t: "Why Experiences Make You Happier Than Things", m: "The Happiness Lab", ap: "1474245040:1000477975448", w: "The psychology of material versus experiential spending.", u: "https://www.drlauriesantos.com/happiness-lab-with-dr-laurie-santos-podcast/episodes/experiences-make-happier-things", p: ["experiences"] },
+    { t: "Giving Tuesday: Why Giving Money to Others Makes Us Happier", m: "The Happiness Lab", ap: "1474245040:1000587839102", w: "The prosocial spending research, with Harvard's Josh Greene.", u: "https://www.pushkin.fm/podcasts/the-happiness-lab-with-dr-laurie-santos/giving-tuesday-why-giving-money-to-others-makes-us-happier", p: ["others", "giving"] },
+    { t: "How to Spend Your Time and Money Better (with Richard Thaler)", m: "The Happiness Lab", ap: "1474245040:1000727362259", w: "Behavioral economics for everyday spending and saving choices.", u: "https://www.pushkin.fm/podcasts/the-happiness-lab-with-dr-laurie-santos/how-to-spend-your-time-and-money-better-with-nobel-prize-winner-richard-thaler", p: ["time", "experiences", "others"] }
   ]},
   { group: "Hidden Brain with Shankar Vedantam", kind: "episode", items: [
-    { t: "You 2.0: The Mind's Eye", m: "Hidden Brain, with Elizabeth Dunn", w: "Anticipation, memory and spending on experiences versus things.", u: "https://hiddenbrain.org/podcast/you-2-0-our-pursuit-of-happiness/", p: ["experiences", "anticipate"] },
-    { start: true, t: "Rewrite Your Money Story", m: "Hidden Brain, with Brad Klontz", w: "How to identify and change the money scripts you learned early.", u: "https://hiddenbrain.org/podcast/money-2-0-rewrite-your-money-story/", p: ["mindset"] },
-    { t: "Money 2.0: Why We Bust Our Budgets", m: "Hidden Brain, with Abigail Sussman", w: "Our blind spots around surprise expenses and how to plan for them.", u: "https://podcast.app/money-20-why-we-bust-our-budgets-e310964782", p: ["buffer"] },
-    { t: "Too Little, Too Much: How Poverty and Wealth Affect Our Minds", m: "Hidden Brain", w: "The psychology of scarcity and of excess.", u: "https://www.npr.org/2018/10/04/651468312/too-little-too-much-how-poverty-and-wealth-affect-our-minds", p: ["mindset"] }
+    { t: "You 2.0: The Mind's Eye", m: "Hidden Brain, with Elizabeth Dunn", ap: "1028908750:1000576169654", w: "Anticipation, memory and spending on experiences versus things.", u: "https://podcasts.apple.com/us/podcast/id1028908750?i=1000576169654", p: ["experiences", "anticipate"] },
+    { start: true, t: "Rewrite Your Money Story", m: "Hidden Brain, with Brad Klontz", ap: "1028908750:1000670451609", w: "How to identify and change the money scripts you learned early.", u: "https://hiddenbrain.org/podcast/money-2-0-rewrite-your-money-story/", p: ["mindset"] },
+    { t: "Money 2.0: Why We Bust Our Budgets", m: "Hidden Brain, with Abigail Sussman", ap: "1028908750:1000560114528", w: "Our blind spots around surprise expenses and how to plan for them.", u: "https://podcasts.apple.com/us/podcast/id1028908750?i=1000560114528", p: ["buffer"] },
+    { t: "Too Little, Too Much: How Poverty and Wealth Affect Our Minds", m: "Hidden Brain", ap: "1028908750:1000422660282", w: "The psychology of scarcity and of excess.", u: "https://www.npr.org/2018/10/04/651468312/too-little-too-much-how-poverty-and-wealth-affect-our-minds", p: ["mindset"] }
   ]},
   { group: "Choiceology with Katy Milkman", kind: "episode", items: [
-    { start: true, t: "Big Goals, Little Steps", m: "Choiceology, with Hal Hershfield", w: "How your connection to your future self shapes saving.", u: "https://international.schwab.com/story/big-goals-little-steps-with-guests-shannon-miller-hal-hershfield", p: ["future"] },
-    { t: "The Temptation of Now", m: "Choiceology, with Richard Thaler and Angela Duckworth", w: "Present bias and tools like commitment devices.", u: "https://www.schwab.com/learn/story/temptation-now-with-guests-richard-thaler-angela-duckworth", p: ["future", "automate"] }
+    { start: true, t: "Big Goals, Little Steps", m: "Choiceology, with Hal Hershfield", ap: "1337886873:1000532112106", w: "How your connection to your future self shapes saving.", u: "https://international.schwab.com/story/big-goals-little-steps-with-guests-shannon-miller-hal-hershfield", p: ["future"] },
+    { t: "The Temptation of Now", m: "Choiceology, with Richard Thaler and Angela Duckworth", ap: "1337886873:1000423661690", w: "Present bias and tools like commitment devices.", u: "https://www.schwab.com/learn/story/temptation-now-with-guests-richard-thaler-angela-duckworth", p: ["future", "automate"] }
   ]},
   { group: "Rational Reminder", kind: "episode", items: [
-    { start: true, t: "Ep. 143: Ashley Whillans, How to Be (Time) Rich", m: "Rational Reminder", w: "Time poverty, money and wellbeing in a long-form interview.", u: "https://rationalreminder.ca/podcast/143", p: ["time"] },
-    { t: "Ep. 256: Hal Hershfield, Your Future Self", m: "Rational Reminder", w: "Age-progressed images, Future You and building a bond with your future self.", u: "https://www.podbean.com/site/EpisodeDownload/DIR18CF3427QDH4F", p: ["future"] }
+    { start: true, t: "Ep. 143: Ashley Whillans, How to Be (Time) Rich", m: "Rational Reminder", ap: "1426530582:1000515317395", w: "Time poverty, money and wellbeing in a long-form interview.", u: "https://rationalreminder.ca/podcast/143", p: ["time"] },
+    { t: "Ep. 256: Hal Hershfield, Your Future Self", m: "Rational Reminder", ap: "1426530582:1000616117431", w: "Age-progressed images, Future You and building a bond with your future self.", u: "https://podcasts.apple.com/us/podcast/id1426530582?i=1000616117431", p: ["future"] }
   ]},
   { group: "Elizabeth Dunn on other shows", kind: "episode", items: [
-    { t: "What Science Says About Money and Happiness", m: "Ten Percent Happier, Ep. 674", w: "How to spend in ways that improve wellbeing, and the state of the research.", u: "https://metacast.app/podcast/10-happier-with-dan-harris/K4PTZWuf/what-science-says-about-money-and-happiness-dr-elizabeth-dunn/0CW3GwXk", p: ["experiences", "others", "time"] },
-    { t: "How Much Happiness Can 2 Million USD Buy?", m: "The TED Interview, 2024", w: "Dunn on her study giving people large cash gifts.", u: "https://www.ted.com/podcasts/how-much-happiness-can-2-million-usd-buy-with-elizabeth-dunn-transcript", p: ["others", "giving"] },
-    { t: "Does Money Buy Happiness?", m: "Chasing Life with Dr. Sanjay Gupta, CNN, 2024", w: "Why buying time is an underused way to turn money into a better life.", u: "https://podcasts.happyscribe.com/cnn/does-money-buy-happiness-5d35be8b-d5a4-4df6-bfff-54c43c38e879", p: ["time", "giving"] }
+    { t: "What Science Says About Money and Happiness", m: "Ten Percent Happier, Ep. 674", ap: "1087147821:1000632744243", w: "How to spend in ways that improve wellbeing, and the state of the research.", u: "https://podcasts.apple.com/us/podcast/id1087147821?i=1000632744243", p: ["experiences", "others", "time"] },
+    { t: "How Much Happiness Can 2 Million USD Buy?", m: "The TED Interview, 2024", ap: "1437306870:1000655691054", w: "Dunn on her study giving people large cash gifts.", u: "https://www.ted.com/podcasts/how-much-happiness-can-2-million-usd-buy-with-elizabeth-dunn-transcript", p: ["others", "giving"] },
+    { t: "Does Money Buy Happiness?", m: "Chasing Life with Dr. Sanjay Gupta, CNN, 2024", ap: "1501029683:1000663066592", w: "Why buying time is an underused way to turn money into a better life.", u: "https://podcasts.apple.com/us/podcast/id1501029683?i=1000663066592", p: ["time", "giving"] }
   ]},
   { group: "Morgan Housel", kind: "episode", items: [
-    { t: "The Art of Spending Money", m: "The Morgan Housel Podcast, 2023", w: "The first episode of his show and the seed of his later book.", u: "https://es.player.fm/series/the-morgan-housel-podcast/the-art-of-spending-money", p: ["values"] },
-    { t: "The Art of Spending Money (And Why Most of Us Get It Wrong)", m: "The ONE Thing", w: "Swapping status spending for utility spending, plus a reverse obituary exercise.", u: "https://pocketcasts.com/podcast/the-one-thing/2b0a9540-b489-0134-106e-25324e2a541d/the-art-of-spending-money-and-why-most-of-us-get-it-wrong-with-morgan-housel/b1d6ff86-b284-4441-8760-b40cee31c74e", p: ["values"] }
+    { t: "The Art of Spending Money", m: "The Morgan Housel Podcast, 2023", ap: "1675310669:1000602502395", w: "The first episode of his show and the seed of his later book.", u: "https://podcasts.apple.com/us/podcast/id1675310669?i=1000602502395", p: ["values"] },
+    { t: "The Art of Spending Money (And Why Most of Us Get It Wrong)", m: "The ONE Thing", ap: "1191482456:1000729055196", w: "Swapping status spending for utility spending, plus a reverse obituary exercise.", u: "https://podcasts.apple.com/us/podcast/id1191482456?i=1000729055196", p: ["values"] }
   ]},
   { group: "Afford Anything with Paula Pant", kind: "episode", items: [
-    { t: "#315: The Science of Behavioral Change, with Katy Milkman", m: "Afford Anything", w: "Closing the gap between your present self and the person you want to be.", u: "https://affordanything.com/episode315", p: ["future", "mindset"] },
-    { t: "#127: Interview with Brad Klontz", m: "Afford Anything", w: "Money scripts and the psychology behind them.", u: "https://affordanything.com/episode127", p: ["mindset"] },
-    { t: "#551: Brad Klontz and Adrian Brambila", m: "Afford Anything", w: "A follow-up conversation on money psychology.", u: "https://affordanything.com/episode551", p: ["mindset"] }
+    { t: "#315: The Science of Behavioral Change, with Katy Milkman", m: "Afford Anything", ap: "1079598542:1000520709758", w: "Closing the gap between your present self and the person you want to be.", u: "https://affordanything.com/episode315", p: ["future", "mindset"] },
+    { t: "#127: Interview with Brad Klontz", m: "Afford Anything", ap: "1079598542:1000410248685", w: "Money scripts and the psychology behind them.", u: "https://affordanything.com/episode127", p: ["mindset"] },
+    { t: "#551: Brad Klontz and Adrian Brambila", m: "Afford Anything", ap: "1079598542:1000797113781", w: "A follow-up conversation on money psychology.", u: "https://affordanything.com/episode551", p: ["mindset"] }
   ]}
 ];
 
@@ -1780,10 +1789,11 @@ function tagsFor(i) {
 
 function cardFor(i, kind, show) {
   if (kind === "book") {
-    // data-slot="book-cover": replace this tile with the real cover image on waios.com
+    // Real covers come from Open Library (cv: cover id); books without one keep the designed tile.
+    const img = i.cv ? `<img class="cover-img" src="https://covers.openlibrary.org/b/id/${i.cv}-M.jpg" srcset="https://covers.openlibrary.org/b/id/${i.cv}-M.jpg 1x, https://covers.openlibrary.org/b/id/${i.cv}-L.jpg 2x" alt="Cover of ${esc(i.t)}" width="190" height="285" loading="lazy" onerror="this.parentNode.classList.remove('has-img');this.remove()">` : "";
     return `<article class="item book">
       <a href="${esc(i.u)}" target="_blank" rel="noopener" aria-label="${esc(i.t)} on Bookshop.org">
-        <div class="cover ${COVER_TONE[i.p[0]] || ""}" data-slot="book-cover" data-title="${esc(i.t)}">
+        <div class="cover ${i.cv ? "has-img " : ""}${COVER_TONE[i.p[0]] || ""}" data-title="${esc(i.t)}">${img}
           <span class="cp">${esc(PNAME[i.p[0]])}</span>
           <span class="ct">${esc(i.t)}</span>
           <span class="ca">${esc(i.m)}</span>
@@ -1794,16 +1804,16 @@ function cardFor(i, kind, show) {
     </article>`;
   }
   if (kind === "episode") {
-    // data-slot="podcast-embed": replace with the official Spotify, Apple Podcasts or YouTube embed on waios.com
+    // Episodes with an Apple Podcasts id (ap: "show:episode") get the official player, loaded on tap.
     return `<article class="item">
       <div class="kind-row">${icon("headphones")}Episode</div>
       <div class="title">${esc(i.t)}</div>
       <div class="meta">${esc(i.m)}</div>
       <p class="why">${esc(i.w)}</p>
-      <div class="embed-slot" data-slot="podcast-embed" data-source-url="${esc(i.u)}">
-        <span class="ph">Episode player will appear here</span>
-        <a class="listen-btn" href="${esc(i.u)}" target="_blank" rel="noopener">&#9654; Listen</a>
-      </div>
+      ${i.ap ? `<div class="embed-slot" data-ap="${esc(i.ap)}">
+        <button type="button" class="play-btn" data-play aria-label="Play ${esc(i.t)} here">&#9654; Play episode</button>
+        <a class="listen-link" href="${esc(i.u)}" target="_blank" rel="noopener">Open episode page</a>
+      </div>` : `<div class="embed-slot"><a class="listen-btn" href="${esc(i.u)}" target="_blank" rel="noopener">&#9654; Listen</a></div>`}
       ${tagsFor(i)}
     </article>`;
   }
@@ -2810,6 +2820,22 @@ function renderFinderOut(changed) {
   if (changed) track("finder_use", { who, budget: budget || "", type: type || "" });
 }
 document.getElementById("finder-reset").addEventListener("click", () => { finder.who = finder.budget = finder.type = null; document.getElementById("finder-form").reset(); renderFinderOut(false); });
+
+// ---------- Podcast players: load the official Apple Podcasts embed on tap ----------
+document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest("[data-play]");
+  if (!b) return;
+  const slot = b.closest(".embed-slot"), [show, ep] = (slot.dataset.ap || "").split(":");
+  if (!show || !ep) return;
+  const f = document.createElement("iframe");
+  f.src = `https://embed.podcasts.apple.com/us/podcast/id${show}?i=${ep}&theme=light`;
+  f.title = "Podcast player: " + (slot.closest(".item").querySelector(".title") || {}).textContent;
+  f.allow = "autoplay *; encrypted-media *; clipboard-write";
+  f.loading = "lazy";
+  f.setAttribute("sandbox", "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation");
+  slot.classList.add("playing"); b.replaceWith(f);
+  track("podcast_play", { show: show, episode: ep });
+});
 
 // ---------- Contact form (workplaces) ----------
 (function () {
