@@ -8,9 +8,9 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Financial wellbeing: peace of mind and the freedom to use money well">
 <meta property="og:description" content="Ten research-backed ways to thrive with money, a free check-in, and vetted resources.">
-<meta property="og:image" content="/individual-wellbeing/og-image.png">
+<meta property="og:image" content="/individual-wellbeing/financial/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="/individual-wellbeing/">
+<link rel="canonical" href="/individual-wellbeing/financial/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -66,6 +66,8 @@ header.top { position: sticky; top: 0; z-index: 10; background: var(--offwhite);
 .logo .i::before { content: ""; position: absolute; left: 50%; top: -0.02em; width: 0.26em; height: 0.26em; transform: translateX(-50%); border-radius: 50%; background: linear-gradient(var(--butter) 0 65%, var(--coral) 65% 100%); }
 .crumb { font-size: 0.85rem; color: var(--tonal); }
 .crumb a { color: var(--tonal); text-decoration: none; }
+a.crumb { text-decoration: none; }
+a.crumb:hover { color: var(--navy); }
 nav.sections { display: flex; gap: 2px; flex-wrap: wrap; margin-left: auto; }
 nav.sections a { color: var(--slate); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 6px 10px; border-radius: 6px; }
 nav.sections a:hover { background: var(--pale); color: var(--navy); }
@@ -763,8 +765,8 @@ nav.sections a.nav-cta:hover, nav.sections a.nav-cta.on { background: var(--cora
 
 <header class="top">
   <div class="wrap topbar">
-    <a class="logo logo-generic" href="#start" data-slot="logo" aria-label="Individual Wellbeing home">Individual Wellbeing</a>
-    <span class="crumb">Financial wellbeing</span>
+    <a class="logo logo-generic" href="/individual-wellbeing/" data-slot="logo" aria-label="Individual Wellbeing: all five areas">Individual Wellbeing</a>
+    <a class="crumb" href="#start">Financial wellbeing</a>
     <a class="nav-cta-m" href="#checkin">Check-in</a>
     <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span>Menu</button>
     <nav class="sections" id="site-nav" aria-label="Sections">
@@ -1857,9 +1859,9 @@ function setFilterUnused(id, scroll) {
 
 // ---------- Journey: views and routing ----------
 // ---------- Site config, addresses and analytics ----------
-// On the live site each view has its own address under /individual-wellbeing.
+// On the live site each view has its own address under /individual-wellbeing/financial.
 // In a preview (any other address) the page falls back to #hash links.
-const BASE = "/individual-wellbeing";
+const BASE = "/individual-wellbeing/financial";
 const CONFIG = Object.assign({ formEndpoint: "/api/lead", privacyUrl: "", siteUrl: "" }, window.SITE_CONFIG || {});
 const PATH_MODE = location.pathname === BASE || location.pathname.startsWith(BASE + "/");
 const FORMS_LIVE = PATH_MODE || !!(window.SITE_CONFIG && window.SITE_CONFIG.formEndpoint);
@@ -1895,7 +1897,7 @@ function setMeta(v) {
   set('meta[name="description"]', "content", m[1]);
   set('meta[property="og:title"]', "content", m[0]);
   set('meta[property="og:description"]', "content", m[1]);
-  if (PATH_MODE) set('link[rel="canonical"]', "href", (CONFIG.siteUrl ? CONFIG.siteUrl.replace(/\/individual-wellbeing\/?$/, "") : location.origin) + pathFor(v));
+  if (PATH_MODE) set('link[rel="canonical"]', "href", (CONFIG.siteUrl ? new URL(CONFIG.siteUrl).origin : location.origin) + pathFor(v));
 }
 // Turn internal #links into real addresses on the live site.
 function fixLinks(root) {

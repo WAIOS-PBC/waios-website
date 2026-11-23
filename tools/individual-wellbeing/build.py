@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Builds the Individual Wellbeing pages into public/individual-wellbeing/.
+Builds the financial wellbeing pages into public/individual-wellbeing/financial/.
+(The five-area wheel at /individual-wellbeing/ is public/individual-wellbeing/index.html, edited by hand.)
 
   python3 tools/individual-wellbeing/build.py
 
@@ -13,7 +14,7 @@ import json, os, re, shutil
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 SITE_ORIGIN = "https://waios.com"
-BASE = "/individual-wellbeing"
+BASE = "/individual-wellbeing/financial"   # the wheel landing page is public/individual-wellbeing/index.html
 FORM_ENDPOINT = "/api/lead"
 PRIVACY_URL = ""   # set to the privacy policy address once it exists; links stay hidden until then
 OUT = os.path.join(REPO, "public", BASE.strip("/"))
@@ -52,7 +53,7 @@ def page_for(v):
     h = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{esc(desc)}">', h, count=1)
     h = re.sub(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{esc(title)}">', h, count=1)
     h = re.sub(r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{esc(desc)}">', h, count=1)
-    h = h.replace('<meta property="og:image" content="/individual-wellbeing/og-image.png">',
+    h = h.replace(f'<meta property="og:image" content="{BASE}/og-image.png">',
                   f'<meta property="og:image" content="{SITE_ORIGIN}{BASE}/og-image.png">\n<meta property="og:url" content="{url}">')
     h = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url}">', h, count=1)
     h = re.sub(r'href="#(\w+)"', lambda m: f'href="{path_for(m.group(1))}"' if m.group(1) in all_views else m.group(0), h)
@@ -72,7 +73,8 @@ for v in all_views:
     os.makedirs(os.path.dirname(f), exist_ok=True)
     open(f, "w", encoding="utf-8").write(page_for(v))
 shutil.copy(os.path.join(HERE, "og-image.png"), os.path.join(OUT, "og-image.png"))
-open(os.path.join(OUT, "sitemap.xml"), "w").write(
+open(os.path.join(REPO, "public", "individual-wellbeing", "sitemap.xml"), "w").write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    f"  <url><loc>{SITE_ORIGIN}/individual-wellbeing/</loc></url>\n" +
     "".join(f"  <url><loc>{SITE_ORIGIN}{path_for(v)}</loc></url>\n" for v in all_views) + "</urlset>\n")
-print(f"Built {len(all_views)} pages into public/individual-wellbeing")
+print(f"Built {len(all_views)} pages into public{BASE}")

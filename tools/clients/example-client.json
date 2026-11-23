@@ -35,9 +35,9 @@
 
   "linksTitle": "Keep going",
   "links": [
-    { "title": "Ten ways to thrive with money", "text": "The research-backed model of financial wellbeing.", "url": "/individual-wellbeing/ten-ways" },
-    { "title": "Take the check-in", "text": "Four minutes to see where to focus first.", "url": "/individual-wellbeing/check-in" },
-    { "title": "Gift and experience finder", "text": "Ideas that bring people closer, without overspending.", "url": "/individual-wellbeing/gift-and-experience-finder" }
+    { "title": "Ten ways to thrive with money", "text": "The research-backed model of financial wellbeing.", "url": "/individual-wellbeing/financial/ten-ways" },
+    { "title": "Take the check-in", "text": "Four minutes to see where to focus first.", "url": "/individual-wellbeing/financial/check-in" },
+    { "title": "Gift and experience finder", "text": "Ideas that bring people closer, without overspending.", "url": "/individual-wellbeing/financial/gift-and-experience-finder" }
   ],
 
   "contact": "Questions or ideas for a follow-up session? Email us at hello@example.com.",
